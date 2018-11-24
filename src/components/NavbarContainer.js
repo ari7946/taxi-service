@@ -13,6 +13,7 @@ import {
 } from 'reactstrap';
 import brand from '../assets/my-taxi-cab-brand.jpg';
 import contactus from '../assets/contact-us.jpg';
+import { Link } from 'react-router-dom';
 
 
 export default class NavbarContainer extends React.Component {
@@ -45,15 +46,25 @@ export default class NavbarContainer extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
+
               <NavItem>
-                <NavLink className="pr-5" href="/">Home</NavLink>
+                <NavLink className="pr-5" href="/">
+                  <Link to="/" style={{ textDecoration: 'none' }}>Home</Link>
+                </NavLink>
               </NavItem>
+
               <NavItem>
-                <NavLink className="pr-5" href="/about">About</NavLink>
+                <NavLink className="pr-5" href="/">
+                  <Link to="/about" style={{ textDecoration: 'none' }}>About</Link>
+                </NavLink>
               </NavItem>
+
               <NavItem>
-                <NavLink className="pr-5" href="/contact">Contact</NavLink>
+                <NavLink className="pr-5" href="/">
+                  <Link to="/contact" style={{ textDecoration: 'none' }}>Contact</Link>
+                </NavLink>
               </NavItem>
+
             </Nav>
           </Collapse>
         </Navbar>

@@ -101,6 +101,17 @@ img.about-img {
     margin: 3.5rem;
     padding: 0 1.5rem;
   }
+
+  #navbar {
+    background-color: #FFFFFF !important; 
+    margin-bottom: .5rem;
+    padding: 0;
+  }
+
+  button.navbar-toggler {
+    background-color: #CAE1C9;
+  }
+
 }
 
 

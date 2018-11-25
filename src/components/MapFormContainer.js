@@ -18,8 +18,8 @@ class MapFormContainer extends React.Component {
     script.async = true;
 
     script.onload = () => {
-      let tomtom = window.tomtom;
-      let map = tomtom.L.map('map', {
+      const tomtom = window.tomtom;
+      const map = tomtom.L.map('map', {
         source: 'vector',
         key: process.env.REACT_APP_API_KEY,
         center: [33.8417078, -118.0895015],
@@ -32,16 +32,16 @@ class MapFormContainer extends React.Component {
       map.zoomControl.setPosition('topright');
 
       // ! Settings for bottom right icon
-      var unitSelector = tomtom.unitSelector.getHtmlElement(tomtom.globalUnitService);
-      var languageSelector = tomtom.languageSelector.getHtmlElement(tomtom.globalLocaleService, 'search');
-      var unitRow = document.createElement('div');
-      var unitLabel = document.createElement('label');
+      const unitSelector = tomtom.unitSelector.getHtmlElement(tomtom.globalUnitService);
+      const languageSelector = tomtom.languageSelector.getHtmlElement(tomtom.globalLocaleService, 'search');
+      const unitRow = document.createElement('div');
+      const unitLabel = document.createElement('label');
       unitLabel.innerHTML = 'Unit of measurement';
       unitLabel.appendChild(unitSelector);
       unitRow.appendChild(unitLabel);
       unitRow.className = 'input-container';
-      var langRow = document.createElement('div');
-      var langLabel = document.createElement('label');
+      const langRow = document.createElement('div');
+      const langLabel = document.createElement('label');
       langLabel.innerHTML = 'Search language';
       langLabel.appendChild(languageSelector);
       langRow.appendChild(langLabel);
@@ -59,15 +59,15 @@ class MapFormContainer extends React.Component {
         .addContent(langRow);
 
       // ! Creating route inputs widget
-      var routeInputsInstance = tomtom.routeInputs().addTo(map);
+      const routeInputsInstance = tomtom.routeInputs().addTo(map);
 
       // ! Creating route widget
-      var routeOnMapView = tomtom.routeOnMap({
+      const routeOnMapView = tomtom.routeOnMap({
         generalMarker: {draggable: false}
       }).addTo(map);
 
       // ! Creating route summary widget
-      var routeSummaryInstance = tomtom.routeSummary({
+      const routeSummaryInstance = tomtom.routeSummary({
         size: [150, 80],
         position: 'topleft',
         imperialDistance: true,
@@ -101,14 +101,14 @@ class MapFormContainer extends React.Component {
         routeSummaryInstance.hide();
         console.log("eventObject RouteChanged", eventObject)
         this.setState({
-          distance: (eventObject.object.lengthInMeters * 0.000621371192).toFixed(2),
+          distance: (eventObject.object.lengthInMeters * 0.000621371192).toFixed(1),
         })
 
       });
 
       // ! Update the searchbox inputs when the user drag the markers
       // routeOnMapView.on(routeOnMapView.Events.MarkerDragEnd, (eventObject) => {
-      //   var location = eventObject.markerIndex === 0 
+      //   const location = eventObject.markerIndex === 0 
       //     ? routeInputsInstance.searchBoxes[0] 
       //     : routeInputsInstance.searchBoxes.slice(-1)[0];
       //   location.setResultData(eventObject.object);

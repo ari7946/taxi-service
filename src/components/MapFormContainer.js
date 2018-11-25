@@ -1,6 +1,7 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
 import { Container } from 'reactstrap';
+import { Badge } from 'reactstrap';
 
 class MapFormContainer extends React.Component {
   constructor(props) {

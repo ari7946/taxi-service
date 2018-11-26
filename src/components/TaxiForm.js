@@ -23,8 +23,8 @@ export default class TaxiForm extends React.Component {
             </Col>
             <Col md={4}>
               <FormGroup>
-                <Label for="exampleEmail">Email</Label>
-                <Input type="email" name="email" id="form-email" placeholder="email" />
+                <Label for="exampleNumber">Phone</Label>
+                <Input type="text" name="phone" id="exampleNumber" placeholder="phone" />
               </FormGroup>
             </Col>
           </Row>
@@ -36,7 +36,7 @@ export default class TaxiForm extends React.Component {
             <Label for="exampleAddress2">Destination</Label>
             <Input type="text" name="destination-address" id="destination-address" placeholder="destination address"/>
           </FormGroup> */}
-          <Row form>
+          {/* <Row form>
             <Col md={4}>
               <FormGroup>
                 <Label for="exampleDate">Date</Label>
@@ -49,12 +49,22 @@ export default class TaxiForm extends React.Component {
                 <Input type="time" name="time" id="form-time" placeholder="time placeholder" />
             </FormGroup>
           </Col>
+          </Row> */}
+          <Row form>
+            <Col md={5}>
+              <FormGroup>
+                <Label for="exampleEmail">Email</Label>
+                <Input type="email" name="email" id="form-email" placeholder="email" />
+              </FormGroup>
+            </Col>
           </Row>
-          <Row>
+          
+
+          <Row form>
             <Col md={3}>
               <FormGroup>
-                <Label for="exampleSelect">Number of Occupants</Label>
-                <Input type="select" name="select" id="form-occupants">
+                <Label for="exampleSelect">Number of Passengers</Label>
+                <Input type="select" name="passengers" id="form-occupants">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -67,14 +77,17 @@ export default class TaxiForm extends React.Component {
                 </Input>
               </FormGroup>
             </Col>
-          </Row>      
-          <FormGroup>
-            <Label for="exampleCheckbox">Direction</Label>
-            <div>
-              <CustomInput inline checked type="radio" id="exampleCustomRadio" name="customRadio" label="One-way" />
-              <CustomInput inline type="radio" id="exampleCustomRadio2" name="customRadio" label="Two-way" />
-            </div>
-          </FormGroup>
+          </Row> 
+
+          <Row form>
+            <Col md={7}>
+              <FormGroup>
+                <Label for="exampleText">Comments</Label>
+                <Input type="textarea" name="comments" id="form-comments" />
+              </FormGroup>
+            </Col>
+          </Row>     
+
           <Button color="info my-3 px-5">Submit</Button>
         </Form>
       </>

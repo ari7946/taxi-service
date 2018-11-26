@@ -1,7 +1,6 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
 import { Container } from 'reactstrap';
-import { Badge } from 'reactstrap';
 
 class MapFormContainer extends React.Component {
   constructor(props) {
@@ -9,6 +8,8 @@ class MapFormContainer extends React.Component {
     this.state = {
       distance: "",
       points: [undefined, undefined],
+      startAddress: '',
+      endAddresss: '',
     }
   }
 
@@ -79,9 +80,13 @@ class MapFormContainer extends React.Component {
           // summary will be used to update state
         routeOnMapView.draw(eventObject.points);
         console.log("eventObject LocationsFound", eventObject)
-
+        console.log("First input value", eventObject.target.searchBoxes[0].input.value)
+        console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
+  
         this.setState({
           points: eventObject.points,
+          startAddress: eventObject.target.searchBoxes[0].input.value,
+          endAddresss: eventObject.target.searchBoxes[1].input.value,
         })
 
       });
@@ -89,8 +94,7 @@ class MapFormContainer extends React.Component {
         routeSummaryInstance.hide();
         routeOnMapView.draw(eventObject.points);
 
-        console.log("]eventObject LocationsCleared", eventObject)
-
+        console.log("eventObject LocationsCleared", eventObject)
         this.setState({
           points: eventObject.points,
         })
@@ -101,6 +105,7 @@ class MapFormContainer extends React.Component {
         routeSummaryInstance.updateSummaryData(eventObject.object);
         routeSummaryInstance.hide();
         console.log("eventObject RouteChanged", eventObject)
+
         this.setState({
           distance: (eventObject.object.lengthInMeters * 0.000621371192).toFixed(1),
         })
@@ -124,6 +129,7 @@ class MapFormContainer extends React.Component {
 
   render() {
     console.log("this.state", this.state)
+    // const inputType = document.querySelector(".leaflet-control-search-input");
     return (
       <Container>
         {!this.state.points[0] && !this.state.points[1] ? (
@@ -139,11 +145,20 @@ class MapFormContainer extends React.Component {
             )
           ) 
         )}
+
         <div id='map'></div>
+
+        {this.state.startAddress && (
+          <h5><span className="main-color">Starting Point: {this.state.startAddress}</span></h5>
+        )}
+        {this.state.endAddresss && (
+          <h5><span className="main-color">Destination: {this.state.endAddresss}</span></h5>
+        )}
+
         {(this.state.points[0] && this.state.points[1]) && (
           <>
             <h5 className="mt-3"><span className="main-color">Total Distance: {this.state.distance} miles</span></h5>
-            <h5><span className="main-color">Estimated Price: ${(this.state.distance * 10.5).toFixed(2)}</span></h5>
+            <h5><span className="main-color">Estimated Price: ${(this.state.distance * 2.95).toFixed(2)}</span></h5>
           </>   
         )}
         <TaxiForm distance={this.state.distance} points={this.state.points}/>

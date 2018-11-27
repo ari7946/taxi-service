@@ -131,7 +131,7 @@ class MapFormContainer extends React.Component {
 
   render() {
     console.log("this.state", this.state)
-    // const inputType = document.querySelector(".leaflet-control-search-input");
+    
     return (
       <Container>
         {!this.state.points[0] && !this.state.points[1] ? (
@@ -151,16 +151,16 @@ class MapFormContainer extends React.Component {
         <div className="mt-1" id='map'></div>
 
         {this.state.startAddress && (
-          <h5><Badge className="mt-2" color="dark">Starting Point: </Badge> <em>{ this.state.startAddress}</em></h5>
+          <h5 className="lead"><Badge className="mt-2" color="dark">Starting Point: </Badge> {this.state.startAddress}</h5>
         )}
         {this.state.endAddresss && (
-          <h5><Badge className="mt-0" color="danger">Destination: </Badge> <em>{this.state.endAddresss}</em></h5>
+          <h5 className="lead"><Badge className="mt-0" color="danger">Destination: </Badge> {this.state.endAddresss}</h5>
         )}
 
         {(this.state.points[0] && this.state.points[1]) && (
           <>
             <h5><Badge color="info">Distance: </Badge> <em>{this.state.distance} miles</em></h5>
-            <h5><Badge color="info">Price: </Badge> <em>${(this.state.distance * 2.95).toFixed(2)}</em></h5>
+            <h5><Badge color="success">Price: </Badge> ${(this.state.distance * 2.95).toFixed(2)}</h5>
           </>   
         )}
         <TaxiForm distance={this.state.distance} points={this.state.points}/>

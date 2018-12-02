@@ -63,7 +63,7 @@ html {
 
 /* About */
 .about-section {
-  margin: 3.5rem 0;
+  margin: 2rem 0;
 }
 
 .about-description {
@@ -79,7 +79,7 @@ img.about-img {
     /* width: 80vw;
     height: 80vh; */
     width: auto;  
-    height: 60vh;
+    height: 40vh;
   }
 
   .brand {

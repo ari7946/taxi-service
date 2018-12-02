@@ -114,19 +114,6 @@ class MapFormContainer extends React.Component {
         })
 
       });
-
-      // ! Update the searchbox inputs when the user drag the markers
-      // routeOnMapView.on(routeOnMapView.Events.MarkerDragEnd, (eventObject) => {
-      //   const location = eventObject.markerIndex === 0 
-      //     ? routeInputsInstance.searchBoxes[0] 
-      //     : routeInputsInstance.searchBoxes.slice(-1)[0];
-      //   location.setResultData(eventObject.object);
-      //   routeSummaryInstance.hide();
-
-      //   this.setState({
-      //     distance: eventObject.object.lengthInMeters
-      //   })
-      // });
     };
   }
 

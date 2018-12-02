@@ -1,6 +1,7 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
-import { Container, Badge } from 'reactstrap';
+import About from './About';
+import { Container, Badge, Row, Col } from 'reactstrap';
 
 class MapFormContainer extends React.Component {
   constructor(props) {
@@ -134,36 +135,43 @@ class MapFormContainer extends React.Component {
     
     return (
       <Container>
-        {!this.state.points[0] && !this.state.points[1] ? (
-          <h6 className="mb-0 mt-4">Please Select <Badge color="dark">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h6>
-        ) : (
-          !this.state.points[0] ? (
-            <h6 className="mb-0 mt-4">Please Select <Badge color="dark">Starting Point</Badge></h6>
-          ) : (
-            !this.state.points[1] ? (
-              <h6 className="mb-0 mt-4">Please Select <Badge color="danger">Destination</Badge></h6>
+        <Row>
+          <Col sm="8">
+            {!this.state.points[0] && !this.state.points[1] ? (
+              <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h4>
             ) : (
-              <h6 className="mb-0 mt-4"><Badge color="success">Thank you!</Badge> Fill out the form below to book a Taxi.</h6>
-            )
-          ) 
-        )}
+              !this.state.points[0] ? (
+                <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge></h4>
+              ) : (
+                !this.state.points[1] ? (
+                  <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
+                ) : (
+                  <h4 className="mb-0"><Badge color="success">Thank you!</Badge> Fill out the form below to book a Taxi.</h4>
+                )
+              ) 
+            )}
 
-        <div className="mt-1" id='map'></div>
+            <div className="mt-1" id='map'></div>
+          </Col>
 
-        {this.state.startAddress && (
-          <h5 className="lead"><Badge className="mt-2" color="dark">Starting Point: </Badge> {this.state.startAddress}</h5>
-        )}
-        {this.state.endAddresss && (
-          <h5 className="lead"><Badge className="mt-0" color="danger">Destination: </Badge> {this.state.endAddresss}</h5>
-        )}
+          <Col sm="4">
+            {this.state.startAddress && (
+              <h5 className="lead"><Badge className="mt-2" color="dark">Starting Point: </Badge> {this.state.startAddress}</h5>
+            )}
+            {this.state.endAddresss && (
+              <h5 className="lead"><Badge className="mt-0" color="danger">Destination: </Badge> {this.state.endAddresss}</h5>
+            )}
 
-        {(this.state.points[0] && this.state.points[1]) && (
-          <>
-            <h5><Badge color="info">Distance: </Badge> <em>{this.state.distance} miles</em></h5>
-            <h5><Badge color="success">Price: </Badge> ${(this.state.distance * 2.95).toFixed(2)}</h5>
-          </>   
-        )}
-        <TaxiForm distance={this.state.distance} points={this.state.points}/>
+            {(this.state.points[0] && this.state.points[1]) && (
+              <>
+                <h5><Badge color="info">Distance: </Badge> <em>{this.state.distance} miles</em></h5>
+                <h5><Badge color="success">Price: </Badge> ${(this.state.distance * 2.95).toFixed(2)}</h5>
+              </>   
+            )}
+            <TaxiForm distance={this.state.distance} points={this.state.points}/>
+          </Col>
+
+        </Row>
       </Container>
     )
   }

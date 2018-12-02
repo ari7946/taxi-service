@@ -11,7 +11,7 @@ import {
   Col,
   Container,
 } from 'reactstrap';
-import brand from '../assets/my-taxi-cab-brand.jpg';
+import brand from '../assets/cerritos-brand.jpg';
 import contactus from '../assets/contact-us.jpg';
 import { Link } from 'react-router-dom';
 
@@ -34,18 +34,20 @@ export default class NavbarContainer extends React.Component {
   render() {
     return (
       <Container>
-        <Row>
+        {/* <Row>
           <Col sm={{ size: 6, offset: 0 }}>
-            <img src={brand} className="my-3 brand" width="270" height="88" />
+            <img src={brand} className="my-3 brand" width="180" height="70" />
           </Col>
           <Col sm={{ size: 6, offset: 0}}>
             <img src={contactus} className="my-3 contactus" />
           </Col>
-        </Row>
-        <Navbar id="navbar" color="light" light expand="md">
+        </Row> */}
+
+        <Navbar className="mb-4" id="navbar" color="light" light expand="md">
+          <NavbarBrand className="pl-0" href="/"><img src={brand} className="brand" width="180" height="70" /></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav navbar>
+            <Nav className="ml-auto"  navbar>
 
               <NavItem>
                 <NavLink className="pr-5" href="/">

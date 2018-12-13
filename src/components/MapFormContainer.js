@@ -119,7 +119,7 @@ class MapFormContainer extends React.Component {
 
   render() {
     console.log("this.state", this.state)
-    
+    let price = (this.state.distance * 2.95).toFixed(2)
     return (
       <Container>
         <Row>
@@ -152,10 +152,10 @@ class MapFormContainer extends React.Component {
             {(this.state.points[0] && this.state.points[1]) && (
               <>
                 <h5><Badge color="info">Distance: </Badge> <em>{this.state.distance} miles</em></h5>
-                <h5><Badge color="success">Price: </Badge> ${(this.state.distance * 2.95).toFixed(2)}</h5>
+                <h5><Badge color="success">Price: </Badge> ${price}</h5>
               </>   
             )}
-            <TaxiForm distance={this.state.distance} points={this.state.points}/>
+            <TaxiForm distance={this.state.distance} price={price} />
           </Col>
 
         </Row>

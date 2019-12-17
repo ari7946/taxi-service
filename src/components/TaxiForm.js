@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
+import axios from 'axios';
 
 export default class TaxiForm extends React.Component {
   constructor(props) {
@@ -18,6 +19,25 @@ export default class TaxiForm extends React.Component {
   handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
     console.log('form state ', this.state);
+    axios
+      .put("http://localhost:3002/send", this.state)
+      .then(response => {
+        if (response.data.msg === 'success') {
+          alert("Message Sent."); 
+          this.setState({
+            passengers: 1,
+            name: '',
+            phone: '',
+            email: '',
+            passengers: 1,
+            direction: 'One-way',
+            comments: '',
+          })
+        } else if (response.data.msg === 'fail') {
+            alert("Message failed to send.")
+        }
+      })
+      .catch((error) => console.log(error))
   }
 
   handleChange = e => {

@@ -23,6 +23,14 @@ function reducer(state, action) {
       distance,
       price,
     }
+  } else if (action.type === 'input') {
+    console.log('name', action.name)
+    console.log('value', action.value)
+
+    return {
+      ...state,
+      [action.name]: action.value,
+    }
   } else {
     throw new Error(`This action type isn't supported`)
   }
@@ -37,7 +45,7 @@ const initialState = {
 }
 
 function MapFormContainer() {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
     <Container>
@@ -55,7 +63,15 @@ function MapFormContainer() {
             distance={state.distance}
             price={state.price}
           />
-          <TaxiForm dispatch={dispatch} />
+          <TaxiForm 
+            dispatch={dispatch} 
+            name={state.name}
+            comments={state.comments}
+            phone={state.phone}
+            email={state.email}
+            passengers={state.passengers}
+            direction={state.direction}
+          />
         </Col>
       </Row>
     </Container>

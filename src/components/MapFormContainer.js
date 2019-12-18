@@ -1,6 +1,7 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
 import Map from './Map';
+import MapHeader from './MapHeader.js';
 import { Container, Badge, Row, Col } from 'reactstrap';
 
 function reducer(state, action) {
@@ -30,6 +31,8 @@ function reducer(state, action) {
       distance,
       price,
     }
+  } else {
+    throw new Error(`This action type isn't supported`)
   }
 }
 
@@ -51,22 +54,8 @@ function MapFormContainer() {
     <Container>
       <Row>
         <Col sm="8">
-          {!state.points[0] && !state.points[1] ? (
-            <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h4>
-          ) : (
-            !state.points[0] ? (
-              <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge></h4>
-            ) : (
-              !state.points[1] ? (
-                <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
-              ) : (
-                <h4 className="mb-0"><Badge color="success">Thank you!</Badge> Fill out the form to book a Taxi.</h4>
-              )
-            ) 
-          )}
-
+          <MapHeader points={state.points} />
           <Map dispatch={dispatch} />
-          
         </Col>
 
         <Col sm="4">

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Map({ dispatch }) {
-
+  console.log('dispatch', dispatch)
   React.useEffect(() => {
     const script = document.createElement('script');
     script.src = process.env.PUBLIC_URL + '/sdk/tomtom.min.js';

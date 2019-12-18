@@ -7,12 +7,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Row,
-  Col,
   Container,
 } from 'reactstrap';
 import brand from '../assets/cerritos-brand.jpg';
-import contactus from '../assets/contact-us.jpg';
 import { Link } from 'react-router-dom';
 
 

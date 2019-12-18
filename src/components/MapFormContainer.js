@@ -2,19 +2,12 @@ import React from 'react';
 import TaxiForm from './TaxiForm';
 import Map from './Map';
 import MapHeader from './MapHeader.js';
-import { Container, Badge, Row, Col } from 'reactstrap';
+import FormHeader from './FormHeader';
+import { Container, Row, Col } from 'reactstrap';
 
 function reducer(state, action) {
-  if (action.type === 'locationsFound') {
+  if (action.type === 'locationsFound' || action.type === 'locationsCleared') {
     return {
-      ...state,
-      points: action.points,
-      startAddress: action.startAddress,
-      endAddress: action.endAddress,
-    } 
-  } else if (action.type === 'locationsCleared') {
-    console.log('action', action)
-    return { 
       ...state,
       points: action.points,
       startAddress: action.startAddress,
@@ -23,9 +16,8 @@ function reducer(state, action) {
   } else if (action.type === 'routeChanged') {
     //convert meters to miles
     let distance = (action.distance * 0.000621371192).toFixed(1);
-    //price set at 2.95 per mile
+    //price set at 2.95 dollars per mile
     let price = (distance * 2.95).toFixed(2);
-
     return {
       ...state,
       distance,
@@ -45,10 +37,7 @@ const initialState = {
 }
 
 function MapFormContainer() {
-  const [state, dispatch] = React.useReducer(
-    reducer,
-    initialState
-  )
+  const [state, dispatch] = React.useReducer(reducer, initialState)
 
   return (
     <Container>
@@ -59,22 +48,15 @@ function MapFormContainer() {
         </Col>
 
         <Col sm="4">
-          {state.startAddress && (
-            <h5 className="lead"><Badge className="mt-2" color="dark">Starting Point: </Badge> {state.startAddress}</h5>
-          )}
-          {state.endAddress && (
-            <h5 className="lead"><Badge className="mt-0" color="danger">Destination: </Badge> {state.endAddress}</h5>
-          )}
-
-          {(state.points[0] && state.points[1]) && (
-            <>
-              <h5><Badge color="info">Distance: </Badge> <em>{state.distance} miles</em></h5>
-              <h5><Badge color="success">Price: </Badge> ${state.price}</h5>
-            </>   
-          )}
-          <TaxiForm distance={state.distance} price={state.price} />
+          <FormHeader 
+            startAddress={state.startAddress} 
+            endAddress={state.endAddress}
+            points={state.points}
+            distance={state.distance}
+            price={state.price}
+          />
+          <TaxiForm dispatch={dispatch} />
         </Col>
-
       </Row>
     </Container>
   )

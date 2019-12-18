@@ -15,7 +15,7 @@ function Map({ dispatch }) {
         key: process.env.REACT_APP_API_KEY,
         center: [33.8417078, -118.0895015],
         basePath: '/sdk',
-        zoom: 15,
+        zoom: 13,
       })
 
       // ! Zoom control
@@ -72,7 +72,6 @@ function Map({ dispatch }) {
         console.log("First input value", eventObject.target.searchBoxes[0].input.value)
         console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
 
-        //TODO change setState to reducer
         dispatch({
           type: "locationsFound",
           points: eventObject.points,
@@ -87,7 +86,6 @@ function Map({ dispatch }) {
 
         console.log("eventObject LocationsCleared", eventObject)
 
-        //TODO change setState to reducer
         dispatch({
           type: 'locationsCleared',
           points: eventObject.points,
@@ -102,7 +100,6 @@ function Map({ dispatch }) {
         routeSummaryInstance.hide();
         console.log("eventObject RouteChanged", eventObject)
 
-        //TODO change setState to reducer
         dispatch({
           type: 'routeChanged',
           distance: eventObject.object.lengthInMeters,

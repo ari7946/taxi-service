@@ -22,15 +22,22 @@ function reducer(state, action) {
       ...state,
       distance,
       price,
+      direction: 'oneWay',
     }
   } else if (action.type === 'input') {
-    console.log('name', action.name)
-    console.log('value', action.value)
-
+    if (action.name === 'direction') {
+      return {
+        ...state,
+        [action.name]: action.value,
+        price: action.value === 'oneWay'
+          ? state.price / 2
+          : state.price * 2,
+      }
+    }
     return {
       ...state,
       [action.name]: action.value,
-    }
+    }    
   } else {
     throw new Error(`This action type isn't supported`)
   }
@@ -42,6 +49,11 @@ const initialState = {
   startAddress: '',
   endAddress: '',
   price: null,
+  name: null,
+  comments: null,
+  phone: null,
+  passengers: 1,
+  direction: 'oneWay',
 }
 
 function MapFormContainer() {

@@ -2,11 +2,11 @@ import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
 import axios from 'axios';
 
-function TaxiForm({ dispatch, name, phone, email, passengers, oneWay, twoWay, direction, comments }) {
+function TaxiForm({ dispatch, name, phone, email, passengers, direction, comments }) {
   
   const handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
-    console.log('submit', name)
+    console.log('name', name)
     console.log('phone', phone)   
     console.log('email', email)
     console.log('passengers', passengers)

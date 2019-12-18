@@ -29,7 +29,6 @@ export default class TaxiForm extends React.Component {
             name: '',
             phone: '',
             email: '',
-            passengers: 1,
             direction: 'One-way',
             comments: '',
           })
@@ -63,14 +62,6 @@ export default class TaxiForm extends React.Component {
             <Input type="text" name="phone" id="exampleNumber" placeholder="phone" bsSize="sm" onChange={(e) => this.handleChange(e)}/>
           </FormGroup>
 
-          {/* <FormGroup>
-            <Label for="exampleAddress">Starting Point</Label>
-            <Input type="text" name="start-address" id="start-address" placeholder="starting address"/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="exampleAddress2">Destination</Label>
-            <Input type="text" name="destination-address" id="destination-address" placeholder="destination address"/>
-          </FormGroup> */}
           {/* <Row form>
             <Col md={4}>
               <FormGroup>

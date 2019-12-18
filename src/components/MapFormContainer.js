@@ -3,18 +3,51 @@ import TaxiForm from './TaxiForm';
 import About from './About';
 import { Container, Badge, Row, Col } from 'reactstrap';
 
-class MapFormContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      distance: "",
-      points: [undefined, undefined],
-      startAddress: '',
-      endAddresss: '',
+function reducer(state, action) {
+  if (action.type === 'locationsFound') {
+    return {
+      ...state,
+      points: action.points,
+      startAddress: action.startAddress,
+      endAddress: action.endAddress,
+    } 
+  } else if (action.type === 'locationsCleared') {
+    console.log('action', action)
+    return { 
+      ...state,
+      points: action.points,
+      startAddress: action.startAddress,
+      endAddress: action.endAddress,
+    } 
+  } else if (action.type === 'routeChanged') {
+    //convert meters to miles
+    let distance = (action.distance * 0.000621371192).toFixed(1);
+    //price set at 2.95 per mile
+    let price = (distance * 2.95).toFixed(2);
+
+    return {
+      ...state,
+      distance,
+      price,
     }
   }
+}
 
-  componentDidMount() { 
+const initialState = {
+  distance: "",
+  points: [null, null],
+  startAddress: '',
+  endAddress: '',
+  price: null,
+}
+
+function MapFormContainer() {
+  const [state, dispatch] = React.useReducer(
+    reducer,
+    initialState
+  )
+
+  React.useEffect(() => { 
     const script = document.createElement('script');
     script.src = process.env.PUBLIC_URL + '/sdk/tomtom.min.js';
     document.body.appendChild(script);
@@ -84,10 +117,12 @@ class MapFormContainer extends React.Component {
         console.log("First input value", eventObject.target.searchBoxes[0].input.value)
         console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
   
-        this.setState({
+    //TODO change setState to reducer
+        dispatch({
+          type: "locationsFound",
           points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
-          endAddresss: eventObject.target.searchBoxes[1].input.value,
+          endAddress: eventObject.target.searchBoxes[1].input.value,
         })
 
       });
@@ -96,10 +131,13 @@ class MapFormContainer extends React.Component {
         routeOnMapView.draw(eventObject.points);
 
         console.log("eventObject LocationsCleared", eventObject)
-        this.setState({
+        
+      //TODO change setState to reducer
+        dispatch({
+          type: 'locationsCleared',
           points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
-          endAddresss: eventObject.target.searchBoxes[1].input.value,
+          endAddress: eventObject.target.searchBoxes[1].input.value,
         })
       });
 
@@ -109,28 +147,30 @@ class MapFormContainer extends React.Component {
         routeSummaryInstance.hide();
         console.log("eventObject RouteChanged", eventObject)
 
-        this.setState({
-          distance: (eventObject.object.lengthInMeters * 0.000621371192).toFixed(1),
+        //TODO change setState to reducer
+        dispatch({
+          type: 'routeChanged',
+          distance: eventObject.object.lengthInMeters,
         })
 
       });
     };
-  }
+    console.log('yes')
+  }, [])
 
-  render() {
-    console.log("this.state", this.state)
-    let price = (this.state.distance * 2.95).toFixed(2)
+    //console.log("this.state", this.state)
+    //let price = (this.state.distance * 2.95).toFixed(2)
     return (
       <Container>
         <Row>
           <Col sm="8">
-            {!this.state.points[0] && !this.state.points[1] ? (
+            {!state.points[0] && !state.points[1] ? (
               <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h4>
             ) : (
-              !this.state.points[0] ? (
+              !state.points[0] ? (
                 <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge></h4>
               ) : (
-                !this.state.points[1] ? (
+                !state.points[1] ? (
                   <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
                 ) : (
                   <h4 className="mb-0"><Badge color="success">Thank you!</Badge> Fill out the form to book a Taxi.</h4>
@@ -142,26 +182,25 @@ class MapFormContainer extends React.Component {
           </Col>
 
           <Col sm="4">
-            {this.state.startAddress && (
-              <h5 className="lead"><Badge className="mt-2" color="dark">Starting Point: </Badge> {this.state.startAddress}</h5>
+            {state.startAddress && (
+              <h5 className="lead"><Badge className="mt-2" color="dark">Starting Point: </Badge> {state.startAddress}</h5>
             )}
-            {this.state.endAddresss && (
-              <h5 className="lead"><Badge className="mt-0" color="danger">Destination: </Badge> {this.state.endAddresss}</h5>
+            {state.endAddress && (
+              <h5 className="lead"><Badge className="mt-0" color="danger">Destination: </Badge> {state.endAddress}</h5>
             )}
 
-            {(this.state.points[0] && this.state.points[1]) && (
+            {(state.points[0] && state.points[1]) && (
               <>
-                <h5><Badge color="info">Distance: </Badge> <em>{this.state.distance} miles</em></h5>
-                <h5><Badge color="success">Price: </Badge> ${price}</h5>
+                <h5><Badge color="info">Distance: </Badge> <em>{state.distance} miles</em></h5>
+                <h5><Badge color="success">Price: </Badge> ${state.price}</h5>
               </>   
             )}
-            <TaxiForm distance={this.state.distance} price={price} />
+            <TaxiForm distance={state.distance} price={state.price} />
           </Col>
 
         </Row>
       </Container>
     )
-  }
 } 
 
 export default MapFormContainer;

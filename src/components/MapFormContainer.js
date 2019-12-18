@@ -1,9 +1,11 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
-import Map from './Map';
-import MapHeader from './MapHeader.js';
+// import Map from './Map';
+import Loading from './Loading';
+import MapHeader from './MapHeader';
 import FormHeader from './FormHeader';
 import { Container, Row, Col } from 'reactstrap';
+const Map = React.lazy(() => import('./Map'));
 
 function reducer(state, action) {
   if (action.type === 'locationsFound' || action.type === 'locationsCleared') {
@@ -64,7 +66,9 @@ function MapFormContainer() {
       <Row>
         <Col sm="8">
           <MapHeader points={state.points} />
-          <Map dispatch={dispatch} />
+          <React.Suspense fallback={<Loading />} >
+            <Map dispatch={dispatch} />
+          </React.Suspense >
         </Col>
 
         <Col sm="4">

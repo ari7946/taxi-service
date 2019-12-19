@@ -1,48 +1,55 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
-// import Map from './Map';
 import Loading from './Loading';
 import MapHeader from './MapHeader';
 import FormHeader from './FormHeader';
 import { Container, Row, Col } from 'reactstrap';
 const Map = React.lazy(() => import('./Map'));
 
+
 function reducer(state, action) {
-  if (action.type === 'locationsFound' || action.type === 'locationsCleared') {
-    return {
-      ...state,
-      points: action.points,
-      startAddress: action.startAddress,
-      endAddress: action.endAddress,
-    } 
-  } else if (action.type === 'routeChanged') {
-    //convert meters to miles
-    let distance = (action.distance * 0.000621371192).toFixed(1);
-    //price set at 2.95 dollars per mile
-    let price = (distance * 2.95).toFixed(2);
-    return {
-      ...state,
-      distance,
-      price,
-      direction: 'oneWay',
-    }
-  } else if (action.type === 'input') {
-    if (action.name === 'direction') {
+  switch(action.type) {
+    case 'locationsFound':
+      return {
+        ...state,
+        points: action.points,
+        startAddress: action.startAddress,
+        endAddress: action.endAddress,
+      }
+    case 'locationsCleared':
+      return {
+        ...state,
+        points: action.points,
+        startAddress: action.startAddress,
+        endAddress: action.endAddress,
+      }
+    case 'routeChanged':
+      //convert meters to miles
+      let distance = (action.distance * 0.000621371192).toFixed(1);
+      //price set at 2.95 dollars per mile
+      let price = (distance * 2.95).toFixed(2);
+      return {
+        ...state,
+        distance,
+        price,
+        direction: 'oneWay',
+      }
+    case 'input':
+      if (action.name === 'direction') {
+        return {
+          ...state,
+          [action.name]: action.value,
+          price: action.value === 'oneWay'
+            ? state.price / 2
+            : state.price * 2,
+        }
+      }
       return {
         ...state,
         [action.name]: action.value,
-        price: action.value === 'oneWay'
-          ? state.price / 2
-          : state.price * 2,
-      }
-    }
-    return {
-      ...state,
-      [action.name]: action.value,
-    }    
-  } else {
-    throw new Error(`This action type isn't supported`)
+      }   
   }
+  return state;
 }
 
 const initialState = {

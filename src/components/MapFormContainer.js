@@ -1,5 +1,6 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
+
 import Loading from './Loading';
 import MapHeader from './MapHeader';
 import FormHeader from './FormHeader';
@@ -47,7 +48,52 @@ function reducer(state, action) {
       return {
         ...state,
         [action.name]: action.value,
-      }   
+      } 
+    case 'loading':
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        errorMessage: false,
+      }
+    case 'success':
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        errorMessage: false,
+      }
+    case 'error':
+      return {
+        ...state,
+        error: true,
+        loading: false,
+        errorMessage: action.errorMessage,
+      }
+    case 'validate':
+      const { name, phone, email, passengers, direction, comments, startAddress, endAddress } = state;
+      const fields = { name, phone, email, passengers, direction, comments, startAddress, endAddress };
+      const invalidFields = [];
+
+      for (const property in fields) {
+        if (!fields[property]) {
+          invalidFields.push(property)
+        }
+      } 
+      // console.log('fields', invalidFields);
+      return {
+        ...state,
+        error: true,
+        invalidFields,
+      }
+      break;
+    // case 'submit':      
+    //   return {
+    //     ...state,
+    //     loading: true,
+    //     errorMessage: false,
+    //     error: false,
+    //   }
   }
   return state;
 }
@@ -63,6 +109,10 @@ const initialState = {
   phone: null,
   passengers: 1,
   direction: 'oneWay',
+  loading: false,
+  error: false,
+  errorMessage: null,
+  invalidFields: [],
 }
 
 function MapFormContainer() {
@@ -94,6 +144,11 @@ function MapFormContainer() {
             email={state.email}
             passengers={state.passengers}
             direction={state.direction}
+            success={state.sucess}
+            error={state.error}
+            errorMessage={state.errorMessage}
+            loading={state.loading}
+            invalidFields={state.invalidFields}
           />
         </Col>
       </Row>

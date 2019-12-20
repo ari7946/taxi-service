@@ -68,9 +68,9 @@ function Map({ dispatch }) {
       routeInputsInstance.on(routeInputsInstance.Events.LocationsFound, (eventObject) => {
         // summary will be used to update state
         routeOnMapView.draw(eventObject.points);
-        console.log("eventObject LocationsFound", eventObject)
-        console.log("First input value", eventObject.target.searchBoxes[0].input.value)
-        console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
+        // console.log("eventObject LocationsFound", eventObject)
+        // console.log("First input value", eventObject.target.searchBoxes[0].input.value)
+        // console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
 
         dispatch({
           type: "locationsFound",
@@ -83,8 +83,7 @@ function Map({ dispatch }) {
       routeInputsInstance.on(routeInputsInstance.Events.LocationsCleared, (eventObject) => {
         routeSummaryInstance.hide();
         routeOnMapView.draw(eventObject.points);
-
-        console.log("eventObject LocationsCleared", eventObject)
+        // console.log("eventObject LocationsCleared", eventObject)
 
         dispatch({
           type: 'locationsCleared',
@@ -98,7 +97,7 @@ function Map({ dispatch }) {
       routeOnMapView.on(routeOnMapView.Events.RouteChanged, (eventObject) => {
         routeSummaryInstance.updateSummaryData(eventObject.object);
         routeSummaryInstance.hide();
-        console.log("eventObject RouteChanged", eventObject)
+        // console.log("eventObject RouteChanged", eventObject)
 
         dispatch({
           type: 'routeChanged',

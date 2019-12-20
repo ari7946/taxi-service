@@ -2,16 +2,25 @@ import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
 import axios from 'axios';
 
-function TaxiForm({ dispatch, name, phone, email, passengers, direction, comments }) {
+function TaxiForm({ dispatch, startAddress, endAddress, name, phone, email, passengers, direction, comments, error, errorMessage, loading, invalidFields }) {
+
   
   const handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
-    console.log('name', name)
-    console.log('phone', phone)   
-    console.log('email', email)
-    console.log('passengers', passengers)
-    console.log('direction', direction)
-    console.log('comments', comments)
+    dispatch({ type: 'validate' });
+    if (!error) {
+      dispatch({ type: 'loading' })
+      // console.log('name', name)
+      // console.log('phone', phone)   
+      // console.log('email', email)
+      // console.log('passengers', passengers)
+      // console.log('direction', direction)
+      // console.log('comments', comments)
+      setTimeout(() => {
+        dispatch({ type: 'success' })
+        console.log('yooooo')
+      }, 3000);
+    }
   }
 
   return (

@@ -25,8 +25,8 @@ function TaxiForm(props) {
         dispatch({ type: 'success' })
       } else if (error) {
         dispatch({ type: 'error', errorMessage: error })
+        console.log('sumthing went no bueno')
       }
-      console.log('sumthing went no bueno')
     }, 3000);
   }
 
@@ -171,7 +171,6 @@ function TaxiForm(props) {
             <CustomInput inline type="radio" id="card" name="payment" label="Card" />
           </div>
         </FormGroup> */}
-
 
         <FormGroup>
           <Label for="exampleText">Comments:</Label>

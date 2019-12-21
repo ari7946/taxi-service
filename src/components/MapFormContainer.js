@@ -73,7 +73,6 @@ function reducer(state, action) {
           invalidFields.push(property)
         }
       } 
-      // console.log('invalidFields', invalidFields);
       return {
         ...state,
         valid: invalidFields.length === 0 ? true : false,

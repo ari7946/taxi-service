@@ -1,7 +1,8 @@
 import React from 'react';
 import { Badge } from 'reactstrap';
 
-function FormHeader({ startAddress, endAddress, points, distance, price }) {
+function FormHeader(props) {
+  const { startAddress, endAddress, points, price, distance } = props.state;
 
   return (
     <React.Fragment>

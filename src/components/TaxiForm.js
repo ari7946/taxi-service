@@ -2,27 +2,35 @@ import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
 import axios from 'axios';
 
-function TaxiForm({ dispatch, startAddress, endAddress, name, phone, email, passengers, direction, comments, error, errorMessage, loading, invalidFields }) {
+function TaxiForm(props) {
+  const { startAddress, endAddress, price, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields } = props.state;
+  const { dispatch } = props;
 
-  
+  React.useEffect(() => {
+    if (submitted && valid) {
+      processForm()
+    } else if (submitted && !valid) {
+      dispatch({ type: 'error', errorMessage: 'One or more fields are invalid'})
+    }
+  }, [submitted, valid])
+
   const handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
-    dispatch({ type: 'validate' });
-    if (!error) {
-      dispatch({ type: 'loading' })
-      // console.log('name', name)
-      // console.log('phone', phone)   
-      // console.log('email', email)
-      // console.log('passengers', passengers)
-      // console.log('direction', direction)
-      // console.log('comments', comments)
-      setTimeout(() => {
-        dispatch({ type: 'success' })
-        console.log('yooooo')
-      }, 3000);
-    }
+    dispatch({ type: 'submit' })
   }
 
+  const processForm = () => {
+    setTimeout(() => {
+      if (!error) {
+        dispatch({ type: 'success' })
+      } else if (error) {
+        dispatch({ type: 'error', errorMessage: error })
+      }
+      console.log('sumthing went no bueno')
+    }, 3000);
+  }
+
+  console.log('state', props.state);
   return (
     <>
       <Form onSubmit={(e) => handleFormSubmit(e)}>

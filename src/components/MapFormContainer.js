@@ -1,6 +1,5 @@
 import React from 'react';
 import TaxiForm from './TaxiForm';
-
 import Loading from './Loading';
 import MapHeader from './MapHeader';
 import FormHeader from './FormHeader';
@@ -49,28 +48,22 @@ function reducer(state, action) {
         ...state,
         [action.name]: action.value,
       } 
-    case 'loading':
-      return {
-        ...state,
-        loading: true,
-        error: false,
-        errorMessage: false,
-      }
     case 'success':
       return {
         ...state,
         loading: false,
-        error: false,
-        errorMessage: false,
+        submitted: false,
+        errorMessage: '',
       }
     case 'error':
       return {
         ...state,
         error: true,
         loading: false,
+        submitted: false,
         errorMessage: action.errorMessage,
       }
-    case 'validate':
+    case 'submit':
       const { name, phone, email, passengers, direction, comments, startAddress, endAddress } = state;
       const fields = { name, phone, email, passengers, direction, comments, startAddress, endAddress };
       const invalidFields = [];
@@ -80,38 +73,39 @@ function reducer(state, action) {
           invalidFields.push(property)
         }
       } 
-      // console.log('fields', invalidFields);
+      // console.log('invalidFields', invalidFields);
       return {
         ...state,
-        error: true,
+        valid: invalidFields.length === 0 ? true : false,
         invalidFields,
+        errorMessage: '',
+        error: false,
+        submitted: true,
+        loading: true,
       }
-      break;
-    // case 'submit':      
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //     errorMessage: false,
-    //     error: false,
-    //   }
+
   }
   return state;
 }
 
 const initialState = {
+  // map
   distance: "",
   points: [null, null],
   startAddress: '',
   endAddress: '',
+  // fields
   price: null,
   name: null,
   comments: null,
   phone: null,
   passengers: 1,
+  email: null,
   direction: 'oneWay',
+  // other
   loading: false,
   error: false,
-  errorMessage: null,
+  errorMessage: '',
   invalidFields: [],
 }
 
@@ -129,27 +123,8 @@ function MapFormContainer() {
         </Col>
 
         <Col sm="4">
-          <FormHeader 
-            startAddress={state.startAddress} 
-            endAddress={state.endAddress}
-            points={state.points}
-            distance={state.distance}
-            price={state.price}
-          />
-          <TaxiForm 
-            dispatch={dispatch} 
-            name={state.name}
-            comments={state.comments}
-            phone={state.phone}
-            email={state.email}
-            passengers={state.passengers}
-            direction={state.direction}
-            success={state.sucess}
-            error={state.error}
-            errorMessage={state.errorMessage}
-            loading={state.loading}
-            invalidFields={state.invalidFields}
-          />
+          <FormHeader state={state} />
+          <TaxiForm state={state} dispatch={dispatch} />
         </Col>
       </Row>
     </Container>

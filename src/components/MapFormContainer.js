@@ -54,6 +54,8 @@ function reducer(state, action) {
         loading: false,
         submitted: false,
         errorMessage: '',
+        invalidFields: [],
+        valid: true,
       }
     case 'error':
       return {
@@ -82,7 +84,6 @@ function reducer(state, action) {
         submitted: true,
         loading: true,
       }
-
   }
   return state;
 }

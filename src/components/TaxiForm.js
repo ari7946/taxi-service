@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner, FormFeedback } from 'reactstrap';
 import axios from 'axios';
 
 function TaxiForm(props) {
@@ -42,6 +42,7 @@ function TaxiForm(props) {
             id="form-name" 
             placeholder="name" 
             bsSize="sm" 
+            {...name && (name && name.length > 2) ? {valid: true} : null}
             onChange={(e) => dispatch({
               type: 'input',
               name: 'name',
@@ -57,8 +58,9 @@ function TaxiForm(props) {
             type="text" 
             name="phone" 
             id="exampleNumber" 
-            placeholder="phone" 
+            placeholder="###-###-####" 
             bsSize="sm" 
+            {...phone && (phone && phone.length >= 7) ? { valid: true } : null}
             onChange={(e) => dispatch({
               type: 'input',
               name: 'phone',
@@ -91,6 +93,7 @@ function TaxiForm(props) {
             id="form-email" 
             placeholder="email" 
             bsSize="sm" 
+            {...email && (email && email.length >= 5) ? { valid: true } : null}
             onChange={(e) => dispatch({
               type: 'input',
               name: 'email',
@@ -198,9 +201,12 @@ function TaxiForm(props) {
               <Spinner className="mr-2" size="sm" color="secondary" />
               <span>Processing...</span>
             </>
-        )}
+          )}
         </Button>
       </Form>
+      {invalidFields.length > 0 ?? (
+        <FormFeedback>Done it again{invalidFields.forEach(field => field)}</FormFeedback>
+      )}
     </>
   );
 }

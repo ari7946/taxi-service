@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner } from 'reactstrap';
 import axios from 'axios';
 
 function TaxiForm(props) {
@@ -172,6 +172,7 @@ function TaxiForm(props) {
           </div>
         </FormGroup> */}
 
+
         <FormGroup>
           <Label for="exampleText">Comments:</Label>
           <Input 
@@ -188,7 +189,17 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
-        <Button className="mt-3 mb-5 px-5" color="warning">Submit</Button>
+        <Button className="mt-3 mb-5 px-5" color="warning">
+          {!loading && !submitted && (
+            <span>Submit</span>
+          )}
+          {loading && submitted && (
+            <>
+              <Spinner className="mr-2" size="sm" color="secondary" />
+              <span>Processing...</span>
+            </>
+        )}
+        </Button>
       </Form>
     </>
   );

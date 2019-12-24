@@ -42,7 +42,10 @@ function TaxiForm(props) {
             id="form-name" 
             placeholder="name" 
             bsSize="sm" 
-            {...name && (name && name.length > 2) ? {valid: true} : null}
+            {...!name
+              ? { ...invalidFields.length && invalidFields.includes('name') ? { invalid: true } : null }
+              : { ...name && (name && name.length > 2) ? { valid: true } : null }
+            }
             onChange={(e) => dispatch({
               type: 'input',
               name: 'name',
@@ -60,7 +63,10 @@ function TaxiForm(props) {
             id="exampleNumber" 
             placeholder="###-###-####" 
             bsSize="sm" 
-            {...phone && (phone && phone.length >= 7) ? { valid: true } : null}
+            {...!phone
+              ? { ...invalidFields.length && invalidFields.includes('phone') ? { invalid: true } : null }
+              : { ...phone && (phone && phone.length >= 7) ? { valid: true } : null }
+            }
             onChange={(e) => dispatch({
               type: 'input',
               name: 'phone',
@@ -93,7 +99,10 @@ function TaxiForm(props) {
             id="form-email" 
             placeholder="email" 
             bsSize="sm" 
-            {...email && (email && email.length >= 5) ? { valid: true } : null}
+            {...!email 
+              ? { ...invalidFields.length && invalidFields.includes('email') ? { invalid: true } : null }
+              : { ...email && (email && email.length >= 5) ? { valid: true } : null }
+            }
             onChange={(e) => dispatch({
               type: 'input',
               name: 'email',
@@ -212,7 +221,16 @@ function TaxiForm(props) {
               } else if (field === 'email') {
                 field = "Email"
               } 
-              return <span>{field}{!lastField ? ',' : '.'} {secondToLast ? 'and ' : null}</span>
+              return (
+                <span>
+                  {field}{!lastField 
+                    ? invalidFields.length === 2 ? null : ', ' 
+                    : null} 
+                  {secondToLast 
+                    ? invalidFields.length === 2 ? ' and ' : 'and '
+                    : null}
+                </span>
+              )
             })}
           </p>
         ) : null}

@@ -192,6 +192,31 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
+        {invalidFields.length > 0 ? (
+          <p className="text-danger">Required fields: < br />
+            {invalidFields.map(field => {
+              let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
+              let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
+              if (field === 'startAddress') {
+                field = 'Starting Point'
+              } else if (field === 'endAddress') {
+                field = 'Destination'
+              } else if (field === 'price') {
+                field = 'Price'
+              } else if (field === 'name') {
+                field = 'Name'
+              } else if (field === 'comments') {
+                field = 'Comments'
+              } else if (field === 'phone') {
+                field = 'Phone'
+              } else if (field === 'email') {
+                field = "Email"
+              } 
+              return <span>{field}{!lastField ? ',' : '.'} {secondToLast ? 'and ' : null}</span>
+            })}
+          </p>
+        ) : null}
+
         <Button className="mt-3 mb-5 px-5" color="warning">
           {!loading && !submitted && (
             <span>Submit</span>
@@ -204,9 +229,6 @@ function TaxiForm(props) {
           )}
         </Button>
       </Form>
-      {invalidFields.length > 0 ?? (
-        <FormFeedback>Done it again{invalidFields.forEach(field => field)}</FormFeedback>
-      )}
     </>
   );
 }

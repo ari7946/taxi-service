@@ -184,7 +184,6 @@ function TaxiForm(props) {
           </div>
         </FormGroup> */}
 
-
         <FormGroup>
           <Label for="exampleText">Comments:</Label>
           <Input 
@@ -202,7 +201,7 @@ function TaxiForm(props) {
         </FormGroup>
 
         {invalidFields.length > 0 ? (
-          <p className="text-danger">Required fields: < br />
+          <p className="text-danger mb-0">Required fields: < br />
             {invalidFields.map(field => {
               let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
               let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;

@@ -67,7 +67,7 @@ function reducer(state, action) {
       }
     case 'submit':
       const { name, phone, email, passengers, direction, comments, startAddress, endAddress } = state;
-      const fields = { name, phone, email, passengers, direction, comments, startAddress, endAddress };
+      const fields = { name, phone, email, passengers, direction, startAddress, endAddress };
       const invalidFields = [];
 
       for (const property in fields) {

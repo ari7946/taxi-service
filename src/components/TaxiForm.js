@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner, FormFeedback } from 'reactstrap';
 import axios from 'axios';
 
 function TaxiForm(props) {
@@ -42,6 +42,10 @@ function TaxiForm(props) {
             id="form-name" 
             placeholder="name" 
             bsSize="sm" 
+            {...!name
+              ? { ...invalidFields.length && invalidFields.includes('name') ? { invalid: true } : null }
+              : { ...name && (name && name.length > 2) ? { valid: true } : null }
+            }
             onChange={(e) => dispatch({
               type: 'input',
               name: 'name',
@@ -57,8 +61,12 @@ function TaxiForm(props) {
             type="text" 
             name="phone" 
             id="exampleNumber" 
-            placeholder="phone" 
+            placeholder="###-###-####" 
             bsSize="sm" 
+            {...!phone
+              ? { ...invalidFields.length && invalidFields.includes('phone') ? { invalid: true } : null }
+              : { ...phone && (phone && phone.length >= 7) ? { valid: true } : null }
+            }
             onChange={(e) => dispatch({
               type: 'input',
               name: 'phone',
@@ -91,6 +99,10 @@ function TaxiForm(props) {
             id="form-email" 
             placeholder="email" 
             bsSize="sm" 
+            {...!email 
+              ? { ...invalidFields.length && invalidFields.includes('email') ? { invalid: true } : null }
+              : { ...email && (email && email.length >= 5) ? { valid: true } : null }
+            }
             onChange={(e) => dispatch({
               type: 'input',
               name: 'email',
@@ -188,7 +200,51 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
-        <Button className="mt-3 mb-5 px-5" color="warning">Submit</Button>
+        {invalidFields.length > 0 ? (
+          <p className="text-danger mb-0">Required fields: < br />
+            {invalidFields.map(field => {
+              let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
+              let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
+              if (field === 'startAddress') {
+                field = 'Starting Point'
+              } else if (field === 'endAddress') {
+                field = 'Destination'
+              } else if (field === 'price') {
+                field = 'Price'
+              } else if (field === 'name') {
+                field = 'Name'
+              } else if (field === 'comments') {
+                field = 'Comments'
+              } else if (field === 'phone') {
+                field = 'Phone'
+              } else if (field === 'email') {
+                field = "Email"
+              } 
+              return (
+                <span>
+                  {field}{!lastField 
+                    ? invalidFields.length === 2 ? null : ', ' 
+                    : null} 
+                  {secondToLast 
+                    ? invalidFields.length === 2 ? ' and ' : 'and '
+                    : null}
+                </span>
+              )
+            })}
+          </p>
+        ) : null}
+
+        <Button className="mt-3 mb-5 px-5" color="warning">
+          {!loading && !submitted && (
+            <span>Submit</span>
+          )}
+          {loading && submitted && (
+            <>
+              <Spinner className="mr-2" size="sm" color="secondary" />
+              <span>Processing...</span>
+            </>
+          )}
+        </Button>
       </Form>
     </>
   );

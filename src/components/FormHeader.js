@@ -17,7 +17,9 @@ function FormHeader(props) {
       {(points[0] && points[1]) && (
         <>
           <h5><Badge color="info">Distance: </Badge> <em>{distance} miles</em></h5>
-          <h5><Badge color="success">Price: </Badge> ${price}</h5>
+          <h5><Badge color="warning">Taxi Fare: </Badge> ${price}</h5>
+          <h5><Badge color="warning">Drop Fee: </Badge> $10.00</h5>
+          <h5><Badge color="success">Total: </Badge>${Number(price) + 10}</h5>
         </>
       )}
     </React.Fragment>

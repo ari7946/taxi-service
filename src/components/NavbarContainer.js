@@ -54,6 +54,12 @@ export default class NavbarContainer extends React.Component {
 
               <NavItem>
                 <NavLink className="pr-5" href="/">
+                  <Link to="/book" style={{ textDecoration: 'none' }}>Book</Link>
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink className="pr-5" href="/">
                   <Link to="/about" style={{ textDecoration: 'none' }}>About</Link>
                 </NavLink>
               </NavItem>

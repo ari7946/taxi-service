@@ -34,6 +34,7 @@ function TaxiForm(props) {
   return (
     <>
       <Form onSubmit={(e) => handleFormSubmit(e)}>
+        //! NAME
         <FormGroup>
           <Label for="exampleEmail">Name:</Label>
           <Input 
@@ -55,6 +56,7 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
+          //! PHONE
         <FormGroup>
           <Label for="exampleNumber">Phone:</Label>
           <Input 
@@ -91,6 +93,7 @@ function TaxiForm(props) {
         </Col>
         </Row> */}
 
+        //! EMAIL
         <FormGroup form>
           <Label for="exampleEmail">Email:</Label>
           <Input 
@@ -112,6 +115,7 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
+        //! PASSENGERS
         <Row form>
           <Col md={3}>
             <FormGroup>
@@ -142,6 +146,29 @@ function TaxiForm(props) {
           </Col>
         </Row> 
 
+        //! DATE
+        <FormGroup>
+          <Label for="exampleDate">Date</Label>
+          <Input
+            type="date"
+            name="date"
+            id="exampleDate"
+            placeholder="date placeholder"
+          />
+        </FormGroup>
+
+        //! TIME
+        <FormGroup>
+          <Label for="exampleTime">Time</Label>
+          <Input
+            type="time"
+            name="time"
+            id="exampleTime"
+            placeholder="time placeholder"
+          />
+        </FormGroup>
+
+        //! DIRECTION
         <FormGroup>
           <Label for="exampleCheckbox">Direction:</Label>
           <div>
@@ -176,14 +203,7 @@ function TaxiForm(props) {
           </div>
         </FormGroup>
 
-        {/* <FormGroup>
-          <Label for="exampleCheckbox">Payment:</Label>
-          <div>
-            <CustomInput inline checked type="radio" id="cash" name="payment" label="Cash" />
-            <CustomInput inline type="radio" id="card" name="payment" label="Card" />
-          </div>
-        </FormGroup> */}
-
+        //! COMMENTS
         <FormGroup>
           <Label for="exampleText">Comments:</Label>
           <Input 
@@ -200,6 +220,7 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
+        //! REQUIRED FIELDS
         {invalidFields.length > 0 ? (
           <p className="text-danger mb-0">Required fields: < br />
             {invalidFields.map(field => {
@@ -234,6 +255,7 @@ function TaxiForm(props) {
           </p>
         ) : null}
 
+        //! SUBMIT BUTTON
         <Button className="mt-3 mb-5 px-5" color="warning">
           {!loading && !submitted && (
             <span>Submit</span>

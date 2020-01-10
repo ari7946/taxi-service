@@ -66,8 +66,8 @@ function reducer(state, action) {
         errorMessage: action.errorMessage,
       }
     case 'submit':
-      const { name, phone, email, passengers, direction, comments, startAddress, endAddress } = state;
-      const fields = { name, phone, email, passengers, direction, startAddress, endAddress };
+      const { name, phone, email, passengers, direction, comments, startAddress, endAddress, date, time } = state;
+      const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
       const invalidFields = [];
 
       for (const property in fields) {
@@ -102,6 +102,8 @@ const initialState = {
   passengers: 1,
   email: null,
   direction: 'oneWay',
+  date: null,
+  time: null,
   // other
   loading: false,
   error: false,
@@ -114,19 +116,15 @@ function MapFormContainer() {
 
   return (
     <Container>
-      <Row>
-        <Col sm="8">
-          <MapHeader points={state.points} />
-          <React.Suspense fallback={<Loading />} >
-            <Map dispatch={dispatch} />
-          </React.Suspense >
-        </Col>
 
-        <Col sm="4">
-          <FormHeader state={state} />
-          <TaxiForm state={state} dispatch={dispatch} />
-        </Col>
-      </Row>
+      <MapHeader points={state.points} />
+      <React.Suspense fallback={<Loading />} >
+        <Map dispatch={dispatch} />
+      </React.Suspense >
+
+      <FormHeader state={state} />
+      <TaxiForm state={state} dispatch={dispatch} />
+
     </Container>
   )
 } 

@@ -3,7 +3,7 @@ import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner, 
 import axios from 'axios';
 
 function TaxiForm(props) {
-  const { startAddress, endAddress, price, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields } = props.state;
+  const { startAddress, endAddress, price, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields, date, time } = props.state;
   const { dispatch } = props;
 
   React.useEffect(() => {
@@ -34,7 +34,7 @@ function TaxiForm(props) {
   return (
     <>
       <Form onSubmit={(e) => handleFormSubmit(e)}>
-        //! NAME
+        {/* //! NAME */}
         <FormGroup>
           <Label for="exampleEmail">Name:</Label>
           <Input 
@@ -56,7 +56,7 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
-          //! PHONE
+          {/* //! PHONE */}
         <FormGroup>
           <Label for="exampleNumber">Phone:</Label>
           <Input 
@@ -93,7 +93,7 @@ function TaxiForm(props) {
         </Col>
         </Row> */}
 
-        //! EMAIL
+        {/* //! EMAIL */}
         <FormGroup form>
           <Label for="exampleEmail">Email:</Label>
           <Input 
@@ -115,7 +115,7 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
-        //! PASSENGERS
+        {/* //! PASSENGERS */}
         <Row form>
           <Col md={3}>
             <FormGroup>
@@ -146,29 +146,49 @@ function TaxiForm(props) {
           </Col>
         </Row> 
 
-        //! DATE
+        {/* //! DATE */}
         <FormGroup>
           <Label for="exampleDate">Date</Label>
           <Input
             type="date"
             name="date"
-            id="exampleDate"
-            placeholder="date placeholder"
+            placeholder="date"
+            bsSize="sm"
+            {...!date
+              ? { ...invalidFields.length && invalidFields.includes('date') ? { invalid: true } : null }
+              : { ...date && (date && date.length >= 6) ? { valid: true } : null }
+            }
+            onChange={(e) => dispatch({
+              type: 'input',
+              name: 'date',
+              value: e.target.value,
+            })} 
+            value={date}
           />
         </FormGroup>
 
-        //! TIME
+        {/* //! TIME */}
         <FormGroup>
           <Label for="exampleTime">Time</Label>
           <Input
             type="time"
             name="time"
-            id="exampleTime"
-            placeholder="time placeholder"
+            placeholder="time"
+            bsSize="sm"
+            {...!time
+              ? { ...invalidFields.length && invalidFields.includes('time') ? { invalid: true } : null }
+              : { ...time && (time && time.length >= 4) ? { valid: true } : null }
+            }
+            onChange={(e) => dispatch({
+              type: 'input',
+              name: 'time',
+              value: e.target.value,
+            })}
+            value={time} 
           />
         </FormGroup>
 
-        //! DIRECTION
+        {/* //! DIRECTION */}
         <FormGroup>
           <Label for="exampleCheckbox">Direction:</Label>
           <div>
@@ -203,7 +223,7 @@ function TaxiForm(props) {
           </div>
         </FormGroup>
 
-        //! COMMENTS
+        {/* //! COMMENTS */}
         <FormGroup>
           <Label for="exampleText">Comments:</Label>
           <Input 
@@ -220,7 +240,7 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
-        //! REQUIRED FIELDS
+        {/* //! REQUIRED FIELDS */}
         {invalidFields.length > 0 ? (
           <p className="text-danger mb-0">Required fields: < br />
             {invalidFields.map(field => {
@@ -240,7 +260,11 @@ function TaxiForm(props) {
                 field = 'Phone'
               } else if (field === 'email') {
                 field = "Email"
-              } 
+              } else if (field === 'date') {
+                field = 'Date'
+              } else if (field === 'time') {
+                field = 'Time'
+              }
               return (
                 <span>
                   {field}{!lastField 
@@ -255,7 +279,7 @@ function TaxiForm(props) {
           </p>
         ) : null}
 
-        //! SUBMIT BUTTON
+        {/* //! SUBMIT BUTTON */}
         <Button className="mt-3 mb-5 px-5" color="warning">
           {!loading && !submitted && (
             <span>Submit</span>

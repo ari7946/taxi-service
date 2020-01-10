@@ -11,14 +11,14 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <>
+      <div>
         <NavbarContainer />
         <Switch>
           <Route path='/' exact component={Landing} /> 
           <Route path='/about' exact component={About} /> 
           <Route path='/book' exact component={MapFormContainer} />
         </Switch>
-      </>
+      </div>
     );
   }
 }

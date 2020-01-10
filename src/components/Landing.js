@@ -1,10 +1,10 @@
 import React from 'react';
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron, Button, Container } from 'reactstrap';
 import { Link, withRouter } from 'react-router-dom'
 
 const Landing = (props) => {
   return (
-    <div>
+    <Container>
       <Jumbotron>
         <h1 className="display-4">Welcome to Cerritos Yellow Cab!</h1>
         <hr className="my-2" />
@@ -14,7 +14,7 @@ const Landing = (props) => {
             <Link to="/book" style={{ textDecoration: 'none', color: 'black' }}>Book a Taxi</Link>
           </Button>
       </Jumbotron>
-    </div>
+    </Container>
   );
 };
 

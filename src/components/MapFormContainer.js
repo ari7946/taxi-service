@@ -33,6 +33,7 @@ function reducer(state, action) {
         distance,
         price,
         direction: 'oneWay',
+        dropFee: 10,
       }
     case 'input':
       if (action.name === 'direction') {
@@ -42,6 +43,7 @@ function reducer(state, action) {
           price: action.value === 'oneWay'
             ? state.price / 2
             : state.price * 2,
+          dropFee: action.value === 'oneWay' ? 10 : 20
         }
       }
       return {
@@ -104,6 +106,7 @@ const initialState = {
   direction: 'oneWay',
   date: null,
   time: null,
+  dropFee: 10,
   // other
   loading: false,
   error: false,

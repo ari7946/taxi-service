@@ -21,3 +21,13 @@
 img {
   display: none;
 }
+
+#map {
+  max-height: 35vh;
+  width: 100%;
+}
+
+.hr {
+  height: 10px; 
+}
+

@@ -3,7 +3,7 @@ import TaxiForm from './TaxiForm';
 import Loading from './Loading';
 import MapHeader from './MapHeader';
 import FormHeader from './FormHeader';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
 const Map = React.lazy(() => import('./Map'));
 
 
@@ -116,14 +116,30 @@ function MapFormContainer() {
 
   return (
     <Container>
-
       <MapHeader points={state.points} />
       <React.Suspense fallback={<Loading />} >
         <Map dispatch={dispatch} />
       </React.Suspense >
 
       <FormHeader state={state} />
-      <TaxiForm state={state} dispatch={dispatch} />
+
+      <Row>
+        {(state.points[0] && state.points[1]) && (
+          <Col sm='5'>
+            <div className="text-center mx-auto my-4 w-75">
+              {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
+              <p className='ml-4 mb-0 text-monospace'>Taxi Fare: ${state.price}</p>
+              <p className="text-monospace mb-0"><span className="mr-3 lead">+</span>Drop Fee: $10.00</p>
+              <hr classname="text-dark w-50 hr" />
+              <p className='ml-3 text-monospace'>Total: ${Number(state.price) + 10}</p>
+            </div>
+          </Col>
+        )}
+        
+        <Col sm='7'>
+          <TaxiForm state={state} dispatch={dispatch} />
+        </Col>
+      </Row>
 
     </Container>
   )

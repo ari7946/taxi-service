@@ -3,7 +3,7 @@ import { Badge, Row, Col, ListGroupItem, ListGroup } from 'reactstrap';
 
 function FormHeader(props) {
   const { startAddress, endAddress, points, price, dropFee, direction } = props.state;
-  const total = (Number(price) + dropFee).toFixed(2)
+  const total = (Number(price) + dropFee).toFixed(2);
   const discount = (total * 0.20).toFixed(2);
   const discountTotal = (total - discount).toFixed(2);
 

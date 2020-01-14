@@ -120,14 +120,18 @@ function MapFormContainer() {
   return (
     <Container>
       <Row>
-        <Col sm='6'>
+        <Col sm='12'>
           <MapHeader points={state.points} />
           <React.Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </React.Suspense >
+        </Col>
+      </Row>
+
+      <Row>
+        <Col sm='6'>
           <FormHeader state={state} />
         </Col>
-
         <Col sm='6'>
           <TaxiForm state={state} dispatch={dispatch} />
         </Col>

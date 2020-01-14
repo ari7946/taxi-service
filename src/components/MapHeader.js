@@ -4,7 +4,7 @@ import { Badge } from 'reactstrap';
 function MapHeader({ points }) {
 
   return (
-    <>
+    <div className='mb-3'>
       {!points[0] && !points[1] ? (
         <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h4>
       ) : (
@@ -19,7 +19,7 @@ function MapHeader({ points }) {
             )
           )
         }
-    </>
+    </div>
   )
 }
 

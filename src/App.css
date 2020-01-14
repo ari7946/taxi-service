@@ -23,7 +23,7 @@ img {
 }
 
 #map {
-  max-height: 35vh;
+  max-height: 45vh;
   width: 100%;
 }
 
@@ -33,5 +33,19 @@ img {
 
 .price {
   border-top: 1px solid darkslategrey
+}
+
+@media (max-width: 550px) { 
+  #map {
+    max-height: 35vh;
+    width: 100%;
+  }
+
+  p.list-group-item-text {
+    font-size: 16px;
+    padding: .5rem 0;
+    margin-bottom: 0;
+  }
+
 }
 

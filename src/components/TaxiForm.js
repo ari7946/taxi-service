@@ -79,21 +79,6 @@ function TaxiForm(props) {
           />
         </FormGroup>
 
-        {/* <Row form>
-          <Col md={4}>
-            <FormGroup>
-              <Label for="exampleDate">Date</Label>
-              <Input type="date" name="date" id="form-date" placeholder="date placeholder" />
-            </FormGroup>
-          </Col>
-          <Col md={4}>
-            <FormGroup>
-              <Label for="exampleTime">Time</Label>
-              <Input type="time" name="time" id="form-time" placeholder="time placeholder" />
-          </FormGroup>
-        </Col>
-        </Row> */}
-
         {/*  EMAIL */}
         <FormGroup form>
           <Label for="exampleEmail">Email:</Label>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner, FormFeedback, ListGroup, ListGroupItem, Badge } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner, ListGroupItemHeading, ListGroupItem, ListGroup, Badge } from 'reactstrap';
 
 function TaxiForm(props) {
   const { startAddress, endAddress, price, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields, date, time, points } = props.state;
@@ -31,6 +31,9 @@ function TaxiForm(props) {
   console.log('state', props.state);
   return (
     <div className='mx-auto'>
+      <ListGroup flush>
+        <ListGroupItem>
+          <ListGroupItemHeading className="mb-3"> <Badge color="success">Taxi Form</Badge></ListGroupItemHeading>
       <Form onSubmit={(e) => handleFormSubmit(e)}>
         {/* NAME */}
         <FormGroup>
@@ -290,6 +293,8 @@ function TaxiForm(props) {
           )}
         </Button>
       </Form>
+      </ListGroupItem>
+      </ListGroup>
     </div>
   );
 }

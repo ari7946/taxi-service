@@ -33,7 +33,7 @@ function TaxiForm(props) {
     <div className='mx-auto'>
       <ListGroup flush>
         <ListGroupItem>
-          <ListGroupItemHeading className="mb-3"> <Badge color="success">Book Taxi</Badge></ListGroupItemHeading>
+          <ListGroupItemHeading className="mb-3"> <Badge color="success">Taxi Form</Badge></ListGroupItemHeading>
       <Form onSubmit={(e) => handleFormSubmit(e)}>
         {/* NAME */}
         <FormGroup>

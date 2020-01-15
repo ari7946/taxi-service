@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #7E8F94;
 }
 
 .App-logo {
@@ -23,7 +24,7 @@ img {
 }
 
 #map {
-  max-height: 45vh;
+  max-height: 60vh;
   width: 100%;
 }
 
@@ -33,6 +34,15 @@ img {
 
 .price {
   border-top: 1px solid darkslategrey
+}
+
+.landing {
+  background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(./assets/los-angeles.jpg);  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  color: white;
 }
 
 @media (max-width: 550px) { 
@@ -45,6 +55,11 @@ img {
     font-size: 16px;
     padding: .5rem 0;
     margin-bottom: 0;
+  }
+
+  .landing p {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-left: .4rem;
   }
 
 }

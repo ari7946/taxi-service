@@ -12,9 +12,9 @@ function FormHeader(props) {
       <ListGroup flush>
       {startAddress && (
         // <p className="text-monospace"><Badge className="mt-3" color="dark">Starting Point: </Badge> {startAddress}</p>
-          <ListGroupItem>
+          <ListGroupItem className='bg-dark'>
             <ListGroupItemHeading><Badge color="dark">Starting Point</Badge></ListGroupItemHeading>
-          <ListGroupItemText>
+          <ListGroupItemText className='text-white'>
             {startAddress}
           </ListGroupItemText>
         </ListGroupItem>
@@ -22,9 +22,9 @@ function FormHeader(props) {
 
       {endAddress && (
         // <p className="text-monospace"><Badge className="mt-3" color="danger">Destination: </Badge> {endAddress}</p>
-          <ListGroupItem>
+          <ListGroupItem className='bg-dark'>
             <ListGroupItemHeading><Badge color="danger">Destination</Badge></ListGroupItemHeading>
-            <ListGroupItemText>
+            <ListGroupItemText classname='text-white'>
               {endAddress}
             </ListGroupItemText>
           </ListGroupItem>
@@ -49,9 +49,9 @@ function FormHeader(props) {
           //   }
           // </div>
         // </>
-          <ListGroupItem>
+          <ListGroupItem className='bg-dark'>
             <ListGroupItemHeading><Badge color="info">Estimate</Badge></ListGroupItemHeading>
-            <ListGroupItemText>
+            <ListGroupItemText className='text-white'>
               <div className="text-center mx-auto my-2 w-50">
                 {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
                 <p className='ml-4 mb-0'>Taxi Fare: ${price}</p>

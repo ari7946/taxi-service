@@ -43,7 +43,7 @@ function reducer(state, action) {
           price: action.value === 'oneWay'
             ? state.price / 2
             : state.price * 2,
-          dropFee: action.value === 'oneWay' ? 10 : 20
+          dropFee: action.value === 'oneWay' ? 10 : 20,
         }
       }
       return {
@@ -120,15 +120,15 @@ function MapFormContainer() {
   return (
     <Container>
       <Row>
-        <Col sm='6'>
+        <Col sm='8'>
           <MapHeader points={state.points} />
           <React.Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </React.Suspense >
+          <FormHeader state={state} />
         </Col>
 
-        <Col sm='6'>
-          <FormHeader state={state} />
+        <Col sm='4'>
           <TaxiForm state={state} dispatch={dispatch} />
         </Col>
       </Row>

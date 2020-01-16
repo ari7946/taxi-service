@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 const Landing = (props) => {
   return (
-    <Container fluid>
+    <Container>
       <Jumbotron className='landing'>
         <div className='landing-header'>
           <h1 className="display-4 text-warning">Welcome to Cerritos Yellow Cab!</h1>

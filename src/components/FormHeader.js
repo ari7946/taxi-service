@@ -10,25 +10,21 @@ function FormHeader(props) {
   return (
     <div>
       <ListGroup flush>
-      {startAddress && (
-        // <p className="text-monospace"><Badge className="mt-3" color="dark">Starting Point: </Badge> {startAddress}</p>
-          <ListGroupItem>
-            <ListGroupItemHeading><Badge color="dark">Starting Point</Badge></ListGroupItemHeading>
-          <ListGroupItemText>
-            {startAddress}
+        {/* <p className="text-monospace"><Badge className="mt-3" color="dark">Starting Point: </Badge> {startAddress}</p> */}
+        <ListGroupItem className='bg-dark'>
+          <ListGroupItemHeading><Badge color="light">Starting Point</Badge></ListGroupItemHeading>
+          <ListGroupItemText className='text-white'>
+            {startAddress ? startAddress : <br />}
           </ListGroupItemText>
         </ListGroupItem>
-      )}
 
-      {endAddress && (
-        // <p className="text-monospace"><Badge className="mt-3" color="danger">Destination: </Badge> {endAddress}</p>
-          <ListGroupItem>
+        {/* <p className="text-monospace"><Badge className="mt-3" color="danger">Destination: </Badge> {endAddress}</p> */}
+          <ListGroupItem className='bg-dark'>
             <ListGroupItemHeading><Badge color="danger">Destination</Badge></ListGroupItemHeading>
-            <ListGroupItemText>
-              {endAddress}
+            <ListGroupItemText className='text-white'>
+              {endAddress ? endAddress : <br />}
             </ListGroupItemText>
           </ListGroupItem>
-      )}
 
       {(points[0] && points[1]) && (
         // <>
@@ -49,9 +45,9 @@ function FormHeader(props) {
           //   }
           // </div>
         // </>
-          <ListGroupItem>
+          <ListGroupItem className='bg-dark'>
             <ListGroupItemHeading><Badge color="info">Estimate</Badge></ListGroupItemHeading>
-            <ListGroupItemText>
+            <ListGroupItemText className='text-white'>
               <div className="text-center mx-auto my-2 w-50">
                 {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
                 <p className='ml-4 mb-0'>Taxi Fare: ${price}</p>

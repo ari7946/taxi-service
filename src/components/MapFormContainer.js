@@ -43,7 +43,7 @@ function reducer(state, action) {
           price: action.value === 'oneWay'
             ? state.price / 2
             : state.price * 2,
-          dropFee: action.value === 'oneWay' ? 10 : 20
+          dropFee: action.value === 'oneWay' ? 10 : 20,
         }
       }
       return {
@@ -118,17 +118,18 @@ function MapFormContainer() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
-    <Container>
+    <Container className='pb-5'>
+      <h2 className="text-white display-4">Book a Taxi</h2>
+      <MapHeader points={state.points} />
       <Row>
         <Col sm='6'>
-          <MapHeader points={state.points} />
           <React.Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </React.Suspense >
+          <FormHeader state={state} />
         </Col>
 
         <Col sm='6'>
-          <FormHeader state={state} />
           <TaxiForm state={state} dispatch={dispatch} />
         </Col>
       </Row>

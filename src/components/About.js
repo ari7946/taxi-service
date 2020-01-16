@@ -8,7 +8,8 @@ import driver from '../assets/driver.jpg';
 export default class About extends React.Component {
   render() {
     return (
-      <Container>
+      <Container className="pb-5">
+        <h2 className="text-white display-4">About Us</h2>
         <Row className="about-section">
           <Col sm={6}><img className="about-img rounded mx-auto d-block" src={city} alt="city" width="150" height="150" /></Col>
           <Col className="order-first order-sm-2" sm={6}>
@@ -32,7 +33,6 @@ export default class About extends React.Component {
             <p className="about-description text-justify">We offer a full range of taxi services. Call us for dependable service for airport shuttle, sightseeing tours, or for transportation to medical visits, social visits or shopping. We offer corporate accounts, which provide businesses with a convenient method for managing their corporate transportation needs. Please contact us to learn more about starting a corporate account for airport shuttle service, driving your clients or other taxi services.</p>
           </Col>
         </Row>
-
       </Container>
     );
   }

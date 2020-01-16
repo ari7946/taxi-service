@@ -24,24 +24,33 @@ img {
 }
 
 #map {
-  max-height: 60vh;
+  max-height: 45vh;
   width: 100%;
 }
 
-.hr {
+hr {
   height: 10px; 
+  background: white;
 }
 
 .price {
   border-top: 1px solid darkslategrey
 }
 
+.about-section h3, .about-section p {
+  color: white;
+}
+
 .landing {
   background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(./assets/los-angeles.jpg);  background-color: #cccccc; /* Used if the image is unavailable */
-  height: 500px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  color: white;
+}
+
+form label {
   color: white;
 }
 

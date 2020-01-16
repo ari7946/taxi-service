@@ -10,25 +10,21 @@ function FormHeader(props) {
   return (
     <div>
       <ListGroup flush>
-      {startAddress && (
-        // <p className="text-monospace"><Badge className="mt-3" color="dark">Starting Point: </Badge> {startAddress}</p>
-          <ListGroupItem className='bg-dark'>
-            <ListGroupItemHeading><Badge color="dark">Starting Point</Badge></ListGroupItemHeading>
+        {/* <p className="text-monospace"><Badge className="mt-3" color="dark">Starting Point: </Badge> {startAddress}</p> */}
+        <ListGroupItem className='bg-dark'>
+          <ListGroupItemHeading><Badge color="light">Starting Point</Badge></ListGroupItemHeading>
           <ListGroupItemText className='text-white'>
-            {startAddress}
+            {startAddress ? startAddress : <br />}
           </ListGroupItemText>
         </ListGroupItem>
-      )}
 
-      {endAddress && (
-        // <p className="text-monospace"><Badge className="mt-3" color="danger">Destination: </Badge> {endAddress}</p>
+        {/* <p className="text-monospace"><Badge className="mt-3" color="danger">Destination: </Badge> {endAddress}</p> */}
           <ListGroupItem className='bg-dark'>
             <ListGroupItemHeading><Badge color="danger">Destination</Badge></ListGroupItemHeading>
-            <ListGroupItemText classname='text-white'>
-              {endAddress}
+            <ListGroupItemText className='text-white'>
+              {endAddress ? endAddress : <br />}
             </ListGroupItemText>
           </ListGroupItem>
-      )}
 
       {(points[0] && points[1]) && (
         // <>

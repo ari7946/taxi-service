@@ -40,7 +40,7 @@ export default class NavbarContainer extends React.Component {
           </Col>
         </Row> */}
 
-        <Navbar className="mb-4" id="navbar" color="light" light expand="md">
+        <Navbar className="mb-4 bg-dark fixed-top" id="navbar" color="light" light expand="md">
           <NavbarBrand className="pl-0" href="/"><img src={brand} className="brand" width="180" height="70" /></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

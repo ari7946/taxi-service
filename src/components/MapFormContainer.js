@@ -118,17 +118,18 @@ function MapFormContainer() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
-    <Container>
+    <Container className='pb-5'>
+      <h2 className="text-white display-4">Book a Taxi</h2>
+      <MapHeader points={state.points} />
       <Row>
-        <Col sm='8'>
-          <MapHeader points={state.points} />
+        <Col sm='6'>
           <React.Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </React.Suspense >
           <FormHeader state={state} />
         </Col>
 
-        <Col sm='4'>
+        <Col sm='6'>
           <TaxiForm state={state} dispatch={dispatch} />
         </Col>
       </Row>

@@ -31,10 +31,6 @@ function TaxiForm(props) {
   console.log('state', props.state);
   return (
     <div className='mx-auto'>
-      {points[0] && points[1] && (
-      <ListGroup flush>
-        <ListGroupItem>
-          <ListGroupItemHeading className="mb-3"> <Badge color="success">Taxi Form</Badge></ListGroupItemHeading>
       <Form onSubmit={(e) => handleFormSubmit(e)}>
         {/* NAME */}
         <FormGroup>
@@ -279,9 +275,6 @@ function TaxiForm(props) {
           )}
         </Button>
       </Form>
-      </ListGroupItem>
-      </ListGroup>
-      )}
     </div>
   );
 }

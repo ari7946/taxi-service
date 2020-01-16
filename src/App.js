@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MapFormContainer from './components/MapFormContainer';
-import NavbarContainer from './components/NavbarContainer';
+import Navbar from './components/NavbarContainer';
 import Landing from './components/Landing';
 import About from './components/About';
 import { Route, Switch } from 'react-router-dom';
@@ -12,9 +12,10 @@ class App extends Component {
   render() {
     return (
       <div className='bg-dark'>
-        <NavbarContainer />
+        <Navbar />
         <Landing />
         <MapFormContainer />
+        <About />
         {/* <Switch>
           <Route path='/' exact component={Landing} /> 
           <Route path='/about' exact component={About} /> 

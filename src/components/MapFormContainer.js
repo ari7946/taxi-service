@@ -35,6 +35,7 @@ function reducer(state, action) {
         price,
         direction: 'oneWay',
         dropFee: 10,
+        vehicle: 'sedan',
       }
     case 'input':
       if (action.name === 'direction') {
@@ -45,8 +46,18 @@ function reducer(state, action) {
             ? state.price / 2
             : state.price * 2,
           dropFee: action.value === 'oneWay' ? 10 : 20
+        } 
+      } else if (action.name === 'vehicle') {
+          let distance = (state.distance * 0.000621371192).toFixed(1);
+          let price = (distance * 2.95).toFixed(2);
+          return {
+            ...state,
+            [action.name]: action.value,
+            price: action.value === 'sedan'
+              ? (state.distance * 2.95).toFixed(2)
+              : (state.distance * 4.95).toFixed(2)
+          }
         }
-      }
       return {
         ...state,
         [action.name]: action.value,
@@ -108,6 +119,7 @@ const initialState = {
   date: null,
   time: null,
   dropFee: 10,
+  vehicle: 'sedan',
   // other
   loading: false,
   error: false,
@@ -126,24 +138,18 @@ function MapFormContainer() {
           <React.Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </React.Suspense >
+          <FormHeader state={state} />
         </Col>
 
         <Col sm='6'>
-          <Estimate state={state} />
+          {state.startAddress && state.endAddress && (
+            <>
+            <Estimate state={state} dispatch={dispatch} />
+            </>
+          )}
+          <TaxiForm state={state} dispatch={dispatch} />
         </Col>
       </Row>
-
-      {state.startAddress && state.endAddress && (
-        <Row>
-          <Col sm='6'>
-            <FormHeader state={state} />          
-            </Col>
-
-          <Col sm='6'>
-            <TaxiForm state={state} dispatch={dispatch} />
-          </Col>
-        </Row>
-      )}
     </Container>
   )
 } 

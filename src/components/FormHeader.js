@@ -1,6 +1,5 @@
 import React from 'react';
 import { Badge, Row, Col, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
-import Estimate from './Estimate';
 
 function FormHeader(props) {
   const { startAddress, endAddress, points, price, dropFee, direction } = props.state;

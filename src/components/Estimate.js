@@ -1,5 +1,6 @@
 import React from 'react';
 import { Badge, Row, Col, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading } from 'reactstrap';
+import VehicleType from './VehicleType';
 
 const Estimate = (props) => {
   const { startAddress, endAddress, points, price, dropFee, direction } = props.state;
@@ -28,6 +29,7 @@ const Estimate = (props) => {
             }
           </div>
         </ListGroupItemText>
+        <VehicleType {...props} />
       </ListGroupItem>
     </div>
   )

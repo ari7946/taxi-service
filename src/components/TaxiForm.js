@@ -31,7 +31,6 @@ function TaxiForm(props) {
   console.log('state', props.state);
   return (
     <div className='mx-auto'>
-      {points[0] && points[1] && (
       <ListGroup flush>
         <ListGroupItem>
           <ListGroupItemHeading className="mb-3"> <Badge color="success">Taxi Form</Badge></ListGroupItemHeading>
@@ -281,7 +280,6 @@ function TaxiForm(props) {
       </Form>
       </ListGroupItem>
       </ListGroup>
-      )}
     </div>
   );
 }

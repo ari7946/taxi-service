@@ -24,7 +24,8 @@ function VehicleType(props) {
             })}
             checked={vehicle === 'sedan'}
           >
-            SEDAN
+            SEDAN<br />
+            $2.95 / Mi
           </CustomInput>
         </Col>
 
@@ -42,7 +43,8 @@ function VehicleType(props) {
             })}
             checked={vehicle === 'van'}
           >
-            VAN
+            VAN<br />
+            $3.95 / Mi
           </CustomInput>
         </Col>
       </Row>

@@ -30,8 +30,7 @@ function TaxiForm(props) {
 
   console.log('state', props.state);
   return (
-    <div className='mx-auto'>
-      <ListGroup flush>
+    <div className=''>
         <ListGroupItem>
           <ListGroupItemHeading className="mb-3"> <Badge color="success">Taxi Form</Badge></ListGroupItemHeading>
       <Form onSubmit={(e) => handleFormSubmit(e)}>
@@ -102,7 +101,7 @@ function TaxiForm(props) {
         </FormGroup>
 
         {/* PASSENGERS */}
-        <Row form>
+        {/* <Row form>
           <Col md={3}>
             <FormGroup>
               <Label for="exampleSelect">Passengers:</Label>
@@ -130,7 +129,7 @@ function TaxiForm(props) {
               </Input>
             </FormGroup>
           </Col>
-        </Row> 
+        </Row>  */}
 
         {/* DATE */}
         <FormGroup>
@@ -175,7 +174,7 @@ function TaxiForm(props) {
         </FormGroup>
 
         {/* DIRECTION */}
-        <FormGroup>
+        {/* <FormGroup>
           <Label for="exampleCheckbox">Direction:</Label>
           <div>
             <CustomInput 
@@ -207,7 +206,7 @@ function TaxiForm(props) {
               checked={direction === 'twoWay'} 
             />
           </div>
-        </FormGroup>
+        </FormGroup> */}
 
         {/* COMMENTS */}
         <FormGroup>
@@ -279,7 +278,6 @@ function TaxiForm(props) {
         </Button>
       </Form>
       </ListGroupItem>
-      </ListGroup>
     </div>
   );
 }

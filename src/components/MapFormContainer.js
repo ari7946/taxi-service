@@ -55,7 +55,7 @@ function reducer(state, action) {
             [action.name]: action.value,
             price: action.value === 'sedan'
               ? (state.distance * 2.95).toFixed(2)
-              : (state.distance * 4.95).toFixed(2)
+              : (state.distance * 3.95).toFixed(2)
           }
         }
       return {
@@ -142,12 +142,14 @@ function MapFormContainer() {
         </Col>
 
         <Col sm='6'>
+          <ListGroup flush>
           {state.startAddress && state.endAddress && (
             <>
             <Estimate state={state} dispatch={dispatch} />
             </>
           )}
           <TaxiForm state={state} dispatch={dispatch} />
+          </ListGroup>
         </Col>
       </Row>
     </Container>

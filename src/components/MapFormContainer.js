@@ -121,7 +121,7 @@ function MapFormContainer() {
     <Container>
       <Row>
         <Col sm='6'>
-          <MapHeader points={state.points} />
+          <MapHeader points={state.points} state={state} />
           <React.Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </React.Suspense >

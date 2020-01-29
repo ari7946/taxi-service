@@ -6,11 +6,9 @@ function VehicleType(props) {
   const { vehicle } = props.state;
 
   return (
-    <Container>
     <FormGroup>
-      <Label for="exampleCheckbox">Vehicle:</Label>
-      <Row>
-        <Col>
+      <Container className="mx-auto">
+        <Row>
           <CustomInput
             inline checked
             type="radio"
@@ -27,9 +25,7 @@ function VehicleType(props) {
             SEDAN<br />
             $2.95 / Mi
           </CustomInput>
-        </Col>
 
-        <Col>
           <CustomInput
             inline
             type="radio"
@@ -46,10 +42,9 @@ function VehicleType(props) {
             VAN<br />
             $3.95 / Mi
           </CustomInput>
-        </Col>
-      </Row>
+        </Row>
+      </Container>
     </FormGroup>
-    </Container>
   )
 }
 

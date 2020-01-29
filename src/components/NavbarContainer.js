@@ -1,79 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  Container,
+  NavbarBrand,
 } from 'reactstrap';
-import brand from '../assets/cerritos-brand.jpg';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTaxi } from '@fortawesome/free-solid-svg-icons'
 
+const NavbarComponent = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-export default class NavbarContainer extends React.Component {
-  constructor(props) {
-    super(props);
+  const toggle = () => setIsOpen(!isOpen);
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  return (
+    <Navbar className="container" expand="md">
+      <NavbarBrand href="/" className="mr-auto">
+        <FontAwesomeIcon className="mr-2 fa-lg" icon={faTaxi} />
+        Coastal Yellow Cabs
+      </NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="mx-auto" navbar>
+          <NavItem>
+            <NavLink className="px-4 py-3" href="/">
+              <Link className="" to="/" style={{ textDecoration: 'none' }}>Home</Link>
+            </NavLink>
+          </NavItem>
 
-  render() {
-    return (
-      <Container>
-        {/* <Row>
-          <Col sm={{ size: 6, offset: 0 }}>
-            <img src={brand} className="my-3 brand" width="180" height="70" />
-          </Col>
-          <Col sm={{ size: 6, offset: 0}}>
-            <img src={contactus} className="my-3 contactus" />
-          </Col>
-        </Row> */}
+          <NavItem>
+            <NavLink className="px-4 py-3" href="/">
+              <Link className="" to="/book" style={{ textDecoration: 'none' }}>Book</Link>
+            </NavLink>
+          </NavItem>
 
-        <Navbar className="mb-4" id="navbar" color="light" light expand="md">
-          <NavbarBrand className="pl-0" href="/"><img src={brand} className="brand" width="180" height="70" /></NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto"  navbar>
+          <NavItem>
+            <NavLink className="px-4 py-3" href="/">
+              <Link className="" to="/about" style={{ textDecoration: 'none' }}>About</Link>
+            </NavLink>
+          </NavItem>
 
-              <NavItem>
-                <NavLink className="pr-5" href="/">
-                  <Link to="/" style={{ textDecoration: 'none' }}>Home</Link>
-                </NavLink>
-              </NavItem>
-
-              <NavItem>
-                <NavLink className="pr-5" href="/">
-                  <Link to="/book" style={{ textDecoration: 'none' }}>Book</Link>
-                </NavLink>
-              </NavItem>
-
-              <NavItem>
-                <NavLink className="pr-5" href="/">
-                  <Link to="/about" style={{ textDecoration: 'none' }}>About</Link>
-                </NavLink>
-              </NavItem>
-
-              <NavItem>
-                <NavLink className="pr-5" href="/">
-                  <Link to="/contact" style={{ textDecoration: 'none' }}>Contact</Link>
-                </NavLink>
-              </NavItem>
-
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </Container>
-    );
-  }
+          <NavItem>
+            <NavLink className="px-4 py-3" href="/">
+              <Link className="" to="/contact" style={{ textDecoration: 'none' }}>Contact</Link>
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
+  );
 }
+
+export default NavbarComponent;

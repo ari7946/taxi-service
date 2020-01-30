@@ -6,8 +6,8 @@ function VehicleType(props) {
   const { vehicle } = props.state;
 
   return (
-    <FormGroup>
-      <Container className="mx-auto">
+    <FormGroup className="mx-auto">
+      <Container>
         <Row>
           <CustomInput
             inline checked

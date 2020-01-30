@@ -19,12 +19,12 @@ const Estimate = (props) => {
             <p className='ml-4 mb-0'>Taxi Fare: ${price}</p>
             <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}.00</p>
             {direction === 'oneWay'
-              ? <p className='ml-3 price pt-2'>Total: ${total}</p>
+              ? <h2 className='ml-3 price pt-2'>Total: ${total}</h2>
               : (
                 <>
                   <p className='ml-3 price pt-2 mb-0'>Subtotal: ${total}</p>
                   <p className='ml-3 pt-0 mb-0'><span className="mr-3 lead">-</span>Discount: ${discount}</p>
-                  <p className='ml-3 price pt-2'>Total: ${discountTotal}</p>
+                  <h2 className='ml-3 price pt-2 lead'><Badge color="info">Total: ${discountTotal}</Badge></h2>
                 </>
               )
             }

@@ -19,10 +19,10 @@ function MapHeader(props) {
                 <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
               ) : (
                   <>
-                    <h4 className="mb-0"><Badge color="success">Estimate:</Badge> 
+                    <h4 className="mb-0"><Badge color="info">Estimate:</Badge> 
                       ${direction === 'oneWay' ? total : discountTotal}
                     </h4>
-                    <p>Please Call <span className="lead">714-432-1222</span> to book a taxi or book online and recieve a 10% discount</p>
+                    <p>714-432-1222</p>
                   </>
                 )
             )

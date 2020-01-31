@@ -20,28 +20,29 @@ function MapHeader(props) {
               !points[1] ? (
                 <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
               ) : (
-                     <div>
+                  <div>
                     <h4 className="estimate mb-2"><Badge color="info">Estimate:</Badge> 
                       ${direction === 'oneWay' ? total : discountTotal}
                     </h4>
 
-                    <VehicleType {...props} />
+                    {/* <VehicleType {...props} /> */}
 
-                    <ButtonGroup className='mobile-header'>
+                    {/* <ButtonGroup className='mobile-header'>
                         <Button href="tel:5554280940" color='warning'>Tab to Call</Button>
                       <Button color='warning ml-3'>Reserve Taxi Online</Button>
                     </ButtonGroup>
-                    </div> 
+                    </div>  */}
 
-                    // <div>
-                    //   <h4><Badge color="success">Thank you</Badge> Fill out the form to book a taxi<br /> or give us a call / text
-                    //   929-123-0000
-                    //   </h4>
-                    // </div> 
+                     <div>
+                       <h4><Badge color="success">Thank you</Badge> Fill out the form to book a taxi<br /> or give us a call / text
+                       929-123-0000
+                       </h4>
+                     </div> 
+                  </div>
                 )
-            )
           )
-        }
+        )
+      }
     </div>
   )
 }

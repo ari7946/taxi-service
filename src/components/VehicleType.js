@@ -3,13 +3,15 @@ import { FormGroup, Label, CustomInput, Row, Col, Container } from 'reactstrap';
 
 function VehicleType(props) {
   const { dispatch } = props;
-  const { vehicle } = props.state;
+  const { vehicle, distance } = props.state;
 
   return (
-    <FormGroup className="mx-auto">
+    <FormGroup>
       <Container>
         <Row>
+          <div className="mx-auto">
           <CustomInput
+            className="mr-4"
             inline checked
             type="radio"
             id="sedan"
@@ -22,8 +24,8 @@ function VehicleType(props) {
             })}
             checked={vehicle === 'sedan'}
           >
-            SEDAN<br />
-            $2.95 / Mi
+            Sedan $2.95 / Mi <br />
+            1 - 4 Passengers
           </CustomInput>
 
           <CustomInput
@@ -39,9 +41,16 @@ function VehicleType(props) {
             })}
             checked={vehicle === 'van'}
           >
-            VAN<br />
-            $3.95 / Mi
+            Van $3.95 / Mi<br />
+            1 - 7 Passengers
           </CustomInput>
+          <ul className="pt-3">
+            <li>Distance: {distance}</li>
+            <li>Rate: {vehicle === 'sedan' ? "$2.95 per mile" : '3.95 per mile'}</li>
+            <li>Vehicle: {vehicle}</li>
+            <li>passengers: {vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</li>
+          </ul>
+          </div>
         </Row>
       </Container>
     </FormGroup>

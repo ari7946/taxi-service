@@ -132,22 +132,23 @@ function MapFormContainer() {
 
   return (
     <Container>
-      <MapHeader points={state.points} state={state} />
+      <MapHeader points={state.points} state={state} dispatch={dispatch} />
       <Row>
         <Col sm='6'>
           <React.Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </React.Suspense >
-          <FormHeader state={state} />
+          {state.startAddress && state.endAddress && (
+            <>
+              <Estimate state={state} dispatch={dispatch} />
+            </>
+          )}
         </Col>
 
         <Col sm='6'>
           <ListGroup flush>
-          {state.startAddress && state.endAddress && (
-            <>
-            <Estimate state={state} dispatch={dispatch} />
-            </>
-          )}
+            <FormHeader state={state} />
+
           <TaxiForm state={state} dispatch={dispatch} />
           </ListGroup>
         </Col>

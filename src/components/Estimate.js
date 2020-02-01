@@ -3,7 +3,7 @@ import { Badge, Row, Col, ListGroupItem, ListGroup, ListGroupItemText, ListGroup
 import VehicleType from './VehicleType';
 
 const Estimate = (props) => {
-  const { startAddress, endAddress, points, price, dropFee, direction } = props.state;
+  const { startAddress, endAddress, points, price, dropFee, direction, distance, vehicle } = props.state;
   const total = (Number(price) + dropFee).toFixed(2);
   const discount = (total * 0.20).toFixed(2);
   const discountTotal = (total - discount).toFixed(2);
@@ -12,7 +12,16 @@ const Estimate = (props) => {
     <div>
       <ListGroupItem>
         <ListGroupItemHeading><Badge color="info">Estimate</Badge></ListGroupItemHeading>
+
         <VehicleType {...props} />
+
+        <ul className="pt-3 mx-auto">
+          <li>Distance: {distance} miles</li>
+          <li>Rate: {vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</li>
+          <li>Vehicle: {vehicle}</li>
+          <li>passengers: {vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</li>
+        </ul>
+
         <ListGroupItemText>
           <div className="text-center mx-auto my-2 w-50">
             {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}

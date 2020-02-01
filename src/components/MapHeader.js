@@ -21,9 +21,9 @@ function MapHeader(props) {
                 <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
               ) : (
                   <div>
-                    <h4 className="estimate mb-2"><Badge color="info">Estimate:</Badge> 
+                    {/* <h4 className="estimate mb-2"><Badge color="info">Estimate:</Badge> 
                       ${direction === 'oneWay' ? total : discountTotal}
-                    </h4>
+                    </h4> */}
 
                     {/* <VehicleType {...props} /> */}
 
@@ -34,7 +34,7 @@ function MapHeader(props) {
                     </div>  */}
 
                      <div>
-                       <h4><Badge color="success">Thank you</Badge> Fill out the form to book a taxi<br /> or give us a call / text
+                       <h4><Badge color="success">Thank you</Badge> Please submit the form to book a taxi<br /> or give us a call / text
                        929-123-0000
                        </h4>
                      </div> 

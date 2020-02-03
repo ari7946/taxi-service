@@ -15,12 +15,13 @@ const Estimate = (props) => {
 
         <VehicleType {...props} />
 
-        <ul className="pt-3 mx-auto">
+        {/* //TODO Implement as a future feature */}
+        {/* <ul className="pt-3">
           <li>Distance: {distance} miles</li>
           <li>Rate: {vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</li>
           <li>Vehicle: {vehicle}</li>
           <li>passengers: {vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</li>
-        </ul>
+        </ul> */}
 
         <ListGroupItemText>
           <div className="text-center mx-auto my-2 w-50">

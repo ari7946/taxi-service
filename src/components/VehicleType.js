@@ -1,5 +1,7 @@
 import React from 'react';
 import { FormGroup, Label, CustomInput, Row, Col, Container } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons'
 
 function VehicleType(props) {
   const { dispatch } = props;
@@ -24,6 +26,7 @@ function VehicleType(props) {
               })}
               checked={vehicle === 'sedan'}
             >
+              <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
               Sedan $2.95 / mile <br />
               1 - 4 Passengers
             </CustomInput>
@@ -41,6 +44,7 @@ function VehicleType(props) {
               })}
               checked={vehicle === 'van'}
             >
+              <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
               Van $3.95 / mile<br />
               1 - 7 Passengers
             </CustomInput>

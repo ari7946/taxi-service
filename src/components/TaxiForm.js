@@ -1,5 +1,6 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, CustomInput, Spinner, ListGroupItemHeading, ListGroupItem, ListGroup, Badge } from 'reactstrap';
+import { Col, Row, Button, ButtonGroup, Form, FormGroup, Label, Input, CustomInput, Spinner, ListGroupItemHeading, ListGroupItem, ListGroup, Badge } from 'reactstrap';
+import TripInfoButton from './TripInfo';
 
 function TaxiForm(props) {
   const { startAddress, endAddress, price, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields, date, time, points } = props.state;
@@ -265,7 +266,8 @@ function TaxiForm(props) {
         ) : null}
 
         {/* SUBMIT BUTTON */}
-        <Button className="mt-3 mb-5 px-5" color="warning">
+          <ButtonGroup className="mt-3 mb-5">
+        <Button className="px-5 mr-3" color="warning">
           {!loading && !submitted && (
             <span>Submit</span>
           )}
@@ -276,7 +278,11 @@ function TaxiForm(props) {
             </>
           )}
         </Button>
+
+        <TripInfoButton {...props} />
+        </ButtonGroup>
       </Form>
+
       </ListGroupItem>
     </div>
   );

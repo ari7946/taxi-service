@@ -35,13 +35,13 @@ const TripInfoButton = (props) => {
         <PopoverHeader>Trip Details</PopoverHeader>
         <PopoverBody>
           <ListGroup>
-            <ListGroupItem>Starting Point: {startAddress} </ListGroupItem>
-            <ListGroupItem>Destination: {endAddress} </ListGroupItem>
-            <ListGroupItem>Distance: {distance} miles</ListGroupItem>
-            <ListGroupItem>Rate: {vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</ListGroupItem>
-            <ListGroupItem>Estimate: ${total}</ListGroupItem>
-            <ListGroupItem>Vehicle: {vehicle}</ListGroupItem>
-            <ListGroupItem>passengers: {vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Starting Point: </span>{startAddress} </ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Destination: </span> {endAddress} </ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Distance: </span> {distance} miles</ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Rate: </span> {vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Vehicle: </span>{vehicle}</ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">passengers: </span>{vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Estimate: </span>${total}</ListGroupItem>
           </ListGroup>
         </PopoverBody>
       </Popover>

@@ -24,13 +24,17 @@
   height: 10px; 
 }
 
+.about {
+  height: 80vh;
+}
+
 .price {
   border-top: 1px solid darkslategrey
 }
 
 .landing {
   background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(./assets/los-angeles.jpg);  background-color: #cccccc; /* Used if the image is unavailable */
-  height: 60vh; /* You must set a specified height */
+  height: 70vh; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */

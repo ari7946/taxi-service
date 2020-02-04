@@ -12,7 +12,7 @@ function FormHeader(props) {
           <ListGroupItem>
             <ListGroupItemHeading><Badge color="dark">Starting Point</Badge></ListGroupItemHeading>
           <ListGroupItemText>
-            {startAddress}
+            <span className="monospaced">{startAddress}</span>
           </ListGroupItemText>
         </ListGroupItem>
       )}

@@ -20,8 +20,9 @@
   width: 100%;
 }
 
-.hr {
+hr {
   height: 10px; 
+  background: white;
 }
 
 .about {
@@ -30,6 +31,10 @@
 
 .price {
   border-top: 1px solid darkslategrey
+}
+
+.about-section h3, .about-section p {
+  color: white;
 }
 
 .landing {

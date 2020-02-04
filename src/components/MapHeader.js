@@ -12,13 +12,13 @@ function MapHeader(props) {
   return (
     <div className='mb-3'>
       {!points[0] && !points[1] ? (
-        <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h4>
+        <h4 className="mb-0 lead text-white">Please Select <Badge color="light">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h4>
       ) : (
           !points[0] ? (
-            <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge></h4>
+            <h4 className="mb-0 lead text-white">Please Select <Badge color="light">Starting Point</Badge></h4>
           ) : (
               !points[1] ? (
-                <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
+                <h4 className="mb-0 lead text-white">Please Select <Badge color="danger">Destination</Badge></h4>
               ) : (
                   <div>
                     {/* <h4 className="estimate mb-2"><Badge color="info">Estimate:</Badge> 

@@ -11,7 +11,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App bg-light">
+      <div className="App">
         <NavbarContainer />
         <Switch>
           <Route path='/' exact component={Landing} /> 

@@ -266,20 +266,20 @@ function TaxiForm(props) {
         ) : null}
 
         {/* SUBMIT BUTTON */}
-          <ButtonGroup className="mt-3 mb-5">
-        <Button className="px-5 mr-3" color="warning">
-          {!loading && !submitted && (
-            <span>Submit</span>
-          )}
-          {loading && submitted && (
-            <>
-              <Spinner className="mr-2" size="sm" color="secondary" />
-              <span>Processing...</span>
-            </>
-          )}
-        </Button>
+        <ButtonGroup className="mt-3 mb-5">
+          <Button className="px-5 mr-3" color="warning">
+            {!loading && !submitted && (
+              <span>Submit</span>
+            )}
+            {loading && submitted && (
+              <>
+                <Spinner className="mr-2" size="sm" color="secondary" />
+                <span>Processing...</span>
+              </>
+            )}
+          </Button>
 
-        <TripInfoButton {...props} />
+            {startAddress && endAddress && <TripInfoButton {...props} />}
         </ButtonGroup>
       </Form>
 

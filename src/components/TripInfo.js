@@ -28,7 +28,7 @@ const TripInfoButton = (props) => {
   return (
     <div>
       <Button id="Popover1" type="button">
-        View Info
+        View Trip Details
       </Button>
 
       <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>

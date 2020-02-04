@@ -18,7 +18,7 @@ const NavbarComponent = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar className="container" expand="md">
+    <Navbar className="container mb-5" expand="md">
       <NavbarBrand href="/" className="mr-auto">
         <FontAwesomeIcon className="mr-2 fa-lg" icon={faTaxi} />
         Coastal Yellow Cabs

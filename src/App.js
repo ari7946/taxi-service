@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import MapFormContainer from './components/MapFormContainer';
-import NavbarContainer from './components/NavbarContainer';
-import Landing from './components/Landing';
-import About from './components/About';
+import MapFormContainer from './components/book/MapFormContainer';
+import NavbarContainer from './components/navbar/NavbarContainer';
+import Landing from './components/landing/Landing';
+import About from './components/about/About';
 import { Route, Switch } from 'react-router-dom';
 import './index.css';
 import './App.css';

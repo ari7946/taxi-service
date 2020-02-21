@@ -15,14 +15,12 @@ function FormHeader(props) {
             <span className="monospaced">{startAddress}</span>
           </ListGroupItemText>
         </ListGroupItem>
-      )}
 
-      {endAddress && (
-        // <p className="text-monospace"><Badge className="mt-3" color="danger">Destination: </Badge> {endAddress}</p>
-          <ListGroupItem>
+        {/* <p className="text-monospace"><Badge className="mt-3" color="danger">Destination: </Badge> {endAddress}</p> */}
+          <ListGroupItem className='bg-dark'>
             <ListGroupItemHeading><Badge color="danger">Destination</Badge></ListGroupItemHeading>
-            <ListGroupItemText>
-              {endAddress}
+            <ListGroupItemText className='text-white'>
+              {endAddress ? endAddress : <br />}
             </ListGroupItemText>
           </ListGroupItem>
       )}

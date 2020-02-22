@@ -17,7 +17,7 @@ class App extends Component {
           <Route path='/' exact component={Landing} /> 
           <Route path='/about' exact component={About} /> 
           <Route path='/book' exact component={MapFormContainer} />
-        </Switch>
+        </Switch> 
       </div>
     );
   }

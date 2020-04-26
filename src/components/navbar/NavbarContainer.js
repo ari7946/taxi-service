@@ -44,11 +44,11 @@ const NavbarComponent = (props) => {
             </NavLink>
           </NavItem>
 
-          <NavItem>
+          {/* <NavItem>
             <NavLink className="px-4 py-3" href="/">
               <Link className="" to="/contact" style={{ textDecoration: 'none' }}>Contact</Link>
             </NavLink>
-          </NavItem>
+          </NavItem> */}
         </Nav>
       </Collapse>
     </Navbar>

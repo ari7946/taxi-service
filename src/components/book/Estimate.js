@@ -30,6 +30,7 @@ const Estimate = (props) => {
             <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}.00</p>
             {direction === 'oneWay'
               ? <h2 className='ml-3 price pt-2'>Total: ${total}</h2>
+              //TODO Implement TwoWay as a potential future feature
               : (
                 <>
                   <p className='ml-3 price pt-2 mb-0'>Subtotal: ${total}</p>

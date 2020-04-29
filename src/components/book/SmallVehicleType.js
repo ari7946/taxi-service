@@ -10,7 +10,8 @@ function SmallVehicleType(props) {
       <Container>
         <Row>
           <CustomInput
-            inline checked
+            inline 
+            checked
             type="radio"
             id="sedan2"
             name="vehicle"

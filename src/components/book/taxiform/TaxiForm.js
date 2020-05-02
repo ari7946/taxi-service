@@ -1,9 +1,10 @@
 import React from 'react';
 import { Col, Row, Button, ButtonGroup, Form, FormGroup, Label, Input, CustomInput, Spinner, ListGroupItemHeading, ListGroupItem, ListGroup, Badge } from 'reactstrap';
 import TripInfoButton from '../TripInfo';
+import axios from 'axios';
 
 function TaxiForm(props) {
-  const { startAddress, endAddress, price, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields, date, time, points } = props.state;
+  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields, date, time, points } = props.state;
   const { dispatch } = props;
 
   React.useEffect(() => {
@@ -19,17 +20,18 @@ function TaxiForm(props) {
     dispatch({ type: 'submit' })
   }
 
-  const processForm = () => {
-    setTimeout(() => {
-      if (!error) {
+  const processForm = async () => {
+    const body = { distance, startAddress, endAddress, price, name, comments, phone, passengers, email, direction, date, time, vehicle, status }
+    try {
+      const res = await axios.post(process.env.POST_TRIP_URL, body)
+      if (res) {
         dispatch({ type: 'success' })
-      } else if (error) {
-        dispatch({ type: 'error', errorMessage: error })
       }
-    }, 3000);
+    } catch (error) {
+      dispatch({ type: 'error', errorMessage: error });
+    }
   }
 
-  console.log('state', props.state);
   return (
     <div className=''>
         <ListGroupItem>

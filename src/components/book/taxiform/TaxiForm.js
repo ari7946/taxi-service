@@ -23,7 +23,7 @@ function TaxiForm(props) {
   const processForm = async () => {
     const body = { distance, startAddress, endAddress, price, name, comments, phone, passengers, email, direction, date, time, vehicle, status }
     try {
-      const res = await axios.post(process.env.POST_TRIP_URL, body)
+      const res = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
       if (res) {
         dispatch({ type: 'success' })
       }

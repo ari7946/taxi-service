@@ -125,7 +125,6 @@ const initialState = {
   error: false,
   errorMessage: '',
   invalidFields: [],
-  status: 'pending',
 }
 
 function MapFormContainer() {

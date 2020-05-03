@@ -17,6 +17,9 @@ class App extends Component {
           <Route path='/' exact component={Landing} /> 
           <Route path='/about' exact component={About} /> 
           <Route path='/book' exact component={MapFormContainer} />
+          <Route path='/admin' exact component={Trips} />
+          <Route path='/admin/edit/:id' exact component={EditTrip} /> 
+          <Route path='/admin/delete/:id' exact component={DeleteTrip} />
         </Switch>
       </div>
     );

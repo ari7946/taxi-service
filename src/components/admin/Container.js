@@ -45,10 +45,15 @@ const initialState = {
 
 function Container() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-
+  const token = localStorage.getItem('token');
+  
   return (
-    <Login />
-    // <TripList state={state} dispatch={dispatch} />
+    <div>
+      {token 
+        ? <TripList state={state} dispatch={dispatch} /> 
+        : <Login />
+      }
+    </div>
   )
 }
 

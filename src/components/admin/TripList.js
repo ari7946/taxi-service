@@ -1,33 +1,38 @@
-// import React from 'react';
-// import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
-// import axios from 'axios';
+import React from 'react';
+import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
+import axios from 'axios';
 
-// const TripList = (props) => {
-//   React.useEffect(() => {
-//     dispatch({ type: 'submit'})
-//     const fetchTrips = async () => {
-//       const requestOptions = {
-//         headers: {
-//           Authorization: token,
-//           username
-//         }
-//       }
-//       try {
-//         const result = await axios.get(process.env.POST_TRIP_URL, requestOptions);
-//         console.log('result.data', result.data);
-//       } catch (error) {
-//         console.log('error', error)
-//       }
-//     }
-//   })
+const TripList = (props) => {
+  const { dispatch } = props;
+  const { name, startAddess, endAdress } = props.state;
 
+  React.useEffect(() => {
+    dispatch({ type: 'submit'})
+    const fetchTrips = async () => {
+      const token = localStorage.getItem('token');
+      const requestOptions = {
+        headers: {
+          Authorization: token
+        }
+      }
+      try {
+        const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, requestOptions);
+        console.log('result.data', result.data);
+      } catch (error) {
+        console.log('error 22', error)
+      }
+    }
 
-//   const { name, startAddess, endAdress } = props.state;
-//   return (
-//     <ListGroup>
+    fetchTrips();
+  }, [])
 
-//     </ListGroup>
-//   )
-// }
+  return (
+    <Container>
+      <ListGroup>
+        <div>list here</div>
+      </ListGroup>
+    </Container>
+  )
+}
 
-// export default TripList;
+export default TripList;

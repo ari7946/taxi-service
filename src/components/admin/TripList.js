@@ -19,7 +19,6 @@ const TripList = (props) => {
       try {
         const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, requestOptions);
         dispatch({ type: 'getTrips', trips: result.data})
-        // console.log('result.data', result.data);
       } catch (error) {
         dispatch({ type: 'error', error })
       }
@@ -28,7 +27,6 @@ const TripList = (props) => {
     fetchTrips();
   }, [])
 
-  console.log('state', trips)
   return (
     <Container>
       {loading ? <Spinner /> : (

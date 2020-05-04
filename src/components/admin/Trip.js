@@ -3,9 +3,12 @@ import { Container, Row, Col, ListGroup, ListGroupItem, Badge, Spinner } from 'r
 import axios from 'axios';
 
 const Trip = (props) => {
-  console.log('props in Trip', props)
+  const { trip, dispatch } = props;
+  console.log('trip', trip);
+  
   return (
     <ListGroupItem>
+      <p>{props.trip.name}</p>
     </ListGroupItem>
   )
 }

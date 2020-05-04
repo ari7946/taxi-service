@@ -1,5 +1,6 @@
 import React from 'react';
 import TripList from './TripList';
+import Login from './Login';
 
 function reducer(state, action) {
   switch(action.type) {
@@ -7,6 +8,12 @@ function reducer(state, action) {
       return {
         ...state,
         loading: true,
+      }
+    case 'getTrips':
+      return {
+        ...state,
+        loading: false,
+        trips: action.trips,
       }
     case 'updateTrip':
       return {
@@ -36,8 +43,13 @@ const initialState = {
   error: '',
 }
 
-const [state, dispatch] = React.useReducer(reducer, initialState);
+function Container() {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
-return (
-  <TripList state={state} dispatch={dispatch} />
-)
+  return (
+    <Login />
+    // <TripList state={state} dispatch={dispatch} />
+  )
+}
+
+export default Container;

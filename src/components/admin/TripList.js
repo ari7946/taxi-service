@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, ListGroup, ListGroupItem, Badge, Spinner } from 'reactstrap';
+import { Container, ListGroup, Spinner } from 'reactstrap';
 import axios from 'axios';
 import Trip from './Trip';
 
@@ -28,14 +28,14 @@ const TripList = (props) => {
     fetchTrips();
   }, [])
 
-  console.log('state', props.state.trips)
+  console.log('state', trips)
   return (
     <Container>
       {loading ? <Spinner /> : (
         <ListGroup>
-          {trips.map(trip => {
-            <Trip key={trip.id} {...props} />
-          })}
+          {trips.map(trip => 
+            <Trip key={trip.id} dispatch={dispatch} trip={trip} /> 
+          )}
         </ListGroup>
       )}
     </Container>

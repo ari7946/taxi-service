@@ -1,13 +1,14 @@
 import React from 'react';
-import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
+import { Container, Row, Col, ListGroup, ListGroupItem, Badge, Spinner } from 'reactstrap';
 import axios from 'axios';
+import Trip from './Trip';
 
 const TripList = (props) => {
   const { dispatch } = props;
-  const { name, startAddess, endAdress } = props.state;
+  const { loading, trips } = props.state;
 
   React.useEffect(() => {
-    dispatch({ type: 'submit'})
+    dispatch({ type: 'submit' })
     const fetchTrips = async () => {
       const token = localStorage.getItem('token');
       const requestOptions = {
@@ -17,20 +18,26 @@ const TripList = (props) => {
       }
       try {
         const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, requestOptions);
-        console.log('result.data', result.data);
+        dispatch({ type: 'getTrips', trips: result.data})
+        // console.log('result.data', result.data);
       } catch (error) {
-        console.log('error 22', error)
+        dispatch({ type: 'error', error })
       }
     }
 
     fetchTrips();
   }, [])
 
+  console.log('state', props.state.trips)
   return (
     <Container>
-      <ListGroup>
-        <div>list here</div>
-      </ListGroup>
+      {loading ? <Spinner /> : (
+        <ListGroup>
+          {trips.map(trip => {
+            <Trip key={trip.id} {...props} />
+          })}
+        </ListGroup>
+      )}
     </Container>
   )
 }

@@ -27,6 +27,10 @@ const TripList = (props) => {
     fetchTrips();
   }, [])
 
+  const changeTripStatus = (status, id) => {
+    
+  }
+
   return (
     <Container>
       {loading ? <Spinner /> : (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, ListGroup, Spinner } from 'reactstrap';
+import { Container, ListGroup, Spinner, Button } from 'reactstrap';
 import axios from 'axios';
 import Trip from './Trip';
 
@@ -8,37 +8,65 @@ const TripList = (props) => {
   const { loading, trips } = props.state;
 
   React.useEffect(() => {
-    dispatch({ type: 'submit' })
-    const fetchTrips = async () => {
-      const token = localStorage.getItem('token');
-      const requestOptions = {
-        headers: {
-          Authorization: token
-        }
-      }
-      try {
-        const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, requestOptions);
-        dispatch({ type: 'getTrips', trips: result.data})
-      } catch (error) {
-        dispatch({ type: 'error', error })
-      }
-    }
-
-    fetchTrips();
+    getTrips();
   }, [])
 
-  const changeTripStatus = (status, id) => {
-    
+  const getTrips = async () => {
+    dispatch({ type: 'submit' })
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+      headers: {
+        Authorization: token
+      }
+    }
+    try {
+      const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, requestOptions);
+      dispatch({ type: 'getTrips', trips: result.data })
+    } catch (error) {
+      dispatch({ type: 'error', error })
+    }
+  }
+
+  const updateTrips = async (status, id) => {
+    //dispatch({ type: 'submit' });
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+      headers: {
+        Authorization: token
+      }
+    }
+    try {
+      const result = await axios.put(
+        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`, 
+        { status }, 
+        requestOptions
+      );
+      getTrips();
+      dispatch({ type: 'updateTrip'})
+    } catch (error) {
+      dispatch({ type: 'error', error})
+    }
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    console.log('props', props)
   }
 
   return (
     <Container>
       {loading ? <Spinner /> : (
-        <ListGroup>
-          {trips.map(trip => 
-            <Trip key={trip.id} dispatch={dispatch} trip={trip} /> 
-          )}
-        </ListGroup>
+        <div>
+          <Button
+            className="float-right"
+            onClick={() => handleLogout()}
+          >Logout</Button>
+          <ListGroup>
+            {trips.length && trips.map(trip => 
+              <Trip key={trip.id} dispatch={dispatch} trip={trip} updateTrips={updateTrips} /> 
+            )}
+          </ListGroup>
+        </div>
       )}
     </Container>
   )

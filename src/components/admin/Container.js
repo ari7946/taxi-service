@@ -18,8 +18,7 @@ function reducer(state, action) {
     case 'updateTrip':
       return {
         ...state,
-        loading: false,
-        trips: action.trips,
+        loading: false
       }
     case 'deleteTrip':
       return {

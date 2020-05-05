@@ -45,8 +45,22 @@ const Trip = (props) => {
 
 
       <ButtonGroup className='ml-3'>
-        <Button>Confirm</Button>
-        <Button>Complete</Button>
+        <Button
+          className={`
+            ${trip.status === 'confirm' ? 'btn-info' : null}
+          `}
+          onClick={() => props.updateTrips('confirm', trip.id)}
+        >
+          Confirm
+        </Button>
+        <Button 
+          className={`
+            ${trip.status === 'complete' ? 'btn-success' : null}
+          `}
+          onClick={() => props.updateTrips('complete', trip.id)}
+        >
+          Complete 
+        </Button>
         <Button>Delete</Button>
       </ButtonGroup>
     </ListGroupItem>

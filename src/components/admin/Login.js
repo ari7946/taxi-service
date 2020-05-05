@@ -11,7 +11,8 @@ const Login = () => {
   const handleFormSubmit = async (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
     setLoading(true);
-
+    const token = localStorage.getItem('token');
+    console.log('token', token);
     try {
       const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
       if (response) {

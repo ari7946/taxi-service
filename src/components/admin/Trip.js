@@ -15,7 +15,6 @@ const Trip = (props) => {
       <p>name: {trip.name}</p>
       <p>phone: {trip.phone}</p>
       <p>email: {trip.email}</p>
-      <p>status: {trip.status}</p>
       <p>start address: {trip.startAddress}</p>
       <p>destination: {trip.endAddress}</p>
         <Button
@@ -61,7 +60,7 @@ const Trip = (props) => {
         >
           Complete 
         </Button>
-        <Button>Delete</Button>
+        <Button onClick={() => props.removeTrip(trip.id)}>Delete</Button>
       </ButtonGroup>
     </ListGroupItem>
   )

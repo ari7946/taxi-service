@@ -1,11 +1,13 @@
 import React from 'react';
 import { Container, ListGroup, Spinner, Button } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Trip from './Trip';
 
 const TripList = (props) => {
   const { dispatch } = props;
   const { loading, trips } = props.state;
+  let history = useHistory();
 
   React.useEffect(() => {
     getTrips();
@@ -48,9 +50,28 @@ const TripList = (props) => {
     }
   }
 
+  const removeTrip = async (id) => {
+    const token = localStorage.getItem('token');
+    const requestOptions = {
+      headers: {
+        Authorization: token
+      }
+    }
+    try {
+      const result = await axios.delete(
+        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
+        requestOptions
+      );
+      getTrips();
+      dispatch({ type: 'deleteTrip' })
+    } catch (error) {
+      dispatch({ type: 'error', error })
+    }
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('token');
-    console.log('props', props)
+    history.push('/admin');
   }
 
   return (
@@ -62,8 +83,16 @@ const TripList = (props) => {
             onClick={() => handleLogout()}
           >Logout</Button>
           <ListGroup>
-            {trips.length && trips.map(trip => 
-              <Trip key={trip.id} dispatch={dispatch} trip={trip} updateTrips={updateTrips} /> 
+            {trips.length ? trips.map(trip => 
+              <Trip 
+                key={trip.id} 
+                dispatch={dispatch} 
+                trip={trip} 
+                updateTrips={updateTrips} 
+                removeTrip={removeTrip} 
+              /> 
+            ) : (
+              <p>No trips or requests pending</p>
             )}
           </ListGroup>
         </div>

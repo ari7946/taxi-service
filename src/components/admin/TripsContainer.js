@@ -1,6 +1,7 @@
 import React from 'react';
 import TripList from './TripList';
 import Login from './Login';
+import { useHistory } from 'react-router-dom';
 
 function reducer(state, action) {
   switch(action.type) {
@@ -23,8 +24,7 @@ function reducer(state, action) {
     case 'deleteTrip':
       return {
         ...state,
-        loading: false,
-        trips: action.trips,
+        loading: false
       }
     case 'error':
       return {
@@ -45,12 +45,14 @@ const initialState = {
 function Container() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const token = localStorage.getItem('token');
-  
+  let history = useHistory();
+  if (!token) return history.goBack();
+
   return (
     <div>
       {token 
         ? <TripList state={state} dispatch={dispatch} /> 
-        : <Login />
+        : <p>not authorized</p>
       }
     </div>
   )

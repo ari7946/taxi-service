@@ -1,7 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import { useAuth } from '../../auth/use-auth';
 //TODO reproduce Login functionality using okta
 
 const Login = () => {
@@ -9,20 +10,22 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   let history = useHistory();
+  const {login} = useAuth();
 
   const handleFormSubmit = async (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
-    setLoading(true);
 
     try {
+      setLoading(true);
       const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
       if (response) {
         setLoading(false);
-        localStorage.setItem('token', response.data.token);
-        history.push('admin/trips')
+        login(response.data.token);
+        history.push('admin/trips');
       }
     } catch (error) {
       setLoading(false)
+      console.log('error', error);
     }
   }
  

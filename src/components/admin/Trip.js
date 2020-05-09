@@ -10,6 +10,8 @@ const Trip = (props) => {
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
+  if (trip.)
+
   return (
     <ListGroupItem>
       <p>name: {trip.name}</p>

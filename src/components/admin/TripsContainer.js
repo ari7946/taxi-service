@@ -30,9 +30,11 @@ function reducer(state, action) {
         trips: updatedTrips,
       }
     case 'deleteTrip':
+      const filterTrips = state.trips.filter(trip => trip.id !== action.trip.id)
       return {
         ...state,
-        loading: false
+        loading: false,
+        trips: filterTrips,
       }
     case 'error':
       return {

@@ -61,8 +61,7 @@ const TripList = (props) => {
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
         requestOptions
       );
-      getTrips();
-      dispatch({ type: 'deleteTrip' })
+      dispatch({ type: 'deleteTrip', trip: result.data })
     } catch (error) {
       dispatch({ type: 'error', error })
     }

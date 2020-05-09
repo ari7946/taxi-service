@@ -43,8 +43,7 @@ const TripList = (props) => {
         { status }, 
         requestOptions
       );
-      getTrips();
-      dispatch({ type: 'updateTrip'})
+      dispatch({ type: 'updateTrip', trip: result.data })
     } catch (error) {
       dispatch({ type: 'error', error})
     }

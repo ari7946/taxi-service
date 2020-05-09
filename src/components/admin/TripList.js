@@ -34,8 +34,7 @@ const TripList = (props) => {
         { status }, 
         authHeaders
       );
-      getTrips();
-      dispatch({ type: 'updateTrip'})
+      dispatch({ type: 'updateTrip', trip: result.data })
     } catch (error) {
       dispatch({ type: 'error', error})
     }
@@ -48,8 +47,7 @@ const TripList = (props) => {
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
         authHeaders
       );
-      getTrips();
-      dispatch({ type: 'deleteTrip' })
+      dispatch({ type: 'deleteTrip', trip: result.data.removedTrip })
     } catch (error) {
       dispatch({ type: 'error', error })
     }

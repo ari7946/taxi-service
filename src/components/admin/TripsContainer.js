@@ -1,7 +1,9 @@
 import React from 'react';
 import TripList from './TripList';
 import Login from './Login';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../auth/use-auth';
 
 function reducer(state, action) {
   switch(action.type) {
@@ -56,13 +58,14 @@ function Container() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const token = localStorage.getItem('token');
   let history = useHistory();
+  const auth = useAuth();
   if (!token) return history.goBack();
 
   return (
     <div>
-      {token 
+      {auth 
         ? <TripList state={state} dispatch={dispatch} /> 
-        : <p>not authorized</p>
+        : <Link to="/login">Signin</Link>
       }
     </div>
   )

@@ -3,11 +3,13 @@ import { Container, ListGroup, Spinner, Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Trip from './Trip';
+import { useAuth } from '../../auth/use-auth';
 
 const TripList = (props) => {
   const { dispatch } = props;
   const { loading, trips } = props.state;
   let history = useHistory();
+  const { logout, authHeaders } = useAuth();
 
   React.useEffect(() => {
     getTrips();
@@ -15,14 +17,8 @@ const TripList = (props) => {
 
   const getTrips = async () => {
     dispatch({ type: 'submit' })
-    const token = localStorage.getItem('token');
-    const requestOptions = {
-      headers: {
-        Authorization: token
-      }
-    }
     try {
-      const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, requestOptions);
+      const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, authHeaders);
       dispatch({ type: 'getTrips', trips: result.data })
     } catch (error) {
       dispatch({ type: 'error', error })
@@ -31,17 +27,12 @@ const TripList = (props) => {
 
   const updateTrips = async (status, id) => {
     //dispatch({ type: 'submit' });
-    const token = localStorage.getItem('token');
-    const requestOptions = {
-      headers: {
-        Authorization: token
-      }
-    }
+
     try {
       const result = await axios.put(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`, 
         { status }, 
-        requestOptions
+        authHeaders
       );
       dispatch({ type: 'updateTrip', trip: result.data })
     } catch (error) {
@@ -50,26 +41,16 @@ const TripList = (props) => {
   }
 
   const removeTrip = async (id) => {
-    const token = localStorage.getItem('token');
-    const requestOptions = {
-      headers: {
-        Authorization: token
-      }
-    }
+ 
     try {
       const result = await axios.delete(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
-        requestOptions
+        authHeaders
       );
       dispatch({ type: 'deleteTrip', trip: result.data })
     } catch (error) {
       dispatch({ type: 'error', error })
     }
-  }
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    history.push('/admin');
   }
 
   return (
@@ -78,7 +59,10 @@ const TripList = (props) => {
         <div>
           <Button
             className="float-right"
-            onClick={() => handleLogout()}
+            onClick={() => {
+              logout()
+              history.push('/admin')
+            }}
           >Logout</Button>
           <ListGroup>
             {trips.length ? trips.map(trip => 

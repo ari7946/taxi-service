@@ -47,7 +47,7 @@ const TripList = (props) => {
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
         authHeaders
       );
-      dispatch({ type: 'deleteTrip', trip: result.data })
+      dispatch({ type: 'deleteTrip', trip: result.data.removedTrip })
     } catch (error) {
       dispatch({ type: 'error', error })
     }

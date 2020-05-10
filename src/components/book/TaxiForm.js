@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row, Button, ButtonGroup, Form, FormGroup, Label, Input, CustomInput, Spinner, ListGroupItemHeading, ListGroupItem, ListGroup, Badge } from 'reactstrap';
-import TripInfoButton from '../TripInfo';
+import TripInfoButton from './TripInfo';
 import axios from 'axios';
 
 function TaxiForm(props) {

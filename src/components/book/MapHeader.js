@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge, Button, ButtonGroup } from 'reactstrap';
-import VehicleType from '../VehicleType';
+import VehicleType from './VehicleType';
 
 function MapHeader(props) {
   const { startAddress, endAddress, points, price, dropFee, direction } = props.state;

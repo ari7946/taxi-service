@@ -1,11 +1,11 @@
 import React from 'react';
-import TaxiForm from './taxiform/TaxiForm';
-import Loading from './map/Loading';
-import MapHeader from './map/MapHeader';
-import FormHeader from './taxiform/FormHeader';
+import TaxiForm from './TaxiForm';
+import Loading from './Loading';
+import MapHeader from './MapHeader';
+import FormHeader from './FormHeader';
 import Estimate from './Estimate';
 import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
-const Map = React.lazy(() => import('./map/Map'));
+const Map = React.lazy(() => import('./Map'));
 
 
 function reducer(state, action) {

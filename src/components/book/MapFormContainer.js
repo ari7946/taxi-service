@@ -2,7 +2,7 @@ import React from 'react';
 import TaxiForm from './TaxiForm';
 import Loading from './Loading';
 import MapHeader from './MapHeader';
-import FormHeader from './FormHeader';
+import Addresses from './Addresses';
 import Estimate from './Estimate';
 import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
 const Map = React.lazy(() => import('./Map'));
@@ -148,7 +148,7 @@ function MapFormContainer() {
 
         <Col sm='6'>
           <ListGroup flush>
-            <FormHeader state={state} />
+            <Addresses state={state} />
             <TaxiForm state={state} dispatch={dispatch} />
           </ListGroup>
         </Col>

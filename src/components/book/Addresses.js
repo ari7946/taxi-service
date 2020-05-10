@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge, Row, Col, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
 
-function FormHeader(props) {
+function Addresses(props) {
   const { startAddress, endAddress, points, price, dropFee, direction } = props.state;
 
   return (
@@ -31,4 +31,4 @@ function FormHeader(props) {
   )
 }
 
-export default FormHeader;
+export default Addresses;

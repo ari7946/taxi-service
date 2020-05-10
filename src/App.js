@@ -14,18 +14,18 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <ProvideAuth>
         <div className="App">
-          <NavbarContainer />
-          <Switch>
-            <Route path='/' exact component={Landing} /> 
-            <Route path='/about' exact component={About} /> 
-            <Route path='/book' exact component={MapFormContainer} />
-            <Route path='/admin' exact component={Login} />
-            <Route path='/admin/trips' exact component={TripsContainer} /> 
-          </Switch>
+          <ProvideAuth>
+            <NavbarContainer />
+            <Switch>
+              <Route path='/' exact component={Landing} /> 
+              <Route path='/about' exact component={About} /> 
+              <Route path='/book' exact component={MapFormContainer} />
+              <Route path='/admin' exact component={Login} />
+              <Route path='/admin/trips' exact component={TripsContainer} /> 
+            </Switch>
+          </ProvideAuth>
         </div>
-      </ProvideAuth>
     );
   }
 }

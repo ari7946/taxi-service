@@ -3,7 +3,7 @@ import MapFormContainer from './components/book/MapFormContainer';
 import NavbarContainer from './components/navbar/NavbarContainer';
 import Landing from './components/landing/Landing';
 import About from './components/about/About';
-import TripsContainer from './components/admin/TripsContainer';
+import TripsContainer from './components/admin/index';
 import Login from './components/admin/Login';
 import { Route, Switch } from 'react-router-dom';
 import { ProvideAuth } from "./auth/use-auth";

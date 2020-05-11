@@ -3,11 +3,7 @@ import { Badge, Button, ButtonGroup } from 'reactstrap';
 import VehicleType from './VehicleType';
 
 function MapHeader(props) {
-  const { startAddress, endAddress, points, price, dropFee, direction } = props.state;
-  const { dispatch } = props.dispatch;
-  const total = (Number(price) + dropFee).toFixed(2);
-  const discount = (total * 0.20).toFixed(2);
-  const discountTotal = (total - discount).toFixed(2);
+  const { startAddress, endAddress } = props.state;
 
   return (
     <div className='mb-3'>

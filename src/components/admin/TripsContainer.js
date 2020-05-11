@@ -1,6 +1,5 @@
 import React from 'react';
 import TripList from './TripList';
-import Login from './Login';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../auth/use-auth';

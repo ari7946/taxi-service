@@ -11,38 +11,21 @@ function MapHeader(props) {
 
   return (
     <div className='mb-3'>
-      {!points[0] && !points[1] ? (
+      {!startAddress && !endAddress && (
         <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge> and <Badge color="danger">Destination</Badge></h4>
-      ) : (
-          !points[0] ? (
-            <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge></h4>
-          ) : (
-              !points[1] ? (
-                <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
-              ) : (
-                  <div>
-                    {/* <h4 className="estimate mb-2"><Badge color="info">Estimate:</Badge> 
-                      ${direction === 'oneWay' ? total : discountTotal}
-                    </h4> */}
+      )}
 
-                    {/* <VehicleType {...props} /> */}
+      {!startAddress && endAddress && (
+        <h4 className="mb-0">Please Select <Badge color="dark">Starting Point</Badge></h4>
+      )} 
 
-                    {/* <ButtonGroup className='mobile-header'>
-                        <Button href="tel:5554280940" color='warning'>Tab to Call</Button>
-                      <Button color='warning ml-3'>Reserve Taxi Online</Button>
-                    </ButtonGroup>
-                    </div>  */}
+      {startAddress && !endAddress && (
+        <h4 className="mb-0">Please Select <Badge color="danger">Destination</Badge></h4>
+      )}
 
-                     <div>
-                       <h4><Badge color="success">Thank you</Badge> Please submit the form to book a taxi<br /> or give us a call / text
-                       929-123-0000
-                       </h4>
-                     </div> 
-                  </div>
-                )
-          )
-        )
-      }
+      {startAddress && endAddress && (
+        <h4><Badge color="success">Thank you</Badge> Please submit the form to book a taxi</h4>
+      )} 
     </div>
   )
 }

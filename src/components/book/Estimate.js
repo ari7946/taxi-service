@@ -1,9 +1,9 @@
 import React from 'react';
-import { Badge, Row, Col, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading } from 'reactstrap';
+import { Badge, ListGroupItem, ListGroupItemText, ListGroupItemHeading } from 'reactstrap';
 import VehicleType from './VehicleType';
 
 const Estimate = (props) => {
-  const { startAddress, endAddress, points, price, dropFee, direction, distance, vehicle } = props.state;
+  const { price, dropFee, direction } = props.state;
   const total = (Number(price) + dropFee).toFixed(2);
   const discount = (total * 0.20).toFixed(2);
   const discountTotal = (total - discount).toFixed(2);

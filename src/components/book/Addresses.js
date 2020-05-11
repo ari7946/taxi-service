@@ -1,8 +1,8 @@
 import React from 'react';
-import { Badge, Row, Col, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
+import { Badge, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
 
 function Addresses(props) {
-  const { startAddress, endAddress, points, price, dropFee, direction } = props.state;
+  const { startAddress, endAddress } = props.state;
 
   return (
     <div>

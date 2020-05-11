@@ -1,10 +1,10 @@
 import React from 'react';
-import { Col, Row, Button, ButtonGroup, Form, FormGroup, Label, Input, CustomInput, Spinner, ListGroupItemHeading, ListGroupItem, ListGroup, Badge } from 'reactstrap';
+import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItemHeading, ListGroupItem, Badge } from 'reactstrap';
 import TripInfoButton from './TripInfo';
 import axios from 'axios';
 
 function TaxiForm(props) {
-  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, error, errorMessage, invalidFields, date, time, points } = props.state;
+  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, invalidFields, date, time } = props.state;
   const { dispatch } = props;
 
   React.useEffect(() => {

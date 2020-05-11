@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, ListGroup, ListGroupItem, Badge, Spinner, ButtonGroup, Button, Popover, PopoverHeader, PopoverBody  } from 'reactstrap';
-import axios from 'axios';
+import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody  } from 'reactstrap';
 
 const Trip = (props) => {
   const { trip, dispatch } = props;

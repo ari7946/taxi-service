@@ -234,25 +234,6 @@ function TaxiForm(props) {
               {invalidFields.map(field => {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
                 let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
-                if (field === 'startAddress') {
-                  field = 'Starting Point'
-                } else if (field === 'endAddress') {
-                  field = 'Destination'
-                } else if (field === 'price') {
-                  field = 'Price'
-                } else if (field === 'name') {
-                  field = 'Name'
-                } else if (field === 'comments') {
-                  field = 'Comments'
-                } else if (field === 'phone') {
-                  field = 'Phone'
-                } else if (field === 'email') {
-                  field = "Email"
-                } else if (field === 'date') {
-                  field = 'Date'
-                } else if (field === 'time') {
-                  field = 'Time'
-                }
                 return (
                   <span>
                     {field}{!lastField

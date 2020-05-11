@@ -84,11 +84,20 @@ function reducer(state, action) {
       const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
       const invalidFields = [];
 
+      const formatField = string => {
+        if (string == "endAddress") 
+          string = "Destination";
+        else if (string === 'startAddress') 
+          string = "Starting Point";
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
       for (const property in fields) {
         if (!fields[property]) {
-          invalidFields.push(property)
+          invalidFields.push(formatField(property));
         }
-      } 
+      }
+       
       return {
         ...state,
         valid: invalidFields.length === 0 ? true : false,

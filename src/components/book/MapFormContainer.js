@@ -4,7 +4,7 @@ import Loading from './Loading';
 import MapHeader from './MapHeader';
 import Addresses from './Addresses';
 import Estimate from './Estimate';
-import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
+import { Container, Row, Col, ListGroup } from 'reactstrap';
 const Map = React.lazy(() => import('./Map'));
 
 

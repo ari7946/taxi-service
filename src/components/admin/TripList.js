@@ -26,8 +26,6 @@ const TripList = (props) => {
   }
 
   const updateTrips = async (status, id) => {
-    //dispatch({ type: 'submit' });
-
     try {
       const result = await axios.put(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`, 
@@ -41,7 +39,6 @@ const TripList = (props) => {
   }
 
   const removeTrip = async (id) => {
- 
     try {
       const result = await axios.delete(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,

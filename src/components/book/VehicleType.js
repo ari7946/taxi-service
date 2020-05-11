@@ -5,7 +5,7 @@ import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons'
 
 function VehicleType(props) {
   const { dispatch } = props;
-  const { vehicle, distance } = props.state;
+  const { vehicle } = props.state;
 
   return (
     <FormGroup>

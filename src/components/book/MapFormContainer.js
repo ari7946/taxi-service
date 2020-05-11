@@ -1,11 +1,11 @@
 import React from 'react';
-import TaxiForm from './taxiform/TaxiForm';
-import Loading from './map/Loading';
-import MapHeader from './map/MapHeader';
-import FormHeader from './taxiform/FormHeader';
+import TaxiForm from './TaxiForm';
+import Loading from './Loading';
+import MapHeader from './MapHeader';
+import Addresses from './Addresses';
 import Estimate from './Estimate';
-import { Container, Row, Col, ListGroup, ListGroupItem, Badge } from 'reactstrap';
-const Map = React.lazy(() => import('./map/Map'));
+import { Container, Row, Col, ListGroup } from 'reactstrap';
+const Map = React.lazy(() => import('./Map'));
 
 
 function reducer(state, action) {
@@ -148,7 +148,7 @@ function MapFormContainer() {
 
         <Col sm='6'>
           <ListGroup flush>
-            <FormHeader state={state} />
+            <Addresses state={state} />
             <TaxiForm state={state} dispatch={dispatch} />
           </ListGroup>
         </Col>

@@ -32,10 +32,6 @@ body {
   display: none;
 }
 
-.estimate {
-
-}
-
 /***************** LANDING **********************/
 .landing {
   background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(./assets/los-angeles.jpg);  background-color: #cccccc; /* Used if the image is unavailable */

@@ -1,4 +1,7 @@
-
+body {
+  background-color: #254E58 !important;
+}
+ /* #FAED26 */
 /***************** BOOK **********************/
 #map {
   max-height: 40vh;
@@ -7,17 +10,30 @@
   height: 60vh;
 }
 
-.about {
-  height: 80vh;
-}
-
 .price {
   border-top: 1px solid darkslategrey
+}
+
+.book-form label {
+  color: #FCE181;
+}
+
+.book-form {
+  background-color:#254E58 !important;
+}
+
+.book-address {
+  margin-bottom: .5rem;
+  padding-top: 0 0 !important;
 }
 
 /* display none because it defaults to metric */
 .geoResponse-result-distance {
   display: none;
+}
+
+.estimate {
+
 }
 
 /***************** LANDING **********************/
@@ -28,6 +44,14 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   color: white;
+}
+
+.landing-button {
+  background-color: #FCCD04 !important;
+}
+
+.landing-yellow {
+  color: #FCCD04;
 }
 
 
@@ -44,6 +68,18 @@
 img.about-img {
   margin-top: 1rem;
 } 
+
+.about-description {
+  color: #C9E1C8;
+}
+
+.about-heading {
+  color: #FCE181;
+}
+
+.about {
+  height: 80vh;
+}
 
 /***************** MEDIA QUERIES **********************/
 @media (max-width: 500px) {

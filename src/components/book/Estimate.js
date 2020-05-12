@@ -10,7 +10,7 @@ const Estimate = (props) => {
   
   return (
     <div>
-      <ListGroupItem className="border-0">
+      <ListGroupItem className="estimate bg-light">
         <ListGroupItemHeading><Badge color="info">Estimate</Badge></ListGroupItemHeading>
 
         <VehicleType {...props} />

@@ -1,5 +1,5 @@
-import React from 'react';
-import { FormGroup, Label, CustomInput, Row, Col, Container } from 'reactstrap';
+import React, { useState } from 'react';
+import { FormGroup, Label, Button, CustomInput, Row, Col, Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,7 +13,10 @@ function VehicleType(props) {
         <Row>
           <div className="mx-auto">
             <CustomInput
-              className="mr-4"
+              className={`
+              ${vehicle === 'sedan' ? 'text-warning' : null}
+              mr-4
+              `}
               inline checked
               type="radio"
               id="sedan"
@@ -32,6 +35,9 @@ function VehicleType(props) {
             </CustomInput>
 
             <CustomInput
+              className={`
+              ${vehicle === 'van' ? 'text-warning' : null}
+              `}
               inline
               type="radio"
               id="van"

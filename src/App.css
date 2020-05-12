@@ -1,7 +1,7 @@
 body {
-  background-color: #254E58 !important;
+  background-color: var(--color-green-dark) !important;
 }
- /* #FAED26 */
+
 /***************** BOOK **********************/
 #map {
   max-height: 40vh;
@@ -10,21 +10,44 @@ body {
   height: 60vh;
 }
 
-.price {
-  border-top: 1px solid darkslategrey
+h2.price {
+  color: var(--color-grey-light-2)
 }
 
 .book-form label {
-  color: #FCE181;
+  color: var(--color-green-light);
 }
 
 .book-form {
-  background-color:#254E58 !important;
+  background-color: var(--color-green-dark) !important;
 }
 
 .book-address {
   margin-bottom: .5rem;
   padding-top: 0 0 !important;
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-grey-light-2);
+}
+
+.address-heading-starting {
+  color: var(--color-yellow);
+  font-weight: bold !important;
+}
+
+.address-heading-destination {
+  color: var(--color-flat-orange);
+  font-weight: bold !important;
+}
+
+.estimate {
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-green-light);
+  border: none !important;
+}
+
+.estimate-heading {
+  color: var(--color-primary);
+  font-weight: bold !important;
 }
 
 /* display none because it defaults to metric */
@@ -43,13 +66,12 @@ body {
 }
 
 .landing-button {
-  background-color: #FCCD04 !important;
+  background-color: var(--color-yellow) !important;
 }
 
 .landing-yellow {
-  color: #FCCD04;
+  color: var(--color-yellow) !important;
 }
-
 
 /***************** ABOUT **********************/
 .about-section {
@@ -59,18 +81,15 @@ body {
 .about-description {
   line-height: 23px;
   font-size: 16px;
+  color: var(--color-green-light);
 }
 
 img.about-img {
   margin-top: 1rem;
-} 
-
-.about-description {
-  color: #C9E1C8;
 }
 
 .about-heading {
-  color: #FCE181;
+  color: var(--color-yellow);
 }
 
 .about {

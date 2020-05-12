@@ -9,7 +9,7 @@ function Addresses(props) {
       <ListGroup flush>
       {startAddress && (
           <ListGroupItem className="book-address">
-            <ListGroupItemHeading><Badge color="dark">Starting Point</Badge></ListGroupItemHeading>
+            <ListGroupItemHeading className="address-heading-starting">Starting Point</ListGroupItemHeading>
           <ListGroupItemText>
             <span className="monospaced">{startAddress}</span>
           </ListGroupItemText>
@@ -18,7 +18,7 @@ function Addresses(props) {
 
       {endAddress && (
           <ListGroupItem className="book-address">
-            <ListGroupItemHeading><Badge color="danger">Destination</Badge></ListGroupItemHeading>
+            <ListGroupItemHeading className='address-heading-destination'>Destination</ListGroupItemHeading>
             <ListGroupItemText>
               {endAddress}
             </ListGroupItemText>

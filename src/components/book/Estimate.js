@@ -10,9 +10,7 @@ const Estimate = (props) => {
   
   return (
     <div>
-      <ListGroupItem className="border-0">
-        <ListGroupItemHeading><Badge color="info">Estimate</Badge></ListGroupItemHeading>
-
+      <ListGroupItem className="estimate mt-3 pt-3">
         <VehicleType {...props} />
 
         {/* //TODO Implement as a future feature */}
@@ -24,20 +22,21 @@ const Estimate = (props) => {
         </ul> */}
 
         <ListGroupItemText>
-          <div className="text-center mx-auto my-2 w-50">
+          <div className="text-center mx-auto my-2 w-75">
             {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
             <p className='ml-4 mb-0'>Taxi Fare: ${price}</p>
             <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}.00</p>
             {direction === 'oneWay'
-              ? <h2 className='ml-3 price pt-2'>Total: ${total}</h2>
+              ? <h2 className='ml-3 price border-top border-light pt-2 w-100'>Estimate: ${total}</h2>
+              : null
               //TODO Implement TwoWay as a potential future feature
-              : (
-                <>
-                  <p className='ml-3 price pt-2 mb-0'>Subtotal: ${total}</p>
-                  <p className='ml-3 pt-0 mb-0'><span className="mr-3 lead">-</span>Discount: ${discount}</p>
-                  <h2 className='ml-3 price pt-2 lead'><Badge color="info">Total: ${discountTotal}</Badge></h2>
-                </>
-              )
+              // : (
+              //   <>
+              //     <p className='ml-3 price pt-2 mb-0'>Subtotal: ${total}</p>
+              //     <p className='ml-3 pt-0 mb-0'><span className="mr-3 lead">-</span>Discount: ${discount}</p>
+              //     <h2 className='ml-3 price pt-2 lead'><Badge color="info">Estimate: ${discountTotal}</Badge></h2>
+              //   </>
+              // )
             }
           </div>
         </ListGroupItemText>

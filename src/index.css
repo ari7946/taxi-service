@@ -1,3 +1,69 @@
+:root {
+    --color-primary: ##254E58;
+    --color-yellow:#FCCD04;
+    --color-green-dark: #254E58;
+    --color-green-light: #C9E1C8;
+    --color-orange: #FF652F;
+    --color-flat-orange: #FFCCBC;
+    --color-flat-green: #00887A;
+    --color-flat-blue: #77A6F7;
+
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+    
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+
+    --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+    --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+
+    --line: 1px solid var(--color-grey-light-2);
+}
+
+.text-yellow {
+  color: var(--color-yellow) !important;
+}
+
+.bg-yellow {
+  background-color: var(--color-yellow) !important;
+}
+
+.text-green-dark {
+  color: var(--color-green-dark) !important;
+}
+
+.bg-green-dark {
+  background-color: var(--color-green-dark) !important;
+}
+
+.text-green-light {
+  color: var(--color-green-light) !important;
+}
+
+.bg-green-light {
+  background-color: var(--color-green-light) !important;
+}
+
+.text-orange {
+  color: var(--color-orange) !important;
+}
+
+.bg-orange {
+  background-color: var(--color-orange) !important;
+}
+
+.text-grey-light-2 {
+  color: var(--color-grey-light-2) !important;
+}
+
+.bg-grey-light-2 {
+  background-color: var(--color-grey-light-2) !important;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +87,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   min-height: 100vh;
+  background-color: var(--color-green-dark) !important;
 }
 
 

@@ -34,8 +34,8 @@ function TaxiForm(props) {
 
   return (
     <div className=''>
-      <ListGroupItem>
-        <ListGroupItemHeading className="mb-3"> <Badge color="warning">Reserve Taxi</Badge></ListGroupItemHeading>
+      <ListGroupItem className="book-form">
+        {/* <ListGroupItemHeading className="mb-3"> <Badge color="warning">Reserve Taxi</Badge></ListGroupItemHeading> */}
         <Form onSubmit={(e) => handleFormSubmit(e)}>
           {/* NAME */}
           <FormGroup>

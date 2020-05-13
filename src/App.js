@@ -14,7 +14,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-        <div className="App">
+        <React.Fragment>
           <ProvideAuth>
             <NavbarContainer />
             <Switch>
@@ -25,7 +25,7 @@ class App extends Component {
               <Route path='/admin/trips' exact component={TripsContainer} /> 
             </Switch>
           </ProvideAuth>
-        </div>
+        </React.Fragment>
     );
   }
 }

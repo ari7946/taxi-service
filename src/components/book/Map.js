@@ -109,7 +109,7 @@ function Map({ dispatch }) {
   }, [dispatch])
 
   return (
-    <div className="mt-1" id='map'></div>
+    <div className="mt-1 border border-light" id='map'></div>
   );
 }
 

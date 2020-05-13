@@ -1,5 +1,5 @@
 
-/***************** BOOKING **********************/
+/***************** BOOK **********************/
 #map {
   max-height: 40vh;
   width: 100%;
@@ -7,12 +7,44 @@
   height: 60vh;
 }
 
-.about {
-  height: 80vh;
+h2.price {
+  color: var(--color-grey-light-2)
 }
 
-.price {
-  border-top: 1px solid darkslategrey
+.book-form label {
+  color: var(--color-green-light);
+}
+
+.book-form {
+  background-color: var(--color-green-dark) !important;
+}
+
+.book-address {
+  margin-bottom: .5rem;
+  padding-top: 0 0 !important;
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-grey-light-2);
+}
+
+.address-heading-starting {
+  color: var(--color-yellow);
+  font-weight: bold !important;
+}
+
+.address-heading-destination {
+  color: var(--color-flat-orange);
+  font-weight: bold !important;
+}
+
+.estimate {
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-green-light);
+  border: none !important;
+}
+
+.estimate-heading {
+  color: var(--color-primary);
+  font-weight: bold !important;
 }
 
 /* display none because it defaults to metric */
@@ -30,6 +62,13 @@
   color: white;
 }
 
+.landing-button {
+  background-color: var(--color-yellow) !important;
+}
+
+.landing-yellow {
+  color: var(--color-yellow) !important;
+}
 
 /***************** ABOUT **********************/
 .about-section {
@@ -39,11 +78,20 @@
 .about-description {
   line-height: 23px;
   font-size: 16px;
+  color: var(--color-green-light);
 }
 
 img.about-img {
   margin-top: 1rem;
-} 
+}
+
+.about-heading {
+  color: var(--color-yellow);
+}
+
+.about {
+  height: 80vh;
+}
 
 /***************** MEDIA QUERIES **********************/
 @media (max-width: 500px) {

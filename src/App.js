@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import MapFormContainer from './components/book/MapFormContainer';
-import NavbarContainer from './components/navbar/NavbarContainer';
-import Landing from './components/landing/Landing';
-import About from './components/about/About';
-import TripsContainer from './components/admin/index';
+import MapFormContainer from './components/book';
+import NavbarContainer from './components/navbar';
+import Landing from './components/landing';
+import About from './components/about';
+import TripsContainer from './components/admin';
 import Login from './components/admin/Login';
 import { Route, Switch } from 'react-router-dom';
 import { ProvideAuth } from "./auth/use-auth";

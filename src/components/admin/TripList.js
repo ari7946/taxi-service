@@ -34,7 +34,7 @@ const TripList = (props) => {
       );
       dispatch({ type: 'updateTrip', trip: result.data })
     } catch (error) {
-      dispatch({ type: 'error', error})
+      dispatch({ type: 'error', error })
     }
   }
 

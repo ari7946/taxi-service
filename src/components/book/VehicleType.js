@@ -15,7 +15,7 @@ function VehicleType(props) {
             <CustomInput
               className={`
                 ${vehicle === 'sedan' ? 'text-warning' : null}
-              mr-4
+                mr-4
               `}
               inline checked
               type="radio"

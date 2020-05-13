@@ -14,7 +14,7 @@ function VehicleType(props) {
           <div className="mx-auto">
             <CustomInput
               className={`
-              ${vehicle === 'sedan' ? 'text-warning' : null}
+                ${vehicle === 'sedan' ? 'text-warning' : null}
               mr-4
               `}
               inline checked
@@ -36,7 +36,7 @@ function VehicleType(props) {
 
             <CustomInput
               className={`
-              ${vehicle === 'van' ? 'text-warning' : null}
+                ${vehicle === 'van' ? 'text-warning' : null}
               `}
               inline
               type="radio"

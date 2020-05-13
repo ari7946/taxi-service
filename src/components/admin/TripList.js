@@ -53,14 +53,16 @@ const TripList = (props) => {
   return (
     <Container>
       {loading ? <Spinner /> : (
-        <div>
+        <React.Fragment>
           <Button
             className="float-right"
             onClick={() => {
               logout()
               history.push('/admin')
             }}
-          >Logout</Button>
+          >
+            Logout
+          </Button>
           <ListGroup>
             {trips.length ? trips.map(trip => 
               <Trip 
@@ -74,7 +76,7 @@ const TripList = (props) => {
               <p>No trips or requests pending</p>
             )}
           </ListGroup>
-        </div>
+        </React.Fragment>
       )}
     </Container>
   )

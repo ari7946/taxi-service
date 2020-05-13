@@ -5,8 +5,8 @@ import VehicleType from './VehicleType';
 const Estimate = (props) => {
   const { price, dropFee, direction } = props.state;
   const total = (Number(price) + dropFee).toFixed(2);
-  const discount = (total * 0.20).toFixed(2);
-  const discountTotal = (total - discount).toFixed(2);
+  // const discount = (total * 0.20).toFixed(2);
+  // const discountTotal = (total - discount).toFixed(2);
   
   return (
     <div>

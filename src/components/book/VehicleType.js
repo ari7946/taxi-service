@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormGroup, Label, Button, CustomInput, Row, Col, Container } from 'reactstrap';
+import { FormGroup, CustomInput, Row, Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons'
 

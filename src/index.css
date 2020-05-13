@@ -23,6 +23,39 @@
     --line: 1px solid var(--color-grey-light-2);
 }
 
+.text-yellow {
+  color: var(--color-yellow) !important;
+}
+
+.bg-yellow {
+  background-color: var(--color-yellow) !important;
+}
+
+.text-green-dark {
+  color: var(--color-green-dark) !important;
+}
+
+.bg-green-light {
+  background-color: var(--color-green-light) !important;
+}
+
+.text-orange {
+  color: var(--color-orange);
+}
+
+.bg-orange {
+  background-color: var(--color-orange);
+}
+
+.text-grey-light-2 {
+  color: var(--color-grey-light-2);
+}
+
+.bg-grey-light-2 {
+  background-color: var(--color-grey-light-2);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -46,6 +79,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   min-height: 100vh;
+  background-color: var(--color-green-dark) !important;
 }
 
 

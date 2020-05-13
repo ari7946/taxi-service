@@ -35,24 +35,32 @@
   color: var(--color-green-dark) !important;
 }
 
+.bg-green-dark {
+  background-color: var(--color-green-dark) !important;
+}
+
+.text-green-light {
+  color: var(--color-green-light) !important;
+}
+
 .bg-green-light {
   background-color: var(--color-green-light) !important;
 }
 
 .text-orange {
-  color: var(--color-orange);
+  color: var(--color-orange) !important;
 }
 
 .bg-orange {
-  background-color: var(--color-orange);
+  background-color: var(--color-orange) !important;
 }
 
 .text-grey-light-2 {
-  color: var(--color-grey-light-2);
+  color: var(--color-grey-light-2) !important;
 }
 
 .bg-grey-light-2 {
-  background-color: var(--color-grey-light-2);
+  background-color: var(--color-grey-light-2) !important;
 }
 
 

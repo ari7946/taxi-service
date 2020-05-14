@@ -14,18 +14,18 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-        <React.Fragment>
-          <ProvideAuth>
-            <NavbarContainer />
-            <Switch>
-              <Route path='/' exact component={Landing} /> 
-              <Route path='/about' exact component={About} /> 
-              <Route path='/book' exact component={MapFormContainer} />
-              <Route path='/admin' exact component={Login} />
-              <Route path='/admin/trips' exact component={TripsContainer} /> 
-            </Switch>
-          </ProvideAuth>
-        </React.Fragment>
+      <ProvideAuth>
+        <div className="wrapper">
+          <NavbarContainer />
+          <Switch>
+            <Route path='/' exact component={Landing} /> 
+            <Route path='/about' exact component={About} /> 
+            <Route path='/book' exact component={MapFormContainer} />
+            <Route path='/admin' exact component={Login} />
+            <Route path='/admin/trips' exact component={TripsContainer} /> 
+          </Switch>
+        </div>
+      </ProvideAuth>
     );
   }
 }

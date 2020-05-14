@@ -58,7 +58,7 @@ const TripList = (props) => {
             className="float-right"
             onClick={() => {
               logout()
-              history.push('/admin')
+              history.push('/')
             }}
           >
             Logout

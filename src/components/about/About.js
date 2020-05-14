@@ -8,7 +8,7 @@ import driver from '../../assets/driver.jpg';
 export default class About extends React.Component {
   render() {
     return (
-      <Container className="about">
+      <Container fluid className="about">
         <Row className="about-section">
           <Col sm={6}><img className="about-img rounded mx-auto d-block" src={city} alt="city" width="150" height="150" /></Col>
           <Col className="order-first order-sm-2" sm={6}>

@@ -95,6 +95,8 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   background-color: var(--color-green-dark) !important;
+  max-width: 1400px;
+  margin: 0 auto !important;
 }
 
 

@@ -50,7 +50,7 @@ const TripList = (props) => {
   }
 
   return (
-    <Container>
+    <Container fluid>
       {loading ? <Spinner color="light" /> : (
         <ListGroup>
           {trips.length ? trips.map(trip => 

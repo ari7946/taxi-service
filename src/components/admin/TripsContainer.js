@@ -55,16 +55,15 @@ const initialState = {
 
 function Container() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const token = localStorage.getItem('token');
   let history = useHistory();
-  const auth = useAuth();
-  if (!token) return history.goBack();
+  const { auth } = useAuth();
+  // if (!auth) return history.goBack();
 
   return (
     <div>
       {auth 
         ? <TripList state={state} dispatch={dispatch} /> 
-        : <Link to="/login">Signin</Link>
+        : <Link to="/admin">Login in</Link>
       }
     </div>
   )

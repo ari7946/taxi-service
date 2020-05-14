@@ -12,7 +12,7 @@ export function useAuth() {
 };
 
 const useProvideAuth = () => {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(localStorage.getItem('token') || null);
 
   const login = (token) => {
     localStorage.setItem('token', token);

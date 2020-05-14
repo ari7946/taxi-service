@@ -8,6 +8,7 @@ import { useAuth } from '../../auth/use-auth';
 const TripList = (props) => {
   const { dispatch } = props;
   const { loading, trips } = props.state;
+  const { authHeaders } = useAuth();
 
   React.useEffect(() => {
     getTrips();

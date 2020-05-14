@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <Container className="text-green-light">
       <h1 className="mb-3">Admin Login</h1>
-      {loading && <Spinner size="md" color="secondary"></Spinner>}
+      {loading && <Spinner size="md" color="light"></Spinner>}
       <Form className='w-50' onSubmit={(e) => handleFormSubmit(e)}>
         <FormGroup>
           <Label for="admin">Username</Label>

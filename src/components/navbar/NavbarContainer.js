@@ -35,7 +35,7 @@ const NavbarComponent = (props) => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mx-auto" navbar>
           <NavItem className='py-3'>
-            <Link className="px-5 mr-3 py-3 text-yellow lead" to="/" style={{ textDecoration: 'none' }}>Home</Link>
+            <Link className="px-5 mr-1 py-3 text-yellow lead" to="/" style={{ textDecoration: 'none' }}>Home</Link>
           </NavItem>
 
           <NavItem className='py-3'>
@@ -49,17 +49,17 @@ const NavbarComponent = (props) => {
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>
               <div className="pt-2">
-                <span className="px-5 ml-2 py-3 text-green-light lead">Admin</span>
+                <span className="px-5 ml-1 py-1 text-green-light lead">Admin</span>
               </div>
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                <Link className="text-green-dark py-3" to="admin/trips" style={{ textDecoration: 'none' }}>
-                  <NavItem>Trips</NavItem>
+                <Link to="admin/trips" style={{ textDecoration: 'none' }}>
+                  <NavItem className="text-green-dark py-2" >Trips</NavItem>
                 </Link>
               </DropdownItem>
               <DropdownItem 
-                className="text-orange py-3"
+                className="text-orange py-1 mt-2"
                 onClick={() => {
                   logout();
                   history.replace('/');

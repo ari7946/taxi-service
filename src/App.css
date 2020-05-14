@@ -93,6 +93,17 @@ img.about-img {
   height: 80vh;
 }
 
+/***************** ABOUT **********************/
+.trip-list-info {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.trip-list-heading {
+  font-family: "Courier New", Courier, monospace;
+  text-transform: uppercase;
+}
+
+
 /***************** MEDIA QUERIES **********************/
 @media (max-width: 500px) {
   #map {

@@ -11,11 +11,11 @@ const Trip = (props) => {
 
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3">
-      <p><span className="trip-list-heading">name:</span> {trip.name}</p>
-      <p><span className="trip-list-heading">phone:</span> {trip.phone}</p>
-      <p><span className="trip-list-heading">email:</span> {trip.email}</p>
-      <p><span className="trip-list-heading">start address:</span> {trip.startAddress}</p>
-      <p><span className="trip-list-heading">destination:</span> {trip.endAddress}</p>
+      <p className="trip-list-info"><span className="trip-list-heading">name:</span> {trip.name}</p>
+      <p className="trip-list-info"><span className="trip-list-heading">phone:</span> {trip.phone}</p>
+      <p className="trip-list-info"><span className="trip-list-heading">email:</span> {trip.email}</p>
+      <p className="trip-list-info"><span className="trip-list-heading">start address:</span> {trip.startAddress}</p>
+      <p className="trip-list-info"><span className="trip-list-heading">destination:</span> {trip.endAddress}</p>
 
       <ButtonGroup color="light">
         <Button

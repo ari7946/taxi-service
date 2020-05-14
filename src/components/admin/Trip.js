@@ -10,12 +10,12 @@ const Trip = (props) => {
   const toggle = () => setPopoverOpen(!popoverOpen);
 
   return (
-    <ListGroupItem>
-      <p>name: {trip.name}</p>
-      <p>phone: {trip.phone}</p>
-      <p>email: {trip.email}</p>
-      <p>start address: {trip.startAddress}</p>
-      <p>destination: {trip.endAddress}</p>
+    <ListGroupItem className="bg-grey-light-2 mb-3">
+      <p><span className="trip-list-heading">name:</span> {trip.name}</p>
+      <p><span className="trip-list-heading">phone:</span> {trip.phone}</p>
+      <p><span className="trip-list-heading">email:</span> {trip.email}</p>
+      <p><span className="trip-list-heading">start address:</span> {trip.startAddress}</p>
+      <p><span className="trip-list-heading">destination:</span> {trip.endAddress}</p>
         <Button
           className="mr-1"
           color="secondary"
@@ -42,10 +42,10 @@ const Trip = (props) => {
         </Popover>
 
 
-      <ButtonGroup className='ml-3'>
+      <ButtonGroup className='ml-3' color="light">
         <Button
           className={`
-            ${trip.status === 'confirm' ? 'btn-info' : null}
+            ${trip.status === 'confirm' ? 'bg-green-light text-green-dark' : null}
           `}
           onClick={() => props.updateTrips('confirm', trip.id)}
         >
@@ -53,7 +53,7 @@ const Trip = (props) => {
         </Button>
         <Button 
           className={`
-            ${trip.status === 'complete' ? 'btn-success' : null}
+            ${trip.status === 'complete' ? 'bg-green-dark' : null}
           `}
           onClick={() => props.updateTrips('complete', trip.id)}
         >

@@ -8,8 +8,7 @@ import { useAuth } from '../../auth/use-auth';
 const TripList = (props) => {
   const { dispatch } = props;
   const { loading, trips } = props.state;
-  let history = useHistory();
-  const { logout, authHeaders } = useAuth();
+  const { authHeaders } = useAuth();
 
   React.useEffect(() => {
     getTrips();
@@ -34,7 +33,7 @@ const TripList = (props) => {
       );
       dispatch({ type: 'updateTrip', trip: result.data })
     } catch (error) {
-      dispatch({ type: 'error', error})
+      dispatch({ type: 'error', error })
     }
   }
 
@@ -51,30 +50,21 @@ const TripList = (props) => {
   }
 
   return (
-    <Container>
-      {loading ? <Spinner /> : (
-        <div>
-          <Button
-            className="float-right"
-            onClick={() => {
-              logout()
-              history.push('/admin')
-            }}
-          >Logout</Button>
-          <ListGroup>
-            {trips.length ? trips.map(trip => 
-              <Trip 
-                key={trip.id} 
-                dispatch={dispatch} 
-                trip={trip} 
-                updateTrips={updateTrips} 
-                removeTrip={removeTrip} 
-              /> 
-            ) : (
-              <p>No trips or requests pending</p>
-            )}
-          </ListGroup>
-        </div>
+    <Container fluid>
+      {loading ? <Spinner color="light" /> : (
+        <ListGroup>
+          {trips.length ? trips.map(trip => 
+            <Trip 
+              key={trip.id} 
+              dispatch={dispatch} 
+              trip={trip} 
+              updateTrips={updateTrips} 
+              removeTrip={removeTrip} 
+            /> 
+          ) : (
+            <p className="text-green-light">No trips or requests pending</p>
+          )}
+        </ListGroup>
       )}
     </Container>
   )

@@ -141,7 +141,7 @@ function MapFormContainer() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
-    <Container>
+    <Container fluid>
       <MapHeader points={state.points} state={state} dispatch={dispatch} />
       <Row>
         <Col sm='6'>

@@ -52,31 +52,20 @@ const TripList = (props) => {
 
   return (
     <Container>
-      {loading ? <Spinner /> : (
-        <React.Fragment>
-          <Button
-            className="float-right"
-            onClick={() => {
-              logout()
-              history.push('/')
-            }}
-          >
-            Logout
-          </Button>
-          <ListGroup>
-            {trips.length ? trips.map(trip => 
-              <Trip 
-                key={trip.id} 
-                dispatch={dispatch} 
-                trip={trip} 
-                updateTrips={updateTrips} 
-                removeTrip={removeTrip} 
-              /> 
-            ) : (
-              <p>No trips or requests pending</p>
-            )}
-          </ListGroup>
-        </React.Fragment>
+      {loading ? <Spinner color="light" /> : (
+        <ListGroup>
+          {trips.length ? trips.map(trip => 
+            <Trip 
+              key={trip.id} 
+              dispatch={dispatch} 
+              trip={trip} 
+              updateTrips={updateTrips} 
+              removeTrip={removeTrip} 
+            /> 
+          ) : (
+            <p className="text-green-light">No trips or requests pending</p>
+          )}
+        </ListGroup>
       )}
     </Container>
   )

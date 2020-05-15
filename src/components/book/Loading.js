@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Spinner } from 'reactstrap';
 
 function Loading() {
   return (
-    <>
+    <Fragment>
       <Spinner animation="border" variant="light" size="lg" />
-      <h3 className="text-white">loading map...</h3>
-    </>
-
+      <p className="text-white">loading map...</p>
+    </Fragment>
   )
 }
 

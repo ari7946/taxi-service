@@ -28,9 +28,28 @@ const Login = () => {
       console.log('error', error);
     }
   }
+
+  const handleGuestSubmit = async (formSubmitEvent) => {
+    const username = process.env.REACT_APP_GUEST_USERNAME;
+    const password = process.env.REACT_APP_GUEST_PASSWORD;
+
+    try {
+      setLoading(true);
+      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
+      if (response) {
+        setLoading(false);
+        login(response.data.token);
+        history.push('admin/trips');
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log('error', error);
+    }
+  }
  
   return (
     <Container className="text-green-light">
+      <p className="small text-green-light">Log in as a guest for development purposes. No username or password required</p>
       <h1 className="mb-3">Admin Login</h1>
       {loading && <Spinner size="md" color="light"></Spinner>}
       <Form className='w-50' onSubmit={(e) => handleFormSubmit(e)}>
@@ -51,7 +70,13 @@ const Login = () => {
           />
         </FormGroup>
         <Button className="text-green-light">
-          Submit
+          Login
+        </Button>
+        <Button
+          className="text-green-light ml-3"
+          onClick={() => handleGuestSubmit()}
+        >
+          Guest Login
         </Button>
       </Form>
     </Container>  

@@ -4,6 +4,7 @@ import Loading from './Loading';
 import MapHeader from './MapHeader';
 import Addresses from './Addresses';
 import Estimate from './Estimate';
+import './bookStyle.css';
 import { Container, Row, Col, ListGroup } from 'reactstrap';
 const Map = React.lazy(() => import('./Map'));
 

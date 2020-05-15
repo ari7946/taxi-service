@@ -12,6 +12,7 @@ import {
   DropdownItem,
   DropdownMenu,
 } from 'reactstrap';
+import "./navbarStyle.css";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTaxi } from '@fortawesome/free-solid-svg-icons'

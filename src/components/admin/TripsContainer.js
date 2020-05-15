@@ -3,6 +3,7 @@ import TripList from './TripList';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../auth/use-auth';
+import './adminStyle.css';
 
 function reducer(state, action) {
   switch(action.type) {

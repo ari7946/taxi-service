@@ -1,4 +1,5 @@
 import React from 'react';
+import './landingStyle.css';
 import { Jumbotron, Button, Container } from 'reactstrap';
 import { Link, withRouter } from 'react-router-dom'
 

@@ -1,0 +1,65 @@
+/***************** BOOK **********************/
+#map {
+  max-height: 40vh;
+  width: 100%;
+  width: auto;
+  height: 60vh;
+}
+
+h2.price {
+  color: var(--color-grey-light-2)
+}
+
+.book-form label {
+  color: var(--color-green-light);
+}
+
+.book-form {
+  background-color: var(--color-green-dark) !important;
+}
+
+.book-address {
+  margin-bottom: .5rem;
+  padding-top: 0 0 !important;
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-grey-light-2);
+}
+
+.book-address .list-group-item-text {
+  font-family: var(--font-monospaced-bold);
+
+}
+
+.address-heading-starting {
+  color: var(--color-yellow);
+  font-weight: bold !important;
+}
+
+.address-heading-destination {
+  color: var(--color-flat-orange);
+  font-weight: bold !important;
+}
+
+.estimate {
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-green-light);
+  border: none !important;
+  font-family: var(--font-monospaced-bold);
+}
+
+.estimate-heading {
+  color: var(--color-primary);
+  font-weight: bold !important;
+}
+
+/* display none because it defaults to metric */
+.geoResponse-result-distance {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  #map {
+    width: auto;  
+    height: 40vh;
+  }
+}

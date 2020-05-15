@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, Suspense } from 'react';
 import TaxiForm from './TaxiForm';
 import Loading from './Loading';
 import MapHeader from './MapHeader';
@@ -145,13 +145,13 @@ const MapFormContainer = () => {
       <MapHeader points={state.points} state={state} dispatch={dispatch} />
       <Row>
         <Col sm='6'>
-          <React.Suspense fallback={<Loading />} >
+          <Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
-          </React.Suspense >
+          </Suspense >
           {state.startAddress && state.endAddress && (
-            <>
+            <Fragment>
               <Estimate state={state} dispatch={dispatch} />
-            </>
+            </Fragment>
           )}
         </Col>
 

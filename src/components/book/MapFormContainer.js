@@ -49,7 +49,7 @@ function reducer(state, action) {
         } 
       } else if (action.name === 'vehicle') {
           let distance = (state.distance * 0.000621371192).toFixed(1);
-          let price = (distance * 2.95).toFixed(2);
+          // let price = (distance * 2.95).toFixed(2);
           return {
             ...state,
             [action.name]: action.value,
@@ -98,15 +98,15 @@ function reducer(state, action) {
         }
       }
        
-      return {
-        ...state,
-        valid: invalidFields.length === 0 ? true : false,
-        invalidFields,
-        errorMessage: '',
-        error: false,
-        submitted: true,
-        loading: true,
-      }
+    return {
+      ...state,
+      valid: invalidFields.length === 0 ? true : false,
+      invalidFields,
+      errorMessage: '',
+      error: false,
+      submitted: true,
+      loading: true,
+    }
   }
   return state;
 }
@@ -137,7 +137,7 @@ const initialState = {
   status: 'pending',
 }
 
-function MapFormContainer() {
+const MapFormContainer = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (

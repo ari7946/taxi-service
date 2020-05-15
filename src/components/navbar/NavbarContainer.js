@@ -67,7 +67,7 @@ const NavbarComponent = (props) => {
               )}
               {auth && (
                 <DropdownItem
-                  className="text-orange py-1 mt-2 lead"
+                  className="text-orange py-1 mt-2"
                   onClick={() => {
                     logout();
                     history.replace('/');

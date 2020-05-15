@@ -4,7 +4,7 @@ import { Spinner } from 'reactstrap';
 function Loading() {
   return (
     <Fragment>
-      <Spinner animation="border" variant="light" size="lg" />
+      <Spinner animation="border" variant="light" color="light" size="lg" />
       <p className="text-white">loading map...</p>
     </Fragment>
   )

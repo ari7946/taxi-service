@@ -11,7 +11,7 @@ function Addresses(props) {
             <ListGroupItem className="book-address">
               <ListGroupItemHeading className="address-heading-starting">Starting Point</ListGroupItemHeading>
             <ListGroupItemText>
-              <span className="monospaced">{startAddress}</span>
+              {startAddress}
             </ListGroupItemText>
           </ListGroupItem>
         )}

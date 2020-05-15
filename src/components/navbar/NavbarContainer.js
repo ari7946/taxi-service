@@ -55,18 +55,27 @@ const NavbarComponent = (props) => {
             <DropdownMenu right>
               <DropdownItem>
                 <Link to="admin/trips" style={{ textDecoration: 'none' }}>
-                  <NavItem className="text-green-dark py-2" >Trips</NavItem>
+                  <NavItem className="text-flat-blue py-2 lead" >Trips</NavItem>
                 </Link>
               </DropdownItem>
-              <DropdownItem 
-                className="text-orange py-1 mt-2"
-                onClick={() => {
-                  logout();
-                  history.replace('/');
-                }}
-              >
-                Logout
-              </DropdownItem>
+              {!auth && (
+                <DropdownItem>
+                  <Link to="admin/" style={{ textDecoration: 'none' }}>
+                    <NavItem className="text-flat-blue py-2 lead" >Login</NavItem>
+                  </Link>
+                </DropdownItem>
+              )}
+              {auth && (
+                <DropdownItem
+                  className="text-orange py-1 mt-2 lead"
+                  onClick={() => {
+                    logout();
+                    history.replace('/');
+                  }}
+                >
+                  Logout
+                </DropdownItem>
+              )}
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>

@@ -31,6 +31,10 @@
   background-color: var(--color-flat-blue) !important;
 }
 
+.text-flat-blue {
+  color: var(--color-flat-blue) !important;
+}
+
 .text-yellow {
   color: var(--color-yellow) !important;
 }

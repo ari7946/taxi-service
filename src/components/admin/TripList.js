@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container, ListGroup, Spinner, Button } from 'reactstrap';
-import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Trip from './Trip';
 import { useAuth } from '../../auth/use-auth';

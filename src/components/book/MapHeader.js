@@ -13,7 +13,7 @@ function MapHeader(props) {
       )}
 
       {!startAddress && endAddress && (
-        <h4 className="mb-0 text-white">Please Select {startHeading}></h4>
+        <h4 className="mb-0 text-white">Please Select {startHeading}</h4>
       )} 
 
       {startAddress && !endAddress && (

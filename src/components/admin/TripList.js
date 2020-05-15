@@ -51,21 +51,24 @@ const TripList = (props) => {
 
   return (
     <Container fluid>
-      {loading ? <Spinner color="light" /> : (
-        <ListGroup>
-          {trips.length ? trips.map(trip => 
-            <Trip 
-              key={trip.id} 
-              dispatch={dispatch} 
-              trip={trip} 
-              updateTrips={updateTrips} 
-              removeTrip={removeTrip} 
-            /> 
-          ) : (
-            <p className="text-green-light">No trips or requests pending</p>
-          )}
-        </ListGroup>
-      )}
+      {loading 
+        ? <Spinner color="light" />
+        : trips.length > 0 ? (
+          <ListGroup>
+            {trips.map(trip =>
+              <Trip
+                key={trip.id}
+                dispatch={dispatch}
+                trip={trip}
+                updateTrips={updateTrips}
+                removeTrip={removeTrip}
+              />
+            )}
+          </ListGroup>
+        ) : (
+          <h4 className="text-green-light">There's currently no trips pending or requested.</h4>
+        )
+      }
     </Container>
   )
 }

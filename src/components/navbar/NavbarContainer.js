@@ -55,13 +55,13 @@ const NavbarComponent = (props) => {
             <DropdownMenu right>
               <DropdownItem>
                 <Link to="admin/trips" style={{ textDecoration: 'none' }}>
-                  <NavItem className="text-flat-blue py-2 lead" >Trips</NavItem>
+                  <NavItem className="text-flat-blue py-2" >Trips</NavItem>
                 </Link>
               </DropdownItem>
               {!auth && (
                 <DropdownItem>
                   <Link to="admin/" style={{ textDecoration: 'none' }}>
-                    <NavItem className="text-flat-blue py-2 lead" >Login</NavItem>
+                    <NavItem className="text-flat-blue py-2" >Login</NavItem>
                   </Link>
                 </DropdownItem>
               )}

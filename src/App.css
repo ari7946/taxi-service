@@ -26,6 +26,10 @@ h2.price {
   color: var(--color-grey-light-2);
 }
 
+.book-address .list-group-item-text {
+  font-family: var(--font-monospaced-bold);
+}
+
 .address-heading-starting {
   color: var(--color-yellow);
   font-weight: bold !important;
@@ -40,6 +44,7 @@ h2.price {
   background-color: var(--color-green-dark) !important;
   color: var(--color-green-light);
   border: none !important;
+  font-family: var(--font-monospaced-bold);
 }
 
 .estimate-heading {

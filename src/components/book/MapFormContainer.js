@@ -101,6 +101,8 @@ function reducer(state, action) {
        
     return {
       ...state,
+      // valid is true if invalidFields is an empty array
+      // In other words, valid is true if all required fields are valid
       valid: invalidFields.length === 0 ? true : false,
       invalidFields,
       errorMessage: '',

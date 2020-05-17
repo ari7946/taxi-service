@@ -235,14 +235,14 @@ function TaxiForm(props) {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
                 let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
                 return (
-                  <span>
+                  <React.Fragment>
                     {field}{!lastField
                       ? invalidFields.length === 2 ? null : ', '
                       : null}
                     {secondToLast
                       ? invalidFields.length === 2 ? ' and ' : 'and '
                       : null}
-                  </span>
+                  </React.Fragment>
                 )
               })}
             </p>

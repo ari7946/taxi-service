@@ -230,19 +230,19 @@ function TaxiForm(props) {
 
           {/* REQUIRED FIELDS */}
           {invalidFields.length > 0 ? (
-            <p className="text-danger mb-0">Required fields: < br />
+            <p className="text-orange mb-0">Required fields: < br />
               {invalidFields.map(field => {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
                 let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
                 return (
-                  <span>
+                  <React.Fragment>
                     {field}{!lastField
                       ? invalidFields.length === 2 ? null : ', '
                       : null}
                     {secondToLast
                       ? invalidFields.length === 2 ? ' and ' : 'and '
                       : null}
-                  </span>
+                  </React.Fragment>
                 )
               })}
             </p>

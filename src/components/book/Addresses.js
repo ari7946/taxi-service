@@ -7,23 +7,23 @@ function Addresses(props) {
   return (
     <div>
       <ListGroup flush>
-      {startAddress && (
-          <ListGroupItem className="book-address">
-            <ListGroupItemHeading className="address-heading-starting">Starting Point</ListGroupItemHeading>
-          <ListGroupItemText>
-            <span className="monospaced">{startAddress}</span>
-          </ListGroupItemText>
-        </ListGroupItem>
-      )}
-
-      {endAddress && (
-          <ListGroupItem className="book-address">
-            <ListGroupItemHeading className='address-heading-destination'>Destination</ListGroupItemHeading>
+        {startAddress && (
+            <ListGroupItem className="book-address">
+              <ListGroupItemHeading className="address-heading-starting">Starting Point</ListGroupItemHeading>
             <ListGroupItemText>
-              {endAddress}
+              {startAddress}
             </ListGroupItemText>
           </ListGroupItem>
-      )}
+        )}
+
+        {endAddress && (
+            <ListGroupItem className="book-address">
+              <ListGroupItemHeading className='address-heading-destination'>Destination</ListGroupItemHeading>
+              <ListGroupItemText>
+                {endAddress}
+              </ListGroupItemText>
+            </ListGroupItem>
+        )}
       </ListGroup>
     </div>
   )

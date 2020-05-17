@@ -1,114 +1,63 @@
+/********************** UTILITY CSS ****************/
 
-/***************** BOOK **********************/
-#map {
-  max-height: 40vh;
-  width: 100%;
-  width: auto;
-  height: 60vh;
+/********************** COLORS ****************/
+.bg-flat-green {
+  background-color: var(--color-flat-green) !important;
 }
 
-h2.price {
-  color: var(--color-grey-light-2)
+.bg-flat-blue {
+  background-color: var(--color-flat-blue) !important;
 }
 
-.book-form label {
-  color: var(--color-green-light);
+.text-flat-blue {
+  color: var(--color-flat-blue) !important;
 }
 
-.book-form {
-  background-color: var(--color-green-dark) !important;
-}
-
-.book-address {
-  margin-bottom: .5rem;
-  padding-top: 0 0 !important;
-  background-color: var(--color-green-dark) !important;
-  color: var(--color-grey-light-2);
-}
-
-.address-heading-starting {
-  color: var(--color-yellow);
-  font-weight: bold !important;
-}
-
-.address-heading-destination {
-  color: var(--color-flat-orange);
-  font-weight: bold !important;
-}
-
-.estimate {
-  background-color: var(--color-green-dark) !important;
-  color: var(--color-green-light);
-  border: none !important;
-}
-
-.estimate-heading {
-  color: var(--color-primary);
-  font-weight: bold !important;
-}
-
-/* display none because it defaults to metric */
-.geoResponse-result-distance {
-  display: none;
-}
-
-/***************** LANDING **********************/
-.landing {
-  background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(./assets/los-angeles.jpg);  background-color: #cccccc; /* Used if the image is unavailable */
-  height: 70vh; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-  color: white;
-}
-
-.landing-button {
-  background-color: var(--color-yellow) !important;
-}
-
-.landing-yellow {
+.text-yellow {
   color: var(--color-yellow) !important;
 }
 
-/***************** ABOUT **********************/
-.about-section {
-  margin: 2rem 0;
+.bg-yellow {
+  background-color: var(--color-yellow) !important;
 }
 
-.about-description {
-  line-height: 23px;
-  font-size: 16px;
-  color: var(--color-green-light);
+.text-green-dark {
+  color: var(--color-green-dark) !important;
 }
 
-img.about-img {
-  margin-top: 1rem;
+.bg-green-dark {
+  background-color: var(--color-green-dark) !important;
 }
 
-.about-heading {
-  color: var(--color-yellow);
+.text-green-light {
+  color: var(--color-green-light) !important;
 }
 
-.about {
-  height: 80vh;
+.bg-green-light {
+  background-color: var(--color-green-light) !important;
 }
 
-/***************** ABOUT **********************/
-.trip-list-info {
-  font-family: "Lucida Console", Monaco, monospace;
+.text-orange {
+  color: var(--color-orange) !important;
 }
 
-.trip-list-heading {
-  font-family: "Courier New", Courier, monospace;
-  text-transform: uppercase;
+.bg-orange {
+  background-color: var(--color-orange) !important;
 }
 
-
-/***************** MEDIA QUERIES **********************/
-@media (max-width: 500px) {
-  #map {
-    width: auto;  
-    height: 40vh;
-  }
+.text-grey-light-2 {
+  color: var(--color-grey-light-2) !important;
 }
 
+.bg-grey-light-2 {
+  background-color: var(--color-grey-light-2) !important;
+}
+
+/************************** FONTS  *****/
+.font-monospaced {
+  font-family: var(--font-monospaced)
+}
+
+.font-monospaced-bold {
+  font-family: var(--font-monospaced-bold)
+}

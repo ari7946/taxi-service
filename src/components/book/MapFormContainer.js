@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment, Suspense } from 'react';
 import TaxiForm from './TaxiForm';
 import Loading from './Loading';
 import MapHeader from './MapHeader';
 import Addresses from './Addresses';
 import Estimate from './Estimate';
+import './bookStyle.css';
 import { Container, Row, Col, ListGroup } from 'reactstrap';
 const Map = React.lazy(() => import('./Map'));
 
@@ -48,8 +49,6 @@ function reducer(state, action) {
           dropFee: action.value === 'oneWay' ? 10 : 20
         } 
       } else if (action.name === 'vehicle') {
-          let distance = (state.distance * 0.000621371192).toFixed(1);
-          let price = (distance * 2.95).toFixed(2);
           return {
             ...state,
             [action.name]: action.value,
@@ -98,15 +97,17 @@ function reducer(state, action) {
         }
       }
        
-      return {
-        ...state,
-        valid: invalidFields.length === 0 ? true : false,
-        invalidFields,
-        errorMessage: '',
-        error: false,
-        submitted: true,
-        loading: true,
-      }
+    return {
+      ...state,
+      // valid is true if invalidFields is an empty array
+      // In other words, valid is true if all required fields are valid
+      valid: invalidFields.length === 0 ? true : false,
+      invalidFields,
+      errorMessage: '',
+      error: false,
+      submitted: true,
+      loading: true,
+    }
   }
   return state;
 }
@@ -137,7 +138,7 @@ const initialState = {
   status: 'pending',
 }
 
-function MapFormContainer() {
+const MapFormContainer = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
@@ -145,13 +146,13 @@ function MapFormContainer() {
       <MapHeader points={state.points} state={state} dispatch={dispatch} />
       <Row>
         <Col sm='6'>
-          <React.Suspense fallback={<Loading />} >
+          <Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
-          </React.Suspense >
+          </Suspense >
           {state.startAddress && state.endAddress && (
-            <>
+            <Fragment>
               <Estimate state={state} dispatch={dispatch} />
-            </>
+            </Fragment>
           )}
         </Col>
 

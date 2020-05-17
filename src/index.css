@@ -17,63 +17,13 @@
     --color-grey-dark-2: #777;
     --color-grey-dark-3: #999;
 
+    --font-monospaced: "Courier New", Courier, monospace;
+    --font-monospaced-bold: "Lucida Console", Monaco, monospace;
+
     --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
     --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
 
     --line: 1px solid var(--color-grey-light-2);
-}
-
-.bg-flat-green {
-  background-color: var(--color-flat-green) !important;
-}
-
-.bg-flat-blue {
-  background-color: var(--color-flat-blue) !important;
-}
-
-.text-yellow {
-  color: var(--color-yellow) !important;
-}
-
-.bg-yellow {
-  background-color: var(--color-yellow) !important;
-}
-
-.text-green-dark {
-  color: var(--color-green-dark) !important;
-}
-
-.bg-green-dark {
-  background-color: var(--color-green-dark) !important;
-}
-
-.text-green-light {
-  color: var(--color-green-light) !important;
-}
-
-.bg-green-light {
-  background-color: var(--color-green-light) !important;
-}
-
-.text-orange {
-  color: var(--color-orange) !important;
-}
-
-.bg-orange {
-  background-color: var(--color-orange) !important;
-}
-
-.text-grey-light-2 {
-  color: var(--color-grey-light-2) !important;
-}
-
-.bg-grey-light-2 {
-  background-color: var(--color-grey-light-2) !important;
-}
-
-* {
-    margin: 0;
-    padding: 0;
 }
 
 *,

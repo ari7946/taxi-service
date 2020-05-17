@@ -10,12 +10,6 @@ const TripInfoButton = (props) => {
     endAddress,
     // fields
     price,
-    name,
-    comments,
-    phone,
-    email,
-    date,
-    time,
     vehicle,
     dropFee,
   } = props.state;

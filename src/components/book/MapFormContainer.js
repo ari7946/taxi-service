@@ -154,7 +154,7 @@ const MapFormContainer = () => {
     <Container fluid>
       <MapHeader points={state.points} state={state} dispatch={dispatch} />
       <Row>
-        <Col sm='6'>
+        <Col md='6'>
           <Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </Suspense >
@@ -165,7 +165,7 @@ const MapFormContainer = () => {
           )}
         </Col>
 
-        <Col sm='6'>
+        <Col md='6'>
           <ListGroup flush>
             <Addresses state={state} />
             <TaxiForm state={state} dispatch={dispatch} />

@@ -57,9 +57,16 @@ h2.price {
   display: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   #map {
     width: auto;  
-    height: 40vh;
+    margin: 0 1rem;
+  }
+
+  .book-address .list-group-item-text {
+    font-family: var(--font-monospaced);
+  }
+  .estimate {
+    font-family: var(--font-monospaced);
   }
 }

@@ -24,10 +24,10 @@ const Estimate = (props) => {
         <ListGroupItemText>
           <div className="text-center mx-auto my-2 w-75">
             {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
-            <p className='ml-4 mb-0'>Taxi Fare: ${price}</p>
+            <p className='mb-0'>Taxi Fare: ${price}</p>
             <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}.00</p>
             {direction === 'oneWay'
-              ? <h2 className='ml-3 price border-top border-light pt-2 w-100'>Estimate: ${total}</h2>
+              ? <h2 className='price border-top border-light pt-2 w-100'>Estimate: ${total}</h2>
               : null
               //TODO Implement TwoWay as a potential future feature
               // : (

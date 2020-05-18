@@ -13,7 +13,7 @@ import {
   DropdownMenu,
 } from 'reactstrap';
 import "./navbarStyle.css";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTaxi, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { useAuth } from '../../auth/use-auth';
@@ -22,6 +22,7 @@ import { useHistory } from 'react-router-dom';
 const NavbarComponent = (props) => {
   const { logout, auth } = useAuth();
   let history = useHistory();
+  const [active, setActive] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -40,18 +41,22 @@ const NavbarComponent = (props) => {
         <Nav className="mx-auto" navbar>
 
           <NavItem className='py-3'>
-            <Link 
-              className="px-5 mx-2 py-3 text-green-light lead" 
+            <NavLink 
+              className="px-5 mx-2 py-3 text-green-light lead"
+              exact
+              activeClassName="text-white"
               to="/book" style={{ textDecoration: 'none' }} 
-              onClick={() => setIsOpen(false)}>Book</Link>
+              onClick={() => setIsOpen(false)}>Book</NavLink>
           </NavItem>
 
           <NavItem className='py-3'>
-            <Link 
+            <NavLink 
               className="px-5 mx-2 py-3 text-green-light lead" 
+              exact
+              activeClassName="text-white"
               to="/about" 
               style={{ textDecoration: 'none' }}
-              onClick={() => setIsOpen(false)} >About</Link>
+              onClick={() => setIsOpen(false)} >About</NavLink>
           </NavItem>
 
           <UncontrolledDropdown nav inNavbar>
@@ -63,16 +68,16 @@ const NavbarComponent = (props) => {
 
             <DropdownMenu right>
               <DropdownItem>
-                <Link to="admin/trips" style={{ textDecoration: 'none' }}>
+                <NavLink to="admin/trips" style={{ textDecoration: 'none' }}>
                   <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>Trips</NavItem>
-                </Link>
+                </NavLink>
               </DropdownItem>
 
               {!auth && (
                 <DropdownItem>
-                  <Link to="admin/" style={{ textDecoration: 'none' }}>
+                  <NavLink to="admin/" style={{ textDecoration: 'none' }}>
                     <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>Login</NavItem>
-                  </Link>
+                  </NavLink>
                 </DropdownItem>
               )}
 

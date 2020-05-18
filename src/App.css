@@ -41,6 +41,10 @@
   color: var(--color-orange) !important;
 }
 
+.text-flat-orange {
+  color: var(--color-flat-orange) !important;
+}
+
 .bg-orange {
   background-color: var(--color-orange) !important;
 }

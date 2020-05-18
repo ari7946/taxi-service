@@ -1,0 +1,13 @@
+
+/* .navbar ul li a:active {
+  color: var(--color-yellow) !important;
+} */
+
+.navbar-toggler {
+  color: green !important;
+  border: 1px solid white !important;
+}
+
+.active {
+  color: var(--text-yellow) !important;
+}

@@ -17,6 +17,7 @@ function reducer(state, action) {
         points: action.points,
         startAddress: action.startAddress,
         endAddress: action.endAddress,
+        alertSuccess: false,
       }
     case 'locationsCleared':
       return {
@@ -24,6 +25,7 @@ function reducer(state, action) {
         points: action.points,
         startAddress: action.startAddress,
         endAddress: action.endAddress,
+        alertSuccess: false,
       }
     case 'routeChanged':
       //convert meters to miles
@@ -37,11 +39,13 @@ function reducer(state, action) {
         direction: 'oneWay',
         dropFee: 10,
         vehicle: 'sedan',
+        alertSuccess: false,
       }
     case 'input':
       if (action.name === 'direction') {
         return {
           ...state,
+          alertSuccess: false,
           [action.name]: action.value,
           price: action.value === 'oneWay'
             ? state.price / 2
@@ -51,6 +55,7 @@ function reducer(state, action) {
       } else if (action.name === 'vehicle') {
           return {
             ...state,
+            alertSuccess: false,
             [action.name]: action.value,
             price: action.value === 'sedan'
               ? (state.distance * 2.95).toFixed(2)
@@ -59,6 +64,7 @@ function reducer(state, action) {
         }
       return {
         ...state,
+        alertSuccess: false,
         [action.name]: action.value,
       } 
     case 'success':
@@ -69,6 +75,7 @@ function reducer(state, action) {
         errorMessage: '',
         invalidFields: [],
         valid: true,
+        alertSuccess: true,
       }
     case 'error':
       return {
@@ -77,6 +84,7 @@ function reducer(state, action) {
         loading: false,
         submitted: false,
         errorMessage: action.errorMessage,
+        alertSuccess: false,
       }
     case 'submit':
       const { name, phone, email, passengers, direction, comments, startAddress, endAddress, date, time } = state;
@@ -130,6 +138,7 @@ const initialState = {
   time: null,
   dropFee: 10,
   vehicle: 'sedan',
+  alertSuccess: false,
   // other
   loading: false,
   error: false,
@@ -145,7 +154,7 @@ const MapFormContainer = () => {
     <Container fluid>
       <MapHeader points={state.points} state={state} dispatch={dispatch} />
       <Row>
-        <Col sm='6'>
+        <Col md='6'>
           <Suspense fallback={<Loading />} >
             <Map dispatch={dispatch} />
           </Suspense >
@@ -156,7 +165,7 @@ const MapFormContainer = () => {
           )}
         </Col>
 
-        <Col sm='6'>
+        <Col md='6'>
           <ListGroup flush>
             <Addresses state={state} />
             <TaxiForm state={state} dispatch={dispatch} />

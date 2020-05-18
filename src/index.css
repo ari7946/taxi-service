@@ -1,4 +1,5 @@
 :root {
+    /* COLORS */
     --color-primary: ##254E58;
     --color-yellow:#FCCD04;
     --color-green-dark: #254E58;
@@ -17,9 +18,16 @@
     --color-grey-dark-2: #777;
     --color-grey-dark-3: #999;
 
+    /* FONTS */
     --font-monospaced: "Courier New", Courier, monospace;
     --font-monospaced-bold: "Lucida Console", Monaco, monospace;
 
+    /* BREAK POINTS */
+    --bp-large: 1100px;
+    --bp-medium: 900px;
+    --bp-small: 600px;
+
+    /* OTHER */
     --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
     --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
 
@@ -34,7 +42,6 @@
 
 html {
   box-sizing: border-box;
-
   /* 1rem = 10px, 10px/16px = 62.5% */
   /* font-size: 62.5%;  */
 }
@@ -49,9 +56,14 @@ body {
   margin: 0 auto !important;
 }
 
-.wrapper {
-  margin: 0 3rem;
+@media only screen and (min-width: 1100px) {
+  .wrapper {
+    margin: 0 3rem;
+  }
 }
+
+
+
 
 
 

@@ -9,19 +9,19 @@ function MapHeader(props) {
   return (
     <div className='mb-3'>
       {!startAddress && !endAddress && (
-        <h4 className="mb-0 text-white">Please Select {startHeading} and {destinationHeading}</h4>
+        <h4 className="mb-0 text-white map-heading">Please Select {startHeading} and {destinationHeading}</h4>
       )}
 
       {!startAddress && endAddress && (
-        <h4 className="mb-0 text-white">Please Select {startHeading}</h4>
+        <h4 className="mb-0 text-white map-heading">Please Select {startHeading}</h4>
       )} 
 
       {startAddress && !endAddress && (
-        <h4 className="mb-0 text-white">Please Select {destinationHeading}</h4>
+        <h4 className="mb-0 text-white map-heading">Please Select {destinationHeading}</h4>
       )}
 
       {startAddress && endAddress && (
-        <h4 className='mb-9 text-white'><Badge color="light">Thank you</Badge> Please submit the form to book a taxi</h4>
+        <h4 className="mb-9 text-white map-heading"><Badge color="light">Thank you</Badge> Please submit the form to book a taxi</h4>
       )} 
     </div>
   )

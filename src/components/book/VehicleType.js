@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormGroup, CustomInput, Row, Container } from 'reactstrap';
+import { FormGroup, ButtonGroup, Row, Container, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,49 +11,43 @@ function VehicleType(props) {
     <FormGroup>
       <Container>
         <Row>
-          <div className="mx-auto">
-            <CustomInput
-              className={`
-                ${vehicle === 'sedan' ? 'text-warning' : null}
-                mr-4
-              `}
-              inline checked
-              type="radio"
-              id="sedan"
-              name="vehicle"
-              value="sedan"
-              onChange={(e) => dispatch({
-                type: 'input',
-                name: 'vehicle',
-                value: e.target.value,
-              })}
-              checked={vehicle === 'sedan'}
-            >
-              <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
-              Sedan $2.95 / mile <br />
-              1 - 4 Passengers
-            </CustomInput>
+          <div className="mx-auto vehicle-type">
+            <ButtonGroup>
+              <Button
+                className={`
+                  ${vehicle === 'sedan' ? 'text-warning border-warning' : 'border-white'}
+                  mr-4
+                  bg-green-dark
+                `}
+                value="sedan"
+                onClick={(e) => dispatch({
+                  type: 'input',
+                  name: 'vehicle',
+                  value: 'sedan',
+                })}
+              >
+                <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
+                Sedan $2.95/mi <br />
+                1-4 Passengers
+              </Button>
 
-            <CustomInput
-              className={`
-                ${vehicle === 'van' ? 'text-warning' : null}
-              `}
-              inline
-              type="radio"
-              id="van"
-              name="vehicle"
-              value="van"
-              onChange={(e) => dispatch({
-                type: 'input',
-                name: 'vehicle',
-                value: e.target.value,
-              })}
-              checked={vehicle === 'van'}
-            >
-              <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
-              Van $3.95 / mile<br />
-              1 - 7 Passengers
-            </CustomInput>
+              <Button
+                className={`
+                  ${vehicle === 'van' ? 'text-warning border-warning' : 'border-white'}
+                  bg-green-dark
+                  border-warning
+                `}
+                onClick={(e) => dispatch({
+                  type: 'input',
+                  name: 'vehicle',
+                  value: 'van',
+                })}
+              >
+                <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
+                Van $3.95/mi<br />
+                1-7 Passengers
+              </Button>
+            </ButtonGroup>
           </div>
         </Row>
       </Container>

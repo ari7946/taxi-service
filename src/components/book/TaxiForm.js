@@ -1,10 +1,10 @@
-import React from 'react';
-import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItemHeading, ListGroupItem, Badge } from 'reactstrap';
+import React, { Fragment } from 'react';
+import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItemHeading, ListGroupItem, Badge, Alert } from 'reactstrap';
 import TripInfoButton from './TripInfo';
 import axios from 'axios';
 
 function TaxiForm(props) {
-  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, invalidFields, date, time } = props.state;
+  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, invalidFields, date, time, alertSuccess } = props.state;
   const { dispatch } = props;
 
   React.useEffect(() => {
@@ -229,36 +229,39 @@ function TaxiForm(props) {
           </FormGroup>
 
           {/* REQUIRED FIELDS */}
-          {invalidFields.length > 0 ? (
+          {invalidFields.length > 0 && (
             <p className="text-orange mb-0">Required fields: < br />
               {invalidFields.map(field => {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
                 let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
                 return (
-                  <React.Fragment>
+                  <Fragment>
                     {field}{!lastField
                       ? invalidFields.length === 2 ? null : ', '
                       : null}
                     {secondToLast
                       ? invalidFields.length === 2 ? ' and ' : 'and '
                       : null}
-                  </React.Fragment>
+                  </Fragment>
                 )
               })}
             </p>
-          ) : null}
+          )}
+
+          {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
+          { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
 
           {/* SUBMIT BUTTON */}
           <ButtonGroup className="mt-3 mb-5">
             <Button className="px-5 mr-3" color="warning">
               {!loading && !submitted && (
-                <span>Submit</span>
+                <Fragment>Submit</Fragment>
               )}
               {loading && submitted && (
-                <>
-                  <Spinner className="mr-2" size="sm" color="secondary" />
-                  <span>Processing...</span>
-                </>
+                <Fragment>
+                  <Spinner className="mr-2" size="sm" color="white" />
+                  <span className="text-green-light"></span>
+                </Fragment>
               )}
             </Button>
 

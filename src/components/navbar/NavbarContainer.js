@@ -13,7 +13,7 @@ import {
   DropdownMenu,
 } from 'reactstrap';
 import "./navbarStyle.css";
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTaxi, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { useAuth } from '../../auth/use-auth';
@@ -33,13 +33,14 @@ const NavbarComponent = (props) => {
         <FontAwesomeIcon className="mr-2 fa-lg" icon={faTaxi} />
         Coastal Yellow Cabs
       </NavbarBrand>
+
       <NavbarToggler className="text-green-light" onClick={toggle} >
         Menu
         <FontAwesomeIcon className="ml-2" icon={ isOpen ? faChevronUp : faChevronDown }/>
       </NavbarToggler >
+
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mx-auto" navbar>
-
           <NavItem className='py-3'>
             <NavLink 
               className="px-5 mx-2 py-3 text-green-light lead"

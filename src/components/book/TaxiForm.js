@@ -230,7 +230,7 @@ function TaxiForm(props) {
 
           {/* REQUIRED FIELDS */}
           {invalidFields.length > 0 && (
-            <p className="text-orange mb-0">Required fields: < br />
+            <p className="text-flat-orange mb-0">Required fields: < br />
               {invalidFields.map(field => {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
                 let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;

@@ -28,10 +28,10 @@ const NavbarComponent = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar className="container mb-5 mt-3" expand="md">
+    <Navbar className="container-fluid mb-5 mt-3" expand="md">
       <NavbarBrand href="/" className="mr-auto text-grey-light-2">
         <FontAwesomeIcon className="mr-2 fa-lg" icon={faTaxi} />
-        Coastal Yellow Cabs
+        COASTAL YELLOW CABS
       </NavbarBrand>
 
       <NavbarToggler className="text-green-light" onClick={toggle} >

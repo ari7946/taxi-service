@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormGroup, CustomInput, Row, Container } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 
 function VehicleType(props) {
   const { dispatch } = props;

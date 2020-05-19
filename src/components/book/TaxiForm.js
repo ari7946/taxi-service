@@ -253,9 +253,9 @@ function TaxiForm(props) {
 
           {/* SUBMIT BUTTON */}
           <ButtonGroup className="mt-3 mb-5">
-            <Button className="px-5 mr-3" color="warning">
+            <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
               {!loading && !submitted && (
-                <Fragment>Submit</Fragment>
+                <Fragment>Book</Fragment>
               )}
               {loading && submitted && (
                 <Fragment>

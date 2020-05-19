@@ -15,7 +15,7 @@ function VehicleType(props) {
             <ButtonGroup>
               <Button
                 className={`
-                  ${vehicle === 'sedan' ? 'text-warning border-warning' : 'border-white'}
+                  ${vehicle === 'sedan' ? 'text-yellow border-warning' : 'border-light text-green-light'}
                   mr-4
                   bg-green-dark
                 `}
@@ -27,13 +27,14 @@ function VehicleType(props) {
                 })}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
-                Sedan $2.95/mi <br />
+                <span className="vehicle-type-text mr-2">SEDAN</span>
+                $2.95/mi <br />
                 1-4 Passengers
               </Button>
 
               <Button
                 className={`
-                  ${vehicle === 'van' ? 'text-warning border-warning' : 'border-white'}
+                  ${vehicle === 'van' ? 'text-yellow border-warning' : 'border-light text-green-light'}
                   bg-green-dark
                   border-warning
                 `}
@@ -44,7 +45,8 @@ function VehicleType(props) {
                 })}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
-                Van $3.95/mi<br />
+                <span className="vehicle-type-text mr-2">VAN</span>
+                $3.95/mi<br />
                 1-7 Passengers
               </Button>
             </ButtonGroup>

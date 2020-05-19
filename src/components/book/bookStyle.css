@@ -18,6 +18,7 @@ h2.price {
   background-color: var(--color-green-dark) !important;
 }
 
+/* START Addresses COMPONENT */
 .book-address {
   margin-bottom: .5rem;
   padding-top: 0 0 !important;
@@ -27,7 +28,6 @@ h2.price {
 
 .book-address .list-group-item-text {
   font-family: var(--font-monospaced-bold);
-
 }
 
 .address-heading-starting {
@@ -39,6 +39,7 @@ h2.price {
   color: var(--color-flat-orange);
   font-weight: bold !important;
 }
+/* END ADDRESSES COMPONENT */
 
 .estimate {
   background-color: var(--color-green-dark) !important;
@@ -57,14 +58,60 @@ h2.price {
   display: none;
 }
 
-@media (max-width: 600px) {
-  #map {
-    width: auto;  
-    margin: 0 1rem;
+.vehicle-type {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .vehicle-type {
+    margin-bottom: 1rem;
+  }
+
+  .vehicle-type button {
+    font-size: 14px;
+  }
+
+  .estimate .price {
+    font-size: 20px;
+  }
+
+  /* START Addresses COMPONENT */
+  .book-address {
+    margin-bottom: .2rem;
+    padding-top: 0 0 !important;
+    background-color: var(--color-green-dark) !important;
+    color: var(--color-grey-light-2);
   }
 
   .book-address .list-group-item-text {
     font-family: var(--font-monospaced);
+  }
+
+  .address-heading-starting {
+    color: var(--color-yellow);
+    font-weight: bold !important;
+  }
+
+  .address-heading-destination {
+    color: var(--color-flat-orange);
+    font-weight: bold !important;
+  }
+  /* END ADDRESSES COMPONENT */
+
+}  
+
+@media (max-width: 600px) {
+  #map {
+    width: auto;
+    height: 30vh;  
+    margin: 0 1rem;
+  }
+
+  /* Address text in Addresses Component */
+  .book-address .list-group-item-text {
+    font-family: var(--font-monospaced);
+    margin: 0;
+    padding: 0;
   }
 
   .estimate {
@@ -75,5 +122,21 @@ h2.price {
     font-weight: 700;
     font-size: 17px;
     margin-left: 1rem;
+  }
+
+  .vehicle-type button {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+}
+
+@media (max-width: 415px) {
+  .vehicle-type .vehicle-type-text {
+    display: none;
+  }
+
+  .trip-info-button, .book-button {
+    padding: .3rem .2rem !important;
   }
 }

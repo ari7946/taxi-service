@@ -21,7 +21,7 @@ function MapHeader(props) {
       )}
 
       {startAddress && endAddress && (
-        <h4 className="mb-9 text-white map-heading"><Badge color="light">Thank you</Badge> Please submit the form to book a taxi</h4>
+        <h4 className="mb-9 text-white map-heading">Please submit the form to book a taxi</h4>
       )} 
     </div>
   )

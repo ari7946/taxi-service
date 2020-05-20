@@ -26,8 +26,7 @@ const TripInfoButton = (props) => {
       </Button>
 
       <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
-        <PopoverHeader>Trip Details</PopoverHeader>
-        <PopoverBody>
+        <PopoverBody className="bg-grey-light-2 font-monospaced">
           <ListGroup>
             <ListGroupItem><span className="font-weight-bold">Starting Point: </span>{startAddress} </ListGroupItem>
             <ListGroupItem><span className="font-weight-bold">Destination: </span> {endAddress} </ListGroupItem>

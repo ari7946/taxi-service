@@ -4,58 +4,15 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../auth/use-auth';
 import './adminStyle.css';
-
-function reducer(state, action) {
-  switch(action.type) {
-    case 'submit':
-      return {
-        ...state,
-        loading: true,
-      }
-    case 'getTrips':
-      return {
-        ...state,
-        loading: false,
-        trips: action.trips,
-      }
-    case 'updateTrip':
-      const updatedTrip = action.trip;
-      const updatedTrips = state.trips.map(trip => {
-        if (trip.id === updatedTrip.id) {
-          return updatedTrip;
-        }
-        return trip
-      })
-      return {
-        ...state,
-        loading: false,
-        trips: updatedTrips,
-      }
-    case 'deleteTrip':
-      const filteredTrips = state.trips.filter(trip => trip.id !== action.trip.id)
-      return {
-        ...state,
-        loading: false,
-        trips: filteredTrips,
-      }
-    case 'error':
-      return {
-        ...state,
-        loading: false,
-        error: action.error,
-      }
-    default: return state;
-  }
-}
-
-const initialState = {
-  trips: [],
-  loading: false,
-  error: '',
-}
+import TripsReducer from './TripsReducer';
 
 function Container() {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const initialState = {
+    trips: [],
+    loading: false,
+    error: '',
+  }
+  const [state, dispatch] = React.useReducer(TripsReducer, initialState);
   const { auth } = useAuth();
 
   return (

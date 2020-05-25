@@ -40,7 +40,7 @@ const Trip = (props) => {
 
         <Button
           className={`
-            ${trip.status === 'archive' ? 'bg-green-dark' : null}
+            ${trip.status === 'archive' ? 'btn-warning' : null}
           `}
           onClick={() => updateTrips('archive', trip.id)}
         >

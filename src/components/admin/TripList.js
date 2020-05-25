@@ -11,11 +11,11 @@ const TripList = (props) => {
 
   return (
     <Container fluid>
-      <Nav tabs>
+      <Nav className='mb-2' tabs color="light">
         <NavItem>
           <NavLink
             className={`
-              ${activeTab === 'viewAll' && 'active'}
+              ${activeTab === 'viewAll' ? 'active' : 'text-light'}
             `}
             onClick={() => setActiveTab('viewAll')}
           >
@@ -26,7 +26,7 @@ const TripList = (props) => {
         <NavItem>
           <NavLink
             className={`
-              ${activeTab === 'viewConfirmed' && 'active'}
+              ${activeTab === 'viewConfirmed' ? 'active' : 'text-light'}
             `}
             onClick={() => setActiveTab('viewConfirmed')}
           >
@@ -37,7 +37,7 @@ const TripList = (props) => {
         <NavItem>
           <NavLink
             className={`
-              ${activeTab === 'viewComplete' && 'active'}
+              ${activeTab === 'viewCompleted' ? 'active' : 'text-light'}
             `}
             onClick={() => setActiveTab('viewCompleted')}
           >
@@ -48,7 +48,7 @@ const TripList = (props) => {
         <NavItem>
           <NavLink
             className={`
-              ${activeTab === 'viewArchived' && 'active'}
+              ${activeTab === 'viewArchived' ? 'active' : 'text-light'}
             `}
             onClick={() => setActiveTab('viewArchived')}
           >

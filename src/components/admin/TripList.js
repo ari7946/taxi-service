@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 
 import { Container, ListGroup, Spinner } from 'reactstrap';
 import Trip from './Trip';
@@ -33,6 +33,7 @@ const TripList = (props) => {
           </NavLink>
         </NavItem>
       </Nav>
+
       <TabContent activeTab={activeTab}>
         <TabPane tabId="viewAll">
           {state.loading 
@@ -51,8 +52,24 @@ const TripList = (props) => {
             )
           }
         </TabPane>
+
         <TabPane tabId="viewConfirmed">
-          <div>Confirmed</div>
+            {state.trips.length > 0 ? (
+              <ListGroup>
+                {state.trips.map(trip => {
+                  if (trip.status === 'confirm') {
+                    return <Trip
+                      key={trip.id}
+                      trip={trip}
+                    />
+                  }
+                  return null
+                })}
+              </ListGroup>    
+            ) : (
+              <h4 className="text-green-light">There's no confirmed trips pending</h4>
+            )
+          }
         </TabPane>
       </TabContent>
     </Container>

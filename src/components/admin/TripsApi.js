@@ -1,5 +1,5 @@
 ////////// Implementation guided by this resource https://usehooks.com/useAuth/
-import React, { useEffect, useContext, createContext } from 'react';
+import React, { useEffect, useContext, createContext, useReducer } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../auth/use-auth';
 import TripsReducer from './TripsReducer';
@@ -21,7 +21,7 @@ const initialState = {
 }
 
 const useProvideTripsApi = () => {
-  const [state, dispatch] = React.useReducer(TripsReducer, initialState);
+  const [state, dispatch] = useReducer(TripsReducer, initialState);
   const { authHeaders } = useAuth();
 
   const getTrips = async () => {

@@ -17,15 +17,12 @@ const TripList = (props) => {
             {state.trips.map(trip =>
               <Trip
                 key={trip.id}
-                // dispatch={dispatch}
                 trip={trip}
-                // updateTrips={updateTrips}
-                // removeTrip={removeTrip}
               />
             )}
           </ListGroup>
         ) : (
-          <h4 className="text-green-light">There's currently no trips pending or requested.</h4>
+          <h4 className="text-green-light">There's currently no trips pending</h4>
         )
       }
     </Container>

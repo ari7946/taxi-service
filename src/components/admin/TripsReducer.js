@@ -1,4 +1,4 @@
-const reducer = (state, action) => {
+const TripsReducer = (state, action) => {
   switch (action.type) {
     case 'submit':
       return {
@@ -41,5 +41,5 @@ const reducer = (state, action) => {
   }
 }
 
-export default reducer;
+export default TripsReducer;
 

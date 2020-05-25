@@ -22,6 +22,7 @@ const TripList = (props) => {
             All
           </NavLink>
         </NavItem>
+
         <NavItem>
           <NavLink
             className={`
@@ -30,6 +31,28 @@ const TripList = (props) => {
             onClick={() => setActiveTab('viewConfirmed')}
           >
             Confirmed
+          </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink
+            className={`
+              ${activeTab === 'viewComplete' && 'active'}
+            `}
+            onClick={() => setActiveTab('viewCompleted')}
+          >
+            Completed
+          </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink
+            className={`
+              ${activeTab === 'viewArchived' && 'active'}
+            `}
+            onClick={() => setActiveTab('viewArchived')}
+          >
+            Archived
           </NavLink>
         </NavItem>
       </Nav>
@@ -48,7 +71,7 @@ const TripList = (props) => {
                 )}
               </ListGroup>
             ) : (
-              <h4 className="text-green-light">There's currently no trips pending</h4>
+              <h4 className="text-green-light">There's currently no trips pending.</h4>
             )
           }
         </TabPane>
@@ -67,7 +90,45 @@ const TripList = (props) => {
                 })}
               </ListGroup>    
             ) : (
-              <h4 className="text-green-light">There's no confirmed trips pending</h4>
+              <h4 className="text-green-light">There's no confirmed trips.</h4>
+            )
+          }
+        </TabPane>
+
+        <TabPane tabId="viewCompleted">
+            {state.trips.length > 0 ? (
+              <ListGroup>
+                {state.trips.map(trip => {
+                  if (trip.status === 'complete') {
+                    return <Trip
+                      key={trip.id}
+                      trip={trip}
+                    />
+                  }
+                  return null
+                })}
+              </ListGroup>    
+            ) : (
+              <h4 className="text-green-light">There's no completed trips.</h4>
+            )
+          }
+        </TabPane>
+
+        <TabPane tabId="viewArchived">
+            {state.trips.length > 0 ? (
+              <ListGroup>
+                {state.trips.map(trip => {
+                  if (trip.status === 'archive') {
+                    return <Trip
+                      key={trip.id}
+                      trip={trip}
+                    />
+                  }
+                  return null
+                })}
+              </ListGroup>    
+            ) : (
+              <h4 className="text-green-light">There's no archived trips.</h4>
             )
           }
         </TabPane>

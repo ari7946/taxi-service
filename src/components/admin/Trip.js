@@ -28,6 +28,7 @@ const Trip = (props) => {
         >
           Confirm
         </Button>
+
         <Button 
           className={`
             ${trip.status === 'complete' ? 'bg-green-dark' : null}
@@ -36,6 +37,16 @@ const Trip = (props) => {
         >
           Complete 
         </Button>
+
+        <Button
+          className={`
+            ${trip.status === 'archive' ? 'bg-green-dark' : null}
+          `}
+          onClick={() => updateTrips('archive', trip.id)}
+        >
+          Archive
+        </Button>
+
         <Button onClick={() => removeTrip(trip.id)}>Delete</Button>
       </ButtonGroup>
 

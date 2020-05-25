@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
-
-import { Container, ListGroup, Spinner } from 'reactstrap';
+import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import Trip from './Trip';
 import { useTripsApi } from './TripsApi';
 

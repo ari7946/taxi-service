@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody  } from 'reactstrap';
+import { useTripsApi } from './TripsApi';
 
 const Trip = (props) => {
-  const { trip, dispatch } = props;
+  const { trip } = props;
   //TODO fix total bug 
   const total = (Number(trip.price) + 10).toFixed(2);
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const { state, removeTrip, updateTrips } = useTripsApi();
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
@@ -22,7 +24,7 @@ const Trip = (props) => {
           className={`
             ${trip.status === 'confirm' ? 'bg-green-light text-green-dark' : null}
           `}
-          onClick={() => props.updateTrips('confirm', trip.id)}
+          onClick={() => updateTrips('confirm', trip.id)}
         >
           Confirm
         </Button>
@@ -30,11 +32,11 @@ const Trip = (props) => {
           className={`
             ${trip.status === 'complete' ? 'bg-green-dark' : null}
           `}
-          onClick={() => props.updateTrips('complete', trip.id)}
+          onClick={() => updateTrips('complete', trip.id)}
         >
           Complete 
         </Button>
-        <Button onClick={() => props.removeTrip(trip.id)}>Delete</Button>
+        <Button onClick={() => removeTrip(trip.id)}>Delete</Button>
       </ButtonGroup>
 
       <Button

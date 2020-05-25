@@ -3,64 +3,24 @@ import { Container, ListGroup, Spinner } from 'reactstrap';
 import axios from 'axios';
 import Trip from './Trip';
 import { useAuth } from '../../auth/use-auth';
+import { useTripsApi } from './TripsApi';
 
 const TripList = (props) => {
-  const { dispatch } = props;
-  const { loading, trips } = props.state;
-  const { authHeaders } = useAuth();
-
-  React.useEffect(() => {
-    getTrips();
-  }, [])
-
-  const getTrips = async () => {
-    dispatch({ type: 'submit' })
-    try {
-      const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, authHeaders);
-      dispatch({ type: 'getTrips', trips: result.data })
-    } catch (error) {
-      dispatch({ type: 'error', error })
-    }
-  }
-
-  const updateTrips = async (status, id) => {
-    try {
-      const result = await axios.put(
-        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`, 
-        { status }, 
-        authHeaders
-      );
-      dispatch({ type: 'updateTrip', trip: result.data })
-    } catch (error) {
-      dispatch({ type: 'error', error })
-    }
-  }
-
-  const removeTrip = async (id) => {
-    try {
-      const result = await axios.delete(
-        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
-        authHeaders
-      );
-      dispatch({ type: 'deleteTrip', trip: result.data.removedTrip })
-    } catch (error) {
-      dispatch({ type: 'error', error })
-    }
-  }
+  const { state } = useTripsApi();
 
   return (
     <Container fluid>
-      {loading 
+      {state.loading 
         ? <Spinner color="light" />
-        : trips.length > 0 ? (
+        : state.trips.length > 0 ? (
           <ListGroup>
-            {trips.map(trip =>
+            {state.trips.map(trip =>
               <Trip
                 key={trip.id}
-                dispatch={dispatch}
+                // dispatch={dispatch}
                 trip={trip}
-                updateTrips={updateTrips}
-                removeTrip={removeTrip}
+                // updateTrips={updateTrips}
+                // removeTrip={removeTrip}
               />
             )}
           </ListGroup>

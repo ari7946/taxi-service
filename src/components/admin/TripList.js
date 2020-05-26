@@ -57,7 +57,7 @@ const TripList = (props) => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="viewAll">
-          {state.allTripsLoading 
+          {state.loadingType === 'getTrips'
             ? <Spinner color="light" />
             : state.trips.length > 0 ? (
               <ListGroup>

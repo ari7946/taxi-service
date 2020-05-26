@@ -3,12 +3,12 @@ const TripsReducer = (state, action) => {
     case 'submit':
       return {
         ...state,
-        loading: true,
+        allTripsLoading: true,
       }
     case 'getTrips':
       return {
         ...state,
-        loading: false,
+        allTripsLoading: false,
         trips: action.trips,
       }
     case 'updateTrip':
@@ -41,5 +41,11 @@ const TripsReducer = (state, action) => {
   }
 }
 
-export default TripsReducer;
+const initialState = {
+  trips: [],
+  allTripsLoading: false,
+  error: '',
+}
+
+export { TripsReducer, initialState };
 

@@ -19,7 +19,7 @@ const useProvideTripsApi = () => {
   const { authHeaders } = useAuth();
 
   const getTrips = async () => {
-    dispatch({ type: 'submit' })
+    dispatch({ type: 'submit', loadingType: 'getTrips' })
     try {
       const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, authHeaders);
       dispatch({ type: 'getTrips', trips: result.data })
@@ -29,6 +29,7 @@ const useProvideTripsApi = () => {
   }
 
   const updateTrips = async (status, id) => {
+    dispatch({ type: 'submit', loadingType: status, tripId: id })
     try {
       const result = await axios.put(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
@@ -42,6 +43,7 @@ const useProvideTripsApi = () => {
   }
 
   const removeTrip = async (id) => {
+    dispatch({ type: 'submit', loadingType: 'removeTrip', tripId: id})
     try {
       const result = await axios.delete(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,

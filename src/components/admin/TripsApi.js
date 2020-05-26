@@ -2,7 +2,7 @@
 import React, { useEffect, useContext, createContext, useReducer } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../auth/use-auth';
-import TripsReducer from './TripsReducer';
+import { TripsReducer, initialState} from './TripsReducer';
 const tripsContext = createContext();
 
 export function ProvideTripsApi({ children }) {
@@ -13,12 +13,6 @@ export function ProvideTripsApi({ children }) {
 export function useTripsApi() {
   return useContext(tripsContext);
 };
-
-const initialState = {
-  trips: [],
-  loading: false,
-  error: '',
-}
 
 const useProvideTripsApi = () => {
   const [state, dispatch] = useReducer(TripsReducer, initialState);

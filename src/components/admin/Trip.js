@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody  } from 'reactstrap';
+import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody, Spinner  } from 'reactstrap';
 import { useTripsApi } from './TripsApi';
 
 const Trip = (props) => {
@@ -8,9 +8,22 @@ const Trip = (props) => {
   const total = (Number(trip.price) + 10).toFixed(2);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const { state, removeTrip, updateTrips } = useTripsApi();
+  let setLoading = (status, id) => {
+    return state.loadingType === status
+    && state.loadingTripId === id
+    && <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+      className="mr-2"
+    />;
+  }
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
+  console.log("state", state);
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3">
       <p className="trip-list-info"><span className="trip-list-heading">name:</span> {trip.name}</p>
@@ -26,6 +39,7 @@ const Trip = (props) => {
           `}
           onClick={() => updateTrips('confirm', trip.id)}
         >
+          {setLoading('confirm', props.trip.id)}
           Confirm
         </Button>
 
@@ -35,6 +49,7 @@ const Trip = (props) => {
           `}
           onClick={() => updateTrips('complete', trip.id)}
         >
+          {setLoading('complete', trip.id)}
           Complete 
         </Button>
 
@@ -44,6 +59,7 @@ const Trip = (props) => {
           `}
           onClick={() => updateTrips('archive', trip.id)}
         >
+          {setLoading('archive', trip.id)}
           Archive
         </Button>
 

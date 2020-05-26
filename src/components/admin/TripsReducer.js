@@ -1,14 +1,18 @@
 const TripsReducer = (state, action) => {
   switch (action.type) {
+
     case 'submit':
+      console.log('action.type', action);
       return {
         ...state,
-        allTripsLoading: true,
+        loadingType: action.loadingType,
+        loadingTripId: action.tripId,
       }
     case 'getTrips':
+
       return {
         ...state,
-        allTripsLoading: false,
+        loadingType: '',
         trips: action.trips,
       }
     case 'updateTrip':
@@ -19,22 +23,25 @@ const TripsReducer = (state, action) => {
         }
         return trip
       })
+      console.log('state.loadingType', state.loadingType)
       return {
         ...state,
-        loading: false,
+        loadingType: '',
+        loadingTripId: -1,
         trips: updatedTrips,
       }
     case 'deleteTrip':
       const filteredTrips = state.trips.filter(trip => trip.id !== action.trip.id)
       return {
         ...state,
-        loading: false,
+        loadingType: '',
         trips: filteredTrips,
+        loadingTripId: -1,
       }
     case 'error':
       return {
         ...state,
-        loading: false,
+        loadingType: '',
         error: action.error,
       }
     default: return state;
@@ -43,8 +50,9 @@ const TripsReducer = (state, action) => {
 
 const initialState = {
   trips: [],
-  allTripsLoading: false,
+  loadingType: '',
   error: '',
+  loadingTripId: null,
 }
 
 export { TripsReducer, initialState };

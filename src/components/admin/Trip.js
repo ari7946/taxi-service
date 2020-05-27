@@ -23,7 +23,6 @@ const Trip = (props) => {
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
-  console.log("state", state);
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3">
       <p className="trip-list-info"><span className="trip-list-heading">name:</span> {trip.name}</p>
@@ -39,7 +38,7 @@ const Trip = (props) => {
           `}
           onClick={() => updateTrips('confirm', trip.id)}
         >
-          {setLoading('confirm', props.trip.id)}
+          {setLoading('confirm', trip.id)}
           Confirm
         </Button>
 

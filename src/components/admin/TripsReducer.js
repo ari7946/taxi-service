@@ -2,7 +2,6 @@ const TripsReducer = (state, action) => {
   switch (action.type) {
 
     case 'submit':
-      console.log('action.type', action);
       return {
         ...state,
         loadingType: action.loadingType,
@@ -13,7 +12,7 @@ const TripsReducer = (state, action) => {
       return {
         ...state,
         loadingType: '',
-        trips: action.trips,
+        trips: action.trips.reverse(),
       }
     case 'updateTrip':
       const updatedTrip = action.trip;
@@ -23,7 +22,7 @@ const TripsReducer = (state, action) => {
         }
         return trip
       })
-      console.log('state.loadingType', state.loadingType)
+
       return {
         ...state,
         loadingType: '',

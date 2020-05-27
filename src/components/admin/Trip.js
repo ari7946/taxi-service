@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
-import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody  } from 'reactstrap';
+import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody, Spinner  } from 'reactstrap';
+import { useTripsApi } from './TripsApi';
 
 const Trip = (props) => {
-  const { trip, dispatch } = props;
+  const { trip } = props;
   //TODO fix total bug 
   const total = (Number(trip.price) + 10).toFixed(2);
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const { state, removeTrip, updateTrips } = useTripsApi();
+  let setLoading = (status, id) => {
+    return state.loadingType === status
+    && state.loadingTripId === id
+    && <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+      className="mr-2"
+    />;
+  }
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
@@ -22,19 +36,33 @@ const Trip = (props) => {
           className={`
             ${trip.status === 'confirm' ? 'bg-green-light text-green-dark' : null}
           `}
-          onClick={() => props.updateTrips('confirm', trip.id)}
+          onClick={() => updateTrips('confirm', trip.id)}
         >
+          {setLoading('confirm', trip.id)}
           Confirm
         </Button>
+
         <Button 
           className={`
             ${trip.status === 'complete' ? 'bg-green-dark' : null}
           `}
-          onClick={() => props.updateTrips('complete', trip.id)}
+          onClick={() => updateTrips('complete', trip.id)}
         >
+          {setLoading('complete', trip.id)}
           Complete 
         </Button>
-        <Button onClick={() => props.removeTrip(trip.id)}>Delete</Button>
+
+        <Button
+          className={`
+            ${trip.status === 'archive' ? 'btn-warning' : null}
+          `}
+          onClick={() => updateTrips('archive', trip.id)}
+        >
+          {setLoading('archive', trip.id)}
+          Archive
+        </Button>
+
+        <Button onClick={() => removeTrip(trip.id)}>Delete</Button>
       </ButtonGroup>
 
       <Button

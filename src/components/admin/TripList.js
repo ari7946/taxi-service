@@ -1,73 +1,136 @@
-import React from 'react';
-import { Container, ListGroup, Spinner } from 'reactstrap';
-import axios from 'axios';
+import React, { useState } from 'react';
+import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import Trip from './Trip';
-import { useAuth } from '../../auth/use-auth';
+import { useTripsApi } from './TripsApi';
 
 const TripList = (props) => {
-  const { dispatch } = props;
-  const { loading, trips } = props.state;
-  const { authHeaders } = useAuth();
-
-  React.useEffect(() => {
-    getTrips();
-  }, [])
-
-  const getTrips = async () => {
-    dispatch({ type: 'submit' })
-    try {
-      const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, authHeaders);
-      dispatch({ type: 'getTrips', trips: result.data })
-    } catch (error) {
-      dispatch({ type: 'error', error })
-    }
-  }
-
-  const updateTrips = async (status, id) => {
-    try {
-      const result = await axios.put(
-        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`, 
-        { status }, 
-        authHeaders
-      );
-      dispatch({ type: 'updateTrip', trip: result.data })
-    } catch (error) {
-      dispatch({ type: 'error', error })
-    }
-  }
-
-  const removeTrip = async (id) => {
-    try {
-      const result = await axios.delete(
-        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
-        authHeaders
-      );
-      dispatch({ type: 'deleteTrip', trip: result.data.removedTrip })
-    } catch (error) {
-      dispatch({ type: 'error', error })
-    }
-  }
+  const { state } = useTripsApi();
+  const [activeTab, setActiveTab] = useState('viewAll');
 
   return (
     <Container fluid>
-      {loading 
-        ? <Spinner color="light" />
-        : trips.length > 0 ? (
-          <ListGroup>
-            {trips.map(trip =>
-              <Trip
-                key={trip.id}
-                dispatch={dispatch}
-                trip={trip}
-                updateTrips={updateTrips}
-                removeTrip={removeTrip}
-              />
-            )}
-          </ListGroup>
-        ) : (
-          <h4 className="text-green-light">There's currently no trips pending or requested.</h4>
-        )
-      }
+      <Nav className='mb-2' tabs color="light">
+        <NavItem>
+          <NavLink
+            className={`
+              ${activeTab === 'viewAll' ? 'active' : 'text-light'}
+            `}
+            onClick={() => setActiveTab('viewAll')}
+          >
+            All
+          </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink
+            className={`
+              ${activeTab === 'viewConfirmed' ? 'active' : 'text-light'}
+            `}
+            onClick={() => setActiveTab('viewConfirmed')}
+          >
+            Confirmed
+          </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink
+            className={`
+              ${activeTab === 'viewCompleted' ? 'active' : 'text-light'}
+            `}
+            onClick={() => setActiveTab('viewCompleted')}
+          >
+            Completed
+          </NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink
+            className={`
+              ${activeTab === 'viewArchived' ? 'active' : 'text-light'}
+            `}
+            onClick={() => setActiveTab('viewArchived')}
+          >
+            Archived
+          </NavLink>
+        </NavItem>
+      </Nav>
+
+      <TabContent activeTab={activeTab}>
+        <TabPane tabId="viewAll">
+          {state.loadingType === 'getTrips'
+            ? <Spinner color="light" />
+            : state.trips.length > 0 ? (
+              <ListGroup>
+                {state.trips.map(trip =>
+                  <Trip
+                    key={trip.id}
+                    trip={trip}
+                  />
+                )}
+              </ListGroup>
+            ) : (
+              <h4 className="text-green-light">There's currently no trips pending.</h4>
+            )
+          }
+        </TabPane>
+
+        <TabPane tabId="viewConfirmed">
+            {state.trips.length > 0 ? (
+              <ListGroup>
+                {state.trips.map(trip => {
+                  if (trip.status === 'confirm') {
+                    return <Trip
+                      key={trip.id}
+                      trip={trip}
+                    />
+                  }
+                  return null
+                })}
+              </ListGroup>    
+            ) : (
+              <h4 className="text-green-light">There's no confirmed trips.</h4>
+            )
+          }
+        </TabPane>
+
+        <TabPane tabId="viewCompleted">
+            {state.trips.length > 0 ? (
+              <ListGroup>
+                {state.trips.map(trip => {
+                  if (trip.status === 'complete') {
+                    return <Trip
+                      key={trip.id}
+                      trip={trip}
+                    />
+                  }
+                  return null
+                })}
+              </ListGroup>    
+            ) : (
+              <h4 className="text-green-light">There's no completed trips.</h4>
+            )
+          }
+        </TabPane>
+
+        <TabPane tabId="viewArchived">
+            {state.trips.length > 0 ? (
+              <ListGroup>
+                {state.trips.map(trip => {
+                  if (trip.status === 'archive') {
+                    return <Trip
+                      key={trip.id}
+                      trip={trip}
+                    />
+                  }
+                  return null
+                })}
+              </ListGroup>    
+            ) : (
+              <h4 className="text-green-light">There's no archived trips.</h4>
+            )
+          }
+        </TabPane>
+      </TabContent>
     </Container>
   )
 }

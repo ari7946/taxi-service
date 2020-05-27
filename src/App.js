@@ -4,7 +4,7 @@ import NavbarContainer from './components/navbar';
 import Landing from './components/landing';
 import About from './components/about';
 import TripsContainer from './components/admin';
-import Login from './components/admin/Login';
+import Login from './components/admin/TripsLogin';
 import { Route, Switch } from 'react-router-dom';
 import { ProvideAuth } from "./auth/use-auth";
 import './index.css';

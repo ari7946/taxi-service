@@ -29,7 +29,7 @@ const NavbarComponent = (props) => {
 
   return (
     <Navbar className="container-fluid mb-5 mt-1" expand="md">
-      <NavbarBrand href="/" className="mr-auto text-grey-light-2">
+      <NavbarBrand href="/" className="text-grey-light-2">
         <FontAwesomeIcon className="mr-2 fa-lg" icon={faTaxi} />
         Coastal Yellow Cabs
       </NavbarBrand>
@@ -40,7 +40,7 @@ const NavbarComponent = (props) => {
       </NavbarToggler >
 
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="mx-auto" navbar>
+        <Nav className="ml-auto" navbar>
           <NavItem className='py-3'>
             <NavLink 
               className="px-5 mx-2 py-3 text-green-light lead"

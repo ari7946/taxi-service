@@ -1,16 +1,16 @@
 /***************** LANDING **********************/
 .landing {
-  background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(../../assets/los-angeles.jpg); 
   height: 70vh; 
   width: 100%;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
   position: relative;
 }
 
 
 .landing::before {
+  background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(../../assets/los-angeles.jpg); 
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
   content: "" !important;
   /* background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(../../assets/los-angeles.jpg); Used if the image is unavailable */
   position: absolute;
@@ -18,12 +18,17 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-color: rgba(0,0,0,0.2);
-  filter: blur(4px) !important;
+  background-color: rgba(0, 0, 0,0.3);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: saturate(3);
 }
 
 .landing .landing-header {
-  position: relative !important;
+  position: relative;
+  z-index: 1;
 }
 
 .landing-button {

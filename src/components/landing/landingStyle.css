@@ -1,11 +1,29 @@
 /***************** LANDING **********************/
 .landing {
-  background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(../../assets/los-angeles.jpg);  background-color: #cccccc; /* Used if the image is unavailable */
-  height: 70vh; /* You must set a specified height */
+  background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(../../assets/los-angeles.jpg); 
+  height: 70vh; 
+  width: 100%;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  color: white;
+  position: relative;
+}
+
+
+.landing::before {
+  content: "" !important;
+  /* background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(../../assets/los-angeles.jpg); Used if the image is unavailable */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0,0,0,0.2);
+  filter: blur(4px) !important;
+}
+
+.landing .landing-header {
+  position: relative !important;
 }
 
 .landing-button {

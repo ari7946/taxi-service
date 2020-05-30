@@ -1,12 +1,14 @@
 import React from 'react';
 import './landingStyle.css';
 import { Jumbotron, Button, Container } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom';
+import losangeles from '../../assets/los-angeles.jpg';
 
 const Landing = (props) => {
   return (
     <Container fluid>
       <Jumbotron className='landing'>
+        {/* <img className="background-image" src={losangeles} /> */}
         <div className='landing-header'>
           <h1 className="display-4 text-white text-uppercase">Coastal <span className='landing-yellow'>Yellow</span> Cabs</h1>
           <hr className="my-2" />

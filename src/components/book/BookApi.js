@@ -21,7 +21,22 @@ const useProvideBookApi = () => {
     dispatch({ type, name, value })
   }
 
+  const locationsFound = ({ type, points, startAddress, endAddress }) => {
+    dispatch({ type, points, startAddress, endAddress });
+  }
+
+  const locationsCleared = ({ type, points, startAddress, endAddress }) => {
+    dispatch({ type, points, startAddress, endAddress })
+  }
+
+  const routeChanged = ({ type, distance }) => {
+    dispatch({ type, distance});
+  }
+
   return {
+    locationsFound,
+    locationsCleared,
+    routeChanged,
     setInput,
     state,
   }

@@ -136,5 +136,5 @@ const initialState = {
   status: 'pending',
 }
 
-export { BookReducer, initialState};
+export { BookReducer, initialState };
 

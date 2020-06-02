@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { FormGroup, ButtonGroup, Row, Container, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
+import { useBookApi } from './BookApi';
 
 function VehicleType(props) {
-  const { dispatch } = props;
-  const { vehicle } = props.state;
+  const { state, setInput } = useBookApi();
 
   return (
     <FormGroup>
@@ -15,16 +15,12 @@ function VehicleType(props) {
             <ButtonGroup>
               <Button
                 className={`
-                  ${vehicle === 'sedan' ? 'text-yellow border-warning' : 'border-light text-green-light'}
+                  ${state.vehicle === 'sedan' ? 'text-yellow border-warning' : 'border-light text-green-light'}
                   mr-4
                   bg-green-dark
                 `}
                 value="sedan"
-                onClick={(e) => dispatch({
-                  type: 'input',
-                  name: 'vehicle',
-                  value: 'sedan',
-                })}
+                onClick={() => setInput('input', 'vehicle', 'sedan' )}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
                 <span className="vehicle-type-text mr-2">SEDAN</span>
@@ -34,15 +30,11 @@ function VehicleType(props) {
 
               <Button
                 className={`
-                  ${vehicle === 'van' ? 'text-yellow border-warning' : 'border-light text-green-light'}
+                  ${state.vehicle === 'van' ? 'text-yellow border-warning' : 'border-light text-green-light'}
                   bg-green-dark
                   border-warning
                 `}
-                onClick={(e) => dispatch({
-                  type: 'input',
-                  name: 'vehicle',
-                  value: 'van',
-                })}
+                onClick={(e) => setInput('input', 'vehicle', 'van')}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
                 <span className="vehicle-type-text mr-2">VAN</span>

@@ -6,6 +6,7 @@ import Addresses from './Addresses';
 import Estimate from './Estimate';
 import './bookStyle.css';
 import { Container, Row, Col, ListGroup } from 'reactstrap';
+import { ProvideBookApi } from './BookApi';
 const Map = React.lazy(() => import('./Map'));
 
 
@@ -152,26 +153,28 @@ const MapFormContainer = () => {
 
   return (
     <Container fluid>
-      <MapHeader points={state.points} state={state} dispatch={dispatch} />
-      <Row>
-        <Col md='6'>
-          <Suspense fallback={<Loading />} >
-            <Map dispatch={dispatch} />
-          </Suspense >
-          {state.startAddress && state.endAddress && (
-            <Fragment>
-              <Estimate state={state} dispatch={dispatch} />
-            </Fragment>
-          )}
-        </Col>
+      <ProvideBookApi>
+        <MapHeader points={state.points} state={state} dispatch={dispatch} />
+        <Row>
+          <Col md='6'>
+            <Suspense fallback={<Loading />} >
+              <Map dispatch={dispatch} />
+            </Suspense >
+            {state.startAddress && state.endAddress && (
+              <Fragment>
+                <Estimate state={state} dispatch={dispatch} />
+              </Fragment>
+            )}
+          </Col>
 
-        <Col md='6'>
-          <ListGroup flush>
-            <Addresses state={state} />
-            <TaxiForm state={state} dispatch={dispatch} />
-          </ListGroup>
-        </Col>
-      </Row>
+          <Col md='6'>
+            <ListGroup flush>
+              <Addresses state={state} />
+              <TaxiForm state={state} dispatch={dispatch} />
+            </ListGroup>
+          </Col>
+        </Row>
+      </ProvideBookApi>
     </Container>
   )
 } 

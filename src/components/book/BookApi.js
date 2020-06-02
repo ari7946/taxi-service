@@ -10,17 +10,19 @@ export function ProvideBookApi({ children }) {
 }
 
 export function useBookApi() {
-  return useContext(tripsContext);
+  return useContext(bookContext);
 }
-
 
 const useProvideBookApi = () => {
   const [state, dispatch] = useReducer(BookReducer, initialState);
-  const { authHeaders } = useAuth();
+  //const { authHeaders } = useAuth();
 
-  
+  const setInput = (type, name, value) => {
+    dispatch({ type, name, value })
+  }
 
   return {
-
+    setInput,
+    state,
   }
 }

@@ -3,7 +3,6 @@ const BookReducer = (state, action) => {
     case 'locationsFound':
       return {
         ...state,
-        points: action.points,
         startAddress: action.startAddress,
         endAddress: action.endAddress,
         alertSuccess: false,
@@ -11,7 +10,6 @@ const BookReducer = (state, action) => {
     case 'locationsCleared':
       return {
         ...state,
-        points: action.points,
         startAddress: action.startAddress,
         endAddress: action.endAddress,
         alertSuccess: false,
@@ -112,7 +110,6 @@ const BookReducer = (state, action) => {
 const initialState = {
   // map
   distance: "",
-  points: [null, null],
   startAddress: '',
   endAddress: '',
   // fields

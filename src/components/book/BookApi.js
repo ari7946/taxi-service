@@ -54,7 +54,7 @@ const useProvideBookApi = () => {
   }
 
   const routeChanged = ({ type, distance }) => {
-    dispatch({ type, distance});
+    dispatch({ type, distance });
   }
 
   return {

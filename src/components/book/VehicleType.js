@@ -6,6 +6,7 @@ import { useBookApi } from './BookApi';
 
 function VehicleType(props) {
   const { state, setInput } = useBookApi();
+  const { vehicle } = state;
 
   return (
     <FormGroup>
@@ -15,12 +16,12 @@ function VehicleType(props) {
             <ButtonGroup>
               <Button
                 className={`
-                  ${state.vehicle === 'sedan' ? 'text-yellow border-warning' : 'border-light text-green-light'}
+                  ${vehicle === 'sedan' ? 'text-yellow border-warning' : 'border-light text-green-light'}
                   mr-4
                   bg-green-dark
                 `}
                 value="sedan"
-                onClick={() => setInput('input', 'vehicle', 'sedan' )}
+                onClick={() => setInput( {type: 'input', name: 'vehicle', value:'sedan'} )}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
                 <span className="vehicle-type-text mr-2">SEDAN</span>
@@ -30,11 +31,12 @@ function VehicleType(props) {
 
               <Button
                 className={`
-                  ${state.vehicle === 'van' ? 'text-yellow border-warning' : 'border-light text-green-light'}
+                  ${vehicle === 'van' ? 'text-yellow border-warning' : 'border-light text-green-light'}
                   bg-green-dark
                   border-warning
                 `}
-                onClick={(e) => setInput('input', 'vehicle', 'van')}
+                value="van"
+                onClick={(e) => setInput({ type: 'input', name: 'vehicle', value: 'van' })}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
                 <span className="vehicle-type-text mr-2">VAN</span>

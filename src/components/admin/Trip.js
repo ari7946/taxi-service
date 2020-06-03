@@ -8,18 +8,17 @@ const Trip = (props) => {
   const total = (Number(trip.price) + 10).toFixed(2);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const { state, removeTrip, updateTrips } = useTripsApi();
-  let setLoading = (status, id) => {
-    return state.loadingType === status
-    && state.loadingTripId === id
-    && <Spinner
-      as="span"
-      animation="border"
-      size="sm"
-      role="status"
-      aria-hidden="true"
-      className="mr-2"
-    />;
-  }
+  const isLoading = (status, id) => {
+    return state.loadingType === status && state.loadingTripId === id;
+  };
+  const spinner = <Spinner
+    as="span"
+    animation="border"
+    size="sm"
+    role="status"
+    aria-hidden="true"
+    className="mr-2"
+  />;
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
@@ -38,7 +37,7 @@ const Trip = (props) => {
           `}
           onClick={() => updateTrips('confirm', trip.id)}
         >
-          {setLoading('confirm', trip.id)}
+          {isLoading('confirm', trip.id) && spinner}
           Confirm
         </Button>
 
@@ -48,7 +47,7 @@ const Trip = (props) => {
           `}
           onClick={() => updateTrips('complete', trip.id)}
         >
-          {setLoading('complete', trip.id)}
+          {isLoading('complete', trip.id) && spinner}
           Complete 
         </Button>
 
@@ -58,7 +57,7 @@ const Trip = (props) => {
           `}
           onClick={() => updateTrips('archive', trip.id)}
         >
-          {setLoading('archive', trip.id)}
+          {isLoading('archive', trip.id) && spinner}
           Archive
         </Button>
 

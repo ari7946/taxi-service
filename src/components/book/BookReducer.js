@@ -133,6 +133,7 @@ const initialState = {
   error: false,
   errorMessage: '',
   invalidFields: [],
+  valid: false,
   status: 'pending',
 }
 

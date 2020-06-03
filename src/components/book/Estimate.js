@@ -1,9 +1,11 @@
 import React from 'react';
 import { Badge, ListGroupItem, ListGroupItemText, ListGroupItemHeading } from 'reactstrap';
 import VehicleType from './VehicleType';
+import { useBookApi } from './BookApi';
 
 const Estimate = (props) => {
-  const { price, dropFee, direction } = props.state;
+  const { state } = useBookApi();
+  const { price, dropFee, direction } = state;
   const total = (Number(price) + dropFee).toFixed(2);
   // const discount = (total * 0.20).toFixed(2);
   // const discountTotal = (total - discount).toFixed(2);
@@ -11,7 +13,7 @@ const Estimate = (props) => {
   return (
     <div>
       <ListGroupItem className="estimate mt-3 pt-3">
-        <VehicleType {...props} />
+        <VehicleType {...props}/>
 
         {/* //TODO Implement as a future feature */}
         {/* <ul className="pt-3">

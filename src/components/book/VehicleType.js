@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { FormGroup, ButtonGroup, Row, Container, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
+import { useBookApi } from './BookApi';
 
 function VehicleType(props) {
-  const { dispatch } = props;
-  const { vehicle } = props.state;
+  const { state, setInput } = useBookApi();
+  const { vehicle } = state;
 
   return (
     <FormGroup>
@@ -20,11 +21,7 @@ function VehicleType(props) {
                   bg-green-dark
                 `}
                 value="sedan"
-                onClick={(e) => dispatch({
-                  type: 'input',
-                  name: 'vehicle',
-                  value: 'sedan',
-                })}
+                onClick={() => setInput( {type: 'input', name: 'vehicle', value:'sedan'} )}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
                 <span className="vehicle-type-text mr-2">SEDAN</span>
@@ -38,11 +35,8 @@ function VehicleType(props) {
                   bg-green-dark
                   border-warning
                 `}
-                onClick={(e) => dispatch({
-                  type: 'input',
-                  name: 'vehicle',
-                  value: 'van',
-                })}
+                value="van"
+                onClick={(e) => setInput({ type: 'input', name: 'vehicle', value: 'van' })}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
                 <span className="vehicle-type-text mr-2">VAN</span>

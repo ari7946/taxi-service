@@ -1,26 +1,27 @@
 import React from 'react';
 import { Badge, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
+import { useBookApi } from './BookApi';
 
 function Addresses(props) {
-  const { startAddress, endAddress } = props.state;
+  const { state } = useBookApi();
 
   return (
     <div>
       <ListGroup flush>
-        {startAddress && (
+        {state.startAddress && (
             <ListGroupItem className="book-address">
               <ListGroupItemHeading className="address-heading-starting">Starting Point</ListGroupItemHeading>
             <ListGroupItemText>
-              {startAddress}
+              {state.startAddress}
             </ListGroupItemText>
           </ListGroupItem>
         )}
 
-        {endAddress && (
+        {state.endAddress && (
             <ListGroupItem className="book-address">
               <ListGroupItemHeading className='address-heading-destination'>Destination</ListGroupItemHeading>
               <ListGroupItemText>
-                {endAddress}
+                {state.endAddress}
               </ListGroupItemText>
             </ListGroupItem>
         )}

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Popover, PopoverHeader, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
+import { useBookApi } from './BookApi';
 
 const TripInfoButton = (props) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const {
+  const { state } = useBookApi();
+  const {  
     // map
     distance,
     startAddress,
@@ -11,8 +13,8 @@ const TripInfoButton = (props) => {
     // fields
     price,
     vehicle,
-    dropFee,
-  } = props.state;
+    dropFee
+  } = state;
   const total = (Number(price) + dropFee).toFixed(2);
   const discount = (total * 0.20).toFixed(2);
   const discountTotal = (total - discount).toFixed(2);

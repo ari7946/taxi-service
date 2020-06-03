@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useBookApi } from './BookApi';
 
 function Map({ dispatch }) {
-
-  React.useEffect(() => {
+  const { locationsFound, locationsCleared, routeChanged } = useBookApi();
+  useEffect(() => {
     const script = document.createElement('script');
     script.src = process.env.PUBLIC_URL + '/sdk/tomtom.min.js';
     document.body.appendChild(script);
@@ -72,7 +73,7 @@ function Map({ dispatch }) {
         // console.log("First input value", eventObject.target.searchBoxes[0].input.value)
         // console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
 
-        dispatch({
+        locationsFound({
           type: "locationsFound",
           points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
@@ -85,7 +86,7 @@ function Map({ dispatch }) {
         routeOnMapView.draw(eventObject.points);
         // console.log("eventObject LocationsCleared", eventObject)
 
-        dispatch({
+        locationsCleared({
           type: 'locationsCleared',
           points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
@@ -99,7 +100,7 @@ function Map({ dispatch }) {
         routeSummaryInstance.hide();
         // console.log("eventObject RouteChanged", eventObject)
 
-        dispatch({
+        routeChanged({
           type: 'routeChanged',
           distance: eventObject.object.lengthInMeters,
         })

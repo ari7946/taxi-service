@@ -5,35 +5,25 @@
   position: relative;
 }
 
-
 .landing::before {
   background-image: url(../../assets/los-angeles3.jpeg); 
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   content: "" !important;
-  /* background: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ),url(../../assets/los-angeles.jpg); Used if the image is unavailable */
   position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
+  -webkit-filter: saturate(2px);
+  -moz-filter: saturate(2px);
+  -o-filter: saturate(2px);
+  -ms-filter: saturate(2px);
   filter: saturate(3);
 }
 
 .landing .landing-header {
   position: relative;
-  margin-left: 0;
 }
 
-.landing-button {
-  background-color: var(--color-yellow) !important;
-}
-
-.landing-yellow {
-  color: var(--color-yellow) !important;
-}

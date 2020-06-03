@@ -2,41 +2,16 @@ import React, { Fragment } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItemHeading, ListGroupItem, Badge, Alert } from 'reactstrap';
 import TripInfoButton from './TripInfo';
 import axios from 'axios';
+import { useBookApi } from './BookApi';
 
 function TaxiForm(props) {
-  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, invalidFields, date, time, alertSuccess } = props.state;
-  const { dispatch } = props;
-
-  React.useEffect(() => {
-    if (submitted && valid) {
-      processForm()
-    } else if (submitted && !valid) {
-      dispatch({ type: 'error', errorMessage: 'One or more fields are invalid' })
-    }
-  }, [submitted, valid])
-
-  const handleFormSubmit = (formSubmitEvent) => {
-    formSubmitEvent.preventDefault();
-    dispatch({ type: 'submit' })
-  }
-
-  const processForm = async () => {
-    const body = { distance, startAddress, endAddress, price, name, comments, phone, passengers, email, direction, date, time, vehicle, status }
-    try {
-      const res = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
-      if (res) {
-        dispatch({ type: 'success' })
-      }
-    } catch (error) {
-      dispatch({ type: 'error', errorMessage: error });
-    }
-  }
+  const { setInput, submitForm, state } = useBookApi();
+  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, invalidFields, date, time, alertSuccess } = state;
 
   return (
     <div className=''>
       <ListGroupItem className="book-form">
-        {/* <ListGroupItemHeading className="mb-3"> <Badge color="warning">Reserve Taxi</Badge></ListGroupItemHeading> */}
-        <Form onSubmit={(e) => handleFormSubmit(e)}>
+        <Form onSubmit={(e) => submitForm(e)}>
           {/* NAME */}
           <FormGroup>
             <Label for="exampleEmail">Name:</Label>
@@ -46,11 +21,7 @@ function TaxiForm(props) {
               id="form-name"
               placeholder="name"
               bsSize="sm"
-              {...!name
-                ? { ...invalidFields.length && invalidFields.includes('name') ? { invalid: true } : null }
-                : { ...name && (name && name.length > 2) ? { valid: true } : null }
-              }
-              onChange={(e) => dispatch({
+              onChange={(e) => setInput({
                 type: 'input',
                 name: 'name',
                 value: e.target.value,
@@ -68,11 +39,7 @@ function TaxiForm(props) {
               id="exampleNumber"
               placeholder="###-###-####"
               bsSize="sm"
-              {...!phone
-                ? { ...invalidFields.length && invalidFields.includes('phone') ? { invalid: true } : null }
-                : { ...phone && (phone && phone.length >= 7) ? { valid: true } : null }
-              }
-              onChange={(e) => dispatch({
+              onChange={(e) => setInput({
                 type: 'input',
                 name: 'phone',
                 value: e.target.value,
@@ -90,11 +57,7 @@ function TaxiForm(props) {
               id="form-email"
               placeholder="email"
               bsSize="sm"
-              {...!email
-                ? { ...invalidFields.length && invalidFields.includes('email') ? { invalid: true } : null }
-                : { ...email && (email && email.length >= 5) ? { valid: true } : null }
-              }
-              onChange={(e) => dispatch({
+              onChange={(e) => setInput({
                 type: 'input',
                 name: 'email',
                 value: e.target.value,
@@ -102,37 +65,6 @@ function TaxiForm(props) {
               value={email}
             />
           </FormGroup>
-
-          {/* PASSENGERS */}
-          {/* <Row form>
-          <Col md={3}>
-            <FormGroup>
-              <Label for="exampleSelect">Passengers:</Label>
-              <Input 
-                type="select" 
-                name="passengers" 
-                id="form-occupants" 
-                bsSize="sm" 
-                onChange={(e) => dispatch({
-                  type: 'input',
-                  name: 'passengers',
-                  value: e.target.value,
-                })}
-                value={passengers}
-              >
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-                <option value={7}>7</option>
-                <option value={8}>8</option>
-                <option value={9}>9 or more</option>
-              </Input>
-            </FormGroup>
-          </Col>
-        </Row>  */}
 
           {/* DATE */}
           <FormGroup>
@@ -142,11 +74,7 @@ function TaxiForm(props) {
               name="date"
               placeholder="date"
               bsSize="sm"
-              {...!date
-                ? { ...invalidFields.length && invalidFields.includes('date') ? { invalid: true } : null }
-                : { ...date && (date && date.length >= 6) ? { valid: true } : null }
-              }
-              onChange={(e) => dispatch({
+              onChange={(e) => setInput({
                 type: 'input',
                 name: 'date',
                 value: e.target.value,
@@ -163,11 +91,7 @@ function TaxiForm(props) {
               name="time"
               placeholder="time"
               bsSize="sm"
-              {...!time
-                ? { ...invalidFields.length && invalidFields.includes('time') ? { invalid: true } : null }
-                : { ...time && (time && time.length >= 4) ? { valid: true } : null }
-              }
-              onChange={(e) => dispatch({
+              onChange={(e) => setInput({
                 type: 'input',
                 name: 'time',
                 value: e.target.value,
@@ -175,41 +99,6 @@ function TaxiForm(props) {
               value={time}
             />
           </FormGroup>
-
-          {/* DIRECTION */}
-          {/* <FormGroup>
-          <Label for="exampleCheckbox">Direction:</Label>
-          <div>
-            <CustomInput 
-              inline checked 
-              type="radio" 
-              id="one-way" 
-              name="direction"
-              value="oneWay" 
-              label="oneWay" 
-              onChange={(e) => dispatch({
-                type: 'input',
-                name: 'direction',
-                value: e.target.value,
-              })}
-              checked={direction === 'oneWay'} 
-            />
-            <CustomInput 
-              inline 
-              type="radio" 
-              id="two-way" 
-              name="direction" 
-              value="twoWay" 
-              label="twoWay"
-              onChange={(e) => dispatch({
-                type: 'input',
-                name: 'direction',
-                value: e.target.value,
-              })}
-              checked={direction === 'twoWay'} 
-            />
-          </div>
-        </FormGroup> */}
 
           {/* COMMENTS */}
           <FormGroup>
@@ -219,7 +108,7 @@ function TaxiForm(props) {
               name="comments"
               id="form-comments"
               placeholder="luggage, pets, wheelchair, ect"
-              onChange={(e) => dispatch({
+              onChange={(e) => setInput({
                 type: 'input',
                 name: 'comments',
                 value: e.target.value,

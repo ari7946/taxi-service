@@ -11,7 +11,6 @@ function TaxiForm(props) {
   return (
     <div className=''>
       <ListGroupItem className="book-form">
-        {/* <ListGroupItemHeading className="mb-3"> <Badge color="warning">Reserve Taxi</Badge></ListGroupItemHeading> */}
         <Form onSubmit={(e) => submitForm(e)}>
           {/* NAME */}
           <FormGroup>
@@ -67,37 +66,6 @@ function TaxiForm(props) {
             />
           </FormGroup>
 
-          {/* PASSENGERS */}
-          {/* <Row form>
-          <Col md={3}>
-            <FormGroup>
-              <Label for="exampleSelect">Passengers:</Label>
-              <Input 
-                type="select" 
-                name="passengers" 
-                id="form-occupants" 
-                bsSize="sm" 
-                onChange={(e) => setInput({
-                  type: 'input',
-                  name: 'passengers',
-                  value: e.target.value,
-                })}
-                value={passengers}
-              >
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-                <option value={7}>7</option>
-                <option value={8}>8</option>
-                <option value={9}>9 or more</option>
-              </Input>
-            </FormGroup>
-          </Col>
-        </Row>  */}
-
           {/* DATE */}
           <FormGroup>
             <Label for="exampleDate">Date</Label>
@@ -131,41 +99,6 @@ function TaxiForm(props) {
               value={time}
             />
           </FormGroup>
-
-          {/* DIRECTION */}
-          {/* <FormGroup>
-          <Label for="exampleCheckbox">Direction:</Label>
-          <div>
-            <CustomInput 
-              inline checked 
-              type="radio" 
-              id="one-way" 
-              name="direction"
-              value="oneWay" 
-              label="oneWay" 
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'direction',
-                value: e.target.value,
-              })}
-              checked={direction === 'oneWay'} 
-            />
-            <CustomInput 
-              inline 
-              type="radio" 
-              id="two-way" 
-              name="direction" 
-              value="twoWay" 
-              label="twoWay"
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'direction',
-                value: e.target.value,
-              })}
-              checked={direction === 'twoWay'} 
-            />
-          </div>
-        </FormGroup> */}
 
           {/* COMMENTS */}
           <FormGroup>

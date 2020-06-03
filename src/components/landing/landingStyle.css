@@ -27,3 +27,26 @@
   position: relative;
 }
 
+@media (max-width: 600px) {
+  .landing-title {
+    font-size: 2.5rem;
+  }
+
+  .landing-subtitle {
+    font-size: .5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .landing-title {
+    font-size: 1.6rem;
+  }
+
+  .landing-subtitle {
+    font-size: .5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}

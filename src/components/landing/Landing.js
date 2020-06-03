@@ -8,9 +8,10 @@ const Landing = (props) => {
     <Container fluid>
       <div className='landing'>
         <div className='landing-header'>
-          <h1 className="text-white text-uppercase">Coastal <span className='text-yellow'>Yellow</span> Cabs</h1>
-          <h2 className="text-white lead">Our professional, rigorously trained drivers will accomodate your needs.</h2>
+          <h1 className="text-white text-uppercase landing-title">Coastal <span className='text-yellow'>Yellow</span> Cabs</h1>
+          <h2 className="text-white lead landing-subtitle">Our professional, rigorously trained drivers will accomodate your needs.</h2>
           <p className="text-white">Use our online system to book a taxi and get rate right away</p>
+          <hr className="bg-light" />
           <Link className="btn bg-yellow" to="/book" style={{ textDecoration: 'none', color: 'black' }}>Book a Taxi</Link>
           <Link className="btn ml-3 bg-yellow" to="/book" style={{ textDecoration: 'none', color: 'black' }}>Get An Estimate</Link>
         </div>

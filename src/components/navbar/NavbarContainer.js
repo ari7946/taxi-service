@@ -29,13 +29,13 @@ const NavbarComponent = (props) => {
 
   return (
     <Navbar className="container-fluid mb-5 mt-1" expand="md">
-      <NavbarBrand href="/" className="text-grey-light-2">
-        <FontAwesomeIcon className="mr-2 fa-lg" icon={faTaxi} />
-        Coastal Yellow Cabs
+      <NavbarBrand href="/" className="text-grey-light-2 navbar-brand">
+        <FontAwesomeIcon className="mr-2 fa-lg fa-brand" icon={faTaxi} />
+        <span className="brand-title">Coastal Yellow Cabs</span>
       </NavbarBrand>
 
-      <NavbarToggler className="text-green-light" onClick={toggle} >
-        Menu
+      <NavbarToggler className="text-grey-light-2" onClick={toggle} >
+        MENU
         <FontAwesomeIcon className="ml-2" icon={ isOpen ? faChevronUp : faChevronDown }/>
       </NavbarToggler >
 
@@ -43,18 +43,18 @@ const NavbarComponent = (props) => {
         <Nav className="ml-auto" navbar>
           <NavItem className='py-3'>
             <NavLink 
-              className="px-5 mx-2 py-3 text-green-light lead"
+              className="px-5 mx-2 py-3 text-grey-light-2 lead"
               exact
-              activeClassName="text-white"
+              activeClassName="font-weight-bold"
               to="/book" style={{ textDecoration: 'none' }} 
               onClick={() => setIsOpen(false)}>Book</NavLink>
           </NavItem>
 
           <NavItem className='py-3'>
             <NavLink 
-              className="px-5 mx-2 py-3 text-green-light lead" 
+              className="px-5 mx-2 py-3 text-grey-light-2 lead" 
               exact
-              activeClassName="text-white"
+              activeClassName="font-weight-bold"
               to="/about" 
               style={{ textDecoration: 'none' }}
               onClick={() => setIsOpen(false)} >About</NavLink>
@@ -63,7 +63,7 @@ const NavbarComponent = (props) => {
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>
               <div className="pt-2">
-                <span className="px-5 ml-1 py-1 text-green-light lead">Admin</span>
+                <span className="px-5 ml-1 py-1 text-grey-light-2 lead">Admin</span>
               </div>
             </DropdownToggle>
 

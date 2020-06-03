@@ -8,6 +8,20 @@
   border: 1px solid white !important;
 }
 
+.fa-brand {
+  font-size: 2.3rem;
+}
+
 .active {
   color: var(--text-yellow) !important;
+}
+
+@media (max-width: 415px) {
+  .brand-title {
+    display: none;
+  }
+
+  .navbar-brand {
+    margin: 0 1rem;
+  }
 }

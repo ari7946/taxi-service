@@ -1,5 +1,4 @@
 import React from 'react';
-import { Badge } from 'reactstrap';
 import { useBookApi } from './BookApi';
 
 function MapHeader(props) {

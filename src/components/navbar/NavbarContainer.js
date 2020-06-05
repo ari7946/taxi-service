@@ -35,8 +35,8 @@ const NavbarComponent = (props) => {
       </NavbarBrand>
 
       <NavbarToggler className="text-grey-light-2" onClick={toggle} >
+        <FontAwesomeIcon className="mr-2" icon={isOpen ? faChevronUp : faChevronDown} />
         MENU
-        <FontAwesomeIcon className="ml-2" icon={ isOpen ? faChevronUp : faChevronDown }/>
       </NavbarToggler >
 
       <Collapse isOpen={isOpen} navbar>

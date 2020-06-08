@@ -7,3 +7,32 @@
   font-family: "Courier New", Courier, monospace;
   text-transform: uppercase;
 }
+
+.nav-tabs .nav-link {
+  cursor: pointer;
+}
+
+.trip-details {
+  margin-left: .8rem;
+}
+
+@media (max-width: 600px) {
+  .trip-details {
+    margin-left: 0;
+    margin-top: .4rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .trip-item .trip-list-info {
+    font-size: .9rem;
+  }
+
+  .trip-item button {
+    padding: .3rem;
+  } 
+
+  .nav-tabs .nav-link {
+    padding: .2rem .6rem
+  }
+}

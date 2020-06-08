@@ -16,12 +16,14 @@ h2.price {
 
 .book-form {
   background-color: var(--color-green-dark) !important;
+  padding-top: 0 !important;
 }
 
 /* START Addresses COMPONENT */
 .book-address {
-  margin-bottom: .5rem;
-  padding-top: 0 0 !important;
+  margin-bottom: .8rem !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
   background-color: var(--color-green-dark) !important;
   color: var(--color-grey-light-2);
 }

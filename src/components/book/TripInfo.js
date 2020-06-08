@@ -23,7 +23,7 @@ const TripInfoButton = (props) => {
 
   return (
     <div>
-      <Button className="trip-info-button px-4 bg-green-light text-dark" id="Popover1" type="button">
+      <Button className="trip-info-button px-4 bg-grey-light-2 text-dark" id="Popover1" type="button">
         Trip Details
       </Button>
 

@@ -9,7 +9,7 @@ const TripList = (props) => {
 
   return (
     <Container fluid>
-      <Nav className='mb-2' tabs color="light">
+      <Nav className='mb-2 nav-tabs' tabs color="light">
         <NavItem>
           <NavLink
             className={`

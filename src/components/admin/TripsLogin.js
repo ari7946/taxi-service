@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
+      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
       if (response) {
         setLoading(false);
         login(response.data.token);
@@ -35,7 +35,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
+      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
       if (response) {
         setLoading(false);
         login(response.data.token);

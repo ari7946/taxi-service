@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItemHeading, ListGroupItem, Badge, Alert } from 'reactstrap';
+import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
 import TripInfoButton from './TripInfo';
-import axios from 'axios';
 import { useBookApi } from './BookApi';
 
 function TaxiForm(props) {

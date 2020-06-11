@@ -3,7 +3,7 @@ import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLi
 import Trip from './Trip';
 import { useTripsApi } from './TripsApi';
 
-const TripList = (props) => {
+const TripList = () => {
   const { state } = useTripsApi();
   const [activeTab, setActiveTab] = useState('viewAll');
 

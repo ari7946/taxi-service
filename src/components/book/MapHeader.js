@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBookApi } from './BookApi';
 
-function MapHeader(props) {
+function MapHeader() {
   const { state } = useBookApi();
   const startHeading = <span className="address-heading-starting">Starting Point</span>;
   const destinationHeading = <span className="address-heading-destination">Destination</span>;

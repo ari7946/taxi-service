@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Popover, PopoverHeader, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
+import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
 import { useBookApi } from './BookApi';
 
 const TripInfoButton = (props) => {

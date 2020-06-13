@@ -7,10 +7,9 @@ import './adminStyle.css';
 
 function Container() {
   const { auth } = useAuth();
-
   return (
     <ProvideTripsApi>
-      {auth 
+      {auth === 'admin'
         ? <TripList /> 
         : (
           <div className="container">

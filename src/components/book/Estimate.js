@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, ListGroupItem, ListGroupItemText, ListGroupItemHeading } from 'reactstrap';
+import { ListGroupItem, ListGroupItemText } from 'reactstrap';
 import VehicleType from './VehicleType';
 import { useBookApi } from './BookApi';
 

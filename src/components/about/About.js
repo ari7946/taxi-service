@@ -4,7 +4,6 @@ import './aboutStyle.css';
 import city from '../../assets/city.jpg';
 import arrow from '../../assets/arrow.jpg';
 import licensed from '../../assets/licensed.jpg';
-import driver from '../../assets/driver.jpg';
 
 export default class About extends React.Component {
   render() {

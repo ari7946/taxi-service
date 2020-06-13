@@ -12,16 +12,57 @@ export function useAuth() {
 };
 
 const useProvideAuth = () => {
-  const [auth, setAuth] = useState(localStorage.getItem('token') || null);
 
-  const login = (token) => {
-    localStorage.setItem('token', token);
-    setAuth(true);
+  const isAuth = () => {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    if (!token || !username) {
+      return '';
+    } else if (username === 'admin') {
+      return 'admin';
+    } else if (username !== 'admin') {
+      return 'user';
+    } else {
+      return ''
+    }
+  }
+
+  const [auth, setAuth] = useState(isAuth());
+
+  const adminLogin = (token, username) => {
+    if (username && username === 'admin') {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      setAuth('admin');
+    } else {
+      setAuth('')
+    }
+  }
+
+  const userLogin = (token, username) => {
+    if (username && username !== 'admin') {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      setAuth('user');
+    } else {
+      setAuth('')
+    }
+  }
+
+  const userRegister = (token, username) => {
+    if (username && username !== 'admin') {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      setAuth('user');
+    } else {
+      setAuth('')
+    }
   }
   
   const logout = () => {
     localStorage.removeItem('token');
-    setAuth(false)
+    localStorage.removeItem('username');
+    setAuth('')
   };
 
   const authHeaders = {
@@ -32,21 +73,29 @@ const useProvideAuth = () => {
   
   useEffect(() => {
     const unsubscribe = () => { 
-      if (localStorage.getItem('token')) {
-        setAuth(true);
+      let role = localStorage.getItem('username') || false;
+      let token = localStorage.getItem('token') || false;
+      if (!token || !role) {
+        setAuth('');
+      } else if (token && role === 'admin') {
+        setAuth('admin');
+      } else if (token && role !== 'admin') {
+        setAuth('user')
       } else {
-        setAuth(false);
+        setAuth('')
       }
     }
 
     return () => unsubscribe();
-    }, [auth]);
+  }, [auth]);
 
   return {
     auth,
-    login,
     logout,
     authHeaders,
+    adminLogin,
+    userLogin,
+    userRegister,
   }
 
 }

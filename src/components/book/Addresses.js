@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
+import { ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
 import { useBookApi } from './BookApi';
 
 function Addresses(props) {

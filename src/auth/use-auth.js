@@ -12,7 +12,22 @@ export function useAuth() {
 };
 
 const useProvideAuth = () => {
-  const [auth, setAuth] = useState('');
+
+  const isAuth = () => {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    if (!token || !username) {
+      return '';
+    } else if (username === 'admin') {
+      return 'admin';
+    } else if (username !== 'admin') {
+      return 'user';
+    } else {
+      return ''
+    }
+  }
+
+  const [auth, setAuth] = useState(isAuth());
 
   const adminLogin = (token, username) => {
     if (username && username === 'admin') {
@@ -58,13 +73,13 @@ const useProvideAuth = () => {
   
   useEffect(() => {
     const unsubscribe = () => { 
-      let role = localStorage.getItem('username') === 'admin' ? 'admin' : 'user';
-      let validToken = localStorage.getItem('token') || '';
-      if (!validToken) {
+      let role = localStorage.getItem('username') || false;
+      let token = localStorage.getItem('token') || false;
+      if (!token || !role) {
         setAuth('');
-      } else if (validToken && role === 'admin') {
+      } else if (token && role === 'admin') {
         setAuth('admin');
-      } else if (validToken && role === 'user') {
+      } else if (token && role !== 'admin') {
         setAuth('user')
       } else {
         setAuth('')
@@ -72,15 +87,15 @@ const useProvideAuth = () => {
     }
 
     return () => unsubscribe();
-    }, [auth]);
+  }, [auth]);
 
   return {
     auth,
-    adminLogin,
     logout,
+    authHeaders,
+    adminLogin,
     userLogin,
     userRegister,
-    authHeaders,
   }
 
 }

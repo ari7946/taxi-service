@@ -12,16 +12,42 @@ export function useAuth() {
 };
 
 const useProvideAuth = () => {
-  const [auth, setAuth] = useState(localStorage.getItem('token') || null);
+  const [auth, setAuth] = useState('');
 
-  const login = (token) => {
-    localStorage.setItem('token', token);
-    setAuth(true);
+  const adminLogin = (token, username) => {
+    if (username && username === 'admin') {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      setAuth('admin');
+    } else {
+      setAuth('')
+    }
+  }
+
+  const userLogin = (token, username) => {
+    if (username && username !== 'admin') {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      setAuth('user');
+    } else {
+      setAuth('')
+    }
+  }
+
+  const userRegister = (token, username) => {
+    if (username && username !== 'admin') {
+      localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
+      setAuth('user');
+    } else {
+      setAuth('')
+    }
   }
   
   const logout = () => {
     localStorage.removeItem('token');
-    setAuth(false)
+    localStorage.removeItem('username');
+    setAuth('')
   };
 
   const authHeaders = {
@@ -32,10 +58,16 @@ const useProvideAuth = () => {
   
   useEffect(() => {
     const unsubscribe = () => { 
-      if (localStorage.getItem('token')) {
-        setAuth(true);
+      let role = localStorage.getItem('username') === 'admin' ? 'admin' : 'user';
+      let validToken = localStorage.getItem('token') || '';
+      if (!validToken) {
+        setAuth('');
+      } else if (validToken && role === 'admin') {
+        setAuth('admin');
+      } else if (validToken && role === 'user') {
+        setAuth('user')
       } else {
-        setAuth(false);
+        setAuth('')
       }
     }
 
@@ -44,8 +76,10 @@ const useProvideAuth = () => {
 
   return {
     auth,
-    login,
+    adminLogin,
     logout,
+    userLogin,
+    userRegister,
     authHeaders,
   }
 

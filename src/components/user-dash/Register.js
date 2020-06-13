@@ -3,43 +3,27 @@ import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'react
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../../auth/use-auth';
-//TODO reproduce Login functionality using okta
 
-const Login = () => {
-  const [username, setAdmin] = useState('');
+const Register = () => {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
   let history = useHistory();
-  const { login } = useAuth();
+  const { userRegister } = useAuth();
 
   const handleFormSubmit = async (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
 
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
+      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/register`, { username, password, name, email, phone });
       if (response) {
         setLoading(false);
-        login(response.data.token);
-        history.push('admin/trips');
-      }
-    } catch (error) {
-      setLoading(false)
-      console.log('error', error);
-    }
-  }
-
-  const handleGuestSubmit = async (formSubmitEvent) => {
-    const username = process.env.REACT_APP_GUEST_USERNAME;
-    const password = process.env.REACT_APP_GUEST_PASSWORD;
-
-    try {
-      setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
-      if (response) {
-        setLoading(false);
-        login(response.data.token);
-        history.push('admin/trips');
+        userRegister(response.data.token, response.data.username);
+        history.push('/dashboard');
       }
     } catch (error) {
       setLoading(false)
@@ -57,8 +41,8 @@ const Login = () => {
           <Label for="admin">Username</Label>
           <Input
             type="text"
-            name="admin"
-            onChange={e => setAdmin(e.target.value)}
+            name="username"
+            onChange={e => setUsername(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
@@ -69,14 +53,32 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />
         </FormGroup>
+        <FormGroup>
+          <Label for="admin">Name</Label>
+          <Input
+            type="text"
+            name="name"
+            onChange={e => setName(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="admin">Email</Label>
+          <Input
+            type="text"
+            name="email"
+            onChange={e => setEmail(e.target.value)}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label for="admin">Phone</Label>
+          <Input
+            type="text"
+            name="phone"
+            onChange={e => setPhone(e.target.value)}
+          />
+        </FormGroup>
         <Button className="text-green-light">
           Login
-        </Button>
-        <Button
-          className="text-green-light ml-3"
-          onClick={() => handleGuestSubmit()}
-        >
-          Guest Login
         </Button>
       </Form>
     </Container>

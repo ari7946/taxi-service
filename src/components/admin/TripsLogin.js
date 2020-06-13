@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   let history = useHistory();
-  const {login} = useAuth();
+  const { adminLogin} = useAuth();
 
   const handleFormSubmit = async (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
@@ -20,7 +20,7 @@ const Login = () => {
       const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
       if (response) {
         setLoading(false);
-        login(response.data.token);
+        adminLogin(response.data.token, response.data.username);
         history.push('admin/trips');
       }
     } catch (error) {
@@ -38,7 +38,7 @@ const Login = () => {
       const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
       if (response) {
         setLoading(false);
-        login(response.data.token);
+        adminLogin(response.data.token, response.data.username);
         history.push('admin/trips');
       }
     } catch (error) {

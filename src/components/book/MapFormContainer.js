@@ -12,26 +12,24 @@ const Map = React.lazy(() => import('./Map'));
 const MapFormContainer = () => {
 
   return (
-    <Container fluid>
-      <ProvideBookApi>
-        <MapHeader />
-        <Row>
-          <Col md='6'>
-            <Suspense fallback={<Loading />} >
-              <Map />
-            </Suspense >
-            <Estimate />
-          </Col>
+    <ProvideBookApi>
+      <MapHeader />
+      <Row>
+        <Col md='6'>
+          <Suspense fallback={<Loading />} >
+            <Map />
+          </Suspense >
+          <Estimate />
+        </Col>
 
-          <Col md='6'>
-            <ListGroup flush>
-              <Addresses />
-              <TaxiForm />
-            </ListGroup>
-          </Col>
-        </Row>
-      </ProvideBookApi>
-    </Container>
+        <Col md='6'>
+          <ListGroup flush>
+            <Addresses />
+            <TaxiForm />
+          </ListGroup>
+        </Col>
+      </Row>
+    </ProvideBookApi>
   )
 } 
 

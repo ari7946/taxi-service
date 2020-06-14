@@ -28,7 +28,7 @@ const AdminNavbar = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar className="container-fluid mb-5 mt-1" expand="md">
+    <Navbar className="mb-5 mt-1" expand="md">
       <NavbarBrand href="/" className="text-grey-light-2 navbar-brand">
         <FontAwesomeIcon className="mr-2 fa-lg fa-brand" icon={faTaxi} />
         <span className="brand-title">Coastal Yellow Cabs</span>

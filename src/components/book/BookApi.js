@@ -14,7 +14,7 @@ export function useBookApi() {
 
 const useProvideBookApi = () => {
   const [state, dispatch] = useReducer(BookReducer, initialState);
-  const { distance, startAddress, endAddress, price, name, comments, phone, passengers, email, direction, date, time, vehicle, status, submitted, valid } = state;
+  const { distance, startAddress, endAddress, price, name, comments, phone, passengers, email, direction, date, time, vehicle, status, submitted, valid, username } = state;
 
   useEffect(() => {
     if (submitted && valid) {
@@ -25,7 +25,7 @@ const useProvideBookApi = () => {
   }, [submitted, valid])
 
   const _processForm = async () => {
-    const body = { distance, startAddress, endAddress, price, name, comments, phone, passengers, email, direction, date, time, vehicle, status }
+    const body = { distance, startAddress, endAddress, price, name, comments, phone, passengers, email, direction, date, time, vehicle, status, username }
     try {
       const res = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
       if (res) {
@@ -38,7 +38,8 @@ const useProvideBookApi = () => {
 
   const submitForm = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
-    dispatch({ type: 'submit' })
+    const username = localStorage.getItem('username') || '';
+    dispatch({ type: 'submit', username })
   }
 
   const setInput = ({ type, name, value }) => {

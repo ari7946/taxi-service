@@ -102,6 +102,7 @@ const BookReducer = (state, action) => {
         error: false,
         submitted: true,
         loading: true,
+        username: action.username,
       }
   }
   return state;
@@ -132,6 +133,7 @@ const initialState = {
   invalidFields: [],
   valid: false,
   status: 'pending',
+  username: '',
 }
 
 export { BookReducer, initialState };

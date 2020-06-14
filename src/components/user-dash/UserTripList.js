@@ -4,7 +4,7 @@ import Trip from './UserTrip';
 const TripList = (props) => {
   return (
     <Fragment>
-    {props.trips.map(trip => (
+    {props.trips && props.trips.map(trip => (
       <Trip 
         key={trip.id}
         trip={trip}

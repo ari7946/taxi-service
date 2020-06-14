@@ -33,7 +33,7 @@ const UserContainer = () => {
 
   return (
     <Container>
-      {auth === 'user'
+      {auth === 'user' && loading === false
         ? <TripList trips={trips} />
         : <UserLogin />
       }

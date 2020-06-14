@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import MapFormContainer from './components/book';
 import NavbarContainer from './components/navbar';
+// import AdminNavbar from './components/navbar/AdminNavbar';
+// import UserNavbar from './components/navbar/UserNavbar';
+// import DefaultNavbar from './components/navbar/DefaultNavbar';
 import Landing from './components/landing';
 import About from './components/about';
 import TripsContainer from './components/admin';
@@ -19,6 +22,9 @@ class App extends Component {
     return (
       <ProvideAuth>
         <div className="wrapper">
+          {/* <AdminNavbar />
+          <UserNavbar />
+          <DefaultNavbar /> */}
           <NavbarContainer />
           <Switch>
             <Route path='/' exact component={Landing} /> 

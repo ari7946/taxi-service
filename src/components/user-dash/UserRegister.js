@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from '../../auth/use-auth';
+import './userStyle.css';
 
 const UserRegister = () => {
   const [username, setUsername] = useState('');
@@ -33,10 +34,10 @@ const UserRegister = () => {
   }
 
   return (
-    <Container className="text-green-light">
-      <h1 className="mb-3">Register</h1>
+    <Container className="text-green-light auth" fluid>
+      <h1 className="mb-3 color-grey-light-2">Register</h1>
       {loading && <Spinner size="md" color="light"></Spinner>}
-      <Form className='w-50' onSubmit={(e) => handleFormSubmit(e)}>
+      <Form className='' onSubmit={(e) => handleFormSubmit(e)}>
         <FormGroup>
           <Label for="admin">Username</Label>
           <Input

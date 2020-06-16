@@ -67,6 +67,10 @@ h2.price {
   /* font-family: sans-serif; */
 }
 
+.auth {
+  max-width: 600px !important;
+}
+
 @media (max-width: 1200px) {
   .vehicle-type {
     margin-bottom: 1rem;
@@ -102,7 +106,6 @@ h2.price {
     font-weight: bold !important;
   }
   /* END ADDRESSES COMPONENT */
-
 }  
 
 @media (max-width: 600px) {

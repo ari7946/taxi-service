@@ -49,6 +49,7 @@ h2.price {
   color: var(--color-green-light);
   border: none !important;
   font-family: var(--font-monospaced-bold);
+  letter-spacing: .25rem;
 }
 
 .estimate-heading {
@@ -63,6 +64,7 @@ h2.price {
 
 .vehicle-type {
   margin-bottom: 2rem;
+  /* font-family: sans-serif; */
 }
 
 @media (max-width: 1200px) {
@@ -119,6 +121,7 @@ h2.price {
 
   .estimate {
     font-family: var(--font-monospaced);
+    letter-spacing: .2rem;
   }
 
   .map-heading {
@@ -137,6 +140,11 @@ h2.price {
 @media (max-width: 415px) {
   .vehicle-type .vehicle-type-text {
     display: none;
+  }
+
+  .estimate {
+    font-family: var(--font-monospaced);
+    letter-spacing: .1rem;
   }
 
   .trip-info-button, .book-button {

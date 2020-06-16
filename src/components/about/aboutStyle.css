@@ -6,7 +6,7 @@
 .about-description {
   line-height: 23px;
   font-size: 16px;
-  color: var(--color-green-light);
+  color: var(--color-grey-light-2) !important;
 }
 
 img.about-img {

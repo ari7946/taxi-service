@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useBookApi } from './BookApi';
+// import { useBookApi } from './BookApi';
 import { connect } from 'react-redux';
 import { locationsCleared, locationsFound, routeChanged } from '../../redux/book/book.actions';
 
@@ -52,22 +52,22 @@ function Map({ locationsCleared, locationsFound, routeChanged }) {
         .addContent(unitRow)
         .addContent(langRow);
 
-      // ! Creating route inputs widget
+      // ! Create route inputs widget
       const routeInputsInstance = tomtom.routeInputs().addTo(map);
 
-      // ! Creating route widget
+      // ! Create route widget
       const routeOnMapView = tomtom.routeOnMap({
         generalMarker: { draggable: false }
       }).addTo(map);
 
-      // ! Creating route summary widget
+      // ! Create route summary widget
       const routeSummaryInstance = tomtom.routeSummary({
         size: [150, 80],
         position: 'topleft',
         imperialDistance: true,
       }).addTo(map);
 
-      // ! Connecting the route inputs widget with the route widget
+      // ! Connect the route inputs widget with the route widget
       routeInputsInstance.on(routeInputsInstance.Events.LocationsFound, (eventObject) => {
         // summary will be used to update state
         routeOnMapView.draw(eventObject.points);
@@ -76,7 +76,6 @@ function Map({ locationsCleared, locationsFound, routeChanged }) {
         // console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
 
         locationsFound({
-          type: "locationsFound",
           points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
           endAddress: eventObject.target.searchBoxes[1].input.value,
@@ -89,21 +88,19 @@ function Map({ locationsCleared, locationsFound, routeChanged }) {
         // console.log("eventObject LocationsCleared", eventObject)
 
         locationsCleared({
-          type: 'locationsCleared',
           points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
           endAddress: eventObject.target.searchBoxes[1].input.value,
         })
       });
 
-      // ! Connecting the route widget with the route summary widget
+      // ! Connect the route widget with the route summary widget
       routeOnMapView.on(routeOnMapView.Events.RouteChanged, (eventObject) => {
         routeSummaryInstance.updateSummaryData(eventObject.object);
         routeSummaryInstance.hide();
         // console.log("eventObject RouteChanged", eventObject)
 
         routeChanged({
-          type: 'routeChanged',
           distance: eventObject.object.lengthInMeters,
         })
 

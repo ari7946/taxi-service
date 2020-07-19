@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useBookApi } from './BookApi';
+import { connect } from 'react-redux';
 
 function Map({ dispatch }) {
   const { locationsFound, locationsCleared, routeChanged } = useBookApi();
@@ -113,5 +114,6 @@ function Map({ dispatch }) {
     <div className="mt-1 border border-light" id='map'></div>
   );
 }
+
 
 export default Map;

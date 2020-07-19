@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 // import storage from 'redux-persist/lib/storage';
 
 import tripsReducer from './admin/admin.reducer';
+import bookReducer from './book/book.reducer';
 
 
 // const persistConfig = {
@@ -13,6 +14,7 @@ import tripsReducer from './admin/admin.reducer';
 
 const rootReducer =  combineReducers({
   trips: tripsReducer,
+  book: bookReducer,
 });
 
 // export default persistReducer(persistConfig, rootReducer);

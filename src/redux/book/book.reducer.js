@@ -1,20 +1,50 @@
-const BookReducer = (state, action) => {
+import BookActionTypes from './book.types';
+
+const INITIAL_STATE = {
+  // map
+  distance: "",
+  startAddress: '',
+  endAddress: '',
+  // fields
+  price: null,
+  name: null,
+  comments: null,
+  phone: null,
+  passengers: 1,
+  email: null,
+  direction: 'oneWay',
+  date: null,
+  time: null,
+  dropFee: 10,
+  vehicle: 'sedan',
+  alertSuccess: false,
+  // other
+  loading: false,
+  error: false,
+  errorMessage: '',
+  invalidFields: [],
+  valid: false,
+  status: 'pending',
+  username: '',
+}
+
+const bookReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'locationsFound':
+    case BookActionTypes.LOCATIONS_FOUND:
       return {
         ...state,
         startAddress: action.startAddress,
         endAddress: action.endAddress,
         alertSuccess: false,
       }
-    case 'locationsCleared':
+    case BookActionTypes.LOCATIONS_CLEARED:
       return {
         ...state,
         startAddress: action.startAddress,
         endAddress: action.endAddress,
         alertSuccess: false,
       }
-    case 'routeChanged':
+    case BookActionTypes.ROUTE_CHANGED:
       //convert meters to miles
       let distance = (action.distance * 0.000621371192).toFixed(1);
       //price set at 2.95 dollars per mile
@@ -28,7 +58,7 @@ const BookReducer = (state, action) => {
         vehicle: 'sedan',
         alertSuccess: false,
       }
-    case 'input':
+    case BookActionTypes.INPUT:
       if (action.name === 'direction') {
         return {
           ...state,
@@ -54,7 +84,7 @@ const BookReducer = (state, action) => {
         alertSuccess: false,
         [action.name]: action.value,
       }
-    case 'success':
+    case BookActionTypes.SUCCESS:
       return {
         ...state,
         loading: false,
@@ -64,7 +94,7 @@ const BookReducer = (state, action) => {
         valid: true,
         alertSuccess: true,
       }
-    case 'error':
+    case BookActionTypes.ERROR:
       return {
         ...state,
         error: true,
@@ -73,7 +103,7 @@ const BookReducer = (state, action) => {
         errorMessage: action.errorMessage,
         alertSuccess: false,
       }
-    case 'submit':
+    case BookActionTypes.SUBMIT:
       const { name, phone, email, passengers, direction, comments, startAddress, endAddress, date, time } = state;
       const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
       const invalidFields = [];
@@ -108,32 +138,4 @@ const BookReducer = (state, action) => {
   return state;
 }
 
-const initialState = {
-  // map
-  distance: "",
-  startAddress: '',
-  endAddress: '',
-  // fields
-  price: null,
-  name: null,
-  comments: null,
-  phone: null,
-  passengers: 1,
-  email: null,
-  direction: 'oneWay',
-  date: null,
-  time: null,
-  dropFee: 10,
-  vehicle: 'sedan',
-  alertSuccess: false,
-  // other
-  loading: false,
-  error: false,
-  errorMessage: '',
-  invalidFields: [],
-  valid: false,
-  status: 'pending',
-  username: '',
-}
-
-export { BookReducer, initialState };
+export default bookReducer;

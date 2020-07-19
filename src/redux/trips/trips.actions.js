@@ -1,5 +1,6 @@
 import TripsActionTypes from './trips.types';
 import axios from 'axios';
+
 const authHeaders = {
   headers: {
     Authorization: localStorage.getItem('token')

@@ -4,7 +4,7 @@ import { useBookApi } from './BookApi';
 
 function Addresses(props) {
   const { state } = useBookApi();
-
+  console.log('rendering Address')
   return (
     <div>
       <ListGroup flush>

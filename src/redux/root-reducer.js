@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 // import { persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 
-import adminReducer from './admin/admin.reducer';
+import tripsReducer from './admin/admin.reducer';
 
 
 // const persistConfig = {
@@ -12,7 +12,7 @@ import adminReducer from './admin/admin.reducer';
 // }
 
 const rootReducer =  combineReducers({
-  admin: adminReducer,
+  trips: tripsReducer,
 });
 
 // export default persistReducer(persistConfig, rootReducer);

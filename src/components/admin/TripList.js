@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import Trip from './Trip';
-import { getTrips } from '../../redux/admin/admin.actions';
+import { getTrips } from '../../redux/trips/trips.actions';
 import { connect } from 'react-redux';
 
 const TripList = ({ getTrips, trips, loadingType }) => {
@@ -144,7 +144,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = (state) => {
-  const { trips, loadingType } = state.admin;
+  const { trips, loadingType } = state.trips;
   return { trips, loadingType }
 }
 

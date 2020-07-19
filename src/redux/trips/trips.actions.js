@@ -1,4 +1,4 @@
-import AdminActionTypes from './admin.types';
+import TripsActionTypes from './trips.types';
 import axios from 'axios';
 const authHeaders = {
   headers: {
@@ -8,12 +8,12 @@ const authHeaders = {
 
 export const getTrips = () => {
   return async dispatch => {
-    dispatch({ type: AdminActionTypes.SUBMIT, loadingType: 'getTrips' })
+    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: 'getTrips' })
     try {
       const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, authHeaders);
-      dispatch({ type: AdminActionTypes.GET_TRIPS, trips: result.data })
+      dispatch({ type: TripsActionTypes.GET_TRIPS, trips: result.data })
     } catch (error) {
-      dispatch({ type: AdminActionTypes.ERROR, error })
+      dispatch({ type: TripsActionTypes.ERROR, error })
     }
   }
 }

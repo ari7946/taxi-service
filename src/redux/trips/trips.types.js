@@ -1,4 +1,4 @@
-const AdminActionTypes = {
+const TripsActionTypes = {
   SUBMIT: 'SUBMIT',
   GET_TRIPS: 'GET_TRIPS',
   UPDATE_TRIP: 'UPDATE_TRIP',
@@ -6,4 +6,4 @@ const AdminActionTypes = {
   ERROR: 'ERROR',
 }
 
-export default AdminActionTypes;
+export default TripsActionTypes;

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 // import { persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 
-import tripsReducer from './admin/admin.reducer';
+import tripsReducer from './trips/trips.reducer';
 import bookReducer from './book/book.reducer';
 
 

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useBookApi } from './BookApi';
 import { connect } from 'react-redux';
+import { locationsCleared, locationsFound, routeChanged } from '../../redux/book/book.actions';
 
-function Map({ dispatch }) {
-  const { locationsFound, locationsCleared, routeChanged } = useBookApi();
+function Map({ locationsCleared, locationsFound, routeChanged }) {
+  // const { locationsFound, locationsCleared, routeChanged } = useBookApi();
   useEffect(() => {
     const script = document.createElement('script');
     script.src = process.env.PUBLIC_URL + '/sdk/tomtom.min.js';
@@ -108,12 +109,17 @@ function Map({ dispatch }) {
 
       });
     };
-  }, [dispatch])
+  }, [])
 
   return (
     <div className="mt-1 border border-light" id='map'></div>
   );
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  locationsCleared: (options) => dispatch(locationsCleared(options)),
+  locationsFound: (options) => dispatch(locationsFound(options)),
+  routeChanged: (options) => dispatch(routeChanged(options)),
+})
 
-export default Map;
+export default connect(null, mapDispatchToProps)(Map);

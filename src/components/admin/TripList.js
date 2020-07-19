@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import Trip from './Trip';
-import { useTripsApi } from './TripsApi';
+import { getTrips } from '../../redux/admin/admin.actions';
+import { connect } from 'react-redux';
 
-const TripList = () => {
-  const { state } = useTripsApi();
+const TripList = ({ getTrips, trips, loadingType }) => {
   const [activeTab, setActiveTab] = useState('viewAll');
 
+  useEffect(() => {
+    getTrips();
+  }, [])
+  
   return (
     <Container fluid>
       <Nav className='mb-2 nav-tabs' tabs color="light">
@@ -57,11 +61,11 @@ const TripList = () => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="viewAll">
-          {state.loadingType === 'getTrips'
+          {loadingType === 'getTrips'
             ? <Spinner color="light" />
-            : state.trips.length > 0 ? (
+            : trips.length > 0 ? (
               <ListGroup>
-                {state.trips.map(trip =>
+                {trips.map(trip =>
                   <Trip
                     key={trip.id}
                     trip={trip}
@@ -75,9 +79,9 @@ const TripList = () => {
         </TabPane>
 
         <TabPane tabId="viewConfirmed">
-            {state.trips.length > 0 ? (
+            {trips.length > 0 ? (
               <ListGroup>
-                {state.trips.map(trip => {
+                {trips.map(trip => {
                   if (trip.status === 'confirm') {
                     return <Trip
                       key={trip.id}
@@ -94,9 +98,9 @@ const TripList = () => {
         </TabPane>
 
         <TabPane tabId="viewCompleted">
-            {state.trips.length > 0 ? (
+            {trips.length > 0 ? (
               <ListGroup>
-                {state.trips.map(trip => {
+                {trips.map(trip => {
                   if (trip.status === 'complete') {
                     return <Trip
                       key={trip.id}
@@ -113,9 +117,9 @@ const TripList = () => {
         </TabPane>
 
         <TabPane tabId="viewArchived">
-            {state.trips.length > 0 ? (
+            {trips.length > 0 ? (
               <ListGroup>
-                {state.trips.map(trip => {
+                {trips.map(trip => {
                   if (trip.status === 'archive') {
                     return <Trip
                       key={trip.id}
@@ -130,9 +134,18 @@ const TripList = () => {
             )
           }
         </TabPane>
-      </TabContent>
+      </TabContent> 
     </Container>
   )
 }
 
-export default TripList;
+const mapDispatchToProps = dispatch => ({
+  getTrips: () => dispatch(getTrips())
+})
+
+const mapStateToProps = (state) => {
+  const { trips, loadingType } = state.admin;
+  return { trips, loadingType }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TripList);

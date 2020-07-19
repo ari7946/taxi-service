@@ -17,7 +17,6 @@ const adminReducer = (state = INITIAL_STATE, action) => {
         loadingTripId: action.tripId,
       }
     case AdminActionTypes.GET_TRIPS:
-
       return {
         ...state,
         loadingType: '',

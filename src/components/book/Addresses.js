@@ -1,27 +1,26 @@
 import React from 'react';
 import { ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
-import { useBookApi } from './BookApi';
+import { connect } from 'react-redux';
 
-function Addresses(props) {
-  const { state } = useBookApi();
-  console.log('rendering Address')
+const Addresses = ({ startAddress, endAddress }) => {
+  console.log('start', startAddress)
   return (
     <div>
       <ListGroup flush>
-        {state.startAddress && (
+        {startAddress && (
             <ListGroupItem className="book-address">
               <ListGroupItemHeading className="address-heading-starting">Starting Point</ListGroupItemHeading>
             <ListGroupItemText>
-              {state.startAddress}
+              {startAddress}
             </ListGroupItemText>
           </ListGroupItem>
         )}
 
-        {state.endAddress && (
+        {endAddress && (
             <ListGroupItem className="book-address">
               <ListGroupItemHeading className='address-heading-destination'>Destination</ListGroupItemHeading>
               <ListGroupItemText>
-                {state.endAddress}
+                {endAddress}
               </ListGroupItemText>
             </ListGroupItem>
         )}
@@ -30,4 +29,9 @@ function Addresses(props) {
   )
 }
 
-export default Addresses;
+const mapStateToProps = state => {
+  const { startAddress, endAddress } = state.book;
+  return { startAddress, endAddress };
+}
+
+export default connect(mapStateToProps)(Addresses);

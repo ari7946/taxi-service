@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
-import { useBookApi } from './BookApi';
+import { connect } from 'react-redux';
 
-const TripInfoButton = (props) => {
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const { state } = useBookApi();
-  const {  
+const TripInfoButton = ({  
     // map
     distance,
     startAddress,
@@ -14,7 +11,8 @@ const TripInfoButton = (props) => {
     price,
     vehicle,
     dropFee
-  } = state;
+  }) => {
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const total = (Number(price) + dropFee).toFixed(2);
   const discount = (total * 0.20).toFixed(2);
   const discountTotal = (total - discount).toFixed(2);
@@ -44,4 +42,24 @@ const TripInfoButton = (props) => {
   );
 }
 
-export default TripInfoButton;
+const mapStateToProps = state => {
+  const {  
+    distance,
+    startAddress,
+    endAddress,
+    price,
+    vehicle,
+    dropFee
+  } = state.book;
+  
+  return {  
+    distance,
+    startAddress,
+    endAddress,
+    price,
+    vehicle,
+    dropFee
+  }
+}
+
+export default connect(mapStateToProps)(TripInfoButton);

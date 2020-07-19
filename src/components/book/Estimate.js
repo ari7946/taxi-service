@@ -1,11 +1,9 @@
 import React from 'react';
 import { ListGroupItem, ListGroupItemText } from 'reactstrap';
 import VehicleType from './VehicleType';
-import { useBookApi } from './BookApi';
+import { connect } from 'react-redux';
 
-const Estimate = (props) => {
-  const { state } = useBookApi();
-  const { price, dropFee, direction } = state;
+const Estimate = ({ price, dropFee, direction }) => {
   const total = (Number(price) + dropFee).toFixed(2);
   // const discount = (total * 0.20).toFixed(2);
   // const discountTotal = (total - discount).toFixed(2);
@@ -13,7 +11,7 @@ const Estimate = (props) => {
   return (
     <div>
       <ListGroupItem className="estimate mt-3 pt-3">
-        <VehicleType {...props}/>
+        <VehicleType />
 
         {/* //TODO Implement as a future feature */}
         {/* <ul className="pt-3">
@@ -47,4 +45,9 @@ const Estimate = (props) => {
   )
 }
 
-export default Estimate;
+const mapStateToProps = state => {
+  const { price, dropFee, direction } = state.book;
+  return { price, dropFee, direction };
+}
+
+export default connect(mapStateToProps)(Estimate);

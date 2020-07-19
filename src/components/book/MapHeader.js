@@ -29,7 +29,7 @@ function MapHeader({ startAddress, endAddress }) {
 }
 
 const mapStateToProps = state => {
-  const { startAddress, endAddress} = state.book;
+  const { startAddress, endAddress } = state.book;
   return { startAddress, endAddress };
 }
 

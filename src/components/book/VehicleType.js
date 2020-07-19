@@ -2,12 +2,10 @@ import React from 'react';
 import { FormGroup, ButtonGroup, Row, Container, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
-import { useBookApi } from './BookApi';
+import { connect } from 'react-redux';
+import { setInput } from '../../redux/book/book.actions';
 
-function VehicleType(props) {
-  const { state, setInput } = useBookApi();
-  const { vehicle } = state;
-
+const VehicleType = ({ setInput, vehicle }) => {
   return (
     <FormGroup>
       <Container>
@@ -21,7 +19,7 @@ function VehicleType(props) {
                   bg-green-dark
                 `}
                 value="sedan"
-                onClick={() => setInput( {type: 'input', name: 'vehicle', value:'sedan'} )}
+                onClick={() => setInput({name: 'vehicle', value:'sedan'})}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faCar} />
                 <span className="vehicle-type-text mr-2">SEDAN</span>
@@ -36,7 +34,7 @@ function VehicleType(props) {
                   border-warning
                 `}
                 value="van"
-                onClick={(e) => setInput({ type: 'input', name: 'vehicle', value: 'van' })}
+                onClick={() => setInput({ name: 'vehicle', value: 'van' })}
               >
                 <FontAwesomeIcon className="fa-lg mr-2" icon={faShuttleVan} />
                 <span className="vehicle-type-text mr-2">VAN</span>
@@ -51,4 +49,13 @@ function VehicleType(props) {
   )
 }
 
-export default VehicleType;
+const mapStateToProps = state => {
+  const { vehicle } = state.book;
+  return { vehicle };
+}
+
+const mapDispatchToProps = dispatch => ({
+  setInput: (options) => dispatch(setInput(options)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(VehicleType);

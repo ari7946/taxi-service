@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody, Spinner  } from 'reactstrap';
-import { useTripsApi } from './TripsApi';
+// import { useTripsApi } from './TripsApi';
+import { connect } from 'react-redux';
+import { removeTrip, updateTrip } from '../../redux/trips/trips.actions';
 
-const Trip = (props) => {
-  const { trip } = props;
+const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
+
   //TODO fix total bug 
   const total = (Number(trip.price) + 10).toFixed(2);
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const { state, removeTrip, updateTrips } = useTripsApi();
+
   const isLoading = (status, id) => {
-    return state.loadingType === status && state.loadingTripId === id;
+    return loadingType === status && loadingTripId === id;
   };
+
   const spinner = <Spinner
     as="span"
     animation="border"
@@ -35,7 +38,7 @@ const Trip = (props) => {
           className={`
             ${trip.status === 'confirm' ? 'bg-green-light text-green-dark' : ''}
           `}
-          onClick={() => updateTrips('confirm', trip.id)}
+          onClick={() => updateTrip('confirm', trip.id)}
         >
           {isLoading('confirm', trip.id) && spinner}
           Confirm
@@ -45,7 +48,7 @@ const Trip = (props) => {
           className={`
             ${trip.status === 'complete' ? 'bg-green-dark' : ''}
           `}
-          onClick={() => updateTrips('complete', trip.id)}
+          onClick={() => updateTrip('complete', trip.id)}
         >
           {isLoading('complete', trip.id) && spinner}
           Complete 
@@ -55,7 +58,7 @@ const Trip = (props) => {
           className={`
             ${trip.status === 'archive' ? 'btn-warning' : ''}
           `}
-          onClick={() => updateTrips('archive', trip.id)}
+          onClick={() => updateTrip('archive', trip.id)}
         >
           {isLoading('archive', trip.id) && spinner}
           Archive
@@ -92,4 +95,14 @@ const Trip = (props) => {
   )
 }
 
-export default Trip;
+const mapDispatchToProps = dispatch => ({
+  removeTrip: (tripId) => dispatch(removeTrip(tripId)),
+  updateTrip: (status, tripId) => dispatch(updateTrip(status, tripId)),
+})
+
+const mapStateToProps = (state) => {
+  const { loadingType, loadingTripId } = state.trips;
+  return { loadingType, loadingTripId };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Trip);

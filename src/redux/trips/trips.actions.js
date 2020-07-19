@@ -18,33 +18,33 @@ export const getTrips = () => {
   }
 }
 
-// export const updateTrips = (status, id) => {
-//   return async dispatch => {
-//     dispatch({ type: AdminActionTypes.SUBMIT, loadingType: status, tripId: id })
-//     try {
-//       const result = await axios.put(
-//         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
-//         { status },
-//         authHeaders
-//       );
-//       dispatch({ type: AdminActionTypes.UPDATE_TRIP, trip: result.data })
-//     } catch (error) {
-//       dispatch({ type: AdminActionTypes.ERROR, error })
-//     }
-//   }
-// }
+export const updateTrip = (status, id) => {
+  return async dispatch => {
+    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id })
+    try {
+      const result = await axios.put(
+        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
+        { status },
+        authHeaders
+      );
+      dispatch({ type: TripsActionTypes.UPDATE_TRIP, trip: result.data })
+    } catch (error) {
+      dispatch({ type: TripsActionTypes.ERROR, error })
+    }
+  }
+}
 
-// export const removeTrip = (id) => {
-//   return async dispatch => {
-//     dispatch({ type: AdminActionTypes.SUBMIT, loadingType: 'removeTrip', tripId: id})
-//     try {
-//       const result = await axios.delete(
-//         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
-//         authHeaders
-//       );
-//       dispatch({ type: AdminActionTypes.DELETE_TRIP, trip: result.data.removedTrip })
-//     } catch (error) {
-//       dispatch({ type: AdminActionTypes.ERROR, error })
-//     }
-//   }
-// }
+export const removeTrip = (id) => {
+  return async dispatch => {
+    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: 'removeTrip', tripId: id})
+    try {
+      const result = await axios.delete(
+        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
+        authHeaders
+      );
+      dispatch({ type: TripsActionTypes.DELETE_TRIP, trip: result.data.removedTrip })
+    } catch (error) {
+      dispatch({ type: TripsActionTypes.ERROR, error })
+    }
+  }
+}

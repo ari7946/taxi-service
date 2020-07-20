@@ -76,7 +76,6 @@ function Map({ locationsCleared, locationsFound, routeChanged }) {
         // console.log("Second input value", eventObject.target.searchBoxes[1].input.value)
 
         locationsFound({
-          points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
           endAddress: eventObject.target.searchBoxes[1].input.value,
         })
@@ -88,7 +87,6 @@ function Map({ locationsCleared, locationsFound, routeChanged }) {
         // console.log("eventObject LocationsCleared", eventObject)
 
         locationsCleared({
-          points: eventObject.points,
           startAddress: eventObject.target.searchBoxes[0].input.value,
           endAddress: eventObject.target.searchBoxes[1].input.value,
         })

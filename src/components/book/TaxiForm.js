@@ -6,14 +6,20 @@ import { setInput, submitForm, submitError, submitSuccess } from '../../redux/bo
 import axios from 'axios';
 
 const TaxiForm = ({ 
-  submitForm, submitError, submitSuccess, startAddress, setInput, endAddress, username,
-  distance, vehicle, price, status, name, email, comments, phone, passengers, 
-  direction, loading, submitted, valid, invalidFields, date, time, alertSuccess, 
+  // action creators
+  submitForm, submitError, submitSuccess, setInput, 
+  // form fields
+  name, email, comments, phone, date, time, 
+  // other 
+  direction, loading, submitted, valid, invalidFields, alertSuccess, passengers,
+  startAddress, endAddress, username, distance, vehicle, price, status, 
 }) => {
-
   const processForm = async () => {
     const formFields = { name, comments, phone, email, date, time }
-    const body = { distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, ...formFields }
+    const body = { 
+      distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, 
+      ...formFields 
+    }
     try {
       const res = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
       if (res) {

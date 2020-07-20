@@ -21,8 +21,8 @@ const TaxiForm = ({
       ...formFields 
     }
     try {
-      const res = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
-      if (res) {
+      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
+      if (response) {
         submitSuccess()
       }
     } catch (error) {

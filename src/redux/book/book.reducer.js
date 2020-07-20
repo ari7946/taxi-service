@@ -126,7 +126,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         // valid is true if invalidFields is an empty array
-        // In other words, valid is true if all required fields are valid
+        // In other words, valid is true if each required field is a string of 1 or more characters
         valid: invalidFields.length === 0 ? true : false,
         invalidFields,
         errorMessage: '',

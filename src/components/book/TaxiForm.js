@@ -1,16 +1,44 @@
 import React, { Fragment } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
 import TripInfoButton from './TripInfo';
-import { useBookApi } from './BookApi';
+import { connect } from 'react-redux';
+import { setInput, submitForm, submitError, submitSuccess } from '../../redux/book/book.actions';
+import axios from 'axios';
 
-function TaxiForm(props) {
-  const { setInput, submitForm, state } = useBookApi();
-  const { startAddress, endAddress, distance, vehicle, price, status, name, email, comments, phone, passengers, direction, loading, submitted, valid, invalidFields, date, time, alertSuccess } = state;
+const TaxiForm = ({ 
+  submitForm, submitError, submitSuccess, startAddress, setInput, endAddress, username,
+  distance, vehicle, price, status, name, email, comments, phone, passengers, 
+  direction, loading, submitted, valid, invalidFields, date, time, alertSuccess, 
+}) => {
+
+  const processForm = async () => {
+    const formFields = { name, comments, phone, email, date, time }
+    const body = { distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, ...formFields }
+    try {
+      const res = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
+      if (res) {
+        submitSuccess()
+      }
+    } catch (error) {
+      submitError({ errorMessage: error });
+    }
+  }
+
+  if (submitted && valid) {
+    processForm()
+  } else if (submitted && !valid) {
+    submitError({ errorMessage: 'One or more fields are invalid' })
+  }
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    submitForm();
+  }
 
   return (
     <div className=''>
       <ListGroupItem className="book-form">
-        <Form onSubmit={(e) => submitForm(e)}>
+        <Form onSubmit={(e) => handleSubmitForm(e)}>
           {/* NAME */}
           <FormGroup>
             <Label for="exampleEmail">Name:</Label>
@@ -117,8 +145,8 @@ function TaxiForm(props) {
           </FormGroup>
 
           {/* REQUIRED FIELDS */}
-          {invalidFields.length > 0 && (
-            <p className="text-flat-orange mb-0">Required fields: < br />
+          {!!invalidFields && (invalidFields.length > 0) && (
+            <p className="text-flat-orange mb-0">Required fields:  < br />
               {invalidFields.map(field => {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
                 let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
@@ -153,7 +181,7 @@ function TaxiForm(props) {
               )}
             </Button>
 
-            {startAddress && endAddress && <TripInfoButton {...props} />}
+            {startAddress && endAddress && <TripInfoButton />}
           </ButtonGroup>
         </Form>
 
@@ -162,4 +190,21 @@ function TaxiForm(props) {
   );
 }
 
-export default TaxiForm;
+const mapStateToProps = (state) => {
+ const { startAddress, endAddress, distance, vehicle, price, status, 
+  name, email, comments, phone, passengers, direction, 
+  loading, submitted, valid, invalidFields, date, time, alertSuccess } = state.book;
+
+ return { startAddress, endAddress, distance, vehicle, price, status, 
+  name, email, comments, phone, passengers, direction, 
+  loading, submitted, valid, invalidFields, date, time, alertSuccess };
+}
+
+const mapDispatchToProps = dispatch => ({
+  setInput: (options) => dispatch(setInput(options)),
+  submitForm: () => dispatch(submitForm()),
+  submitSuccess: () => dispatch(submitSuccess()),
+  submitError: (errorMessage) => dispatch(submitError(errorMessage)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaxiForm);

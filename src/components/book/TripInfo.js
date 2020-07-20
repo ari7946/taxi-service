@@ -3,11 +3,9 @@ import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstr
 import { connect } from 'react-redux';
 
 const TripInfoButton = ({  
-    // map
     distance,
     startAddress,
     endAddress,
-    // fields
     price,
     vehicle,
     dropFee
@@ -51,7 +49,7 @@ const mapStateToProps = state => {
     vehicle,
     dropFee
   } = state.book;
-  
+
   return {  
     distance,
     startAddress,

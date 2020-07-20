@@ -3,7 +3,6 @@ import { ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } fr
 import { connect } from 'react-redux';
 
 const Addresses = ({ startAddress, endAddress }) => {
-  console.log('start', startAddress)
   return (
     <div>
       <ListGroup flush>

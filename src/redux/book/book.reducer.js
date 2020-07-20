@@ -43,6 +43,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         startAddress: action.startAddress,
         endAddress: action.endAddress,
         alertSuccess: false,
+        price: 0,
       }
     case BookActionTypes.ROUTE_CHANGED:
       //convert meters to miles

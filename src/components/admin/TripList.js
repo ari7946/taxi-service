@@ -3,6 +3,9 @@ import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLi
 import Trip from './Trip';
 import { getTrips } from '../../redux/trips/trips.actions';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectAllTrips, selectLoadingType } from '../../redux/trips/trips.selectors';
 
 const TripList = ({ getTrips, trips, loadingType }) => {
   const [activeTab, setActiveTab] = useState('viewAll');
@@ -73,7 +76,7 @@ const TripList = ({ getTrips, trips, loadingType }) => {
                 )}
               </ListGroup>
             ) : (
-              <h4 className="text-green-light">There's currently no trips pending.</h4>
+              trips.length === 0 && <h4 className="text-green-light">There's currently no trips pending.</h4>
             )
           }
         </TabPane>
@@ -143,9 +146,9 @@ const mapDispatchToProps = dispatch => ({
   getTrips: () => dispatch(getTrips())
 })
 
-const mapStateToProps = (state) => {
-  const { trips, loadingType } = state.trips;
-  return { trips, loadingType }
-}
+const mapStateToProps = createStructuredSelector({
+  trips: selectAllTrips,
+  loadingType: selectLoadingType,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripList);

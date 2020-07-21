@@ -4,6 +4,10 @@ import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody, Sp
 import { connect } from 'react-redux';
 import { removeTrip, updateTrip } from '../../redux/trips/trips.actions';
 
+import { createStructuredSelector } from 'reselect';
+
+import { selectLoadingType, selectLoadingTripId } from '../../redux/trips/trips.selectors';
+
 const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
 
   //TODO fix total bug 
@@ -100,9 +104,9 @@ const mapDispatchToProps = dispatch => ({
   updateTrip: (status, tripId) => dispatch(updateTrip(status, tripId)),
 })
 
-const mapStateToProps = (state) => {
-  const { loadingType, loadingTripId } = state.trips;
-  return { loadingType, loadingTripId };
-}
+const mapStateToProps = createStructuredSelector({
+  loadingType: selectLoadingType,
+  loadingTripId: selectLoadingTripId
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Trip);

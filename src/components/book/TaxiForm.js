@@ -42,7 +42,7 @@ const TaxiForm = ({
   }
 
   return (
-    <div className=''>
+    <Fragment>
       <ListGroupItem className="book-form">
         <Form onSubmit={(e) => handleSubmitForm(e)}>
           {/* NAME */}
@@ -159,11 +159,11 @@ const TaxiForm = ({
                 return (
                   <Fragment>
                     {field}{!lastField
-                      ? invalidFields.length === 2 ? null : ', '
-                      : null}
+                      ? invalidFields.length === 2 
+                        ? null : ', ' : null}
                     {secondToLast
-                      ? invalidFields.length === 2 ? ' and ' : 'and '
-                      : null}
+                      ? invalidFields.length === 2 
+                        ? ' and ' : 'and ' : null}
                   </Fragment>
                 )
               })}
@@ -192,25 +192,25 @@ const TaxiForm = ({
         </Form>
 
       </ListGroupItem>
-    </div>
+    </Fragment>
   );
 }
 
 const mapStateToProps = (state) => {
- const { startAddress, endAddress, distance, vehicle, price, status, 
-  name, email, comments, phone, passengers, direction, 
-  loading, submitted, valid, invalidFields, date, time, alertSuccess } = state.book;
+  const { startAddress, endAddress, distance, vehicle, price, status, 
+    name, email, comments, phone, passengers, direction, 
+    loading, submitted, valid, invalidFields, date, time, alertSuccess } = state.book;
 
- return { startAddress, endAddress, distance, vehicle, price, status, 
-  name, email, comments, phone, passengers, direction, 
-  loading, submitted, valid, invalidFields, date, time, alertSuccess };
+  return { startAddress, endAddress, distance, vehicle, price, status, 
+    name, email, comments, phone, passengers, direction, 
+    loading, submitted, valid, invalidFields, date, time, alertSuccess };
 }
 
 const mapDispatchToProps = dispatch => ({
-  setInput: (options) => dispatch(setInput(options)),
-  submitForm: () => dispatch(submitForm()),
-  submitSuccess: () => dispatch(submitSuccess()),
   submitError: (errorMessage) => dispatch(submitError(errorMessage)),
+  setInput: (options) => dispatch(setInput(options)),
+  submitSuccess: () => dispatch(submitSuccess()),
+  submitForm: () => dispatch(submitForm()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaxiForm);

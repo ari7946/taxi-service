@@ -75,6 +75,9 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           ...state,
           alertSuccess: false,
           [action.name]: action.value,
+          passengers: action.value === "sedan"
+            ? '1-4'
+            : '1-7',
           price: action.value === 'sedan'
             ? (state.distance * 2.95).toFixed(2)
             : (state.distance * 3.95).toFixed(2)

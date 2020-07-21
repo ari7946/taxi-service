@@ -2,8 +2,17 @@ import React, { Fragment } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
 import TripInfoButton from './TripInfo';
 import { connect } from 'react-redux';
-import { setInput, submitForm, submitError, submitSuccess } from '../../redux/book/book.actions';
 import axios from 'axios';
+import { createStructuredSelector } from 'reselect';
+
+import { selectStartAddress, selectEndAddress, selectDistance, selectVehicle, 
+  selectPrice, selectStatus, selectName, selectEmail, selectComments, 
+  selectPhone, selectPassengers, selectDirection, selectLoading, selectSubmitted, 
+  selectValid, selectInvalidFields, selectDate, selectTime, selectAlertSuccess 
+} from '../../redux/book/book.selectors';
+// import action creators
+import { setInput, submitForm, submitError, submitSuccess } from '../../redux/book/book.actions';
+
 
 const TaxiForm = ({ 
   // action creators
@@ -196,15 +205,36 @@ const TaxiForm = ({
   );
 }
 
-const mapStateToProps = (state) => {
-  const { startAddress, endAddress, distance, vehicle, price, status, 
-    name, email, comments, phone, passengers, direction, 
-    loading, submitted, valid, invalidFields, date, time, alertSuccess } = state.book;
+// const mapStateToProps = (state) => {
+//   const { startAddress, endAddress, distance, vehicle, price, status, 
+//     name, email, comments, phone, passengers, direction, 
+//     loading, submitted, valid, invalidFields, date, time, alertSuccess } = state.book;
 
-  return { startAddress, endAddress, distance, vehicle, price, status, 
-    name, email, comments, phone, passengers, direction, 
-    loading, submitted, valid, invalidFields, date, time, alertSuccess };
-}
+//   return { startAddress, endAddress, distance, vehicle, price, status, 
+//     name, email, comments, phone, passengers, direction, 
+//     loading, submitted, valid, invalidFields, date, time, alertSuccess };
+// }
+const mapStateToProps = createStructuredSelector({ 
+  startAddress: selectStartAddress, 
+  endAddress: selectEndAddress, 
+  distance: selectDistance, 
+  vehicle: selectVehicle, 
+  price: selectPrice, 
+  status: selectStatus, 
+  name: selectName, 
+  email: selectEmail, 
+  comments: selectComments, 
+  phone: selectPhone, 
+  passengers: selectPassengers, 
+  direction: selectDirection, 
+  loading: selectLoading, 
+  submitted: selectSubmitted, 
+  valid: selectValid, 
+  invalidFields: selectInvalidFields, 
+  date: selectDate, 
+  time: selectTime, 
+  alertSuccess: selectAlertSuccess,
+})
 
 const mapDispatchToProps = dispatch => ({
   submitError: (errorMessage) => dispatch(submitError(errorMessage)),

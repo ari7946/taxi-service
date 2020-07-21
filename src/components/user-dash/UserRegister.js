@@ -14,7 +14,7 @@ const UserRegister = () => {
   const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
   let history = useHistory();
-  const { userRegister, auth } = useAuth();
+  const { userRegister } = useAuth();
 
   const handleFormSubmit = async (formSubmitEvent) => {
     formSubmitEvent.preventDefault();

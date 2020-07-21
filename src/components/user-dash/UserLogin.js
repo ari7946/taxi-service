@@ -10,7 +10,7 @@ const UserLogin = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   let history = useHistory();
-  const { userLogin, auth } = useAuth();
+  const { userLogin } = useAuth();
 
   const handleFormSubmit = async (formSubmitEvent) => {
     formSubmitEvent.preventDefault();

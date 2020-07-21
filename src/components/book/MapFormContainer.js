@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import TaxiForm from './TaxiForm';
 import Loading from './Loading';
 import MapHeader from './MapHeader';

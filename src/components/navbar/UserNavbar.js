@@ -7,7 +7,6 @@ import {
   NavItem,
   NavbarBrand,
   UncontrolledDropdown,
-  Dropdown,
   DropdownToggle,
   DropdownItem,
   DropdownMenu,
@@ -20,9 +19,8 @@ import { useAuth } from '../../auth/use-auth';
 import { useHistory } from 'react-router-dom';
 
 const UserNavbar = (props) => {
-  const { logout, auth } = useAuth();
+  const { logout } = useAuth();
   let history = useHistory();
-  const [active, setActive] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);

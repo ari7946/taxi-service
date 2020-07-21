@@ -7,7 +7,6 @@ import {
   NavItem,
   NavbarBrand,
   UncontrolledDropdown,
-  Dropdown,
   DropdownToggle,
   DropdownItem,
   DropdownMenu,
@@ -19,10 +18,9 @@ import { faTaxi, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-
 import { useAuth } from '../../auth/use-auth';
 import { useHistory } from 'react-router-dom';
 
-const AdminNavbar = (props) => {
-  const { logout, auth } = useAuth();
+const AdminNavbar = () => {
+  const { logout } = useAuth();
   let history = useHistory();
-  const [active, setActive] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);

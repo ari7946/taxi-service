@@ -7,7 +7,6 @@ import {
   NavItem,
   NavbarBrand,
   UncontrolledDropdown,
-  Dropdown,
   DropdownToggle,
   DropdownItem,
   DropdownMenu,
@@ -16,13 +15,9 @@ import "./navbarStyle.css";
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTaxi, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import { useAuth } from '../../auth/use-auth';
-import { useHistory } from 'react-router-dom';
 
-const DefaultNavbar = (props) => {
-  const { logout, auth } = useAuth();
-  let history = useHistory();
-  const [active, setActive] = useState('');
+
+const DefaultNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);

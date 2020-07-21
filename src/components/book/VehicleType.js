@@ -5,6 +5,9 @@ import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { setInput } from '../../redux/book/book.actions';
 
+import { createStructuredSelector } from 'reselect';
+import { selectVehicle } from '../../redux/book/book.selectors';
+
 const VehicleType = ({ setInput, vehicle }) => {
   return (
     <FormGroup>
@@ -49,10 +52,9 @@ const VehicleType = ({ setInput, vehicle }) => {
   )
 }
 
-const mapStateToProps = state => {
-  const { vehicle } = state.book;
-  return { vehicle };
-}
+const mapStateToProps = createStructuredSelector({
+  vehicle: selectVehicle,
+})
 
 const mapDispatchToProps = dispatch => ({
   setInput: (options) => dispatch(setInput(options)),

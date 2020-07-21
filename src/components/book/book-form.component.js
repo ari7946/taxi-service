@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
-import TripInfoButton from './TripInfo';
+import './book.styles.css';
+
+import TripInfoButton from './book-trip-info.component';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { createStructuredSelector } from 'reselect';

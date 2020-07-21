@@ -11,7 +11,7 @@ import {
   DropdownItem,
   DropdownMenu,
 } from 'reactstrap';
-import "./navbarStyle.css";
+import "./navbar.styles.css";
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTaxi, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'

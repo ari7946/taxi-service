@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { useBookApi } from './BookApi';
+import './book.styles.css';
 import { connect } from 'react-redux';
 import { locationsCleared, locationsFound, routeChanged } from '../../redux/book/book.actions';
 

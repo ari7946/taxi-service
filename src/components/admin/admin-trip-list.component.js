@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
-import Trip from './Trip';
+import Trip from './admin-trip.component';
 import { getTrips } from '../../redux/trips/trips.actions';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import './admin.styles.css';
 
 import { selectAllTrips, selectLoadingType } from '../../redux/trips/trips.selectors';
 
@@ -12,7 +13,7 @@ const TripList = ({ getTrips, trips, loadingType }) => {
 
   useEffect(() => {
     getTrips();
-  }, [])
+  }, [getTrips])
   
   return (
     <Container fluid>

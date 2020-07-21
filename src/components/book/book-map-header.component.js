@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './book.styles.css';
+
 import { createStructuredSelector } from 'reselect';
 import { selectStartAddress, selectEndAddress } from '../../redux/book/book.selectors';
 

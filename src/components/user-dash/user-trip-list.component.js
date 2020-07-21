@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import Trip from './UserTrip';
+import Trip from './user-trip.component';
+import './user.styles.css';
 
 const TripList = (props) => {
   return (

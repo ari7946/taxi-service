@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import './aboutStyle.css';
+import './about.styles.css';
 import city from '../../assets/city.jpg';
 import arrow from '../../assets/arrow.jpg';
 import licensed from '../../assets/licensed.jpg';

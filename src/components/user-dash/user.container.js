@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Spinner } from 'reactstrap';
-import UserLogin from './UserLogin';
+import './user.styles.css';
+
+import UserLogin from './user-login.component';
 import axios from 'axios';
 import { useAuth } from '../../auth/use-auth';
-import TripList from './UserTripList';
+import TripList from './user-trip-list.component';
 
 const UserContainer = () => {
   const { authHeaders, auth } = useAuth();

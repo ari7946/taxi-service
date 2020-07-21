@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import { useHistory } from "react-router-dom";
+import './admin.styles.css';
 import axios from 'axios';
 import { useAuth } from '../../auth/use-auth';
-//TODO reproduce Login functionality using okta
 
 const Login = () => {
   const [username, setAdmin] = useState('');
@@ -30,6 +30,7 @@ const Login = () => {
   }
 
   const handleGuestSubmit = async (formSubmitEvent) => {
+
     const username = process.env.REACT_APP_GUEST_USERNAME;
     const password = process.env.REACT_APP_GUEST_PASSWORD;
 
@@ -74,7 +75,7 @@ const Login = () => {
         </Button>
         <Button
           className="text-green-light ml-3"
-          onClick={() => handleGuestSubmit()}
+          onClick={(e) => handleGuestSubmit(e)}
         >
           Guest Login
         </Button>

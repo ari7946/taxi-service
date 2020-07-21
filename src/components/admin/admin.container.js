@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import TripList from './TripList';
+import TripList from './admin-trip-list.component';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../auth/use-auth';
-import './adminStyle.css';
+import './admin.styles.css';
 
 function Container() {
   const { auth } = useAuth();

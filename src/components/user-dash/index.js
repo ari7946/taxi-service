@@ -1,3 +1,3 @@
-import UserContainer from './UserContainer';
+import UserContainer from './user.container';
 
 export default UserContainer;

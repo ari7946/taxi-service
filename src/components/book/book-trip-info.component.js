@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
+import './book.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { ListGroupItem, ListGroup, ListGroupItemText, ListGroupItemHeading  } from 'reactstrap';
+import './book.styles.css';
+
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { selectStartAddress, selectEndAddress } from '../../redux/book/book.selectors';

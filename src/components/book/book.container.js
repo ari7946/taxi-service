@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react';
-import TaxiForm from './TaxiForm';
-import Loading from './Loading';
-import MapHeader from './MapHeader';
-import Addresses from './Addresses';
-import Estimate from './Estimate';
-import './bookStyle.css';
+import TaxiForm from './book-form.component';
+import Loading from './book-loading.component';
+import MapHeader from './book-map-header.component';
+import Addresses from './book-addresses.component';
+import Estimate from './book-estimate.component';
+import './book.styles.css';
 import { Container, Row, Col, ListGroup } from 'reactstrap';
-const Map = React.lazy(() => import('./Map'));
+const Map = React.lazy(() => import('./book-map.component'));
 
 const MapFormContainer = () => {
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ListGroup, ListGroupItem, Button, Popover, PopoverBody, Spinner } from 'reactstrap';
+import { ListGroup, ListGroupItem, Button, Popover, PopoverBody } from 'reactstrap';
+import './user.styles.css';
 
 const Trip = (props) => {
   const {name, phone, email, startAddress, endAddress, distance, vehicle, price} = props.trip;

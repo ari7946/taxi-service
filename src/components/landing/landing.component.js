@@ -1,7 +1,7 @@
 import React from 'react';
-import './landingStyle.css';
-import { Jumbotron, Button, Container } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom'
+import './landing.styles.css';
+import { Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const Landing = (props) => {
   return (

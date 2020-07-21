@@ -11,16 +11,13 @@ import {
   DropdownItem,
   DropdownMenu,
 } from 'reactstrap';
-import "./navbarStyle.css";
+import "./navbar.styles.css";
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTaxi, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import { useAuth } from '../../auth/use-auth';
-import { useHistory } from 'react-router-dom';
 
-const UserNavbar = (props) => {
-  const { logout } = useAuth();
-  let history = useHistory();
+
+const DefaultNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -61,38 +58,39 @@ const UserNavbar = (props) => {
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>
               <div className="pt-2">
-                <span className="px-5 ml-1 py-1 text-grey-light-2 lead">Options</span>
+                <span className="px-5 ml-1 py-1 text-grey-light-2 lead">Login</span>
               </div>
             </DropdownToggle>
 
             <DropdownMenu right>
               <DropdownItem>
-                <NavLink to="dashboard" style={{ textDecoration: 'none' }}>
-                  <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>Trips</NavItem>
+                <NavLink to="login" style={{ textDecoration: 'none' }}>
+                  <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>User</NavItem>
                 </NavLink>
               </DropdownItem>
 
-              {/* <DropdownItem>
-                <NavLink to="admin/" style={{ textDecoration: 'none' }}>
-                  <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>Login</NavItem>
+              <DropdownItem>
+                <NavLink to="admin" style={{ textDecoration: 'none' }}>
+                  <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>Admin</NavItem>
                 </NavLink>
-              </DropdownItem> */}
-
-              <DropdownItem
-                className="text-orange py-1 mt-2"
-                onClick={() => {
-                  logout();
-                  history.replace('/');
-                }}
-              >
-                Logout
               </DropdownItem>
+
             </DropdownMenu>
           </UncontrolledDropdown>
+
+          <NavItem className='py-3'>
+            <NavLink
+              className="px-5 mx-2 py-3 text-grey-light-2 lead"
+              exact
+              activeClassName="font-weight-bold"
+              to="register"
+              style={{ textDecoration: 'none' }}
+              onClick={() => setIsOpen(false)} >Register</NavLink>
+          </NavItem>
         </Nav>
       </Collapse>
     </Navbar>
   );
 }
 
-export default UserNavbar;
+export default DefaultNavbar;

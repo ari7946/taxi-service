@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { setInput } from '../../redux/book/book.actions';
+import './book.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { selectVehicle } from '../../redux/book/book.selectors';

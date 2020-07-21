@@ -1,6 +1,10 @@
 import React from 'react';
 import { ListGroupItem, ListGroupItemText } from 'reactstrap';
 import VehicleType from './VehicleType';
+
+import { createStructuredSelector } from 'reselect';
+import { selectPrice, selectDropFee, selectDirection } from '../../redux/book/book.selectors';
+
 import { connect } from 'react-redux';
 
 const Estimate = ({ price, dropFee, direction }) => {
@@ -45,9 +49,10 @@ const Estimate = ({ price, dropFee, direction }) => {
   )
 }
 
-const mapStateToProps = state => {
-  const { price, dropFee, direction } = state.book;
-  return { price, dropFee, direction };
-}
+const mapStateToProps = createStructuredSelector({
+  price: selectPrice,
+  dropFee: selectDropFee,
+  direction: selectDirection,
+})
 
 export default connect(mapStateToProps)(Estimate);

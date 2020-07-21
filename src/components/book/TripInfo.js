@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
 
+import { createStructuredSelector } from 'reselect';
+import { 
+  selectDistance, selectStartAddress, selectEndAddress, selectPrice, selectVehicle, selectDropFee 
+} from '../../redux/book/book.selectors';
+
 const TripInfoButton = ({  
     distance,
     startAddress,
@@ -40,24 +45,13 @@ const TripInfoButton = ({
   );
 }
 
-const mapStateToProps = state => {
-  const {  
-    distance,
-    startAddress,
-    endAddress,
-    price,
-    vehicle,
-    dropFee
-  } = state.book;
-
-  return {  
-    distance,
-    startAddress,
-    endAddress,
-    price,
-    vehicle,
-    dropFee
-  }
-}
+const mapStateToProps = createStructuredSelector({
+  distance: selectDistance,
+  startAddress: selectStartAddress,
+  endAddress: selectEndAddress,
+  price: selectPrice,
+  vehicle: selectVehicle,
+  dropFee: selectDropFee,
+})
 
 export default connect(mapStateToProps)(TripInfoButton);

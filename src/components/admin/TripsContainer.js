@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 import TripList from './TripList';
 import { Link } from 'react-router-dom';
-import { ProvideTripsApi } from './TripsApi';
 import { useAuth } from '../../auth/use-auth';
 import './adminStyle.css';
 
 function Container() {
   const { auth } = useAuth();
   return (
-    <ProvideTripsApi>
+    <Fragment>
       {auth === 'admin'
         ? <TripList /> 
         : (
@@ -18,7 +17,7 @@ function Container() {
           </div>
         )
       }
-    </ProvideTripsApi>
+    </Fragment>
   )
 }
 

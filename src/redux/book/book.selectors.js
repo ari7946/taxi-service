@@ -1,57 +1,39 @@
-const TripsReducer = (state, action) => {
-  switch (action.type) {
+import { createSelector } from 'reselect';
 
-    case 'submit':
-      return {
-        ...state,
-        loadingType: action.loadingType,
-        loadingTripId: action.tripId,
-      }
-    case 'getTrips':
+export const selectBook = state => state.book;
 
-      return {
-        ...state,
-        loadingType: '',
-        trips: action.trips.reverse(),
-      }
-    case 'updateTrip':
-      const updatedTrip = action.trip;
-      const updatedTrips = state.trips.map(trip => {
-        if (trip.id === updatedTrip.id) {
-          return updatedTrip;
-        }
-        return trip
-      })
+export const selectStartAddress = createSelector(
+  selectBook,
+  book => book.startAddress
+)
 
-      return {
-        ...state,
-        loadingType: '',
-        loadingTripId: -1,
-        trips: updatedTrips,
-      }
-    case 'deleteTrip':
-      const filteredTrips = state.trips.filter(trip => trip.id !== action.trip.id)
-      return {
-        ...state,
-        loadingType: '',
-        trips: filteredTrips,
-        loadingTripId: -1,
-      }
-    case 'error':
-      return {
-        ...state,
-        loadingType: '',
-        error: action.error,
-      }
-    default: return state;
-  }
-}
+export const selectEndAddress = createSelector(
+  selectBook,
+  book => book.endAddress
+)
 
-const initialState = {
-  trips: [],
-  loadingType: '',
-  error: '',
-  loadingTripId: null,
-}
+export const selectPrice = createSelector(
+  selectBook,
+  book => book.price
+)
 
-export { TripsReducer, initialState };
+export const selectDropFee = createSelector(
+  selectBook,
+  book => book.dropFee
+)
+
+export const selectDirection = createSelector(
+  selectBook,
+  book => book.direction
+)
+
+export const selectDistance = createSelector(
+  selectBook,
+  book => book.distance
+)
+
+export const selectVehicle = createSelector(
+  selectBook,
+  book => book.vehicle
+)
+

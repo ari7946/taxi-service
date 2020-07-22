@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import MapFormContainer from './components/book';
 import NavbarContainer from './components/navbar';
-import { Container } from 'reactstrap';
 import Landing from './components/landing';
 import About from './components/about';
 import TripsContainer from './components/admin';
-import AdminLogin from './components/admin/TripsLogin';
+import AdminLogin from './components/admin/admin-login.component';
 import Dashboard from './components/user-dash';
-import UserRegister from './components/user-dash/UserRegister';
-import UserLogin from './components/user-dash/UserLogin';
+import UserRegister from './components/user-dash/user-register.component';
+import UserLogin from './components/user-dash/user-login.component';
 import { Route, Switch } from 'react-router-dom';
 import { ProvideAuth } from "./auth/use-auth";
 import './index.css';

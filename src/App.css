@@ -69,3 +69,7 @@
 .font-monospaced-bold {
   font-family: var(--font-monospaced-bold)
 }
+
+.font-montserrat {
+  font-family: "Montserrat", "Helvetica-Neue", "Helvetica", "Arial", "sans-serif"
+}

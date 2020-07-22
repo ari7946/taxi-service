@@ -1,0 +1,156 @@
+/***************** BOOK **********************/
+#map {
+  max-height: 40vh;
+  width: 100%;
+  width: auto;
+  height: 60vh;
+}
+
+h2.price {
+  color: var(--color-grey-light-2)
+}
+
+.book-form label {
+  color: var(--color-green-light);
+}
+
+.book-form {
+  background-color: var(--color-green-dark) !important;
+  padding-top: 0 !important;
+  border: none !important;
+}
+
+/* START Addresses COMPONENT */
+.book-address {
+  margin-bottom: .8rem !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-grey-light-2);
+}
+
+.book-address .list-group-item-text {
+  font-family: var(--font-monospaced-bold);
+}
+
+.address-heading-starting {
+  color: var(--color-yellow);
+  font-weight: bold !important;
+}
+
+.address-heading-destination {
+  color: var(--color-flat-orange);
+  font-weight: bold !important;
+}
+/* END ADDRESSES COMPONENT */
+
+.estimate {
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-green-light);
+  border: none !important;
+  font-family: var(--font-monospaced-bold);
+  letter-spacing: .25rem;
+}
+
+.estimate-heading {
+  color: var(--color-primary);
+  font-weight: bold !important;
+}
+
+/* display none because it defaults to metric */
+.geoResponse-result-distance {
+  display: none;
+}
+
+.vehicle-type {
+  margin-bottom: 2rem;
+  /* font-family: sans-serif; */
+}
+
+.auth {
+  max-width: 600px !important;
+}
+
+@media (max-width: 1200px) {
+  .vehicle-type {
+    margin-bottom: 1rem;
+  }
+
+  .vehicle-type button {
+    font-size: 14px;
+  }
+
+  .estimate .price {
+    font-size: 20px;
+  }
+
+  /* START Addresses COMPONENT */
+  .book-address {
+    margin-bottom: .2rem;
+    padding-top: 0 0 !important;
+    background-color: var(--color-green-dark) !important;
+    color: var(--color-grey-light-2);
+  }
+
+  .book-address .list-group-item-text {
+    font-family: var(--font-monospaced);
+  }
+
+  .address-heading-starting {
+    color: var(--color-yellow);
+    font-weight: bold !important;
+  }
+
+  .address-heading-destination {
+    color: var(--color-flat-orange);
+    font-weight: bold !important;
+  }
+  /* END ADDRESSES COMPONENT */
+}  
+
+@media (max-width: 600px) {
+  #map {
+    width: auto;
+    height: 30vh;  
+    margin: 0 1rem;
+  }
+
+  /* Address text in Addresses Component */
+  .book-address .list-group-item-text {
+    font-family: var(--font-monospaced);
+    margin: 0;
+    padding: 0;
+  }
+
+  .estimate {
+    font-family: var(--font-monospaced);
+    letter-spacing: .2rem;
+  }
+
+  .map-heading {
+    font-weight: 700;
+    font-size: 17px;
+    margin-left: 1rem;
+  }
+
+  .vehicle-type button {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+}
+
+@media (max-width: 415px) {
+  .vehicle-type .vehicle-type-text {
+    display: none;
+  }
+
+  .estimate {
+    font-family: var(--font-monospaced);
+    letter-spacing: .1rem;
+  }
+
+  .trip-info-button, .book-button {
+    padding: .3rem .2rem !important;
+  }
+}

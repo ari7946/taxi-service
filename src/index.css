@@ -47,7 +47,8 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Montserrat", "Helvetica-Neue", "Helvetica", "Arial", "sans-serif" !important;
+  letter-spacing: .08rem;
   font-weight: 400;
   line-height: 1.6;
   min-height: 100vh;
@@ -59,6 +60,22 @@ body {
 @media (max-width: 1100px) {
   .wrapper {
     margin: 0 2rem 0 2rem 0!important;
+    letter-spacing: .06rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    margin: 0 0 !important;
+    padding: 0 !important;
+    letter-spacing: .04rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .wrapper {
+    margin: 0 2rem 0 2rem 0!important;
+    letter-spacing: .02rem;
   }
 }
 

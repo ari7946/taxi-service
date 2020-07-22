@@ -1,3 +1,3 @@
-import MapFormContainer from './MapFormContainer';
+import MapFormContainer from './book.container';
 
 export default MapFormContainer;

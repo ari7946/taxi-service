@@ -1,0 +1,22 @@
+/***************** ABOUT **********************/
+.about-section {
+  margin: 2rem 0;
+}
+
+.about-description {
+  line-height: 23px;
+  font-size: 16px;
+  color: var(--color-grey-light-2) !important;
+}
+
+img.about-img {
+  margin-top: 1rem;
+}
+
+.about-heading {
+  color: var(--color-yellow);
+}
+
+.about {
+  height: 80vh;
+}

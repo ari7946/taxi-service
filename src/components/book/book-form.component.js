@@ -28,10 +28,11 @@ const TaxiForm = ({
   name, email, comments, phone, date, time, 
   // other 
   direction, loading, submitted, valid, invalidFields, alertSuccess, passengers,
-  startAddress, endAddress, username, distance, vehicle, price, status, 
+  startAddress, endAddress, distance, vehicle, price, status, 
 }) => {
   const processForm = async () => {
-    const formFields = { name, comments, phone, email, date, time }
+    const username = localStorage.getItem('username') || '';
+    const formFields = { name, comments, phone, email, date, time };
     const body = { 
       distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, 
       ...formFields 

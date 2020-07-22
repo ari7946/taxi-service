@@ -21,8 +21,7 @@ export const submitError = ({ errorMessage }) => {
 }
 
 export const submitForm = () => {
-  const username = localStorage.getItem('username') || '';
-  return { type: BookActionTypes.SUBMIT, username };
+  return { type: BookActionTypes.SUBMIT };
 }
 
 export const submitSuccess = () => {

@@ -40,7 +40,7 @@ const UserRegister = () => {
       {loading && <Spinner size="md" color="light"></Spinner>}
       <Form className='' onSubmit={(e) => handleFormSubmit(e)}>
         <FormGroup>
-          <Label for="admin">Username</Label>
+          <Label for="admin">Username<span className="text-flat-orange small ml-2 text-center">required</span></Label>
           <Input
             type="text"
             name="username"
@@ -48,7 +48,7 @@ const UserRegister = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="admin">Password</Label>
+          <Label for="admin">Password<span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="password"
             name="password"

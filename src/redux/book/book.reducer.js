@@ -25,7 +25,6 @@ const INITIAL_STATE = {
   invalidFields: [],
   valid: false,
   status: 'pending',
-  username: '',
 }
 
 const bookReducer = (state = INITIAL_STATE, action) => {
@@ -153,7 +152,6 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         error: false,
         submitted: true,
         loading: true,
-        username: action.username,
       }
     default:
       return state

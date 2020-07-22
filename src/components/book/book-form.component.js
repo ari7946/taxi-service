@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
 import './book.styles.css';
+import { NavLink } from 'react-router-dom';
 
 import TripInfoButton from './book-trip-info.component';
 import { connect } from 'react-redux';
@@ -15,6 +16,10 @@ import { selectStartAddress, selectEndAddress, selectDistance, selectVehicle,
 // import action creators
 import { setInput, submitForm, submitError, submitSuccess } from '../../redux/book/book.actions';
 
+const adminMessage = <p className="text-white">
+  <NavLink exact to="/admin" className="bg-light mt-2 px-2">Click here</NavLink> to log in as a "Guest Admin" to see the admin panel. (No login/registeration required as a guest)<br /> <br />
+</p>
+
 
 const TaxiForm = ({ 
   // action creators
@@ -25,6 +30,7 @@ const TaxiForm = ({
   direction, loading, submitted, valid, invalidFields, alertSuccess, passengers,
   startAddress, endAddress, username, distance, vehicle, price, status, 
 }) => {
+  const [demo, setDemo] = useState(true);
   const processForm = async () => {
     const formFields = { name, comments, phone, email, date, time }
     const body = { 
@@ -51,14 +57,39 @@ const TaxiForm = ({
     e.preventDefault();
     submitForm();
   }
-
+  console.log('demo', demo)
   return (
     <Fragment>
       <ListGroupItem className="book-form">
         <Form onSubmit={(e) => handleSubmitForm(e)}>
+          {/* DEMO */}
+          <Label className="mr-3 text-white">DEMO MODE:</Label>
+          <FormGroup check inline>
+            <Label check check>
+              <Input 
+                type="radio" 
+                name="demo"
+                defaultChecked={demo}
+                onClick={() => setDemo(true)}            
+              />
+              <span className="text-white">Yes</span>
+            </Label>
+          </FormGroup>
+          <FormGroup check inline className="mb-2 ml-2">
+            <Label check>
+              <Input 
+                type="radio" 
+                name="demo" 
+                onClick={() => setDemo(false)} 
+              />
+              <span className="text-white">No</span>
+            </Label> 
+          </FormGroup>
+          <p className="text-white small">NOTE: DEMO MODE makes the form below optional.</p>
+
           {/* NAME */}
           <FormGroup>
-            <Label for="exampleEmail">Name:</Label>
+            <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
             <Input
               type="text"
               name="name"
@@ -76,7 +107,7 @@ const TaxiForm = ({
 
           {/*  PHONE */}
           <FormGroup>
-            <Label for="exampleNumber">Phone:</Label>
+            <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
             <Input
               type="text"
               name="phone"
@@ -94,7 +125,7 @@ const TaxiForm = ({
 
           {/*  EMAIL */}
           <FormGroup form>
-            <Label for="exampleEmail">Email:</Label>
+            <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
             <Input
               type="email"
               name="email"
@@ -112,7 +143,7 @@ const TaxiForm = ({
 
           {/* DATE */}
           <FormGroup>
-            <Label for="exampleDate">Date</Label>
+            <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
             <Input
               type="date"
               name="date"
@@ -129,7 +160,7 @@ const TaxiForm = ({
 
           {/* TIME */}
           <FormGroup>
-            <Label for="exampleTime">Time</Label>
+            <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
             <Input
               type="time"
               name="time"
@@ -146,7 +177,7 @@ const TaxiForm = ({
 
           {/* COMMENTS */}
           <FormGroup>
-            <Label for="exampleText">Comments:</Label>
+            <Label for="exampleText">Comments: <span className="text-flat-orange small ml-2">optional</span></Label>
             <Input
               type="textarea"
               name="comments"
@@ -184,6 +215,9 @@ const TaxiForm = ({
           {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
           { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
 
+          {/* DISPLAY MESSAGE IS USE SET DEMO MODE TO TRUE AND IF THEY PROVIDE BOTH startAddress and endAddress */}
+          {(demo && startAddress && endAddress) && adminMessage}
+
           {/* SUBMIT BUTTON */}
           <ButtonGroup className="mt-3 mb-5">
             <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
@@ -207,15 +241,6 @@ const TaxiForm = ({
   );
 }
 
-// const mapStateToProps = (state) => {
-//   const { startAddress, endAddress, distance, vehicle, price, status, 
-//     name, email, comments, phone, passengers, direction, 
-//     loading, submitted, valid, invalidFields, date, time, alertSuccess } = state.book;
-
-//   return { startAddress, endAddress, distance, vehicle, price, status, 
-//     name, email, comments, phone, passengers, direction, 
-//     loading, submitted, valid, invalidFields, date, time, alertSuccess };
-// }
 const mapStateToProps = createStructuredSelector({ 
   startAddress: selectStartAddress, 
   endAddress: selectEndAddress, 

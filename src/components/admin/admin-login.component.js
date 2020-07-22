@@ -50,7 +50,7 @@ const Login = () => {
  
   return (
     <Container className="text-green-light auth" fluid>
-      <p className="small text-green-light">Log in as a guest for development purposes. No username or password required</p>
+      <p className="small text-green-light"> Feel free to Log in as a guest for development or demo purposes. No username or password required</p>
       <h1 className="mb-3">Admin Login</h1>
       {loading && <Spinner size="md" color="light"></Spinner>}
       <Form className='' onSubmit={(e) => handleFormSubmit(e)}>
@@ -77,7 +77,7 @@ const Login = () => {
           className="text-green-light ml-3"
           onClick={(e) => handleGuestSubmit(e)}
         >
-          Guest Login
+          Guest Admin Login
         </Button>
       </Form>
     </Container>  

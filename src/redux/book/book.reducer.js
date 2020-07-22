@@ -42,6 +42,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         ...state,
         startAddress: action.startAddress,
         endAddress: action.endAddress,
+        // alert is deactivated if startAddress or endAddress is "cleared"; they're both needed to calculate a distance and price
         alertSuccess: false,
         price: 0,
       }
@@ -55,8 +56,11 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         distance,
         price,
         direction: 'oneWay',
+        // dropFee is set to 10 (dollars) by default in case a user changes its state prior to defining both startAddress and endAddress
         dropFee: 10,
+        // vehicle is set to "sedan" by default in case a user changes its state prior to defining both startAddress and endAddress
         vehicle: 'sedan',
+        // alert is deactivated if endAddress is "cleared"; they're both needed to calculate a distance and price
         alertSuccess: false,
       }
     case BookActionTypes.INPUT:
@@ -68,7 +72,8 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           price: action.value === 'oneWay'
             ? state.price / 2
             : state.price * 2,
-          dropFee: action.value === 'oneWay' ? 10 : 20
+          dropFee: action.value === 'oneWay' ? 10 : 20,
+          invalidFields: [],
         }
       } else if (action.name === 'vehicle') {
         return {
@@ -78,15 +83,24 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           passengers: action.value === "sedan"
             ? '1-4'
             : '1-7',
-          price: action.value === 'sedan'
-            ? (state.distance * 2.95).toFixed(2)
-            : (state.distance * 3.95).toFixed(2)
+
+          // if the startAddress OR end address is cleared/not defined, set the price
+          // to zero because a distance between two points is needed to calculate the price.
+          // Otherwise if both startAddress and endAddress are provided, 
+          // calculate the price based on the vehicle (sedan or van) and total distance
+          price: (!state.startAddress || !state.endAddress) 
+            ? 0 
+            : action.value === 'sedan' 
+              ? (state.distance * 2.95).toFixed(2)
+              : (state.distance * 3.95).toFixed(2),
+          invalidFields: []
         }
       }
       return {
         ...state,
         alertSuccess: false,
         [action.name]: action.value,
+        invalidFields: [],
       }
     case BookActionTypes.SUCCESS:
       return {
@@ -112,6 +126,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
       const invalidFields = [];
 
+      // Format fields furrr grammar
       const formatField = field => {
         if (field == "endAddress")
           field = "Destination";
@@ -122,6 +137,8 @@ const bookReducer = (state = INITIAL_STATE, action) => {
 
       for (const field in fields) {
         if (!fields[field]) {
+          // "invalidFields" array is used to prompt a message about the required fields if they're missing.
+          // This is also the the reason they are formatted; for grammar consistency
           invalidFields.push(formatField(field));
         }
       }

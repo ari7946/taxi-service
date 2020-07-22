@@ -215,7 +215,7 @@ const TaxiForm = ({
           {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
           { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
 
-          {/* DISPLAY MESSAGE IS USE SET DEMO MODE TO TRUE AND IF THEY PROVIDE BOTH startAddress and endAddress */}
+          {/* DISPLAY MESSAGE IF USER SETS DEMO MODE TO TRUE AND IF THEY PROVIDE BOTH startAddress and endAddress */}
           {(demo && startAddress && endAddress) && adminMessage}
 
           {/* SUBMIT BUTTON */}

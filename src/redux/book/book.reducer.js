@@ -85,7 +85,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
             : '1-7',
 
           // if the startAddress OR endAddress is cleared/not defined, set the price
-          // to zero because a distance between both defined points are needed to calculate the price.
+          // to zero because a distance between both defined points is needed to calculate the price.
           // Otherwise, if both startAddress and endAddress are provided, 
           // calculate the price based on the vehicle (sedan or van) and total distance (between startAddress & endAddress)
           price: (!state.startAddress || !state.endAddress) 
@@ -126,7 +126,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
       const invalidFields = [];
 
-      // Format fields furrr grammar
+      // Furrrmat fields furrr grammar
       const formatField = field => {
         if (field == "endAddress")
           field = "Destination";

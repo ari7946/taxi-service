@@ -78,6 +78,7 @@ const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
       >
         Trip Details
       </Button>
+      
       <Popover
         placement='bottom'
         isOpen={popoverOpen}

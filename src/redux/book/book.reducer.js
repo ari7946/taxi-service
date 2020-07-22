@@ -60,7 +60,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         dropFee: 10,
         // vehicle is set to "sedan" by default in case a user changes its state prior to defining both startAddress and endAddress
         vehicle: 'sedan',
-        // alert is deactivated if endAddress is "cleared"; they're both needed to calculate a distance and price
+        // alert is deactivated if endAddress is "cleared"; as both both startAddress and endAddress are needed to calculate total distance and price
         alertSuccess: false,
       }
     case BookActionTypes.INPUT:
@@ -93,7 +93,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
             : action.value === 'sedan' 
               ? (state.distance * 2.95).toFixed(2)
               : (state.distance * 3.95).toFixed(2),
-          invalidFields: []
+          invalidFields: [],
         }
       }
       return {

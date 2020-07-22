@@ -30,7 +30,6 @@ const TaxiForm = ({
   direction, loading, submitted, valid, invalidFields, alertSuccess, passengers,
   startAddress, endAddress, username, distance, vehicle, price, status, 
 }) => {
-  const [demo, setDemo] = useState(true);
   const processForm = async () => {
     const formFields = { name, comments, phone, email, date, time }
     const body = { 
@@ -57,39 +56,15 @@ const TaxiForm = ({
     e.preventDefault();
     submitForm();
   }
-  console.log('demo', demo)
+
   return (
     <Fragment>
       <ListGroupItem className="book-form">
         <Form onSubmit={(e) => handleSubmitForm(e)}>
-          {/* DEMO */}
-          <Label className="mr-3 text-white">DEMO MODE:</Label>
-          <FormGroup check inline>
-            <Label check check>
-              <Input 
-                type="radio" 
-                name="demo"
-                defaultChecked={demo}
-                onClick={() => setDemo(true)}            
-              />
-              <span className="text-white">Yes</span>
-            </Label>
-          </FormGroup>
-          <FormGroup check inline className="mb-2 ml-2">
-            <Label check>
-              <Input 
-                type="radio" 
-                name="demo" 
-                onClick={() => setDemo(false)} 
-              />
-              <span className="text-white">No</span>
-            </Label> 
-          </FormGroup>
-          <p className="text-white small">NOTE: DEMO MODE makes the form below optional.</p>
 
           {/* NAME */}
           <FormGroup>
-            <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
+            <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">required</span></Label>
             <Input
               type="text"
               name="name"
@@ -107,7 +82,7 @@ const TaxiForm = ({
 
           {/*  PHONE */}
           <FormGroup>
-            <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
+            <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
             <Input
               type="text"
               name="phone"
@@ -125,7 +100,7 @@ const TaxiForm = ({
 
           {/*  EMAIL */}
           <FormGroup form>
-            <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
+            <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">required</span></Label>
             <Input
               type="email"
               name="email"
@@ -143,7 +118,7 @@ const TaxiForm = ({
 
           {/* DATE */}
           <FormGroup>
-            <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
+            <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">required</span></Label>
             <Input
               type="date"
               name="date"
@@ -160,7 +135,7 @@ const TaxiForm = ({
 
           {/* TIME */}
           <FormGroup>
-            <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">{demo && 'optional'}</span></Label>
+            <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">required</span></Label>
             <Input
               type="time"
               name="time"
@@ -177,7 +152,7 @@ const TaxiForm = ({
 
           {/* COMMENTS */}
           <FormGroup>
-            <Label for="exampleText">Comments: <span className="text-flat-orange small ml-2">optional</span></Label>
+            <Label for="exampleText">Comments: </Label>
             <Input
               type="textarea"
               name="comments"
@@ -193,7 +168,7 @@ const TaxiForm = ({
           </FormGroup>
 
           {/* REQUIRED FIELDS */}
-          {!!invalidFields && (invalidFields.length > 0) && (
+          {(invalidFields.length > 0) && (
             <p className="text-flat-orange mb-0">Required fields:  < br />
               {invalidFields.map(field => {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
@@ -216,7 +191,6 @@ const TaxiForm = ({
           { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
 
           {/* DISPLAY MESSAGE IF USER SETS DEMO MODE TO TRUE AND IF THEY PROVIDE BOTH startAddress and endAddress */}
-          {(demo && startAddress && endAddress) && adminMessage}
 
           {/* SUBMIT BUTTON */}
           <ButtonGroup className="mt-3 mb-5">

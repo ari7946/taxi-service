@@ -60,7 +60,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         dropFee: 10,
         // vehicle is set to "sedan" by default in case a user changes its state prior to defining both startAddress and endAddress
         vehicle: 'sedan',
-        // alert is deactivated if endAddress is "cleared"; as both both startAddress and endAddress are needed to calculate total distance and price
+        // alert is deactivated if endAddress is "cleared"; as both startAddress and endAddress are needed to calculate total distance and price
         alertSuccess: false,
       }
     case BookActionTypes.INPUT:
@@ -87,7 +87,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           // if the startAddress OR endAddress is cleared/not defined, set the price
           // to zero because a distance between both defined points is needed to calculate the price.
           // Otherwise, if both startAddress and endAddress are provided, 
-          // calculate the price based on the vehicle (sedan or van) and total distance (between startAddress & endAddress)
+          // calculate the price based on the total distance (between startAddress & endAddress) and rate according to type of vehicle (sedan or van).
           price: (!state.startAddress || !state.endAddress) 
             ? 0 
             : action.value === 'sedan' 
@@ -122,7 +122,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         alertSuccess: false,
       }
     case BookActionTypes.SUBMIT:
-      const { name, phone, email, passengers, direction, comments, startAddress, endAddress, date, time } = state;
+      const { name, phone, email, passengers, direction, startAddress, endAddress, date, time } = state;
       const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
       const invalidFields = [];
 
@@ -155,8 +155,9 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         loading: true,
         username: action.username,
       }
+    default:
+      return state
   }
-  return state;
 }
 
 export default bookReducer;

@@ -38,4 +38,11 @@ export const selectArchivedTrips = createSelector(
   )
 )
 
+export const selectLoadingTrip = (loadingId, loadingType) =>
+  createSelector(
+    [selectLoadingType, selectLoadingTripId],
+    (type, id) => 
+      loadingType === type && loadingId === id
+  )
+
 

@@ -5,17 +5,13 @@ import { connect } from 'react-redux';
 import { removeTrip, updateTrip } from '../../redux/trips/trips.actions';
 import { createStructuredSelector } from 'reselect';
 
-import { selectLoadingType, selectLoadingTripId } from '../../redux/trips/trips.selectors';
+import { selectLoadingType, selectLoadingTripId, selectLoadingTrip } from '../../redux/trips/trips.selectors';
 
-const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
+const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
 
   //TODO fix total bug 
   const total = (Number(trip.price) + 10).toFixed(2);
   const [popoverOpen, setPopoverOpen] = useState(false);
-
-  const isLoading = (status, id) => {
-    return loadingType === status && loadingTripId === id;
-  };
 
   const spinner = <Spinner
     as="span"
@@ -43,7 +39,7 @@ const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
           `}
           onClick={() => updateTrip('confirm', trip.id)}
         >
-          {isLoading('confirm', trip.id) && spinner}
+          {isLoading('confirm') && spinner}
           Confirm
         </Button>
 
@@ -53,7 +49,7 @@ const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
           `}
           onClick={() => updateTrip('complete', trip.id)}
         >
-          {isLoading('complete', trip.id) && spinner}
+          {isLoading('complete') && spinner}
           Complete 
         </Button>
 
@@ -63,7 +59,7 @@ const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
           `}
           onClick={() => updateTrip('archive', trip.id)}
         >
-          {isLoading('archive', trip.id) && spinner}
+          {isLoading('archive') && spinner}
           Archive
         </Button>
 
@@ -78,7 +74,7 @@ const Trip = ({ trip, loadingTripId, loadingType, updateTrip, removeTrip }) => {
       >
         Trip Details
       </Button>
-      
+
       <Popover
         placement='bottom'
         isOpen={popoverOpen}
@@ -104,9 +100,10 @@ const mapDispatchToProps = dispatch => ({
   updateTrip: (status, tripId) => dispatch(updateTrip(status, tripId)),
 })
 
-const mapStateToProps = createStructuredSelector({
+const mapStateToProps = (state, ownProps) => ({
   loadingType: selectLoadingType,
-  loadingTripId: selectLoadingTripId
+  loadingTripId: selectLoadingTripId,
+  isLoading: (loadingType) => selectLoadingTrip(ownProps.trip.id, loadingType)(state)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Trip);

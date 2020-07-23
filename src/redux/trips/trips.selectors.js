@@ -16,3 +16,26 @@ export const selectLoadingTripId = createSelector(
   [selectTripState],
   tripState => tripState.loadingTripId
 )
+
+export const selectConfirmedTrips = createSelector(
+  [selectAllTrips],
+  trips => trips.filter(trip => 
+    trip.status === 'confirm'
+  )
+)
+
+export const selectCompletedTrips = createSelector(
+  [selectAllTrips],
+  trips => trips.filter(trip => 
+    trip.status === 'complete'
+  )
+)
+
+export const selectArchivedTrips = createSelector(
+  [selectAllTrips],
+  trips => trips.filter(trip => 
+    trip.status === 'archive'
+  )
+)
+
+

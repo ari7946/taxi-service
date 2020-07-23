@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Container, ListGroup, Spinner, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import Trip from './admin-trip.component';
-import { getTrips } from '../../redux/trips/trips.actions';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import './admin.styles.css';
 
-import { selectAllTrips, selectLoadingType } from '../../redux/trips/trips.selectors';
+import { getTrips } from '../../redux/trips/trips.actions';
+import { selectAllTrips, selectLoadingType, selectConfirmedTrips, selectCompletedTrips, selectArchivedTrips } from '../../redux/trips/trips.selectors';
 
-const TripList = ({ getTrips, trips, loadingType }) => {
+const TripList = ({ 
+  getTrips, trips, loadingType, confirmedTrips, completedTrips, archivedTrips 
+}) => {
   const [activeTab, setActiveTab] = useState('viewAll');
 
   useEffect(() => {
@@ -70,9 +72,7 @@ const TripList = ({ getTrips, trips, loadingType }) => {
             : trips.length > 0 ? (
               <ListGroup>
                 {trips.map(trip =>
-                  <Trip
-                    key={trip.id}
-                    trip={trip}
+                  <Trip key={trip.id} trip={trip}
                   />
                 )}
               </ListGroup>
@@ -83,17 +83,11 @@ const TripList = ({ getTrips, trips, loadingType }) => {
         </TabPane>
 
         <TabPane tabId="viewConfirmed">
-            {trips.length > 0 ? (
+            {confirmedTrips.length ? (
               <ListGroup>
-                {trips.map(trip => {
-                  if (trip.status === 'confirm') {
-                    return <Trip
-                      key={trip.id}
-                      trip={trip}
-                    />
-                  }
-                  return null
-                })}
+                {confirmedTrips.map(trip =>
+                  <Trip key={trip.id} trip={trip} />
+                )}
               </ListGroup>    
             ) : (
               <h4 className="text-green-light">There's no confirmed trips.</h4>
@@ -102,17 +96,11 @@ const TripList = ({ getTrips, trips, loadingType }) => {
         </TabPane>
 
         <TabPane tabId="viewCompleted">
-            {trips.length > 0 ? (
+            {completedTrips.length ? (
               <ListGroup>
-                {trips.map(trip => {
-                  if (trip.status === 'complete') {
-                    return <Trip
-                      key={trip.id}
-                      trip={trip}
-                    />
-                  }
-                  return null
-                })}
+                {completedTrips.map(trip =>
+                  <Trip key={trip.id} trip={trip} />
+                )}
               </ListGroup>    
             ) : (
               <h4 className="text-green-light">There's no completed trips.</h4>
@@ -121,18 +109,12 @@ const TripList = ({ getTrips, trips, loadingType }) => {
         </TabPane>
 
         <TabPane tabId="viewArchived">
-            {trips.length > 0 ? (
+            {archivedTrips.length ? (
               <ListGroup>
-                {trips.map(trip => {
-                  if (trip.status === 'archive') {
-                    return <Trip
-                      key={trip.id}
-                      trip={trip}
-                    />
-                  }
-                  return null
-                })}
-              </ListGroup>    
+                {archivedTrips.map(trip =>
+                  <Trip key={trip.id} trip={trip} />
+                )}
+              </ListGroup>     
             ) : (
               <h4 className="text-green-light">There's no archived trips.</h4>
             )
@@ -150,6 +132,9 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = createStructuredSelector({
   trips: selectAllTrips,
   loadingType: selectLoadingType,
+  confirmedTrips: selectConfirmedTrips,
+  completedTrips: selectCompletedTrips,
+  archivedTrips: selectArchivedTrips,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripList);

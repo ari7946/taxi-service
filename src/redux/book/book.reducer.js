@@ -2,19 +2,19 @@ import BookActionTypes from './book.types';
 
 const INITIAL_STATE = {
   // map
-  distance: "",
+  distance: '',
   startAddress: '',
   endAddress: '',
   // fields
-  price: null,
-  name: null,
-  comments: null,
-  phone: null,
+  price: 0,
+  name: '',
+  comments: '',
+  phone: '',
   passengers: 1,
-  email: null,
+  email: '',
   direction: 'oneWay',
-  date: null,
-  time: null,
+  date: '',
+  time: '',
   dropFee: 10,
   vehicle: 'sedan',
   alertSuccess: false,

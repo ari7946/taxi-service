@@ -170,12 +170,12 @@ const TaxiForm = ({
 
           {/* REQUIRED FIELDS */}
           {(invalidFields.length > 0) && (
-            <p className="text-flat-orange mb-0">Required fields:  < br />
+            <div className="text-flat-orange mb-0">Required fields:  < br />
               {invalidFields.map(field => {
                 let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
                 let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
                 return (
-                  <Fragment>
+                  <Fragment key={field}>
                     {field}{!lastField
                       ? invalidFields.length === 2 
                         ? null : ', ' : null}
@@ -185,13 +185,11 @@ const TaxiForm = ({
                   </Fragment>
                 )
               })}
-            </p>
+            </div>
           )}
 
           {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
           { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
-
-          {/* DISPLAY MESSAGE IF USER SETS DEMO MODE TO TRUE AND IF THEY PROVIDE BOTH startAddress and endAddress */}
 
           {/* SUBMIT BUTTON */}
           <ButtonGroup className="mt-3 mb-5">

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { locationsCleared, locationsFound, routeChanged } from '../../redux/book/book.actions';
 
 function Map({ locationsCleared, locationsFound, routeChanged }) {
-  // const { locationsFound, locationsCleared, routeChanged } = useBookApi();
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = process.env.PUBLIC_URL + '/sdk/tomtom.min.js';

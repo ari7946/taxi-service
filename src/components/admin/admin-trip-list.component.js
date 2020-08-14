@@ -77,7 +77,7 @@ const TripList = ({
                 )}
               </ListGroup>
             ) : (
-              trips.length === 0 && <h4 className="text-green-light">There's currently no trips pending.</h4>
+              trips.length === 0 && <h4 className="text-green-light">There are no trips pending.</h4>
             )
           }
         </TabPane>
@@ -90,7 +90,7 @@ const TripList = ({
                 )}
               </ListGroup>    
             ) : (
-              <h4 className="text-green-light">There's no confirmed trips.</h4>
+              <h4 className="text-green-light">There are no confirmed trips.</h4>
             )
           }
         </TabPane>
@@ -103,7 +103,7 @@ const TripList = ({
                 )}
               </ListGroup>    
             ) : (
-              <h4 className="text-green-light">There's no completed trips.</h4>
+              <h4 className="text-green-light">There are no completed trips.</h4>
             )
           }
         </TabPane>

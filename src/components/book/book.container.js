@@ -17,7 +17,7 @@ const MapFormContainer = () => {
         <Col md='6'>
           <Suspense fallback={<Loading />} >
             <Map />
-          </Suspense >
+          </Suspense>
           <Estimate />
         </Col>
 

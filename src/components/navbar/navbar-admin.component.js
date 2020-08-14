@@ -35,7 +35,7 @@ const AdminNavbar = () => {
       <NavbarToggler className="text-grey-light-2" onClick={toggle} >
         <FontAwesomeIcon className="mr-2" icon={isOpen ? faChevronUp : faChevronDown} />
         MENU
-      </NavbarToggler >
+      </NavbarToggler>
 
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>

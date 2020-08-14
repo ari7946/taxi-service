@@ -30,28 +30,28 @@ const TaxiForm = ({
   direction, loading, submitted, valid, invalidFields, alertSuccess, passengers,
   startAddress, endAddress, distance, vehicle, price, status, 
 }) => {
-  const processForm = async () => {
-    const username = localStorage.getItem('username') || '';
-    const formFields = { name, comments, phone, email, date, time };
-    const body = { 
-      distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, 
-      ...formFields 
-    }
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
-      if (response) {
-        submitSuccess()
-      }
-    } catch (error) {
-      submitError({ errorMessage: error });
-    }
-  }
+  // const processForm = async () => {
+  //   const username = localStorage.getItem('username') || '';
+  //   const formFields = { name, comments, phone, email, date, time };
+  //   const body = { 
+  //     distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, 
+  //     ...formFields 
+  //   }
+  //   try {
+  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
+  //     if (response) {
+  //       submitSuccess()
+  //     }
+  //   } catch (error) {
+  //     submitError({ errorMessage: error });
+  //   }
+  // }
 
-  if (submitted && valid) {
-    processForm()
-  } else if (submitted && !valid) {
-    submitError({ errorMessage: 'One or more fields are invalid' })
-  }
+  // if (submitted && valid) {
+  //   processForm()
+  // } else if (submitted && !valid) {
+  //   submitError({ errorMessage: 'One or more fields are invalid' })
+  // }
 
   const handleSubmitForm = (e) => {
     e.preventDefault();

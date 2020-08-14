@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { useAuth } from '../../auth/use-auth';
-import DefaultNavbar from './default-navbar.component';
-import AdminNavbar from './admin-navbar.component';
-import UserNavbar from './user-navbar.component';
+import DefaultNavbar from './navbar-default.component';
+import AdminNavbar from './navbar-admin.component';
+import UserNavbar from './navbar-user.component';
 
 const NavbarContainer = () => {
   const { auth } = useAuth();

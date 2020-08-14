@@ -1,57 +1,28 @@
 import React, { Fragment, useState } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
 import './book.styles.css';
-import { NavLink } from 'react-router-dom';
 
 import TripInfoButton from './book-trip-info.component';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { createStructuredSelector } from 'reselect';
 
-import { selectStartAddress, selectEndAddress, selectDistance, selectVehicle, 
-  selectPrice, selectStatus, selectName, selectEmail, selectComments, 
-  selectPhone, selectPassengers, selectDirection, selectLoading, selectSubmitted, 
-  selectValid, selectInvalidFields, selectDate, selectTime, selectAlertSuccess 
+import { selectStartAddress, selectEndAddress, selectName, selectEmail, selectComments, 
+  selectPhone, selectPassengers, selectLoading, selectSubmitted, 
+  selectInvalidFields, selectDate, selectTime, selectAlertSuccess 
 } from '../../redux/book/book.selectors';
-// import action creators
-import { setInput, submitForm, submitError, submitSuccess } from '../../redux/book/book.actions';
 
-const adminMessage = <p className="text-white">
-  <NavLink exact to="/admin" className="bg-light mt-2 px-2">Click here</NavLink> to log in as a "Guest Admin" to see the admin panel. (No login/registeration required as a guest)<br /> <br />
-</p>
-
+import { setInput, submitForm } from '../../redux/book/book.actions';
 
 const TaxiForm = ({ 
   // action creators
-  submitForm, submitError, submitSuccess, setInput, 
+  submitForm, setInput, 
   // form fields
   name, email, comments, phone, date, time, 
   // other 
-  direction, loading, submitted, valid, invalidFields, alertSuccess, passengers,
-  startAddress, endAddress, distance, vehicle, price, status, 
+  loading, submitted, invalidFields, alertSuccess,
+  startAddress, endAddress,
 }) => {
-  // const processForm = async () => {
-  //   const username = localStorage.getItem('username') || '';
-  //   const formFields = { name, comments, phone, email, date, time };
-  //   const body = { 
-  //     distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, 
-  //     ...formFields 
-  //   }
-  //   try {
-  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/trips`, body)
-  //     if (response) {
-  //       submitSuccess()
-  //     }
-  //   } catch (error) {
-  //     submitError({ errorMessage: error });
-  //   }
-  // }
-
-  // if (submitted && valid) {
-  //   processForm()
-  // } else if (submitted && !valid) {
-  //   submitError({ errorMessage: 'One or more fields are invalid' })
-  // }
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -217,19 +188,13 @@ const TaxiForm = ({
 const mapStateToProps = createStructuredSelector({ 
   startAddress: selectStartAddress, 
   endAddress: selectEndAddress, 
-  distance: selectDistance, 
-  vehicle: selectVehicle, 
-  price: selectPrice, 
-  status: selectStatus, 
   name: selectName, 
   email: selectEmail, 
   comments: selectComments, 
   phone: selectPhone, 
   passengers: selectPassengers, 
-  direction: selectDirection, 
-  loading: selectLoading, 
-  submitted: selectSubmitted, 
-  valid: selectValid, 
+  submitted: selectSubmitted,
+  loading: selectLoading,  
   invalidFields: selectInvalidFields, 
   date: selectDate, 
   time: selectTime, 
@@ -237,9 +202,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  submitError: (errorMessage) => dispatch(submitError(errorMessage)),
   setInput: (options) => dispatch(setInput(options)),
-  submitSuccess: () => dispatch(submitSuccess()),
   submitForm: () => dispatch(submitForm()),
 })
 

@@ -24,6 +24,7 @@ const UserLogin = () => {
         setLoading(false);
         userLogin(response.data.token, response.data.username);
         history.push('/dashboard');
+        window.location.reload();
       }
     } catch (error) {
       setLoading(false)

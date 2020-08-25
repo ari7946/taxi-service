@@ -102,3 +102,29 @@ export const selectAlertSuccess = createSelector(
   book => book.alertSuccess
 )
 
+export const selectStartAddressAndEndAddressAreValid = createSelector(
+  selectBook,
+  book => !!book.startAddress && !!book.endAddress
+)
+
+export const selectTaxiFare = createSelector(
+  [selectBook, selectStartAddressAndEndAddressAreValid],
+  (book, validAddresses) => {
+    return validAddresses ? (Number(book.price) - book.dropFee).toFixed(2) : 0
+  }
+)
+
+export const selectValidDropFee = createSelector(
+  [selectBook, selectStartAddressAndEndAddressAreValid],
+  (book, validAddresses) => {
+    return validAddresses ? book.dropFee : 0
+  }
+)
+
+export const selectValidEstimate = createSelector(
+  [selectBook, selectStartAddressAndEndAddressAreValid],
+  (book, validAddresses) => {
+    return validAddresses ? book.price : 0
+  }
+)
+

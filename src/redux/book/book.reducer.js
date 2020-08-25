@@ -6,7 +6,6 @@ const INITIAL_STATE = {
   startAddress: '',
   endAddress: '',
   // fields
-  price: 0,
   name: '',
   comments: '',
   phone: '',
@@ -19,6 +18,7 @@ const INITIAL_STATE = {
   vehicle: 'sedan',
   alertSuccess: false,
   // other
+  price: 0,
   loading: false,
   error: false,
   errorMessage: '',
@@ -53,7 +53,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         distance,
-        price,
+        price: (Number(price) + state.dropFee).toFixed(2),
         direction: 'oneWay',
         // dropFee is set to 10 (dollars) by default in case a user changes its state prior to defining both startAddress and endAddress
         dropFee: 10,
@@ -63,6 +63,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         alertSuccess: false,
       }
     case BookActionTypes.INPUT:
+
       if (action.name === 'direction') {
         return {
           ...state,
@@ -90,8 +91,8 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           price: (!state.startAddress || !state.endAddress) 
             ? 0 
             : action.value === 'sedan' 
-              ? (state.distance * 2.95).toFixed(2)
-              : (state.distance * 3.95).toFixed(2),
+              ? (Number((state.distance * 2.95).toFixed(2)) + state.dropFee).toFixed(2)
+              : (Number((state.distance * 3.95).toFixed(2)) + state.dropFee).toFixed(2),
           invalidFields: [],
         }
       }

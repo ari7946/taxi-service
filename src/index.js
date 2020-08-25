@@ -5,16 +5,18 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-// import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter as Router } from "react-router-dom";
 
-import { store } from './redux/store';
+import { store, persistor } from './redux/store';
 
 ReactDOM.render(
   (
     <Provider store={store}>
       <Router>
-        <App />
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
       </Router>
     </Provider>
   ), document.getElementById('root'));

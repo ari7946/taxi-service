@@ -6,8 +6,6 @@ const Trip = (props) => {
   const {name, phone, email, startAddress, endAddress, distance, vehicle, price} = props.trip;
   const trip = { name, phone, email, startAddress, endAddress, distance, vehicle, price };
 
-  //TODO fix total bug 
-  const total = (Number(trip.price) + 10).toFixed(2);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const toggle = () => setPopoverOpen(!popoverOpen);
 
@@ -34,7 +32,7 @@ const Trip = (props) => {
       >
         <PopoverBody>
           <ListGroup>
-            <ListGroupItem><span className="font-weight-bold">Estimate: </span>${total}</ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Estimate: </span>${trip.price}</ListGroupItem>
             <ListGroupItem><span className="font-weight-bold">Distance: </span> {trip.distance} miles</ListGroupItem>
             <ListGroupItem><span className="font-weight-bold">Rate: </span> {trip.vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</ListGroupItem>
             <ListGroupItem><span className="font-weight-bold">Vehicle: </span>{trip.vehicle}</ListGroupItem>

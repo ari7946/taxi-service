@@ -29,6 +29,7 @@ export const submitSuccess = () => {
 export const submitForm = () => {
   return (dispatch, getState) => {
     dispatch({ type: BookActionTypes.SUBMIT });
+    
     const { 
       startAddress,
       endAddress, 
@@ -68,7 +69,7 @@ export const submitForm = () => {
     } else if (submitted && !valid) {
       dispatch({ type: BookActionTypes.ERROR, errorMessage: 'One or more fields are invalid' });
     } else {
-      dispatch({ type: BookActionTypes.ERROR, errorMessage: 'Something went wronge' });
+      dispatch({ type: BookActionTypes.ERROR, errorMessage: 'Something went wrong' });
     }
   }
 }

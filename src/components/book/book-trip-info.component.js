@@ -5,21 +5,20 @@ import './book.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { 
-  selectDistance, selectStartAddress, selectEndAddress, selectPrice, selectVehicle, selectDropFee 
+  selectDistance, selectStartAddress, selectEndAddress, selectValidEstimate, selectVehicle, selectDropFee 
 } from '../../redux/book/book.selectors';
 
 const TripInfoButton = ({  
     distance,
     startAddress,
     endAddress,
-    price,
+    estimate,
     vehicle,
-    dropFee
   }) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const total = (Number(price) + dropFee).toFixed(2);
-  const discount = (total * 0.20).toFixed(2);
-  const discountTotal = (total - discount).toFixed(2);
+  // const total = (Number(price) + dropFee).toFixed(2);
+  // const discount = (total * 0.20).toFixed(2);
+  // const discountTotal = (total - discount).toFixed(2);
 
   const toggle = () => setPopoverOpen(!popoverOpen);
 
@@ -38,7 +37,7 @@ const TripInfoButton = ({
             <ListGroupItem><span className="font-weight-bold">Rate: </span> {vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</ListGroupItem>
             <ListGroupItem><span className="font-weight-bold">Vehicle: </span>{vehicle}</ListGroupItem>
             <ListGroupItem><span className="font-weight-bold">passengers: </span>{vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</ListGroupItem>
-            <ListGroupItem><span className="font-weight-bold">Estimate: </span>${total}</ListGroupItem>
+            <ListGroupItem><span className="font-weight-bold">Estimate: </span>${estimate}</ListGroupItem>
           </ListGroup>
         </PopoverBody>
       </Popover>
@@ -50,7 +49,7 @@ const mapStateToProps = createStructuredSelector({
   distance: selectDistance,
   startAddress: selectStartAddress,
   endAddress: selectEndAddress,
-  price: selectPrice,
+  estimate: selectValidEstimate,
   vehicle: selectVehicle,
   dropFee: selectDropFee,
 })

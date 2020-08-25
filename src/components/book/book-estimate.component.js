@@ -5,12 +5,12 @@ import './book.styles.css';
 import VehicleType from './book-vehicle-type.component';
 
 import { createStructuredSelector } from 'reselect';
-import { selectPrice, selectDropFee, selectDirection } from '../../redux/book/book.selectors';
+import { selectPrice, selectDropFee, selectDirection, selectTaxiFare, selectValidDropFee, selectValidEstimate } from '../../redux/book/book.selectors';
 
 import { connect } from 'react-redux';
 
-const Estimate = ({ price, dropFee, direction }) => {
-  const total = (Number(price) + dropFee).toFixed(2);
+const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
+  // const taxiFare = startAddressAndEndAddressAreValid ? (Number(price) - dropFee).toFixed(2) : 0;
   // const discount = (total * 0.20).toFixed(2);
   // const discountTotal = (total - discount).toFixed(2);
   
@@ -30,10 +30,10 @@ const Estimate = ({ price, dropFee, direction }) => {
         <ListGroupItemText>
           <div className="text-center mx-auto my-2 w-75">
             {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
-            <p className='mb-0'>Taxi Fare: ${price}</p>
-            <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}.00</p>
+            <p className='mb-0'>Taxi Fare: ${taxiFare}</p>
+            <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}</p>
             {direction === 'oneWay'
-              ? <h2 className='price border-top border-light pt-2 w-100'>Estimate: ${total}</h2>
+              ? <h2 className='price border-top border-light pt-2 w-100'>Estimate: ${estimate}</h2>
               : null
               //TODO Implement TwoWay as a potential future feature
               // : (
@@ -55,6 +55,9 @@ const mapStateToProps = createStructuredSelector({
   price: selectPrice,
   dropFee: selectDropFee,
   direction: selectDirection,
+  taxiFare: selectTaxiFare,
+  estimate: selectValidEstimate,
+  dropFee: selectValidDropFee,
 })
 
 export default connect(mapStateToProps)(Estimate);

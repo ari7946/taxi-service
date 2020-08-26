@@ -1,3 +1,6 @@
+## Coastal Yellow Cabs
+Coastal Yellow Cabs enables users to book a taxi and recieve an instant estimate that is calculated by the distance and the type of cab requested. The admin may login and view every trip requested by users. Additionally, the admin can change the status of each trip. Users may register and/or login to view their own trips.
+
 ## Deployment
 
 Client: [Coastal Yellow Cabs](https://mytaxicab.herokuapp.com/)

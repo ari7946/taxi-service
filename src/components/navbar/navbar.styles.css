@@ -16,6 +16,12 @@
   color: var(--text-yellow) !important;
 }
 
+.brand-title {
+  color: var(--color-grey-light-1) !important;
+  /* background-color: var(--color-green-light) !important; */
+  font-size: 22px !important;
+}
+
 @media (max-width: 415px) {
   .brand-title {
     display: none;

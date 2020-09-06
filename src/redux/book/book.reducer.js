@@ -2,7 +2,7 @@ import BookActionTypes from './book.types';
 
 const INITIAL_STATE = {
   // map
-  distance: '',
+  distance: 0,
   startAddress: '',
   endAddress: '',
   // fields
@@ -111,6 +111,21 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         invalidFields: [],
         valid: true,
         alertSuccess: true,
+        // map
+        distance: 0,
+        startAddress: '',
+        endAddress: '',
+        // fields
+        name: '',
+        comments: '',
+        phone: '',
+        passengers: 1,
+        email: '',
+        direction: 'oneWay',
+        date: '',
+        time: '',
+        dropFee: 10,
+        vehicle: 'sedan',
       }
     case BookActionTypes.ERROR:
       return {

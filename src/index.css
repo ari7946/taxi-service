@@ -1,11 +1,14 @@
 :root {
     /* COLORS */
-    --color-primary: ##005C77;
+    --color-primary: #005C77;
+    --color-primary-dark:#222831;
     --color-yellow:#FCCD04;
     --color-green-dark: #005C77;
+    /* --color-green-dark: #222831; */
     --color-green-light: #C9E1C8;
     --color-orange: #FF652F;
     --color-flat-orange: #FFCCBC;
+    /* --color-flat-orange: #FF8D00; */
     --color-flat-green: #00887A;
     --color-flat-blue: #77A6F7;
 

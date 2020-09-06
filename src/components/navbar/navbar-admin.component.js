@@ -28,10 +28,12 @@ const AdminNavbar = () => {
 
   return (
     <Navbar className="mb-5 mt-1" expand="md">
-      <NavbarBrand href="/" className="text-grey-light-2 navbar-brand">
-        {/* <FontAwesomeIcon className="mr-2 fa-lg fa-brand" icon={faTaxi} /> */}
-        <h1 className="brand-title">Coastal Yellow Cabs</h1>
-      </NavbarBrand>
+      <NavLink to="/">
+        <NavbarBrand className="text-grey-light-2 navbar-brand">
+          {/* <FontAwesomeIcon className="mr-2 fa-lg fa-brand" icon={faTaxi} /> */}
+          <h1 className="brand-title">Coastal Yellow Cabs</h1>
+        </NavbarBrand>
+      </NavLink>
 
       <NavbarToggler className="text-grey-light-2" onClick={toggle} >
         <FontAwesomeIcon className="mr-2" icon={isOpen ? faChevronUp : faChevronDown} />

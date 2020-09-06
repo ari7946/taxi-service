@@ -7,7 +7,7 @@
 
 
 .landing::before {
-  background-image: url(../../assets/cab2.png); 
+  background-image: url(../../assets/cab1.png); 
   background-position: top; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */

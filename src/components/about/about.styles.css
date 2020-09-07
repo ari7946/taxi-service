@@ -1,16 +1,40 @@
 /***************** ABOUT **********************/
 .about-section {
   margin: 2rem 0;
+  height: auto;
+}
+
+.about-section-middle {
+  margin: 5rem 0 !important;
 }
 
 .about-description {
   line-height: 23px;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 15px;
   color: var(--color-grey-light-2) !important;
 }
 
-img.about-img {
+.about-img-container-top {
+  border-left: 1px solid var(--color-yellow);
+  border-top: 1px solid var(--color-yellow); 
+  padding-top: 2rem; 
+}
+
+.about-img-container-middle {
   margin-top: 1rem;
+  /* border-right: 1px solid var(--color-yellow); */
+  border-left: 1px solid var(--color-yellow);
+}
+
+.about-img-container-middle img {
+  width: 15rem;
+}
+
+.about-img-container-bottom {
+  border-left: 1px solid var(--color-yellow);
+  border-bottom: 1px solid var(--color-yellow);
+  padding-bottom: 2rem;
 }
 
 .about-heading {

@@ -2,6 +2,7 @@ import React from 'react';
 import './landing.styles.css';
 import { Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import phoneCab from '../../assets/phone-hand.png'
 
 const Landing = (props) => {
   return (
@@ -15,6 +16,9 @@ const Landing = (props) => {
           <div className="landing-buttons">
             <Link className="btn btn-lg bg-yellow" to="/book" style={{ textDecoration: 'none', color: 'black' }}>Book a Taxi</Link>
             <Link className="btn ml-3 btn-lg bg-yellow" to="/book" style={{ textDecoration: 'none', color: 'black' }}>Get An Estimate</Link>
+          </div>
+          <div>
+            <img className="phone-cab" src={phoneCab} alt="user holding phone displaying a cab"/>
           </div>
         </div>
       </div>

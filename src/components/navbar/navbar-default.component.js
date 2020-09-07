@@ -12,9 +12,10 @@ import {
   DropdownMenu,
 } from 'reactstrap';
 import "./navbar.styles.css";
+import logo2 from '../../assets/logo2.png';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTaxi, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faTaxi, faChevronDown, faChevronUp, faBars } from '@fortawesome/free-solid-svg-icons'
 
 
 const DefaultNavbar = () => {
@@ -26,14 +27,14 @@ const DefaultNavbar = () => {
     <Navbar className="mb-5 mt-1" expand="md">
       <NavLink to="/">
         <NavbarBrand className="text-grey-light-2 navbar-brand">
-          {/* <FontAwesomeIcon className="mr-2 fa-lg fa-brand" icon={faTaxi} /> */}
-          <h1 className="brand-title">Coastal Yellow Cabs</h1>
+          <img src={logo2} alt="website logo" className="logo" />
+          <span className="ml-3 logo-title">Coastal Yellow Cabs</span>
         </NavbarBrand>
       </NavLink>
 
-      <NavbarToggler className="text-grey-light-2" onClick={toggle} >
-        <FontAwesomeIcon className="mr-2" icon={isOpen ? faChevronUp : faChevronDown} />
-        MENU
+      <NavbarToggler className="text-grey-light-2 mr-3" onClick={toggle} >
+        {/* <FontAwesomeIcon className="mr-2" icon={isOpen ? faChevronUp : faChevronDown} /> */}
+        <FontAwesomeIcon className="fa-brand" icon={faBars} />
       </NavbarToggler >
 
       <Collapse isOpen={isOpen} navbar>

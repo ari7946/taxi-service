@@ -5,23 +5,18 @@
   position: relative;
 }
 
-
 .landing::before {
   background-image: url(../../assets/cab1.png); 
   background-position: top; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
+  opacity: .9;
   content: "" !important;
   position: absolute;
   top: 0;
   bottom: -200px;
   right: 0;
   left: 500px;
-  -webkit-filter: saturate(2px);
-  -moz-filter: saturate(2px);
-  -o-filter: saturate(2px);
-  -ms-filter: saturate(2px);
-  filter: saturate(3);
 }
 
 .landing .landing-header {
@@ -45,8 +40,33 @@
   margin-top: 30px !important;
 }
 
+.phone-cab {
+  height: auto;
+  width: 10rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 1200px) {
+  .landing-title {
+    font-size: 45px !important;
+  }
+
+  .landing-subtitle {
+    font-size: 25px !important;
+  }
+
+  .landing-message {
+    font-size: 20px !important;
+  }
+}
 
 @media (max-width: 850px) {
+  .phone-cab {
+    height: auto;
+    width: 9rem;
+    margin-top: 2rem;
+  }
+
   .landing-title {
     margin-top: 2rem;
   }

@@ -8,26 +8,36 @@
   border: 1px solid white !important;
 }
 
+.logo {
+  width: 3rem;
+  height: 2.5rem;
+}
+
 .fa-brand {
-  font-size: 2.3rem;
+  font-size: 1.7rem;
 }
 
 .active {
   color: var(--text-yellow) !important;
 }
 
-.brand-title {
-  color: var(--color-grey-light-1) !important;
-  /* background-color: var(--color-green-light) !important; */
-  font-size: 22px !important;
+.logo-title {
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: capitalize;
 }
 
-@media (max-width: 415px) {
-  .brand-title {
-    display: none;
-  }
-
+@media (max-width: 600px) {
   .navbar-brand {
     margin: 0 1rem;
+  }
+
+.logo {
+  width: 3rem;
+  height: 2.5rem;
+}
+
+  .logo-title {
+    display: none;
   }
 }

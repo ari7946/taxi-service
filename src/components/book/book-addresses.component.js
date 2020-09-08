@@ -11,6 +11,17 @@ const Addresses = ({
 }) => {
   return (
     <div className="mt-3">
+      {!startAddress && !endAddress && (
+        <p className="h2 lead text-white">
+          Please use the map above to provide a starting point and a destination.<br />
+          <br />
+          You may choose the type of cab you require and the estimate will change accordingly.
+          <br /><br />
+          After receiving an estimate, you may fill out and submit the form to book a taxi. 
+          If prefered, give us a call at any time and we'll be happy to assist you.
+        </p>
+      )}
+
       {startAddress && (
         <div className="book-address">
             <h3 className="address-heading-starting">Starting Point</h3>

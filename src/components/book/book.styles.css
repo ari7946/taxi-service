@@ -20,7 +20,7 @@ h2.price {
   border: none !important;
 }
 
-/* START Addresses COMPONENT */
+/* START ADDRESSES */
 .book-address {
   margin-bottom: .8rem !important;
   margin-top: 0 !important;
@@ -29,7 +29,7 @@ h2.price {
   color: var(--color-grey-light-2);
 }
 
-.book-address .list-group-item-text {
+.book-address p {
   font-family: var(--font-monospaced-bold);
 }
 
@@ -42,8 +42,15 @@ h2.price {
   color: var(--color-flat-orange);
   font-weight: bold !important;
 }
-/* END ADDRESSES COMPONENT */
 
+.address-heading-other {
+  color: var(--color-green-light);
+  font-weight: bold !important;
+}
+
+/*! END ADDRESSES  */
+
+/* ESTIMATE */
 .estimate {
   background-color: var(--color-green-dark) !important;
   color: var(--color-green-light);
@@ -56,19 +63,32 @@ h2.price {
   color: var(--color-primary);
   font-weight: bold !important;
 }
+/*! END ESTIMATE */
+
+/* VEHICLE TYPE */
+.vehicle-type-card {
+  border: none !important;
+}
+
+ul.vehicle-card-text {
+  margin-left: 0 !important;
+  padding-left: 1rem !important;
+}
+
+.vehicle-img {
+  height: 10rem;
+  width: 90% !important;
+  margin: 0 auto;
+}
+/*! END VEHICLE TYPE */
+
+.auth {
+  max-width: 600px !important;
+}
 
 /* display none because it defaults to metric */
 .geoResponse-result-distance {
   display: none;
-}
-
-.vehicle-type {
-  margin-bottom: 2rem;
-  /* font-family: sans-serif; */
-}
-
-.auth {
-  max-width: 600px !important;
 }
 
 @media (max-width: 1200px) {

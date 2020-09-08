@@ -75,8 +75,8 @@ const VehicleType = ({ setInput, vehicle }) => {
             {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
             <CardText>
               <ul className="vehicle-card-text">
-                <li>$2.95/mi </li>
-                <li>1-3 Passengers</li>
+                <li>$2.95 / mile </li>
+                <li>1-4 Passengers</li>
               </ul>
             </CardText>
             <Button 
@@ -106,8 +106,8 @@ const VehicleType = ({ setInput, vehicle }) => {
             {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
             <CardText>
               <ul className="vehicle-card-text">
-                <li>$3.95/mi </li>
-                <li>1-6 Passengers</li>
+                <li>$3.95 / mile </li>
+                <li>1-7 Passengers</li>
               </ul>
             </CardText>
             <Button 

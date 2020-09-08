@@ -4,6 +4,8 @@ import Loading from './book-loading.component';
 import MapHeader from './book-map-header.component';
 import Addresses from './book-addresses.component';
 import Estimate from './book-estimate.component';
+import VehicleType from './book-vehicle-type.component';
+import TripInfoMain from './book-trip-info-main.component';
 import './book.styles.css';
 import { Container, Row, Col, ListGroup } from 'reactstrap';
 const Map = React.lazy(() => import('./book-map.component'));
@@ -18,12 +20,14 @@ const MapFormContainer = () => {
           <Suspense fallback={<Loading />} >
             <Map />
           </Suspense>
-          <Estimate />
+          <Addresses />
+          <TripInfoMain />
         </Col>
 
         <Col md='6'>
           <ListGroup flush>
-            <Addresses />
+            <VehicleType />
+            <Estimate />
             <TaxiForm />
           </ListGroup>
         </Col>

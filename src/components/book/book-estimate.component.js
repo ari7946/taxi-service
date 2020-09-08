@@ -17,7 +17,6 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
   return (
     <div>
       <ListGroupItem className="estimate mt-3 pt-3">
-        <VehicleType />
 
         {/* //TODO Implement as a future feature */}
         {/* <ul className="pt-3">

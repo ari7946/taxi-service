@@ -20,7 +20,7 @@ h2.price {
   border: none !important;
 }
 
-/* START Addresses COMPONENT */
+/* START ADDRESSES */
 .book-address {
   margin-bottom: .8rem !important;
   margin-top: 0 !important;
@@ -29,7 +29,7 @@ h2.price {
   color: var(--color-grey-light-2);
 }
 
-.book-address .list-group-item-text {
+.book-address p {
   font-family: var(--font-monospaced-bold);
 }
 
@@ -42,8 +42,35 @@ h2.price {
   color: var(--color-flat-orange);
   font-weight: bold !important;
 }
-/* END ADDRESSES COMPONENT */
+/*! END ADDRESSES  */
 
+/* TRIP INFO MAIN */
+.trip-info-main-chevron {
+
+}
+
+.trip-info-main-container {
+  margin: 0 auto !important;
+}
+
+.trip-info-main {
+  margin-bottom: 2.4rem;
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-grey-light-2);
+  text-align: center;
+}
+
+.trip-info-main p {
+  font-family: var(--font-monospaced-bold);
+}
+
+.trip-info-main-heading {
+  color: var(--color-green-light);
+  font-weight: bold !important;
+}
+/*! END TRIP INFO MAIN */
+
+/* ESTIMATE */
 .estimate {
   background-color: var(--color-green-dark) !important;
   color: var(--color-green-light);
@@ -56,19 +83,32 @@ h2.price {
   color: var(--color-primary);
   font-weight: bold !important;
 }
+/*! END ESTIMATE */
+
+/* VEHICLE TYPE */
+.vehicle-type-card {
+  border: none !important;
+}
+
+ul.vehicle-card-text {
+  margin-left: 0 !important;
+  padding-left: 1rem !important;
+}
+
+.vehicle-img {
+  height: 10rem;
+  width: 90% !important;
+  margin: 0 auto;
+}
+/*! END VEHICLE TYPE */
+
+.auth {
+  max-width: 600px !important;
+}
 
 /* display none because it defaults to metric */
 .geoResponse-result-distance {
   display: none;
-}
-
-.vehicle-type {
-  margin-bottom: 2rem;
-  /* font-family: sans-serif; */
-}
-
-.auth {
-  max-width: 600px !important;
 }
 
 @media (max-width: 1200px) {
@@ -106,17 +146,24 @@ h2.price {
     font-weight: bold !important;
   }
   /* END ADDRESSES COMPONENT */
-}  
+} 
+
+@media (max-width: 1100px) {
+
+  .vehicle-type .vehicle-img {
+    height: 6rem;
+  }
+}
 
 @media (max-width: 600px) {
   #map {
-    width: auto;
+    width: 100%;
     height: 30vh;  
-    margin: 0 1rem;
+    margin: 0 auto;
   }
 
   /* Address text in Addresses Component */
-  .book-address .list-group-item-text {
+  .book-address p {
     font-family: var(--font-monospaced);
     margin: 0;
     padding: 0;
@@ -133,11 +180,9 @@ h2.price {
     margin-left: 1rem;
   }
 
-  .vehicle-type button {
-    font-size: 14px;
-    padding: 5px;
+  .vehicle-type {
+    margin-top: 2rem;
   }
-
 }
 
 @media (max-width: 415px) {

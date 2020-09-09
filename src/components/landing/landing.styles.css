@@ -121,6 +121,12 @@
     width: 10rem;
     font-size: 15px;
   }
+
+  .phone-cab {
+    height: 7rem;
+    width: 8rem;
+    margin-top: 3.5rem;
+  }
 }
 
 @media (max-width: 415px) {

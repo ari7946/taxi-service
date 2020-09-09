@@ -28,9 +28,9 @@ const TripInfoMain = ({
   return (
     <>
       {startAddressAndEndAddressAreValid && (
-        <div className="pt-3 trip-info-main-container">
+        <div className="pt-3 trip-info-main-container my-5">
           <Button 
-            className="w-100 bg-yellow text-dark" 
+            className="w-100 bg-yellow text-dark mb-3" 
             onClick={toggle} style={{ marginBottom: '1rem' }}
           >
             <FontAwesomeIcon className="mr-4 trip-info-main-chevron" icon={collapse ? faChevronUp : faChevronDown} />

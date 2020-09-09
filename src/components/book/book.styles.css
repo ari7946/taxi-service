@@ -45,9 +45,6 @@ h2.price {
 /*! END ADDRESSES  */
 
 /* TRIP INFO MAIN */
-.trip-info-main-chevron {
-
-}
 
 .trip-info-main-container {
   margin: 0 auto !important;
@@ -88,6 +85,7 @@ h2.price {
 /* VEHICLE TYPE */
 .vehicle-type-card {
   border: none !important;
+  cursor: pointer;
 }
 
 ul.vehicle-card-text {

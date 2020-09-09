@@ -7,12 +7,12 @@
 
 .landing::before {
   background-image: url(../../assets/cab-blue2.png); 
-  background-position: top; /* Center the image */
+  background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   content: "" !important;
   position: absolute;
-  top: 0;
+  top: 100px;
   bottom: 0px;
   right: -500px;
   left: 0;
@@ -120,6 +120,12 @@
   .landing-buttons .landing-button {
     width: 10rem;
     font-size: 15px;
+  }
+
+  .phone-cab {
+    height: 7rem;
+    width: 8rem;
+    margin-top: 3.5rem;
   }
 }
 

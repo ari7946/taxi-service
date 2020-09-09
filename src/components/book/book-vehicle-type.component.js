@@ -30,7 +30,13 @@ const VehicleType = ({ setInput, vehicle }) => {
             value="sedan"
             onClick={() => setInput({name: 'vehicle', value:'sedan'})}
           >   
-            <CardImg className="vehicle-img" top width="100%" src={vehicle === 'sedan' ? sedanYellow : sedanWhite} alt="Card image cap" />
+            <CardImg 
+              className="vehicle-img" 
+              top 
+              width="100%" 
+              src={vehicle === 'sedan' ? sedanYellow : sedanWhite} 
+              alt="Card image cap" 
+            />
             <CardBody>
               <CardTitle>SEDAN</CardTitle>
               <CardText>
@@ -41,7 +47,7 @@ const VehicleType = ({ setInput, vehicle }) => {
               </CardText>
               <Button 
                 className={`
-                  ${vehicle === 'sedan' ? 'text-dark bg-yellow border-warning' : 'border-light text-green-light'}
+                  ${vehicle === 'sedan' ? 'text-dark bg-yellow border-warning' : 'border-light bg-green-light text-dark'}
                   w-100
                 `}
                 onClick={() => setInput({name: 'vehicle', value:'sedan'})}
@@ -60,7 +66,13 @@ const VehicleType = ({ setInput, vehicle }) => {
             value="van"
             onClick={() => setInput({ name: 'vehicle', value: 'van' })}
           >
-            <CardImg className="vehicle-img" top width="100%" src={vehicle === "van" ? vanYellow : vanWhite} alt="Card image cap" />
+            <CardImg 
+              className="vehicle-img" 
+              top 
+              width="100%" 
+              src={vehicle === "van" ? vanYellow : vanWhite} 
+              alt="Card image cap" 
+            />
             <CardBody>
               <CardTitle>VAN</CardTitle>
               <CardText>
@@ -71,7 +83,7 @@ const VehicleType = ({ setInput, vehicle }) => {
               </CardText>
               <Button 
                 className={`
-                  ${vehicle === 'van' ? 'text-dark bg-yellow border-warning' : 'border-light text-green-light'}
+                  ${vehicle === 'van' ? 'text-dark bg-yellow border-warning' : 'border-light bg-green-light text-dark'}
                   w-100
                 `}
                 onClick={() => setInput({ name: 'vehicle', value: 'van' })}

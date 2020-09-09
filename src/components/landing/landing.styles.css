@@ -6,17 +6,16 @@
 }
 
 .landing::before {
-  background-image: url(../../assets/cab1.png); 
+  background-image: url(../../assets/cab-blue2.png); 
   background-position: top; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
-  opacity: .9;
   content: "" !important;
   position: absolute;
   top: 0;
-  bottom: -200px;
-  right: 0;
-  left: 500px;
+  bottom: 0px;
+  right: -500px;
+  left: 0;
 }
 
 .landing .landing-header {
@@ -41,7 +40,7 @@
 }
 
 .phone-cab {
-  height: auto;
+  height: 9rem;
   width: 10rem;
   margin-top: 4rem;
 }
@@ -117,6 +116,11 @@
   .landing-buttons {
     margin-top: 20px !important;
   }
+
+  .landing-buttons .landing-button {
+    width: 10rem;
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 415px) {
@@ -124,9 +128,17 @@
     font-size: 1.6rem;
   }
 
+  .landing-message {
+    display: none ;
+  }
+
   .landing-subtitle {
     font-size: .5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+  .landing-buttons .landing-button {
+    width: 8rem;
+    font-size: 12px;
   }
 }

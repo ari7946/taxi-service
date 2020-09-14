@@ -68,3 +68,42 @@ Follow these steps:
 5. Run `yarn start` or `npm start` on the client folder to run the frontend on `localhost:3000`
 
 6. The application should now be running.
+
+
+##### How Redux is used
+
+- All the core redux functionality for this app is stored inside the "redux" directory. 
+
+- The two main components are "trips" and "book". Each component contains its own actions, reducers, selectors, and types.
+
+- The root-reducer, which combines both "trips" and "book" reducers, is also located inside the redux directory alongside the store.
+
+- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "book" state in local storage. This ensures the state maintains its state even when a user refreshes the page
+or navigates to a different page.
+
+- The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called `createSelector` to create these memorized selectors. Selectors can be also be composed shown below.
+```javascript
+export const selectAllTrips = createSelector(
+  [selectTripState],
+  tripState => tripState.trips
+)
+
+export const selectCompletedTrips = 
+  createSelector(
+    [selectAllTrips],
+    trips => trips.filter(trip => 
+      trip.status === 'complete'
+    )
+)
+
+```
+
+- [Reselect](https://github.com/reduxjs/reselect) also provides a function called [createStructuredSelector](https://github.com/reduxjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector) that takes an object and returns an object with the same keys, but with selectors replaced with their values. This is used throughout. Here's an example.
+```javascript
+const mapStateToProps = createStructuredSelector({
+  startAddress: selectStartAddress,
+  endAddress: selectEndAddress,
+})
+
+export default connect(mapStateToProps)(Addresses);
+```

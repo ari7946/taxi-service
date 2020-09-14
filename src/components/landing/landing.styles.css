@@ -23,7 +23,7 @@
 }
 
 .landing-title {
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 .landing-subtitle {
@@ -142,6 +142,7 @@
     font-size: .5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    width: 100%;
   }
   .landing-buttons .landing-button {
     width: 8rem;

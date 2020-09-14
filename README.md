@@ -1,13 +1,17 @@
 ## Coastal Yellow Cabs
 Coastal Yellow Cabs enables users to book a taxi and recieve an instant estimate that is calculated by the distance and the type of cab requested. The admin may login and view every trip requested by users. Additionally, the admin can change the status of each trip. Users may register and/or login to view their own trips.
 
-**User Books a Taxi**
+**Unauthenticated(not registered) User Books a Taxi**
 
-![User demo GIF](http://g.recordit.co/oSHrUYcmHU.gif)
+![User demo GIF](http://g.recordit.co/9a2TZpOu04.gif)
+
+**Authenticated(logged in) User Books a Taxi**
+
+![User demo GIF](http://g.recordit.co/BrYdA7bwNJ.gif)
 
 **Admin Uses Panel**
 
-![Admin demo GIF](http://g.recordit.co/bKB5LmxX4Z.gif)
+![Admin demo GIF](http://g.recordit.co/NjzMDfoGqu.gif)
 
 ## Deployment
 
@@ -22,7 +26,7 @@ Server: [Server For Coastal Yellow Cabs](https://github.com/ari7946/backend-taxi
 - React.js
 - Redux
 - Dependencies:
-    - [Axios](https://github.com/axios/axios)
+    - [axios](https://github.com/axios/axios)
     - [bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
     - [reactstrap](https://reactstrap.github.io/)
     - [cross-env](https://www.npmjs.com/package/cross-env)
@@ -52,10 +56,8 @@ Server: [Server For Coastal Yellow Cabs](https://github.com/ari7946/backend-taxi
 Requirements: 
 - Node
 - Package Manager (such as Yarn or npm)
-    - [**Yarn**](https://yarnpkg.com/en/) was used to build this project.
 
-Have Node? Have **Yarn** or **npm**?
-Follow these steps:
+Follow these steps to get the app running:
 
 1. Fork and clone repo
 
@@ -70,17 +72,17 @@ Follow these steps:
 6. The application should now be running.
 
 
-## How Redux is used
+## How Redux Is Used
 
 - All the core redux functionality for this app is stored inside the "redux" directory. 
 
-- The two main components are "trips" and "book". Each component contains its own actions, reducers, selectors, and types.
+- The two main components are "trips" and "book". Each component contains its own actions, reducer, selectors, and types.
 
 - The root-reducer, which combines both "trips" and "book" reducers, is also located inside the redux directory alongside the store.
   
 - The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "book" state in local storage. This ensures the book component maintains its state even after a user refreshes the page or navigates to a different page.
 
-- The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called `createSelector` to create these memoized selectors. Selectors can be also be composed as shown below.
+- The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called [createSelector](https://redux-toolkit.js.org/api/createSelector) to create these memoized selector functions. Selectors can be also be composed as shown below.
 ```javascript
 export const selectAllTrips = createSelector(
   [selectTripState],
@@ -107,7 +109,7 @@ const mapStateToProps = createStructuredSelector({
 export default connect(mapStateToProps)(Addresses);
 ```
 
-- Redux logger is used to track state changes while in development.
+- [Redux-logger](https://www.npmjs.com/package/redux-logger) is used to track state changes while in development mode.
 ```javascript
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);

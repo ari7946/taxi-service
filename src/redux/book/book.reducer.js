@@ -141,7 +141,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
       const invalidFields = [];
 
-      // Furrrmat fields furrr grammar
+      // Format fields for grammar
       const formatField = field => {
         if (field == "endAddress")
           field = "Destination";

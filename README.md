@@ -70,16 +70,15 @@ Follow these steps:
 6. The application should now be running.
 
 
-##### How Redux is used
+## How Redux is used
 
 - All the core redux functionality for this app is stored inside the "redux" directory. 
 
 - The two main components are "trips" and "book". Each component contains its own actions, reducers, selectors, and types.
 
 - The root-reducer, which combines both "trips" and "book" reducers, is also located inside the redux directory alongside the store.
-
-- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "book" state in local storage. This ensures the state maintains its state even when a user refreshes the page
-or navigates to a different page.
+  
+- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "book" state in local storage. This ensures the book component maintains its state even after a user refreshes the page or navigates to a different page.
 
 - The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called `createSelector` to create these memorized selectors. Selectors can be also be composed shown below.
 ```javascript
@@ -98,7 +97,7 @@ export const selectCompletedTrips =
 
 ```
 
-- [Reselect](https://github.com/reduxjs/reselect) also provides a function called [createStructuredSelector](https://github.com/reduxjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector) that takes an object and returns an object with the same keys, but with selectors replaced with their values. This is used throughout. Here's an example.
+- [Reselect](https://github.com/reduxjs/reselect) also provides a function called [createStructuredSelector](https://github.com/reduxjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector) that takes an object and returns an object with the same keys, but with selectors replaced with their values. This is used throughout the app to map state to props. Here's an example.
 ```javascript
 const mapStateToProps = createStructuredSelector({
   startAddress: selectStartAddress,
@@ -106,4 +105,30 @@ const mapStateToProps = createStructuredSelector({
 })
 
 export default connect(mapStateToProps)(Addresses);
+```
+
+- Redux logger is used to track state changes while in development.
+```javascript
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
+```
+
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) is used to handle asynchronous logic that interacts with the store and AJAX requests. Here's an example.
+```javascript
+export const updateTrip = (status, id) => {
+  return async dispatch => {
+    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id })
+    try {
+      const result = await axios.put(
+        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
+        { status },
+        authHeaders
+      );
+      dispatch({ type: TripsActionTypes.UPDATE_TRIP, trip: result.data })
+    } catch (error) {
+      dispatch({ type: TripsActionTypes.ERROR, error })
+    }
+  }
+}
 ```

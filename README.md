@@ -3,11 +3,11 @@ Coastal Yellow Cabs enables users to book a taxi and recieve an instant estimate
 
 **Unauthenticated(not registered) User Books a Taxi**
 
-![User demo GIF](http://g.recordit.co/9a2TZpOu04.gif)
+![Unauth user demo GIF](http://g.recordit.co/9a2TZpOu04.gif)
 
 **Authenticated(logged in) User Books a Taxi**
 
-![User demo GIF](http://g.recordit.co/BrYdA7bwNJ.gif)
+![Auth user demo GIF](http://g.recordit.co/BrYdA7bwNJ.gif)
 
 **Admin Uses Panel**
 

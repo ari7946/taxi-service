@@ -80,7 +80,7 @@ Follow these steps:
   
 - The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "book" state in local storage. This ensures the book component maintains its state even after a user refreshes the page or navigates to a different page.
 
-- The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called `createSelector` to create these memorized selectors. Selectors can be also be composed shown below.
+- The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called `createSelector` to create these memoized selectors. Selectors can be also be composed as shown below.
 ```javascript
 export const selectAllTrips = createSelector(
   [selectTripState],
@@ -114,7 +114,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 ```
 
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk) is used to handle asynchronous logic that interacts with the store and AJAX requests. Here's an example.
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) is used to handle asynchronous logic that interacts with the store. Here's an example.
 ```javascript
 export const updateTrip = (status, id) => {
   return async dispatch => {

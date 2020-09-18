@@ -51,7 +51,7 @@ Server: [Server For Coastal Yellow Cabs](https://github.com/ari7946/backend-taxi
     - REACT_APP_API_KEY= please see [TOMTOM MAPS API](https://developer.tomtom.com/tomtom-maps-apis-developers) to get an API key
     - PUBLIC_URL="https://mytaxicab.herokuapp.com/"
 
-##### Using the Application
+#### Using the Application
 
 Requirements: 
 - Node

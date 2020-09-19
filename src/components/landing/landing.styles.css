@@ -82,7 +82,7 @@
   .landing-subtitle {
     font-size: 30px !important;
     font-weight: 200 !important;
-    width: 80%;
+    /* width: 80%; */
   }
 
   .landing-message {
@@ -103,7 +103,6 @@
   .landing-subtitle {
     font-size: 25px !important;
     font-weight: 200 !important;
-    width: 80%;
     margin-top: 1rem !important;
     margin-bottom: 0 !important;
   }

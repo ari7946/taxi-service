@@ -29,158 +29,156 @@ const TaxiForm = ({
   }
 
   return (
-    <Fragment>
-      <ListGroupItem className="book-form">
-        <Form onSubmit={(e) => handleSubmitForm(e)}>
+    <div className="book-form">
+      <Form onSubmit={(e) => handleSubmitForm(e)}>
 
-          {/* NAME */}
-          <FormGroup>
-            <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">required</span></Label>
-            <Input
-              type="text"
-              name="name"
-              id="form-name"
-              placeholder="name"
-              bsSize="sm"
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'name',
-                value: e.target.value,
-              })}
-              value={name}
-            />
-          </FormGroup>
+        {/* NAME */}
+        <FormGroup>
+          <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Input
+            type="text"
+            name="name"
+            id="form-name"
+            placeholder="name"
+            bsSize="sm"
+            onChange={(e) => setInput({
+              type: 'input',
+              name: 'name',
+              value: e.target.value,
+            })}
+            value={name}
+          />
+        </FormGroup>
 
-          {/*  PHONE */}
-          <FormGroup>
-            <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
-            <Input
-              type="text"
-              name="phone"
-              id="exampleNumber"
-              placeholder="###-###-####"
-              bsSize="sm"
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'phone',
-                value: e.target.value,
-              })}
-              value={phone}
-            />
-          </FormGroup>
+        {/*  PHONE */}
+        <FormGroup>
+          <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Input
+            type="text"
+            name="phone"
+            id="exampleNumber"
+            placeholder="###-###-####"
+            bsSize="sm"
+            onChange={(e) => setInput({
+              type: 'input',
+              name: 'phone',
+              value: e.target.value,
+            })}
+            value={phone}
+          />
+        </FormGroup>
 
-          {/*  EMAIL */}
-          <FormGroup form>
-            <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">required</span></Label>
-            <Input
-              type="email"
-              name="email"
-              id="form-email"
-              placeholder="email"
-              bsSize="sm"
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'email',
-                value: e.target.value,
-              })}
-              value={email}
-            />
-          </FormGroup>
+        {/*  EMAIL */}
+        <FormGroup form>
+          <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Input
+            type="email"
+            name="email"
+            id="form-email"
+            placeholder="email"
+            bsSize="sm"
+            onChange={(e) => setInput({
+              type: 'input',
+              name: 'email',
+              value: e.target.value,
+            })}
+            value={email}
+          />
+        </FormGroup>
 
-          {/* DATE */}
-          <FormGroup>
-            <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">required</span></Label>
-            <Input
-              type="date"
-              name="date"
-              placeholder="date"
-              bsSize="sm"
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'date',
-                value: e.target.value,
-              })}
-              value={date}
-            />
-          </FormGroup>
+        {/* DATE */}
+        <FormGroup>
+          <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Input
+            type="date"
+            name="date"
+            placeholder="date"
+            bsSize="sm"
+            onChange={(e) => setInput({
+              type: 'input',
+              name: 'date',
+              value: e.target.value,
+            })}
+            value={date}
+          />
+        </FormGroup>
 
-          {/* TIME */}
-          <FormGroup>
-            <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">required</span></Label>
-            <Input
-              type="time"
-              name="time"
-              placeholder="time"
-              bsSize="sm"
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'time',
-                value: e.target.value,
-              })}
-              value={time}
-            />
-          </FormGroup>
+        {/* TIME */}
+        <FormGroup>
+          <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Input
+            type="time"
+            name="time"
+            placeholder="time"
+            bsSize="sm"
+            onChange={(e) => setInput({
+              type: 'input',
+              name: 'time',
+              value: e.target.value,
+            })}
+            value={time}
+          />
+        </FormGroup>
 
-          {/* COMMENTS */}
-          <FormGroup>
-            <Label for="exampleText">Comments: </Label>
-            <Input
-              type="textarea"
-              name="comments"
-              id="form-comments"
-              placeholder="luggage, pets, wheelchair, ect"
-              onChange={(e) => setInput({
-                type: 'input',
-                name: 'comments',
-                value: e.target.value,
-              })}
-              value={comments}
-            />
-          </FormGroup>
+        {/* COMMENTS */}
+        <FormGroup>
+          <Label for="exampleText">Comments: </Label>
+          <Input
+            type="textarea"
+            name="comments"
+            id="form-comments"
+            placeholder="luggage, pets, wheelchair, ect"
+            onChange={(e) => setInput({
+              type: 'input',
+              name: 'comments',
+              value: e.target.value,
+            })}
+            value={comments}
+          />
+        </FormGroup>
 
-          {/* REQUIRED FIELDS */}
-          {(invalidFields.length > 0) && (
-            <div className="text-flat-orange mb-0">Required fields:  < br />
-              {invalidFields.map(field => {
-                let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
-                let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
-                return (
-                  <Fragment key={field}>
-                    {field}{!lastField
-                      ? invalidFields.length === 2 
-                        ? null : ', ' : null}
-                    {secondToLast
-                      ? invalidFields.length === 2 
-                        ? ' and ' : 'and ' : null}
-                  </Fragment>
-                )
-              })}
-            </div>
-          )}
-
-          {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
-          { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
-
-          {/* SUBMIT BUTTON */}
-          <ButtonGroup className="mt-3 mb-5">
-            <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
-              {!loading && !submitted && (
-                <Fragment>Book</Fragment>
-              )}
-              {loading && submitted && (
-                <Fragment>
-                  <Spinner className="mr-2" size="sm" color="white" />
-                  <span className="text-green-light"></span>
+        {/* REQUIRED FIELDS */}
+        {(invalidFields.length > 0) && (
+          <div className="text-flat-orange mb-0">Required fields:  < br />
+            {invalidFields.map(field => {
+              let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
+              let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
+              return (
+                <Fragment key={field}>
+                  {field}{!lastField
+                    ? invalidFields.length === 2 
+                      ? null : ', ' : null}
+                  {secondToLast
+                    ? invalidFields.length === 2 
+                      ? ' and ' : 'and ' : null}
                 </Fragment>
-              )}
-            </Button>
+              )
+            })}
+          </div>
+        )}
 
-            {startAddress && endAddress && <TripInfoButton />}
-          </ButtonGroup>
-        </Form>
+        {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
+        { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
 
-      </ListGroupItem>
-    </Fragment>
+        {/* SUBMIT BUTTON */}
+        <ButtonGroup className="mt-3 mb-5">
+          <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
+            {!loading && !submitted && (
+              <Fragment>Book</Fragment>
+            )}
+            {loading && submitted && (
+              <Fragment>
+                <Spinner className="mr-2" size="sm" color="white" />
+                <span className="text-green-light"></span>
+              </Fragment>
+            )}
+          </Button>
+
+          {startAddress && endAddress && <TripInfoButton />}
+        </ButtonGroup>
+      </Form>
+
+    </div>
   );
 }
 

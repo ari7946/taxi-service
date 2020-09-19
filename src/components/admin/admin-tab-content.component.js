@@ -1,78 +1,46 @@
-import React, { useState} from 'react';
-import {TabContent, TabPane, Spinner, ListGroup } from 'reactstrap';
-import Trip from './admin-trip.component';
+import React from 'react';
+import { TabContent } from 'reactstrap';
+import AdminTabPane from './admin-tab-pane.component';
 import './admin.styles.css';
 
-import { selectAllTrips, selectLoadingType, selectConfirmedTrips, selectCompletedTrips, selectArchivedTrips } from '../../redux/trips/trips.selectors';
+import { selectAllTrips, selectConfirmedTrips, selectCompletedTrips, selectArchivedTrips } from '../../redux/trips/trips.selectors';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 const AdminTabContent = ({ 
-  activeTab, trips, loadingType, confirmedTrips, completedTrips, archivedTrips
+  activeTab, allTrips, confirmedTrips, completedTrips, archivedTrips
 }) => {
   return (
     <TabContent activeTab={activeTab}>
-      <TabPane tabId="viewAll">
-        {loadingType === 'getTrips'
-          ? <Spinner color="light" />
-          : trips.length > 0 ? (
-            <ListGroup>
-              {trips.map(trip =>
-                <Trip key={trip.id} trip={trip}
-                />
-              )}
-            </ListGroup>
-          ) : (
-            trips.length === 0 && <h4 className="text-green-light">There are no trips pending.</h4>
-          )
-        }
-      </TabPane>
+      <AdminTabPane 
+        tabId={'viewAll'}
+        trips={allTrips}
+        tripStatus={'trips'}
+      />
 
-      <TabPane tabId="viewConfirmed">
-          {confirmedTrips.length ? (
-            <ListGroup>
-              {confirmedTrips.map(trip =>
-                <Trip key={trip.id} trip={trip} />
-              )}
-            </ListGroup>    
-          ) : (
-            <h4 className="text-green-light">There are no confirmed trips.</h4>
-          )
-        }
-      </TabPane>
+      <AdminTabPane 
+        tabId={'viewConfirmed'}
+        trips={confirmedTrips}
+        tripStatus={'confirmed'}
+      />
 
-      <TabPane tabId="viewCompleted">
-          {completedTrips.length ? (
-            <ListGroup>
-              {completedTrips.map(trip =>
-                <Trip key={trip.id} trip={trip} />
-              )}
-            </ListGroup>    
-          ) : (
-            <h4 className="text-green-light">There are no completed trips.</h4>
-          )
-        }
-      </TabPane>
+      <AdminTabPane 
+        tabId={'viewCompleted'}
+        trips={completedTrips}
+        tripStatus={'completed'}
+      />
 
-      <TabPane tabId="viewArchived">
-          {archivedTrips.length ? (
-            <ListGroup>
-              {archivedTrips.map(trip =>
-                <Trip key={trip.id} trip={trip} />
-              )}
-            </ListGroup>     
-          ) : (
-            <h4 className="text-green-light">There's no archived trips.</h4>
-          )
-        }
-      </TabPane>
+      <AdminTabPane 
+        tabId={'viewArchived'}
+        trips={archivedTrips}
+        tripStatus={'archived'}
+      />
     </TabContent> 
   )
 }
 
 const mapStateToProps = createStructuredSelector({
-  trips: selectAllTrips,
-  loadingType: selectLoadingType,
+  allTrips: selectAllTrips,
   confirmedTrips: selectConfirmedTrips,
   completedTrips: selectCompletedTrips,
   archivedTrips: selectArchivedTrips,

@@ -3,13 +3,13 @@ import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody, Sp
 import './admin.styles.css';
 import { connect } from 'react-redux';
 import { removeTrip, updateTrip } from '../../redux/trips/trips.actions';
-import {  } from 'reselect';
 
 import { selectLoadingType, selectLoadingTripId, selectLoadingTrip } from '../../redux/trips/trips.selectors';
 
 const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
 
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const toggle = () => setPopoverOpen(!popoverOpen);
 
   const spinner = <Spinner
     as="span"
@@ -19,8 +19,6 @@ const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
     aria-hidden="true"
     className="mr-2"
   />;
-
-  const toggle = () => setPopoverOpen(!popoverOpen);
 
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">

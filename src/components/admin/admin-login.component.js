@@ -41,7 +41,6 @@ const Login = () => {
         setLoading(false);
         adminLogin(response.data.token, response.data.username);
         history.push('admin/trips');
-        window.location.reload();
       }
     } catch (error) {
       setLoading(false)

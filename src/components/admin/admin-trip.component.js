@@ -24,11 +24,11 @@ const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
 
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">
-      <p className="trip-list-info"><span className="trip-list-heading">name:</span> {trip.name}</p>
-      <p className="trip-list-info"><span className="trip-list-heading">phone:</span> {trip.phone}</p>
-      <p className="trip-list-info"><span className="trip-list-heading">email:</span> {trip.email}</p>
-      <p className="trip-list-info"><span className="trip-list-heading">start address:</span> {trip.startAddress}</p>
-      <p className="trip-list-info"><span className="trip-list-heading">destination:</span> {trip.endAddress}</p>
+      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">name:</span> {trip.name}</p>
+      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">phone:</span> {trip.phone}</p>
+      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">email:</span> {trip.email}</p>
+      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">start address:</span> {trip.startAddress}</p>
+      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">destination:</span> {trip.endAddress}</p>
 
       <ButtonGroup color="light">
         <Button
@@ -53,7 +53,7 @@ const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
 
         <Button
           className={`
-            ${trip.status === 'archive' ? 'btn-warning' : ''}
+            ${trip.status === 'archive' ? 'bg-yellow text-dark' : ''}
           `}
           onClick={() => updateTrip('archive', trip.id)}
         >
@@ -81,11 +81,11 @@ const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
       >
         <PopoverBody>
           <ListGroup>
-            <ListGroupItem><span className="font-weight-bold">Estimate: </span>${trip.price}</ListGroupItem>
-            <ListGroupItem><span className="font-weight-bold">Distance: </span> {trip.distance} miles</ListGroupItem>
-            <ListGroupItem><span className="font-weight-bold">Rate: </span> {trip.vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</ListGroupItem>
-            <ListGroupItem><span className="font-weight-bold">Vehicle: </span>{trip.vehicle}</ListGroupItem>
-            <ListGroupItem><span className="font-weight-bold">passengers: </span>{trip.vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</ListGroupItem>
+            <ListGroupItem><span className="">Estimate: </span>${trip.price}</ListGroupItem>
+            <ListGroupItem><span className="">Distance: </span> {trip.distance} miles</ListGroupItem>
+            <ListGroupItem><span className="">Rate: </span> {trip.vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</ListGroupItem>
+            <ListGroupItem><span className="">Vehicle: </span>{trip.vehicle}</ListGroupItem>
+            <ListGroupItem><span className="">passengers: </span>{trip.vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</ListGroupItem>
           </ListGroup>
         </PopoverBody>
       </Popover>

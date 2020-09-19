@@ -15,9 +15,7 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
   // const discountTotal = (total - discount).toFixed(2);
   
   return (
-    <div>
-      <ListGroupItem className="estimate mt-3 pt-3">
-
+    <div className="estimate my-4">
         {/* //TODO Implement as a future feature */}
         {/* <ul className="pt-3">
           <li>Distance: {distance} miles</li>
@@ -26,26 +24,23 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
           <li>passengers: {vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</li>
         </ul> */}
 
-        <ListGroupItemText>
-          <div className="text-center mx-auto my-2 w-75">
-            {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
-            <p className='mb-0'>Taxi Fare: ${taxiFare}</p>
-            <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}</p>
-            {direction === 'oneWay'
-              ? <h2 className='price border-top border-light pt-2 w-100'>Estimate: ${estimate}</h2>
-              : null
-              //TODO Implement TwoWay as a potential future feature
-              // : (
-              //   <>
-              //     <p className='ml-3 price pt-2 mb-0'>Subtotal: ${total}</p>
-              //     <p className='ml-3 pt-0 mb-0'><span className="mr-3 lead">-</span>Discount: ${discount}</p>
-              //     <h2 className='ml-3 price pt-2 lead'><Badge color="info">Estimate: ${discountTotal}</Badge></h2>
-              //   </>
-              // )
-            }
-          </div>
-        </ListGroupItemText>
-      </ListGroupItem>
+      <div className="text-center mx-auto">
+        {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
+        <p className='mb-0'>Taxi Fare: ${taxiFare}</p>
+        <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}</p>
+        {direction === 'oneWay'
+          ? <h2 className='price border-top border-light pt-2 w-100'>Estimate: ${estimate}</h2>
+          : null
+          //TODO Implement TwoWay as a potential future feature
+          // : (
+          //   <>
+          //     <p className='ml-3 price pt-2 mb-0'>Subtotal: ${total}</p>
+          //     <p className='ml-3 pt-0 mb-0'><span className="mr-3 lead">-</span>Discount: ${discount}</p>
+          //     <h2 className='ml-3 price pt-2 lead'><Badge color="info">Estimate: ${discountTotal}</Badge></h2>
+          //   </>
+          // )
+        }
+      </div>
     </div>
   )
 }

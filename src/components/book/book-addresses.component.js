@@ -20,11 +20,11 @@ const Addresses = ({
   return (
     <div className="mt-3">
       {!startAddress && !endAddress && (
-        <div className="text-grey-light-2 lead mt-4">
+        <div className="text-grey-light-2 mt-4 instructions">
           <ol>
-            <li className="h3 my-3">Provide a starting point and a destination</li>
-            <li className="h3 my-3">Choose the type of taxi you require</li>
-            <li className="h3">Fill out the form to book a taxi</li>
+            <li className="my-3">Provide a starting point and a destination</li>
+            <li className="my-3">Choose the type of taxi you require</li>
+            <li className="">Fill out the form to book a taxi</li>
           </ol>
         </div>
       )}

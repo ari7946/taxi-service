@@ -6,6 +6,11 @@
   height: 60vh;
 }
 
+.instructions ol li {
+  font-weight: 300 !important;
+  font-size: 25px;
+}
+
 h2.price {
   color: var(--color-grey-light-2)
 }
@@ -151,6 +156,11 @@ ul.vehicle-card-text {
   .vehicle-type .vehicle-img {
     height: 6rem;
   }
+
+.instructions ol li {
+  font-weight: 300 !important;
+  font-size: 20px;
+}
 }
 
 @media (max-width: 600px) {
@@ -180,6 +190,10 @@ ul.vehicle-card-text {
 
   .vehicle-type {
     margin-top: 2rem;
+  }
+
+  .instructions ol li {
+    font-size: 17px;
   }
 }
 

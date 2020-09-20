@@ -24,10 +24,12 @@
 
 .landing-title {
   margin-top: 4rem;
+  font-weight: lighter;
+  font-size: 50px !important;
 }
 
 .landing-subtitle {
-  font-size: 40px !important;
+  font-size: 35px !important;
   font-weight: 200 !important;
 }
 

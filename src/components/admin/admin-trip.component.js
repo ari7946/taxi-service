@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ListGroup, ListGroupItem, Button, Popover, PopoverBody } from 'reactstrap';
+import { ListGroup, ListGroupItem, Button, Popover, PopoverBody, Col, Row } from 'reactstrap';
 import AdminTripStatusGroup from './admin-trip-status-group.component';
 import './admin.styles.css';
 
@@ -7,42 +7,31 @@ const Trip = ({ trip }) => {
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const toggle = () => setPopoverOpen(!popoverOpen);
+  console.log('trip info', trip)
 
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">
-      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">name:</span> {trip.name}</p>
-      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">phone:</span> {trip.phone}</p>
-      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">email:</span> {trip.email}</p>
-      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">start address:</span> {trip.startAddress}</p>
-      <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">destination:</span> {trip.endAddress}</p>
+      <Row>
+        <Col md="6">
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">name:</span> {trip.name}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">phone:</span> {trip.phone}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">email:</span> {trip.email}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">vehicle:</span> {trip.vehicle}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">distance:</span> {trip.distance} miles</div>
+          <div className="trip-list-info text-green-dark my-1"><span className="trip-list-heading text-dark">start address:</span> {trip.startAddress}</div>
+        </Col>
+
+        <Col md="6">
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">date:</span> {trip.date}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">time:</span> {trip.time}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">estimate:</span> ${trip.price}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">requested-at:</span> {trip.created_at}</div>
+          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">direction:</span> {trip.direction === 'oneWay' ? 'one way' : 'two way'}</div>
+          <div className="trip-list-info text-green-dark mb-2"><span className="trip-list-heading text-dark">destination:</span> {trip.endAddress}</div>
+        </Col>
+      </Row>
 
       <AdminTripStatusGroup trip={trip} />
-
-      <Button
-        className="trip-details"
-        color="secondary"
-        id={"Popover-" + trip.id}
-        type="button"
-      >
-        Trip Details
-      </Button>
-
-      <Popover
-        placement='bottom'
-        isOpen={popoverOpen}
-        target={"Popover-" + trip.id}
-        toggle={toggle}
-      >
-        <PopoverBody>
-          <ListGroup>
-            <ListGroupItem><span className="">Estimate: </span>${trip.price}</ListGroupItem>
-            <ListGroupItem><span className="">Distance: </span> {trip.distance} miles</ListGroupItem>
-            <ListGroupItem><span className="">Rate: </span> {trip.vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</ListGroupItem>
-            <ListGroupItem><span className="">Vehicle: </span>{trip.vehicle}</ListGroupItem>
-            <ListGroupItem><span className="">passengers: </span>{trip.vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</ListGroupItem>
-          </ListGroup>
-        </PopoverBody>
-      </Popover>
     </ListGroupItem>
   )
 }

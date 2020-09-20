@@ -4,9 +4,9 @@ import './admin.styles.css';
 import { connect } from 'react-redux';
 import { deleteTrip, updateTrip } from '../../redux/trips/trips.actions';
 
-import { selectLoadingType, selectLoadingTripId, selectLoadingTrip } from '../../redux/trips/trips.selectors';
+import { selectLoadingTrip } from '../../redux/trips/trips.selectors';
 
-const AdminTripStatusGroup = ({ trip, updateTrip, deleteTrip, isLoading }) => {
+const AdminTripStatusGroup = ({ trip, updateTrip, deleteTrip, loadingTrip }) => {
 
   const spinner = <Spinner
     as="span"
@@ -25,7 +25,7 @@ const AdminTripStatusGroup = ({ trip, updateTrip, deleteTrip, isLoading }) => {
         `}
         onClick={() => updateTrip('confirm', trip.id)}
       >
-        {isLoading('confirm') && spinner}
+        {loadingTrip('confirm') && spinner}
         Confirm
       </Button>
 
@@ -35,7 +35,7 @@ const AdminTripStatusGroup = ({ trip, updateTrip, deleteTrip, isLoading }) => {
         `}
         onClick={() => updateTrip('complete', trip.id)}
       >
-        {isLoading('complete') && spinner}
+        {loadingTrip('complete') && spinner}
         Complete 
       </Button>
 
@@ -45,14 +45,14 @@ const AdminTripStatusGroup = ({ trip, updateTrip, deleteTrip, isLoading }) => {
         `}
         onClick={() => updateTrip('archive', trip.id)}
       >
-        {isLoading('archive') && spinner}
+        {loadingTrip('archive') && spinner}
         Archive
       </Button>
 
       <Button 
         onClick={() => deleteTrip('delete', trip.id)}
       >
-        {isLoading('delete') && spinner}
+        {loadingTrip('delete') && spinner}
         Delete
       </Button>
     </ButtonGroup>
@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = (state, ownProps) => ({
-  isLoading: (loadingType) => selectLoadingTrip(ownProps.trip.id, loadingType)(state)
+  loadingTrip: (loadingType) => selectLoadingTrip(ownProps.trip.id, loadingType)(state)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminTripStatusGroup);

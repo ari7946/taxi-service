@@ -24,7 +24,6 @@
 .about-img-container-middle {
   margin-top: 1rem;
   border-right: 1px solid var(--color-yellow);
-  border-left: 1px solid var(--color-yellow);
 }
 
 .about-img-container-middle img {

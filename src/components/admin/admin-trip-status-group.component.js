@@ -2,11 +2,11 @@ import React from 'react';
 import { ButtonGroup, Button, Spinner } from 'reactstrap';
 import './admin.styles.css';
 import { connect } from 'react-redux';
-import { removeTrip, updateTrip } from '../../redux/trips/trips.actions';
+import { deleteTrip, updateTrip } from '../../redux/trips/trips.actions';
 
 import { selectLoadingType, selectLoadingTripId, selectLoadingTrip } from '../../redux/trips/trips.selectors';
 
-const AdminTripStatusGroup = ({ trip, updateTrip, removeTrip, isLoading }) => {
+const AdminTripStatusGroup = ({ trip, updateTrip, deleteTrip, isLoading }) => {
 
   const spinner = <Spinner
     as="span"
@@ -49,19 +49,22 @@ const AdminTripStatusGroup = ({ trip, updateTrip, removeTrip, isLoading }) => {
         Archive
       </Button>
 
-      <Button onClick={() => removeTrip(trip.id)}>Delete</Button>
+      <Button 
+        onClick={() => deleteTrip('delete', trip.id)}
+      >
+        {isLoading('delete') && spinner}
+        Delete
+      </Button>
     </ButtonGroup>
   )
 }
 
 const mapDispatchToProps = dispatch => ({
-  removeTrip: (tripId) => dispatch(removeTrip(tripId)),
+  deleteTrip: (status, tripId) => dispatch(deleteTrip(status, tripId)),
   updateTrip: (status, tripId) => dispatch(updateTrip(status, tripId)),
 })
 
 const mapStateToProps = (state, ownProps) => ({
-  loadingType: selectLoadingType,
-  loadingTripId: selectLoadingTripId,
   isLoading: (loadingType) => selectLoadingTrip(ownProps.trip.id, loadingType)(state)
 })
 

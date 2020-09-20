@@ -1,24 +1,12 @@
 import React, { useState } from 'react';
-import { ListGroup, ListGroupItem, ButtonGroup, Button, Popover, PopoverBody, Spinner  } from 'reactstrap';
+import { ListGroup, ListGroupItem, Button, Popover, PopoverBody } from 'reactstrap';
+import AdminTripStatusGroup from './admin-trip-status-group.component';
 import './admin.styles.css';
-import { connect } from 'react-redux';
-import { removeTrip, updateTrip } from '../../redux/trips/trips.actions';
 
-import { selectLoadingType, selectLoadingTripId, selectLoadingTrip } from '../../redux/trips/trips.selectors';
-
-const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
+const Trip = ({ trip }) => {
 
   const [popoverOpen, setPopoverOpen] = useState(false);
   const toggle = () => setPopoverOpen(!popoverOpen);
-
-  const spinner = <Spinner
-    as="span"
-    animation="border"
-    size="sm"
-    role="status"
-    aria-hidden="true"
-    className="mr-2"
-  />;
 
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">
@@ -28,39 +16,7 @@ const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
       <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">start address:</span> {trip.startAddress}</p>
       <p className="trip-list-info text-green-dark"><span className="trip-list-heading text-dark">destination:</span> {trip.endAddress}</p>
 
-      <ButtonGroup color="light">
-        <Button
-          className={`
-            ${trip.status === 'confirm' ? 'bg-green-light text-green-dark' : ''}
-          `}
-          onClick={() => updateTrip('confirm', trip.id)}
-        >
-          {isLoading('confirm') && spinner}
-          Confirm
-        </Button>
-
-        <Button 
-          className={`
-            ${trip.status === 'complete' ? 'bg-green-dark' : ''}
-          `}
-          onClick={() => updateTrip('complete', trip.id)}
-        >
-          {isLoading('complete') && spinner}
-          Complete 
-        </Button>
-
-        <Button
-          className={`
-            ${trip.status === 'archive' ? 'bg-yellow text-dark' : ''}
-          `}
-          onClick={() => updateTrip('archive', trip.id)}
-        >
-          {isLoading('archive') && spinner}
-          Archive
-        </Button>
-
-        <Button onClick={() => removeTrip(trip.id)}>Delete</Button>
-      </ButtonGroup>
+      <AdminTripStatusGroup trip={trip} />
 
       <Button
         className="trip-details"
@@ -91,15 +47,4 @@ const Trip = ({ trip, updateTrip, removeTrip, isLoading }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  removeTrip: (tripId) => dispatch(removeTrip(tripId)),
-  updateTrip: (status, tripId) => dispatch(updateTrip(status, tripId)),
-})
-
-const mapStateToProps = (state, ownProps) => ({
-  loadingType: selectLoadingType,
-  loadingTripId: selectLoadingTripId,
-  isLoading: (loadingType) => selectLoadingTrip(ownProps.trip.id, loadingType)(state)
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Trip);
+export default Trip;

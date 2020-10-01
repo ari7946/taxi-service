@@ -4,11 +4,7 @@ import AdminTripStatusGroup from './admin-trip-status-group.component';
 import './admin.styles.css';
 
 const Trip = ({ trip }) => {
-
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  const toggle = () => setPopoverOpen(!popoverOpen);
-  console.log('trip info', trip)
-
+  
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">
       <Row>

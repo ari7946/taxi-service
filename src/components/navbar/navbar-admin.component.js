@@ -71,7 +71,7 @@ const AdminNavbar = () => {
 
             <DropdownMenu right>
               <DropdownItem>
-                <NavLink to="admin/trips" style={{ textDecoration: 'none' }}>
+                <NavLink to="/trips" style={{ textDecoration: 'none' }}>
                   <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>Trips</NavItem>
                 </NavLink>
               </DropdownItem>

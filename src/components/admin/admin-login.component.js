@@ -21,7 +21,7 @@ const Login = () => {
       if (response) {
         setLoading(false);
         adminLogin(response.data.token, response.data.username);
-        history.push('admin/trips');
+        history.push('/trips');
       }
     } catch (error) {
       setLoading(false)
@@ -30,6 +30,7 @@ const Login = () => {
   }
 
   const handleGuestSubmit = async (formSubmitEvent) => {
+    formSubmitEvent.preventDefault();
 
     const username = process.env.REACT_APP_GUEST_USERNAME;
     const password = process.env.REACT_APP_GUEST_PASSWORD;
@@ -40,7 +41,7 @@ const Login = () => {
       if (response) {
         setLoading(false);
         adminLogin(response.data.token, response.data.username);
-        history.push('admin/trips');
+        history.push('/trips');
       }
     } catch (error) {
       setLoading(false)

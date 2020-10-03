@@ -3,15 +3,15 @@ import MapFormContainer from './components/book';
 import NavbarContainer from './components/navbar';
 import Landing from './components/landing';
 import About from './components/about';
-import TripsContainer from './components/admin';
-import AdminLogin from './components/admin/admin-login.component';
-import Dashboard from './components/user-dash';
-import UserRegister from './components/user-dash/user-register.component';
-import UserLogin from './components/user-dash/user-login.component';
+import AdminContainer from './components/admin';
+import UserRegister from './components/user/user-register.component';
+import UserLogin from './components/user/user-login.component';
+import TripsContainer from './components/trips'
 import { Route, Switch } from 'react-router-dom';
 import { ProvideAuth } from "./auth/use-auth";
 import './index.css';
 import './App.css';
+import UserContainer from './components/user';
 
 
 class App extends Component {
@@ -24,9 +24,9 @@ class App extends Component {
             <Route path='/' exact component={Landing} /> 
             <Route path='/about' exact component={About} /> 
             <Route path='/book' exact component={MapFormContainer} />
-            <Route path='/admin' exact component={AdminLogin} />
-            <Route path='/admin/trips' exact component={TripsContainer} /> 
-            <Route path='/dashboard' exact component={Dashboard} />
+            <Route path='/admin' exact component={AdminContainer} />
+            <Route path='/trips' exact component={TripsContainer} /> 
+            <Route path='/user' exact component={UserContainer} />
             <Route path='/register' exact component={UserRegister} />
             <Route path='/login' exact component={UserLogin} />
           </Switch>

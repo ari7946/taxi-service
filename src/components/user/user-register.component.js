@@ -26,7 +26,7 @@ const UserRegister = () => {
       if (response) {
         setLoading(false);
         userRegister(response.data.token, response.data.username);
-        history.push('/dashboard');
+        history.push('/book');
       }
     } catch (error) {
       setLoading(false)

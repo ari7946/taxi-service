@@ -7,7 +7,7 @@ import { selectAllTrips, selectConfirmedTrips, selectCompletedTrips, selectArchi
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-const AdminTabContent = ({ 
+const TripTabContent = ({ 
   activeTab, allTrips, confirmedTrips, completedTrips, archivedTrips
 }) => {
   return (
@@ -46,4 +46,4 @@ const mapStateToProps = createStructuredSelector({
   archivedTrips: selectArchivedTrips,
 });
 
-export default connect(mapStateToProps)(AdminTabContent);
+export default connect(mapStateToProps)(TripTabContent);

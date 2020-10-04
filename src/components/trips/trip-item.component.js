@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ListGroup, ListGroupItem, Button, Popover, PopoverBody, Col, Row } from 'reactstrap';
-import AdminTripStatusGroup from './trip-status-group.component';
+import AdminTripStatusGroup from './trip-status.component';
 import './trips.styles.css';
 
-const Trip = ({ trip }) => {
+const TripItem = ({ trip }) => {
   
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">
@@ -32,4 +32,4 @@ const Trip = ({ trip }) => {
   )
 }
 
-export default Trip;
+export default TripItem;

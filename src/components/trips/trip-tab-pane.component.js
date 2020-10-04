@@ -3,7 +3,7 @@ import { TabPane, ListGroup } from 'reactstrap';
 import Trip from './trip-item.component';
 import './trips.styles.css';
 
-const AdminTabPane = ({ tabId, tripStatus, trips }) => {
+const TripTabPane = ({ tabId, tripStatus, trips }) => {
   return (
     <TabPane tabId={tabId}>
         {trips.length ? (
@@ -20,4 +20,4 @@ const AdminTabPane = ({ tabId, tripStatus, trips }) => {
   )
 }
 
-export default AdminTabPane;
+export default TripTabPane;

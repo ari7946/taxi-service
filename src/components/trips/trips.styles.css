@@ -1,10 +1,10 @@
 /***************** ADMIN **********************/
-.trip-list-info {
+.trip-list-info, .trip-status-info {
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 15px;
 }
 
-.trip-list-heading {
+.trip-list-heading, .trip-status-heading {
   font-family: "Courier New", Courier, monospace;
   text-transform: uppercase;
 }

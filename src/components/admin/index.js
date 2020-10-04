@@ -1,3 +1,3 @@
-import TripsContainer from './admin.container';
+import AdminContainer from './admin.container';
 
-export default TripsContainer;
+export default AdminContainer;

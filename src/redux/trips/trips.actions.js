@@ -35,9 +35,9 @@ export const updateTrip = (status, id) => {
   }
 }
 
-export const removeTrip = (id) => {
+export const deleteTrip = (status, id) => {
   return async dispatch => {
-    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: 'removeTrip', tripId: id})
+    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id})
     try {
       const result = await axios.delete(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,

@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'reactstrap';
-import AdminNav from './admin-nav.component';
-import AdminTabContent from './admin-tab-content.component';
+import AdminNav from './trip-admin-nav.component';
+import AdminTabContent from './trip-tab-content.component';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import './admin.styles.css';
+import './trips.styles.css';
+import { useAuth } from '../../auth/use-auth';
 
 import { getTrips } from '../../redux/trips/trips.actions';
 import { selectAllTrips, selectLoadingType } from '../../redux/trips/trips.selectors';
 
 const TripList = ({ getTrips, loadingType }) => {
   const [activeTab, setActiveTab] = useState('viewAll');
+  const { auth } = useAuth();
 
   useEffect(() => {
     getTrips();
-  }, [])
-  
+  }, [auth])
+
   return (
     <Container fluid>
 

@@ -23,7 +23,7 @@ const UserLogin = () => {
       if (response) {
         setLoading(false);
         userLogin(response.data.token, response.data.username);
-        history.push('/dashboard');
+        history.push('/trips');
         window.location.reload();
       }
     } catch (error) {

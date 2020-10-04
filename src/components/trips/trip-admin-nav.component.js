@@ -1,8 +1,8 @@
 import React, { useState} from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import './admin.styles.css';
+import './trips.styles.css';
 
-const AdminNav = ({ activeTab, setActiveTab }) => {
+const TripAdminNav = ({ activeTab, setActiveTab }) => {
 
   return (
     <Nav className='mb-2 nav-tabs' tabs color="light">
@@ -53,5 +53,5 @@ const AdminNav = ({ activeTab, setActiveTab }) => {
   )
 }
 
-export default AdminNav;
+export default TripAdminNav;
 

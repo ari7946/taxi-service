@@ -11,7 +11,6 @@ const Landing = (props) => {
         <div className='landing-header'>
           <h1 className="text-white text-uppercase landing-title">Coastal <span className='text-yellow'>Yellow</span> Cabs</h1>
           <h2 className="text-grey-light-2 lead landing-subtitle lead mt-3">Our professional, rigorously trained drivers will accomodate your needs.</h2>
-          <hr className="bg-white" />
           <p className="text-grey-light-2 mt-5 lead landing-message">Use our online system to book a taxi and get rate right away.</p>
 
           <div className="landing-buttons">

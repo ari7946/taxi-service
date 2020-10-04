@@ -163,10 +163,10 @@ const TaxiForm = ({
         {/* SUBMIT BUTTON */}
         <ButtonGroup className="mt-3 mb-5">
           <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
-            {!loading && !submitted && (
+            {!loading && (
               <Fragment>Book</Fragment>
             )}
-            {loading && submitted && (
+            {loading && (
               <Fragment>
                 <Spinner className="mr-2" size="sm" color="white" />
                 <span className="text-green-light"></span>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Spinner } from 'reactstrap';
-import AdminNav from './trip-admin-nav.component';
+import AdminNav from './trip-nav.component';
 import AdminTabContent from './trip-tab-content.component';
 
 import { connect } from 'react-redux';

@@ -5,14 +5,6 @@ import './book-addresses.styles.css';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { selectStartAddress, selectEndAddress } from '../../../redux/book/book.selectors';
-{/* <p className="h2 lead text-white">
-          Please use the map above to provide a starting point and a destination.<br />
-          <br />
-          You may choose the type of cab you require and the estimate will change accordingly.
-          <br /><br />
-          After receiving an estimate, you may fill out and submit the form to book a taxi. 
-          If prefered, give us a call at any time and we'll be happy to assist you.
-        </p> */}
 
 const Addresses = ({ 
   startAddress, endAddress

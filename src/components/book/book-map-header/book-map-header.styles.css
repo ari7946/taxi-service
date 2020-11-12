@@ -1,0 +1,29 @@
+.address-heading-starting {
+  color: var(--color-yellow);
+  font-weight: bold !important;
+}
+
+.address-heading-destination {
+  color: var(--color-flat-orange);
+  font-weight: bold !important;
+}
+
+@media (max-width: 1200px) {
+  .address-heading-starting {
+    color: var(--color-yellow);
+    font-weight: bold !important;
+  }
+
+  .address-heading-destination {
+    color: var(--color-flat-orange);
+    font-weight: bold !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .map-heading {
+    font-weight: 700;
+    font-size: 17px;
+    margin-left: 1rem;
+  }
+}

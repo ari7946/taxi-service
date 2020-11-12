@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react';
 import TaxiForm from './book-form/book-form.component';
 import Loading from './book-loading/book-loading.component';
-import MapHeader from './book-map-header.component';
+import MapHeader from './book-map-header/book-map-header.component';
 import Addresses from './book-addresses/book-addresses.component';
 import Estimate from './book-estimate/book-estimate.component';
-import VehicleType from './book-vehicle-type.component';
-import TripInfoMain from './book-trip-info-main.component';
+import VehicleType from './book-vehicle-type/book-vehicle-type.component';
+import TripInfoMain from './book-trip-info-main/book-trip-info-main.component';
 import './book.styles.css';
 import { Container, Row, Col, ListGroup } from 'reactstrap';
 const Map = React.lazy(() => import('./book-map/book-map.component'));

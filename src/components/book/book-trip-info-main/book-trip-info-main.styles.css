@@ -1,0 +1,19 @@
+.trip-info-main-container {
+  margin: 0 auto !important;
+}
+
+.trip-info-main {
+  margin-bottom: 2.4rem;
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-grey-light-2);
+  text-align: center;
+}
+
+.trip-info-main p {
+  font-family: var(--font-monospaced-bold);
+}
+
+.trip-info-main-heading {
+  color: var(--color-green-light);
+  font-weight: bold !important;
+}

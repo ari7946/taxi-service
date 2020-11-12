@@ -6,15 +6,16 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
-import { setInput } from '../../redux/book/book.actions';
-import './book.styles.css';
-import vanYellow from '../../assets/van-yellow.png';
-import sedanYellow from '../../assets/sedan-yellow.png';
-import vanWhite from '../../assets/van-white.png';
-import sedanWhite from '../../assets/sedan-white.png';
+import { setInput } from '../../../redux/book/book.actions';
+
+import './book-vehicle-type.styles.css';
+import vanYellow from '../../../assets/van-yellow.png';
+import sedanYellow from '../../../assets/sedan-yellow.png';
+import vanWhite from '../../../assets/van-white.png';
+import sedanWhite from '../../../assets/sedan-white.png';
 
 import { createStructuredSelector } from 'reselect';
-import { selectVehicle } from '../../redux/book/book.selectors';
+import { selectVehicle } from '../../../redux/book/book.selectors';
 
 const VehicleType = ({ setInput, vehicle }) => {
   return (

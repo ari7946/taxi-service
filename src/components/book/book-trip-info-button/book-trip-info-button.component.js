@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
-import './book.styles.css';
+import './book-trip-info-button.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { 
   selectDistance, selectStartAddress, selectEndAddress, selectValidEstimate, selectVehicle, selectDropFee 
-} from '../../redux/book/book.selectors';
+} from '../../../redux/book/book.selectors';
 
 const TripInfoButton = ({  
     distance,

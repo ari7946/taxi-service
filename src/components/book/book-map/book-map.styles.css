@@ -5,6 +5,10 @@
   height: 60vh;
 }
 
+.geoResponse-result-distance {
+  display: none;
+}
+
 @media (max-width: 600px) {
   #map {
     width: 100%;

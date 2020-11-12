@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
-import './book.styles.css';
+import './book-form.styles.css';
 
-import TripInfoButton from './book-trip-info.component';
+import TripInfoButton from '../book-trip-info.component';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectStartAddress, selectEndAddress, selectName, selectEmail, selectComments, 
   selectPhone, selectPassengers, selectLoading, selectSubmitted, 
   selectInvalidFields, selectDate, selectTime, selectAlertSuccess 
-} from '../../redux/book/book.selectors';
+} from '../../../redux/book/book.selectors';
 
-import { setInput, submitForm } from '../../redux/book/book.actions';
+import { setInput, submitForm } from '../../../redux/book/book.actions';
 
 const TaxiForm = ({ 
   // action creators

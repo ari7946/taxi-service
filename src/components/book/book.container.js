@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import TaxiForm from './book-form.component';
+import TaxiForm from './book-form/book-form.component';
 import Loading from './book-loading.component';
 import MapHeader from './book-map-header.component';
 import Addresses from './book-addresses/book-addresses.component';

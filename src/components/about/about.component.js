@@ -45,7 +45,6 @@ export default class About extends React.Component {
             <p className="about-description text-justify">We offer a full range of taxi services. Call us for dependable service for airport shuttle, sightseeing tours, or for transportation to medical visits, social visits or shopping. We offer corporate accounts, which provide businesses with a convenient method for managing their corporate transportation needs. Please contact us to learn more about starting a corporate account for airport shuttle service, driving your clients or other taxi services.</p>
           </Col>
         </Row>
-
       </Container>
     );
   }

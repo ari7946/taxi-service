@@ -11,9 +11,9 @@
   font-size: 25px;
 } */
 
-h2.price {
+/* h2.price {
   color: var(--color-grey-light-2);
-}
+} */
 
 .book-form label {
   color: var(--color-green-light);
@@ -73,7 +73,7 @@ h2.price {
 /*! END TRIP INFO MAIN */
 
 /* ESTIMATE */
-.estimate {
+/* .estimate {
   background-color: var(--color-green-dark) !important;
   color: var(--color-green-light);
   border: none !important;
@@ -84,7 +84,7 @@ h2.price {
 .estimate-heading {
   color: var(--color-primary);
   font-weight: bold !important;
-}
+} */
 /*! END ESTIMATE */
 
 /* VEHICLE TYPE */
@@ -123,9 +123,9 @@ ul.vehicle-card-text {
     font-size: 14px;
   }
 
-  .estimate .price {
+  /* .estimate .price {
     font-size: 20px;
-  }
+  } */
 
   /* START Addresses COMPONENT */
   /* .book-address {
@@ -176,10 +176,10 @@ ul.vehicle-card-text {
     padding: 0;
   } */
 
-  .estimate {
+  /* .estimate {
     font-family: var(--font-monospaced);
     letter-spacing: 0.2rem;
-  }
+  } */
 
   .map-heading {
     font-weight: 700;
@@ -201,10 +201,10 @@ ul.vehicle-card-text {
     display: none;
   }
 
-  .estimate {
+  /* .estimate {
     font-family: var(--font-monospaced);
     letter-spacing: 0.1rem;
-  }
+  } */
 
   .trip-info-button,
   .book-button {

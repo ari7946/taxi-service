@@ -1,11 +1,8 @@
 import React from 'react';
-import { ListGroupItem, ListGroupItemText } from 'reactstrap';
-import './book.styles.css';
-
-import VehicleType from './book-vehicle-type.component';
+import './book-estimate.styles.css';
 
 import { createStructuredSelector } from 'reselect';
-import { selectPrice, selectDropFee, selectDirection, selectTaxiFare, selectValidDropFee, selectValidEstimate } from '../../redux/book/book.selectors';
+import { selectPrice, selectDropFee, selectDirection, selectTaxiFare, selectValidDropFee, selectValidEstimate } from '../../../redux/book/book.selectors';
 
 import { connect } from 'react-redux';
 

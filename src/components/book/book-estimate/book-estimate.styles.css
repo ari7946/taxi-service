@@ -1,0 +1,36 @@
+.estimate {
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-green-light);
+  border: none !important;
+  font-family: var(--font-monospaced-bold);
+  letter-spacing: 0.25rem;
+}
+
+.estimate-heading {
+  color: var(--color-primary);
+  font-weight: bold !important;
+}
+
+.price {
+  color: var(--color-grey-light-2);
+}
+
+@media (max-width: 1200px) {
+  .estimate .price {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .estimate {
+    font-family: var(--font-monospaced);
+    letter-spacing: 0.2rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .estimate {
+    font-family: var(--font-monospaced);
+    letter-spacing: 0.1rem;
+  }
+}

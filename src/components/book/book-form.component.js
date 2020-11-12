@@ -19,7 +19,7 @@ const TaxiForm = ({
   // form fields
   name, email, comments, phone, date, time, 
   // other 
-  loading, submitted, invalidFields, alertSuccess,
+  loading, invalidFields, alertSuccess,
   startAddress, endAddress,
 }) => {
 

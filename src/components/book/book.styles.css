@@ -6,13 +6,13 @@
   height: 60vh;
 }
 
-.instructions ol li {
+/* .instructions ol li {
   font-weight: 300 !important;
   font-size: 25px;
-}
+} */
 
 h2.price {
-  color: var(--color-grey-light-2)
+  color: var(--color-grey-light-2);
 }
 
 .book-form label {
@@ -26,8 +26,8 @@ h2.price {
 }
 
 /* START ADDRESSES */
-.book-address {
-  margin-bottom: .8rem !important;
+/* .book-address {
+  margin-bottom: 0.8rem !important;
   margin-top: 0 !important;
   padding-top: 0 !important;
   background-color: var(--color-green-dark) !important;
@@ -45,8 +45,8 @@ h2.price {
 
 .address-heading-destination {
   color: var(--color-flat-orange);
-  font-weight: bold !important;
-}
+  font-weight: bold !important; 
+} */
 /*! END ADDRESSES  */
 
 /* TRIP INFO MAIN */
@@ -78,7 +78,7 @@ h2.price {
   color: var(--color-green-light);
   border: none !important;
   font-family: var(--font-monospaced-bold);
-  letter-spacing: .25rem;
+  letter-spacing: 0.25rem;
 }
 
 .estimate-heading {
@@ -128,7 +128,7 @@ ul.vehicle-card-text {
   }
 
   /* START Addresses COMPONENT */
-  .book-address {
+  /* .book-address {
     margin-bottom: .2rem;
     padding-top: 0 0 !important;
     background-color: var(--color-green-dark) !important;
@@ -147,39 +147,38 @@ ul.vehicle-card-text {
   .address-heading-destination {
     color: var(--color-flat-orange);
     font-weight: bold !important;
-  }
+  } */
   /* END ADDRESSES COMPONENT */
-} 
+}
 
 @media (max-width: 1100px) {
-
   .vehicle-type .vehicle-img {
     height: 6rem;
   }
 
-.instructions ol li {
-  font-weight: 300 !important;
-  font-size: 20px;
-}
+  /* .instructions ol li {
+    font-weight: 300 !important;
+    font-size: 20px;
+  } */
 }
 
 @media (max-width: 600px) {
   #map {
     width: 100%;
-    height: 30vh;  
+    height: 30vh;
     margin: 0 auto;
   }
 
   /* Address text in Addresses Component */
-  .book-address p {
+  /* .book-address p {
     font-family: var(--font-monospaced);
     margin: 0;
     padding: 0;
-  }
+  } */
 
   .estimate {
     font-family: var(--font-monospaced);
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
   }
 
   .map-heading {
@@ -192,9 +191,9 @@ ul.vehicle-card-text {
     margin-top: 2rem;
   }
 
-  .instructions ol li {
+  /* .instructions ol li {
     font-size: 17px;
-  }
+  } */
 }
 
 @media (max-width: 415px) {
@@ -204,10 +203,11 @@ ul.vehicle-card-text {
 
   .estimate {
     font-family: var(--font-monospaced);
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
   }
 
-  .trip-info-button, .book-button {
-    padding: .3rem .2rem !important;
+  .trip-info-button,
+  .book-button {
+    padding: 0.3rem 0.2rem !important;
   }
 }

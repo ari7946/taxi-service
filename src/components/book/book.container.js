@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import TaxiForm from './book-form.component';
 import Loading from './book-loading.component';
 import MapHeader from './book-map-header.component';
-import Addresses from './book-addresses.component';
+import Addresses from './book-addresses/book-addresses.component';
 import Estimate from './book-estimate.component';
 import VehicleType from './book-vehicle-type.component';
 import TripInfoMain from './book-trip-info-main.component';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ListGroup, ListGroupItem, Button, Popover, PopoverBody, Col, Row } from 'reactstrap';
 import AdminTripStatusGroup from '../trip-status/trip-status.component';
 import '../trips.styles.css';

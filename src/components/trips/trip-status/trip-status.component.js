@@ -1,11 +1,11 @@
 import React from 'react';
 import { ButtonGroup, Button, Spinner } from 'reactstrap';
-import './trips.styles.css';
+import '../trips.styles.css';
 import { connect } from 'react-redux';
-import { useAuth } from '../../auth/use-auth';
-import { deleteTrip, updateTrip } from '../../redux/trips/trips.actions';
+import { useAuth } from '../../../auth/use-auth';
+import { deleteTrip, updateTrip } from '../../../redux/trips/trips.actions';
 
-import { selectLoadingTrip } from '../../redux/trips/trips.selectors';
+import { selectLoadingTrip } from '../../../redux/trips/trips.selectors';
 
 const TripStatus = ({ trip, updateTrip, deleteTrip, loadingTrip }) => {
   const { auth } = useAuth();

@@ -1,9 +1,9 @@
 import React from 'react';
 import { TabContent } from 'reactstrap';
-import AdminTabPane from './trip-tab-pane.component';
-import './trips.styles.css';
+import AdminTabPane from '../trip-tab-pane/trip-tab-pane.component';
+import '../trips.styles.css';
 
-import { selectAllTrips, selectConfirmedTrips, selectCompletedTrips, selectArchivedTrips } from '../../redux/trips/trips.selectors';
+import { selectAllTrips, selectConfirmedTrips, selectCompletedTrips, selectArchivedTrips } from '../../../redux/trips/trips.selectors';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 

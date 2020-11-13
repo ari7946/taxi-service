@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import TripList from './trip-list.component';
+import TripList from './trip-list/trip-list.component';
 import { useAuth } from '../../auth/use-auth';
 import './trips.styles.css';
 

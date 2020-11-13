@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import './trips.styles.css';
+import '../trips.styles.css';
 
 const TripNav = ({ activeTab, setActiveTab }) => {
 

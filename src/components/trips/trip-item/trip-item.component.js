@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ListGroup, ListGroupItem, Button, Popover, PopoverBody, Col, Row } from 'reactstrap';
-import AdminTripStatusGroup from './trip-status.component';
-import './trips.styles.css';
+import AdminTripStatusGroup from '../trip-status/trip-status.component';
+import '../trips.styles.css';
 
 const TripItem = ({ trip }) => {
   

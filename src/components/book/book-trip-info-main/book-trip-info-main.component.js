@@ -11,7 +11,7 @@ import { selectVehicle, selectPassengers, selectValidEstimate, selectDistance, s
 const TripInfoMain = ({ 
   vehicle, passengers, estimate, distance, direction, startAddressAndEndAddressAreValid
 }) => {
-    const [collapse, setCollapse] = useState(false);
+    const [collapse, setCollapse] = useState(true);
 
     const [status, setStatus] = useState('Closed');
 

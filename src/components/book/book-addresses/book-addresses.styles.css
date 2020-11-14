@@ -1,6 +1,6 @@
-.instructions ol li {
+.instructions {
   font-weight: 300 !important;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .book-address {
@@ -26,7 +26,7 @@
 }
 
 @media (max-width: 1100px) {
-  .instructions ol li {
+  .instructions {
     font-weight: 300 !important;
     font-size: 20px;
   }
@@ -58,7 +58,7 @@
     padding: 0;
   }
 
-  .instructions ol li {
+  .instructions {
     font-size: 17px;
   }
 }

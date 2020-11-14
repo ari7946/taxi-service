@@ -1,10 +1,13 @@
-/***************** BOOK **********************/
-#map {
+/* **************** NOTE ********************* 
+  This code has been modularized to components within the book directory. It just here for reference; it will be removed soon.
+*/
+
+/* #map {
   max-height: 40vh;
   width: 100%;
   width: auto;
   height: 60vh;
-}
+} */
 
 /* .instructions ol li {
   font-weight: 300 !important;
@@ -15,7 +18,7 @@
   color: var(--color-grey-light-2);
 } */
 
-.book-form label {
+/* .book-form label {
   color: var(--color-green-light);
 }
 
@@ -23,7 +26,7 @@
   background-color: var(--color-green-dark) !important;
   padding-top: 0 !important;
   border: none !important;
-}
+} */
 
 /* START ADDRESSES */
 /* .book-address {
@@ -50,7 +53,7 @@
 /*! END ADDRESSES  */
 
 /* TRIP INFO MAIN */
-
+/* 
 .trip-info-main-container {
   margin: 0 auto !important;
 }
@@ -69,7 +72,7 @@
 .trip-info-main-heading {
   color: var(--color-green-light);
   font-weight: bold !important;
-}
+} */
 /*! END TRIP INFO MAIN */
 
 /* ESTIMATE */
@@ -88,7 +91,7 @@
 /*! END ESTIMATE */
 
 /* VEHICLE TYPE */
-.vehicle-type-card {
+/* .vehicle-type-card {
   border: none !important;
   cursor: pointer;
 }
@@ -102,26 +105,26 @@ ul.vehicle-card-text {
   height: 10rem;
   width: 90% !important;
   margin: 0 auto;
-}
+} */
 /*! END VEHICLE TYPE */
 
-.auth {
+/* .auth {
   max-width: 600px !important;
-}
+} */
 
 /* display none because it defaults to metric */
-.geoResponse-result-distance {
+/* .geoResponse-result-distance {
   display: none;
-}
+} */
 
 @media (max-width: 1200px) {
-  .vehicle-type {
+  /* .vehicle-type {
     margin-bottom: 1rem;
   }
 
   .vehicle-type button {
     font-size: 14px;
-  }
+  } */
 
   /* .estimate .price {
     font-size: 20px;
@@ -152,9 +155,9 @@ ul.vehicle-card-text {
 }
 
 @media (max-width: 1100px) {
-  .vehicle-type .vehicle-img {
+  /* .vehicle-type .vehicle-img {
     height: 6rem;
-  }
+  } */
 
   /* .instructions ol li {
     font-weight: 300 !important;
@@ -163,11 +166,11 @@ ul.vehicle-card-text {
 }
 
 @media (max-width: 600px) {
-  #map {
+  /* #map {
     width: 100%;
     height: 30vh;
     margin: 0 auto;
-  }
+  } */
 
   /* Address text in Addresses Component */
   /* .book-address p {
@@ -181,7 +184,7 @@ ul.vehicle-card-text {
     letter-spacing: 0.2rem;
   } */
 
-  .map-heading {
+  /* .map-heading {
     font-weight: 700;
     font-size: 17px;
     margin-left: 1rem;
@@ -189,7 +192,7 @@ ul.vehicle-card-text {
 
   .vehicle-type {
     margin-top: 2rem;
-  }
+  } */
 
   /* .instructions ol li {
     font-size: 17px;
@@ -197,17 +200,17 @@ ul.vehicle-card-text {
 }
 
 @media (max-width: 415px) {
-  .vehicle-type .vehicle-type-text {
+  /* .vehicle-type .vehicle-type-text {
     display: none;
-  }
+  } */
 
   /* .estimate {
     font-family: var(--font-monospaced);
     letter-spacing: 0.1rem;
   } */
 
-  .trip-info-button,
+  /* .trip-info-button,
   .book-button {
     padding: 0.3rem 0.2rem !important;
-  }
+  } */
 }

@@ -1,0 +1,9 @@
+.book-form label {
+  color: var(--color-green-light);
+}
+
+.book-form {
+  background-color: var(--color-green-dark) !important;
+  padding-top: 0 !important;
+  border: none !important;
+}

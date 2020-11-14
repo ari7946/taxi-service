@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Col, Row, Button, Collapse  } from 'reactstrap';
-import './book.styles.css';
+import './book-trip-info-main.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTaxi, faChevronDown, faChevronUp, faBars } from '@fortawesome/free-solid-svg-icons'
 
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
-import { selectVehicle, selectPassengers, selectValidEstimate, selectDistance, selectDirection, selectStartAddressAndEndAddressAreValid } from '../../redux/book/book.selectors';
+import { selectVehicle, selectPassengers, selectValidEstimate, selectDistance, selectDirection, selectStartAddressAndEndAddressAreValid } from '../../../redux/book/book.selectors';
 
 const TripInfoMain = ({ 
   vehicle, passengers, estimate, distance, direction, startAddressAndEndAddressAreValid

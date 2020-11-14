@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './book.styles.css';
+import './book-map-header.styles.css';
 
 import { createStructuredSelector } from 'reselect';
-import { selectStartAddress, selectEndAddress } from '../../redux/book/book.selectors';
+import { selectStartAddress, selectEndAddress } from '../../../redux/book/book.selectors';
 
 function MapHeader({ startAddress, endAddress }) {
   const startHeading = <span className="address-heading-starting">Starting Point</span>;

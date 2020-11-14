@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import './book.styles.css';
 import { Spinner } from 'reactstrap';
 
 function Loading() {

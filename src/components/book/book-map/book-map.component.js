@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import './book.styles.css';
+import './book-map.styles.css';
 import { connect } from 'react-redux';
-import { locationsCleared, locationsFound, routeChanged } from '../../redux/book/book.actions';
+import { locationsCleared, locationsFound, routeChanged } from '../../../redux/book/book.actions';
 
-function Map({ locationsCleared, locationsFound, routeChanged }) {
+const Map = ({ locationsCleared, locationsFound, routeChanged }) => {
 
   useEffect(() => {
     const script = document.createElement('script');

@@ -6,15 +6,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
-import { setInput } from '../../redux/book/book.actions';
-import './book.styles.css';
-import vanYellow from '../../assets/van-yellow.png';
-import sedanYellow from '../../assets/sedan-yellow.png';
-import vanWhite from '../../assets/van-white.png';
-import sedanWhite from '../../assets/sedan-white.png';
+import { setInput } from '../../../redux/book/book.actions';
+
+import './book-vehicle-type.styles.css';
+import van from '../../../assets/van10.png';
+import sedan from '../../../assets/sedan10.png';
 
 import { createStructuredSelector } from 'reselect';
-import { selectVehicle } from '../../redux/book/book.selectors';
+import { selectVehicle } from '../../../redux/book/book.selectors';
 
 const VehicleType = ({ setInput, vehicle }) => {
   return (
@@ -31,10 +30,13 @@ const VehicleType = ({ setInput, vehicle }) => {
             onClick={() => setInput({name: 'vehicle', value:'sedan'})}
           >   
             <CardImg 
-              className="vehicle-img" 
+              className={`
+                vehicle-img
+                ${vehicle === 'van' && 'vehicle-img-opacity'}
+              `}
               top 
               width="100%" 
-              src={vehicle === 'sedan' ? sedanYellow : sedanWhite} 
+              src={sedan} 
               alt="Card image cap" 
             />
             <CardBody>
@@ -67,10 +69,13 @@ const VehicleType = ({ setInput, vehicle }) => {
             onClick={() => setInput({ name: 'vehicle', value: 'van' })}
           >
             <CardImg 
-              className="vehicle-img" 
+              className={`
+                vehicle-img
+                ${vehicle === 'sedan' && 'vehicle-img-opacity'}
+              `}
               top 
               width="100%" 
-              src={vehicle === "van" ? vanYellow : vanWhite} 
+              src={van} 
               alt="Card image cap" 
             />
             <CardBody>

@@ -1,0 +1,5 @@
+@media (max-width: 415px) {
+  .trip-info-button {
+    padding: 0.4rem 0.2rem !important;
+  }
+}

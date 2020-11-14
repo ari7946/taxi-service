@@ -14,6 +14,10 @@ ul.vehicle-card-text {
   margin: 0 auto;
 }
 
+.vehicle-img-opacity {
+  opacity: 50%;
+}
+
 @media (max-width: 1200px) {
   .vehicle-type {
     margin-bottom: 1rem;

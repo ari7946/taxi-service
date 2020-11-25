@@ -5,12 +5,12 @@ import './user.styles.css';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../auth/use-auth';
+// import { useAuth } from '../../auth/use-auth';
 
 const UserLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   let history = useHistory();
   const { userLogin } = useAuth();
 

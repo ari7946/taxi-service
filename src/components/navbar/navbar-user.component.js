@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { logout } from '../../redux/auth/auth.actions';
 
-import { logout } from '../../redux/auth/auth.actions'
 import {
   Collapse,
   Navbar,
@@ -19,7 +19,7 @@ import logo2 from '../../assets/logo2.png';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { useAuth } from '../../auth/use-auth';
+// import { useAuth } from '../../auth/use-auth';
 import { useHistory } from 'react-router-dom';
 
 const UserNavbar = ({ logout }) => {

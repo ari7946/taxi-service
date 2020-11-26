@@ -21,7 +21,6 @@ const TripList = ({ getTrips, loadingType, trips }) => {
 
   return (
     <Container fluid>
-
       {loadingType === 'getTrips' ? (
         <Spinner size="lg" className="text-grey-light-2" />
       ) : (

@@ -6,11 +6,11 @@ import tripsReducer from './trips/trips.reducer';
 import bookReducer from './book/book.reducer';
 import authReducer from './auth/auth.reducer';
 
-
+// auth state will persist in localstorage
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['book'],
+  whitelist: ['auth'],
 }
 
 const rootReducer =  combineReducers({

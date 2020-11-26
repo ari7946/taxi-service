@@ -2,47 +2,56 @@ import React, { useState } from 'react';
 import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import './user.styles.css';
 
+import { userLogin } from '../../redux/auth/auth.actions';
+import { connect } from 'react-redux';
+
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import { useAuth } from '../../auth/use-auth';
 
-const UserLogin = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const UserLogin = ({ userLogin }) => {
+  const [currentUsername, setCurrentUsername] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
   // const [loading, setLoading] = useState(false);
   let history = useHistory();
-  const { userLogin } = useAuth();
+  // const { userLogin } = useAuth();
 
-  const handleFormSubmit = async (formSubmitEvent) => {
-    formSubmitEvent.preventDefault();
+  // const handleFormSubmit = async (formSubmitEvent) => {
+  //   formSubmitEvent.preventDefault();
 
-    try {
-      setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
-      if (response) {
-        setLoading(false);
-        userLogin(response.data.token, response.data.username);
-        history.push('/trips');
-        window.location.reload();
-      }
-    } catch (error) {
-      setLoading(false)
-      console.log('error', error);
-    }
-  }
+  //   try {
+  //     setLoading(true);
+  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
+  //     if (response) {
+  //       setLoading(false);
+  //       userLogin(response.data.token, response.data.username);
+  //       history.push('/trips');
+  //       window.location.reload();
+  //     }
+  //   } catch (error) {
+  //     setLoading(false)
+  //     console.log('error', error);
+  //   }
+  // }
 
   return (
     <Container className="text-green-light auth" fluid>
       <h1 className="mb-3">Login</h1>
-      {loading && <Spinner size="md" color="light"></Spinner>}
-      <Form className='' onSubmit={(e) => handleFormSubmit(e)}>
+      {/* {loading && <Spinner size="md" color="light"></Spinner>} */}
+      <Form 
+        className='' 
+        onSubmit={(event) => {
+          event.preventDefault();
+          userLogin(currentUsername, currentPassword);
+        }}
+      >
         <FormGroup>
           <Label for="admin">Username</Label>
           <Input
             type="text"
             name="username"
-            onChange={e => setUsername(e.target.value)}
+            onChange={e => setCurrentUsername(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
@@ -50,7 +59,7 @@ const UserLogin = () => {
           <Input
             type="password"
             name="password"
-            onChange={e => setPassword(e.target.value)}
+            onChange={e => setCurrentPassword(e.target.value)}
           />
         </FormGroup>
         <Button className="text-green-light">
@@ -65,4 +74,8 @@ const UserLogin = () => {
   )
 }
 
-export default UserLogin;
+const mapDispatchToProps = dispatch => ({
+  userLogin: (username, password) => dispatch(userLogin(username, password))
+})
+
+export default connect(null, mapDispatchToProps)(UserLogin);

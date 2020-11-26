@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import { logout } from '../../redux/auth/auth.actions'
 import {
   Collapse,
   Navbar,
@@ -15,12 +18,12 @@ import "./navbar.styles.css";
 import logo2 from '../../assets/logo2.png';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTaxi, faChevronDown, faChevronUp, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useAuth } from '../../auth/use-auth';
 import { useHistory } from 'react-router-dom';
 
-const UserNavbar = (props) => {
-  const { logout } = useAuth();
+const UserNavbar = ({ logout }) => {
+  // const { logout } = useAuth();
   let history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -98,4 +101,8 @@ const UserNavbar = (props) => {
   );
 }
 
-export default UserNavbar;
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
+})
+
+export default connect(null, mapDispatchToProps)(UserNavbar);

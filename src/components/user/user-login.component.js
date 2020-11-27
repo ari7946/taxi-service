@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import './user.styles.css';
 
-import { userLogin } from '../../redux/auth/auth.actions';
+import { userAuth } from '../../redux/auth/auth.actions';
 import { connect } from 'react-redux';
 
 import { useHistory } from "react-router-dom";
@@ -10,12 +10,12 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import { useAuth } from '../../auth/use-auth';
 
-const UserLogin = ({ userLogin }) => {
+const UserLogin = ({ userAuth }) => {
   const [currentUsername, setCurrentUsername] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   // const [loading, setLoading] = useState(false);
   let history = useHistory();
-  // const { userLogin } = useAuth();
+  // const { userAuth } = useAuth();
 
   // const handleFormSubmit = async (formSubmitEvent) => {
   //   formSubmitEvent.preventDefault();
@@ -25,7 +25,7 @@ const UserLogin = ({ userLogin }) => {
   //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
   //     if (response) {
   //       setLoading(false);
-  //       userLogin(response.data.token, response.data.username);
+  //       userAuth(response.data.token, response.data.username);
   //       history.push('/trips');
   //       window.location.reload();
   //     }
@@ -40,10 +40,9 @@ const UserLogin = ({ userLogin }) => {
       <h1 className="mb-3">Login</h1>
       {/* {loading && <Spinner size="md" color="light"></Spinner>} */}
       <Form 
-        className='' 
         onSubmit={(event) => {
           event.preventDefault();
-          userLogin(currentUsername, currentPassword);
+          userAuth('login', currentUsername, currentPassword);
         }}
       >
         <FormGroup>
@@ -75,7 +74,7 @@ const UserLogin = ({ userLogin }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userLogin: (username, password) => dispatch(userLogin(username, password))
+  userAuth: (authType, username, password) => dispatch(userAuth(authType, username, password))
 })
 
 export default connect(null, mapDispatchToProps)(UserLogin);

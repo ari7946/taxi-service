@@ -61,7 +61,7 @@ const AdminLogin = ({ adminLogin }) => {
         className='' 
         onSubmit={(event) => {
           event.preventDefault();
-          adminLogin(username, password, false)
+          adminLogin(username, password)
         }}
       >
         <FormGroup>

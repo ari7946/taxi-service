@@ -1,11 +1,14 @@
 import AuthActionTypes from './auth.types';
 import axios from 'axios';
 
-export const userLogin = (username, password) => {
+export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
+  
   return async dispatch => {
     dispatch({ type: AuthActionTypes.FETCH_USER });
     try {
-      const result = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
+      const result = authType === 'login'
+        ? await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password })
+        : await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password, name, email, phone })
       const { token } = result.data;
       dispatch({ type: AuthActionTypes.FETCH_SUCCESS, token, currentUser: username })
     } catch (error) {
@@ -14,7 +17,7 @@ export const userLogin = (username, password) => {
   }
 }
 
-export const adminLogin = (username, password, guestAdmin) => {
+export const adminLogin = (username, password, guestAdmin = false) => {
   const guestAdminUsername = process.env.REACT_APP_GUEST_USERNAME;
   const guestAdminPassword = process.env.REACT_APP_GUEST_PASSWORD;
 

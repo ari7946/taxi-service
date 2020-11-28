@@ -3,15 +3,16 @@ import { Container } from 'reactstrap';
 import './admin.styles.css';
 import { Redirect } from 'react-router-dom';
 import AdminLogin from './admin-login.component';
-import { useAuth } from '../../auth/use-auth';
-import TripList from '../trips';
 
-const AdminContainer = () => {
-  const { auth } = useAuth();
+import { selectAuthRole } from '../../redux/auth/auth.selectors';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+const AdminContainer = ({ authRole }) => {
 
   return (
     <Container>
-      {auth === 'user'
+      {authRole === 'user'
         ? <Redirect to='/trips' />
         : <AdminLogin />
       }
@@ -19,4 +20,8 @@ const AdminContainer = () => {
   )
 }
 
-export default AdminContainer;
+const mapStateToProps = createStructuredSelector({
+  authRole: selectAuthRole,
+})
+
+export default connect(mapStateToProps)(AdminContainer);

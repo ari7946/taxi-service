@@ -1,14 +1,10 @@
 import TripsActionTypes from './trips.types';
 import axios from 'axios';
-
-const authHeaders = {
-  headers: {
-    Authorization: localStorage.getItem('token') || ''
-  }
-}
+import { selectAuthHeaders } from '../auth/auth.selectors';
 
 export const getTrips = () => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const authHeaders = selectAuthHeaders(getState());
     dispatch({ type: TripsActionTypes.SUBMIT, loadingType: 'getTrips' })
     try {
       const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, authHeaders);
@@ -20,7 +16,8 @@ export const getTrips = () => {
 }
 
 export const updateTrip = (status, id) => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const authHeaders = selectAuthHeaders(getState());
     dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id })
     try {
       const result = await axios.put(
@@ -36,7 +33,8 @@ export const updateTrip = (status, id) => {
 }
 
 export const deleteTrip = (status, id) => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const authHeaders = selectAuthHeaders(getState());
     dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id})
     try {
       const result = await axios.delete(

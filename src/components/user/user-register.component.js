@@ -2,43 +2,51 @@ import React, { useState } from 'react';
 import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import './user.styles.css';
 
+import { userAuth } from '../../redux/auth/auth.actions';
+import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
-import { useAuth } from '../../auth/use-auth';
+// import axios from 'axios';
+// import { useAuth } from '../../auth/use-auth';
 
-const UserRegister = () => {
+const UserRegister = ({ userAuth }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [loading, setLoading] = useState(false);
-  let history = useHistory();
-  const { userRegister } = useAuth();
+  // const [loading, setLoading] = useState(false);
+  // let history = useHistory();
+  // const { userRegister } = useAuth();
 
-  const handleFormSubmit = async (formSubmitEvent) => {
-    formSubmitEvent.preventDefault();
+  // const handleFormSubmit = async (formSubmitEvent) => {
+  //   formSubmitEvent.preventDefault();
 
-    try {
-      setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/register`, { username, password, name, email, phone });
-      if (response) {
-        setLoading(false);
-        userRegister(response.data.token, response.data.username);
-        history.push('/book');
-      }
-    } catch (error) {
-      setLoading(false)
-      console.log('error', error);
-    }
-  }
+  //   try {
+  //     setLoading(true);
+  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/register`, { username, password, name, email, phone });
+  //     if (response) {
+  //       setLoading(false);
+  //       userRegister(response.data.token, response.data.username);
+  //       history.push('/book');
+  //     }
+  //   } catch (error) {
+  //     setLoading(false)
+  //     console.log('error', error);
+  //   }
+  // }
 
   return (
     <Container className="text-green-light auth" fluid>
       <h1 className="mb-3 color-grey-light-2">Register</h1>
-      {loading && <Spinner size="md" color="light"></Spinner>}
-      <Form className='' onSubmit={(e) => handleFormSubmit(e)}>
+      {/* {loading && <Spinner size="md" color="light"></Spinner>} */}
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          userAuth('register', username, password, name, email, phone);
+        }}
+      >
         <FormGroup>
           <Label for="admin">Username<span className="text-flat-orange small ml-2 text-center">required</span></Label>
           <Input
@@ -92,4 +100,9 @@ const UserRegister = () => {
   )
 }
 
-export default UserRegister;
+const mapDispatchToProps = dispatch => ({
+  userAuth: (register, username, password, name, email, phone ) => 
+    dispatch(userAuth(register, username, password, name, email, phone))
+})
+
+export default connect(null, mapDispatchToProps)(UserRegister);

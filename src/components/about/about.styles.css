@@ -35,7 +35,7 @@
 }
 
 .about-img-container-bottom {
-  border-left: 1px solid var(--color-yellow);
+  border-left: 2px solid var(--color-yellow);
   /* border-bottom: 1px solid var(--color-yellow); */
   padding-bottom: 1rem;
 }

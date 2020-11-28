@@ -6,18 +6,17 @@ import TripTabContent from '../trip-tab-content/trip-tab-content.component';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import '../trips.styles.css';
-import { useAuth } from '../../../auth/use-auth';
 
 import { getTrips } from '../../../redux/trips/trips.actions';
-import { selectAllTrips, selectLoadingType } from '../../../redux/trips/trips.selectors';
+import { selectLoadingType } from '../../../redux/trips/trips.selectors';
+import { selectAuthRole } from '../../../redux/auth/auth.selectors';
 
-const TripList = ({ getTrips, loadingType, trips }) => {
+const TripList = ({ getTrips, loadingType, authRole }) => {
   const [activeTab, setActiveTab] = useState('viewAll');
-  const { auth } = useAuth();
 
   useEffect(() => {
     getTrips();
-  }, [auth])
+  }, [authRole])
 
   return (
     <Container fluid>
@@ -44,7 +43,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = createStructuredSelector({
-  trips: selectAllTrips,
+  authRole: selectAuthRole,
   loadingType: selectLoadingType,
 });
 

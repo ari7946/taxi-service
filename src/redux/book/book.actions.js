@@ -1,5 +1,6 @@
 import BookActionTypes from './book.types';
 import { selectBook } from './book.selectors';
+import { selectCurrentUser } from '../auth/auth.selectors';
 import axios from 'axios';
 
 export const setInput = ({ name, value }) => {
@@ -30,6 +31,7 @@ export const submitForm = () => {
   return (dispatch, getState) => {
     dispatch({ type: BookActionTypes.SUBMIT });
     
+    const username = selectCurrentUser(getState());
     const { 
       startAddress,
       endAddress, 
@@ -50,7 +52,6 @@ export const submitForm = () => {
     } = selectBook(getState());
 
     const processForm = async () => {
-      const username = localStorage.getItem('username') || '';
       const formFields = { name, comments, phone, email, date, time };
       const body = { 
         distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, 

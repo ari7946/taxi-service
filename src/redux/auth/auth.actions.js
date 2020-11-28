@@ -2,7 +2,7 @@ import AuthActionTypes from './auth.types';
 import axios from 'axios';
 
 export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
-  
+
   return async dispatch => {
     dispatch({ type: AuthActionTypes.FETCH_USER });
     try {
@@ -23,7 +23,7 @@ export const adminLogin = (username, password, guestAdmin = false) => {
 
   return async dispatch => {
     dispatch({ type: AuthActionTypes.FETCH_USER });
-    // guestAdmin is Boolean value passed in from the admin login component
+    // guestAdmin is a Boolean value passed in from the admin login component
     try {
       const result = guestAdmin
         ? await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username: guestAdminUsername, password: guestAdminPassword })
@@ -41,6 +41,6 @@ export const adminLogin = (username, password, guestAdmin = false) => {
   }
 }
 
-export const logout = () => {
-  return { type: AuthActionTypes.LOGOUT }
-}
+export const logout = () => ({
+  type: AuthActionTypes.LOGOUT 
+})

@@ -2,13 +2,12 @@ import React from 'react';
 import { ButtonGroup, Button, Spinner } from 'reactstrap';
 import '../trips.styles.css';
 import { connect } from 'react-redux';
-import { useAuth } from '../../../auth/use-auth';
 import { deleteTrip, updateTrip } from '../../../redux/trips/trips.actions';
 
 import { selectLoadingTrip } from '../../../redux/trips/trips.selectors';
+import { selectAuthRole } from '../../../redux/auth/auth.selectors';
 
-const TripStatus = ({ trip, updateTrip, deleteTrip, loadingTrip }) => {
-  const { auth } = useAuth();
+const TripStatus = ({ trip, updateTrip, deleteTrip, loadingTrip, authRole }) => {
 
   const spinner = <Spinner
     as="span"
@@ -21,7 +20,7 @@ const TripStatus = ({ trip, updateTrip, deleteTrip, loadingTrip }) => {
 
   return (
     <>
-      {auth === 'admin' ? (
+      {authRole === 'admin' ? (
         <ButtonGroup color="light">
           <Button
             className={`
@@ -73,7 +72,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = (state, ownProps) => ({
-  loadingTrip: (loadingType) => selectLoadingTrip(ownProps.trip.id, loadingType)(state)
+  authRole: selectAuthRole(state),
+  loadingTrip: (loadingType) => selectLoadingTrip(ownProps.trip.id, loadingType)(state),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripStatus);

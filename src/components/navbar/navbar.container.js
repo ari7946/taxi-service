@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { useAuth } from '../../auth/use-auth';
 import DefaultNavbar from './navbar-default.component';
 import AdminNavbar from './navbar-admin.component';
 import UserNavbar from './navbar-user.component';
@@ -9,7 +8,6 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 const NavbarContainer = ({ authRole }) => {
-  // const { auth } = useAuth();
 
   return (
     <Fragment>

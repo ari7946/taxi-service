@@ -1,19 +1,25 @@
 import React, { Fragment } from 'react';
 import TripList from './trip-list/trip-list.component';
-import { useAuth } from '../../auth/use-auth';
 import './trips.styles.css';
+import { selectAuthRole } from '../../redux/auth/auth.selectors';
 
-function TripContainer() {
-  const { auth } = useAuth();
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+function TripContainer({ authRole }) {
 
   return (
     <Fragment>
-      {auth !== 'user' && auth !== 'admin' && <h3 className="text-green-light mb-3">Login required to view trips</h3>}
-      {auth === 'user' || auth === 'admin' ? (
+      {authRole !== 'user' && authRole !== 'admin' && <h3 className="text-green-light mb-3">Login required to view trips</h3>}
+      {authRole === 'user' || authRole === 'admin' ? (
         <TripList />
       ) : null}
     </Fragment>
   )
 }
 
-export default TripContainer;
+const mapStateToProps = createStructuredSelector({
+  authRole: selectAuthRole,
+})
+
+export default connect(mapStateToProps)(TripContainer);

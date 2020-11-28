@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 const UserLogin = ({ userAuth }) => {
   const [currentUsername, setCurrentUsername] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
-  // const [loading, setLoading] = useState(false);
   let history = useHistory();
   // const { userAuth } = useAuth();
 
@@ -43,6 +42,7 @@ const UserLogin = ({ userAuth }) => {
         onSubmit={(event) => {
           event.preventDefault();
           userAuth('login', currentUsername, currentPassword);
+          history.push('/trips');
         }}
       >
         <FormGroup>

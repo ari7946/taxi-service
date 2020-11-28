@@ -12,7 +12,7 @@ const AdminLogin = ({ adminLogin }) => {
   const [username, setAdmin] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  // let history = useHistory();
+  let history = useHistory();
   // const { adminLogin } = useAuth();
 
   // const handleFormSubmit = async (formSubmitEvent) => {
@@ -61,7 +61,8 @@ const AdminLogin = ({ adminLogin }) => {
         className='' 
         onSubmit={(event) => {
           event.preventDefault();
-          adminLogin(username, password)
+          adminLogin(username, password);
+          history.push('/trips');
         }}
       >
         <FormGroup>
@@ -87,7 +88,8 @@ const AdminLogin = ({ adminLogin }) => {
           className="text-green-light ml-3"
           onClick={(event) => {
             event.preventDefault();
-            adminLogin(username, password, true)
+            adminLogin(username, password, true);
+            history.push('/trips');
           }}
         >
           Guest Admin Login

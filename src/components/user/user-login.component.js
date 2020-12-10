@@ -4,13 +4,13 @@ import './user.styles.css';
 
 import { userAuth } from '../../redux/auth/auth.actions';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectAuthLoading } from '../../redux/auth/auth.selectors';
 
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-// import { useAuth } from '../../auth/use-auth';
 
-const UserLogin = ({ userAuth }) => {
+const UserLogin = ({ userAuth, loading }) => {
   const [currentUsername, setCurrentUsername] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   let history = useHistory();
@@ -37,11 +37,11 @@ const UserLogin = ({ userAuth }) => {
   return (
     <Container className="text-green-light auth" fluid>
       <h1 className="mb-3">Login</h1>
-      {/* {loading && <Spinner size="md" color="light"></Spinner>} */}
+      {loading && <Spinner size="md" color="light"></Spinner>}
       <Form 
-        onSubmit={(event) => {
+        onSubmit={ async (event) => {
           event.preventDefault();
-          userAuth('login', currentUsername, currentPassword);
+          await userAuth('login', currentUsername, currentPassword);
           history.push('/trips');
         }}
       >
@@ -73,8 +73,13 @@ const UserLogin = ({ userAuth }) => {
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  userAuth: (authType, username, password) => dispatch(userAuth(authType, username, password))
+const mapStateToProps = createStructuredSelector({
+  loading: selectAuthLoading,
 })
 
-export default connect(null, mapDispatchToProps)(UserLogin);
+const mapDispatchToProps = dispatch => ({
+  userAuth: (authType, username, password) => 
+    dispatch(userAuth(authType, username, password))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

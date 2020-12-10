@@ -7,18 +7,19 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+import { createStructuredSelector } from 'reselect';
+import { selectAuthLoading } from '../../redux/auth/auth.selectors';
+
 // import axios from 'axios';
 // import { useAuth } from '../../auth/use-auth';
 
-const UserRegister = ({ userAuth }) => {
+const UserRegister = ({ userAuth, loading }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  // const [loading, setLoading] = useState(false);
-  // let history = useHistory();
-  // const { userRegister } = useAuth();
+  let history = useHistory();
 
   // const handleFormSubmit = async (formSubmitEvent) => {
   //   formSubmitEvent.preventDefault();
@@ -40,11 +41,12 @@ const UserRegister = ({ userAuth }) => {
   return (
     <Container className="text-green-light auth" fluid>
       <h1 className="mb-3 color-grey-light-2">Register</h1>
-      {/* {loading && <Spinner size="md" color="light"></Spinner>} */}
+      {loading && <Spinner size="md" color="light"></Spinner>}
       <Form
-        onSubmit={(event) => {
+        onSubmit={ async (event) => {
           event.preventDefault();
-          userAuth('register', username, password, name, email, phone);
+          await userAuth('register', username, password, name, email, phone);
+          history.push('./trips');
         }}
       >
         <FormGroup>
@@ -100,9 +102,14 @@ const UserRegister = ({ userAuth }) => {
   )
 }
 
+
+const mapStateToProps = createStructuredSelector({
+  loading: selectAuthLoading,
+})
+
 const mapDispatchToProps = dispatch => ({
   userAuth: (register, username, password, name, email, phone ) => 
     dispatch(userAuth(register, username, password, name, email, phone))
 })
 
-export default connect(null, mapDispatchToProps)(UserRegister);
+export default connect(mapStateToProps, mapDispatchToProps)(UserRegister);

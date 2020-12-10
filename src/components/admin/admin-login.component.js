@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import './admin.styles.css';
-import axios from 'axios';
-import { useAuth } from '../../auth/use-auth';
 
+import { createStructuredSelector } from 'reselect';
+import { selectAuthLoading } from '../../redux/auth/auth.selectors';
 import { connect } from 'react-redux';
 import { adminLogin } from '../../redux/auth/auth.actions';
 
-const AdminLogin = ({ adminLogin }) => {
+const AdminLogin = ({ adminLogin, loading }) => {
   const [username, setAdmin] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
   let history = useHistory();
   // const { adminLogin } = useAuth();
 
@@ -59,9 +58,9 @@ const AdminLogin = ({ adminLogin }) => {
       {loading && <Spinner size="md" color="light"></Spinner>}
       <Form 
         className='' 
-        onSubmit={(event) => {
+        onSubmit={ async (event) => {
           event.preventDefault();
-          adminLogin(username, password);
+          await adminLogin(username, password);
           history.push('/trips');
         }}
       >
@@ -86,9 +85,10 @@ const AdminLogin = ({ adminLogin }) => {
         </Button>
         <Button
           className="text-green-light ml-3"
-          onClick={(event) => {
+          onClick={ async (event) => {
             event.preventDefault();
-            adminLogin(username, password, true);
+            // third argument is true that user is signing in as a guest
+            await adminLogin(username, password, true);
             history.push('/trips');
           }}
         >
@@ -99,9 +99,13 @@ const AdminLogin = ({ adminLogin }) => {
   )
 }
 
+const mapStateToProps = createStructuredSelector({
+  loading: selectAuthLoading,
+})
+
 const mapDispatchToProps = dispatch => ({
   adminLogin: (username, password, guestAdmin) => 
     dispatch(adminLogin(username, password, guestAdmin))
 })
 
-export default connect(null, mapDispatchToProps)(AdminLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminLogin);

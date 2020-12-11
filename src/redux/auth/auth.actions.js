@@ -8,6 +8,8 @@ export const userAuth = (authType, username, password, name = '', email = '', ph
     try {
       const result = authType === 'login'
         ? await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password })
+        // for user registration, "name", "email", and "phone" are not required. If
+        // excluded, they default to empty strings
         : await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password, name, email, phone })
       const { token } = result.data;
       dispatch({ type: AuthActionTypes.FETCH_SUCCESS, token, currentUser: username })

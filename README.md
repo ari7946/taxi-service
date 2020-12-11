@@ -76,11 +76,11 @@ Follow these steps to get the app running:
 
 - All the core redux functionality for this app is stored inside the "redux" directory. 
 
-- The two main components are "trips" and "book". Each component contains its own actions, reducer, selectors, and types.
+- The three main redux components(not refering to react UI components) are "trips", "book", and "auth". Each component contains its own actions, reducer, selectors, and types. This organization was chosen to encourage reusabilty. For instance, both users and admins use the "trips" component functionality for react and redux. However, only admin can see every trip for every user and change the status of any trip, whereas a user can only see their own trips and cannot change its status.
 
-- The root-reducer, which combines both "trips" and "book" reducers, is also located inside the redux directory alongside the store.
+- The root-reducer, which combines "auth", "trips" and "book" reducers, is also located inside the redux directory alongside the store.
   
-- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "book" state in local storage. This ensures the book component maintains its state even after a user refreshes the page or navigates to a different page.
+- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "auth" state in local storage. This ensures the user's authentication status persists even after a user refreshes the page or navigates to a different page.
 
 - The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called [createSelector](https://redux-toolkit.js.org/api/createSelector) to create these memoized selector functions. Selectors can be also be composed as shown below.
 ```javascript
@@ -133,4 +133,59 @@ export const updateTrip = (status, id) => {
     }
   }
 }
+```
+
+- User authentication and authorization functionality is placed inside the "auth" redux component. Login and Register functionality is handled using redux thunks as follows
+```javascript
+export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
+
+  return async dispatch => {
+    dispatch({ type: AuthActionTypes.FETCH_USER });
+    try {
+      const result = authType === 'login'
+        ? await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password })
+        // for user registration, "name", "email", and "phone" are not required. If
+        // excluded, they default to empty strings
+        : await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password, name, email, phone })
+      const { token } = result.data;
+      dispatch({ type: AuthActionTypes.FETCH_SUCCESS, token, currentUser: username })
+    } catch (error) {
+      dispatch({ type: AuthActionTypes.ERROR, errorMesssage: error })
+    }
+  }
+}
+```
+
+- Auth selectors are used throughout React components to conditionally render UI based
+on authorized roles. Currently there are users and one admin.
+```javascript
+export const selectAuthRole = createSelector(
+  [selectAuthState],
+  authState => {
+    if (!authState.currentUser) {
+      return ''
+    } else if (authState.currentUser === 'admin') {
+      return 'admin'
+    } else {
+      return 'user'
+    }
+  }
+)
+```
+
+- Another example of an auth selector is the "selectAuthHeaders". This selector, which uses includes a json web token for HTTP request headers, is used for booking taxis(both authenticated and unauthenticated users can book). It is also used for admin only authorized requests such as updating trip status and deleting trips. Further implementation of authorization is done in the [server API](https://github.com/ari7946/backend-taxi-service)
+```javascript
+export const selectAuthHeaders = createSelector(
+  [selectAuthState],
+  authState => {
+    if (authState.token && authState.currentUser) {
+      return {
+        headers: {
+          Authorization: authState.token
+        }
+      }
+    }
+
+  }
+)
 ```

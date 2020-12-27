@@ -79,8 +79,15 @@ describe('tripsReducer', () => {
       status: 'archive'
     }
 
-    expect(tripsReducer(mockState, { type: TripsActionTypes.UPDATE_TRIP, trip: mockTripWithUpdatedStatus})
-      .trips[1].status
+    expect(tripsReducer(
+      mockState, 
+      { 
+        type: TripsActionTypes.UPDATE_TRIP, 
+        trip: mockTripWithUpdatedStatus
+      }
+    )
+      .trips[1]
+      .status
     ).toEqual('archive')
 
   })

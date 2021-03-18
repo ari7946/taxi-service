@@ -1,12 +1,11 @@
-import React from 'react';
-import { Col, Row  } from 'reactstrap';
+import React, { FC, ReactElement } from 'react';
 import './book-addresses.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { selectStartAddress, selectEndAddress } from '../../../redux/book/book.selectors';
 
-const Addresses = ({ 
+const Addresses: FC<{startAddress: string, endAddress: string}> = ({ 
   startAddress, endAddress
 }) => {
   return (

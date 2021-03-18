@@ -84,7 +84,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
             ? '1-4'
             : '1-7',
 
-          // if the startAddress OR endAddress is cleared/not defined, set the price
+          // if the startAddress AND/OR endAddress is cleared/not defined, set the price
           // to zero because a distance between both defined points is needed to calculate the price.
           // Otherwise, if both startAddress and endAddress are provided, 
           // calculate the price based on the total distance (between startAddress & endAddress) and rate according to type of vehicle (sedan or van).

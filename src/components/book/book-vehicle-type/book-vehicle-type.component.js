@@ -1,10 +1,7 @@
 import React from 'react';
 import { 
-  Card, Button, CardImg, CardTitle, CardText, CardGroup,
-  CardSubtitle, CardBody, Col, Row
+  Card, Button, CardImg, CardTitle, CardText, CardBody, Col, Row
 } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCar, faShuttleVan } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { setInput } from '../../../redux/book/book.actions';
 

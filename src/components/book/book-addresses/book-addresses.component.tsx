@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC } from 'react';
 import './book-addresses.styles.css';
 
 import { createStructuredSelector } from 'reselect';
@@ -23,7 +23,7 @@ const Addresses: FC<{startAddress: string, endAddress: string}> = ({
 
       {startAddress && (
         <div className="book-address">
-            <h3 className="address-heading-starting">Starting Point</h3>
+          <h3 className="address-heading-starting">Starting Point</h3>
           <p>
             {startAddress}
           </p>

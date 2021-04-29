@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { 
   Card, Button, CardImg, CardTitle, CardText, CardBody, Col, Row
+  //@ts-ignore
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { setInput } from '../../../redux/book/book.actions';
@@ -12,7 +14,12 @@ import sedan from '../../../assets/sedan10.png';
 import { createStructuredSelector } from 'reselect';
 import { selectVehicle } from '../../../redux/book/book.selectors';
 
-const VehicleType = ({ setInput, vehicle }) => {
+const VehicleType = ({ 
+  setInput, vehicle 
+  } : {
+    setInput: (options: object) => any,
+    vehicle: string
+  }) => {
   return (
     <div className="vehicle-type">
       <Row>

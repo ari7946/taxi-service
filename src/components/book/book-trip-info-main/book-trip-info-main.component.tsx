@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// @ts-ignore
 import { Col, Row, Button, Collapse  } from 'reactstrap';
 import './book-trip-info-main.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,7 +11,7 @@ import { selectVehicle, selectPassengers, selectValidEstimate, selectDistance, s
 
 const TripInfoMain = ({ 
   vehicle, passengers, estimate, distance, direction, startAddressAndEndAddressAreValid
-}) => {
+}: { vehicle: string, passengers:number, estimate:number, distance:number, direction:string, startAddressAndEndAddressAreValid:boolean}): React.ReactElement => {
     const [collapse, setCollapse] = useState(true);
 
     const [status, setStatus] = useState('Closed');
@@ -26,7 +27,7 @@ const TripInfoMain = ({
     const toggle = () => setCollapse(!collapse);
 
   return (
-    <>
+    <React.Fragment>
       {startAddressAndEndAddressAreValid && (
         <div className="pt-3 trip-info-main-container my-5">
           <Button 
@@ -84,7 +85,7 @@ const TripInfoMain = ({
           </Collapse>
         </div>
       )}
-    </>
+    </React.Fragment>
   )
 }
 

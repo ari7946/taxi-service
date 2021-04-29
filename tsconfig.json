@@ -4,13 +4,13 @@
     "module": "esnext",
     "lib": [
       "ESNEXT",
-      "DOM"
+      "DOM",
     ],
     "jsx": "react",
     "jsxFactory": "React.createElement",
     "jsxFragmentFactory": "Fragment",
     "outDir": "./build",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,

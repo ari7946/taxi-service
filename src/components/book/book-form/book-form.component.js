@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
 import './book-form.styles.css';
 
-import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
+import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component.tsx';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 

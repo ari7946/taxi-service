@@ -1,13 +1,24 @@
 import TripsActionTypes from './trips.types';
 
-const INITIAL_STATE = {
+interface ObjectLiteral {
+  [key: string]: any;
+}
+
+interface TripState {
+  trips: ObjectLiteral[],
+  loadingType: 'confirm' | 'complete' | 'delete' | '',
+  error: string,
+  loadingTripId: null | number
+}
+
+const INITIAL_STATE: TripState = {
   trips: [],
   loadingType: '',
   error: '',
-  loadingTripId: null,
+  loadingTripId: null
 }
 
-const tripsReducer = (state = INITIAL_STATE, action) => {
+const tripsReducer = (state = INITIAL_STATE, action): TripState => {
   switch (action.type) {
 
     case TripsActionTypes.SUBMIT:
@@ -34,7 +45,7 @@ const tripsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loadingType: '',
-        loadingTripId: -1,
+        loadingTripId: null,
         trips: updatedTrips,
       }
     case TripsActionTypes.DELETE_TRIP:
@@ -43,7 +54,7 @@ const tripsReducer = (state = INITIAL_STATE, action) => {
         ...state,
         loadingType: '',
         trips: filteredTrips,
-        loadingTripId: -1,
+        loadingTripId: null,
       }
     case TripsActionTypes.ERROR:
       return {

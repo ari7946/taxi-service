@@ -7,9 +7,31 @@ import { selectAllTrips, selectConfirmedTrips, selectCompletedTrips, selectArchi
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+interface ObjectLiteral {
+  [key: string]: any;
+}
+
+type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
+
+interface OwnProps {
+  activeTab: TabState,
+  allTrips: ObjectLiteral[],
+}
+
+interface ReduxProps {
+  allTrips: ObjectLiteral[],
+  confirmedTrips: ObjectLiteral[],
+  completedTrips: ObjectLiteral[],
+  archivedTrips: ObjectLiteral[]
+}
+
 const TripTabContent = ({ 
-  activeTab, allTrips, confirmedTrips, completedTrips, archivedTrips
-}) => {
+  activeTab, 
+  allTrips, 
+  confirmedTrips, 
+  completedTrips, 
+  archivedTrips
+} : OwnProps & ReduxProps ) => {
   return (
     <TabContent activeTab={activeTab}>
       <TabPane 

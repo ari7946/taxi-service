@@ -3,7 +3,23 @@ import { TabPane, ListGroup } from 'reactstrap';
 import Trip from '../trip-item/trip-item.component';
 import '../trips.styles.css';
 
-const TripTabPane = ({ tabId, tripStatus, trips }) => {
+interface ObjectLiteral {
+  [key: string]: any;
+}
+
+type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
+
+type TripStatus = 'trips' | 'confirmed' | 'completed' | 'archived';
+
+const TripTabPane = ({ 
+  tabId, 
+  tripStatus, 
+  trips 
+} : {
+  tabId: TabState,
+  tripStatus: TripStatus,
+  trips: ObjectLiteral[]
+}) => {
   return (
     <TabPane tabId={tabId}>
       {trips.length ? (

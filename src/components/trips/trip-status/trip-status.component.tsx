@@ -9,20 +9,27 @@ import { selectAuthRole } from '../../../redux/auth/auth.selectors';
 
 type TripStatus = 'confirm' | 'complete' | 'archive' | 'delete';
 
-const TripStatus = ({ 
-  trip, 
-  updateTrip, 
-  deleteTrip, 
-  loadingTrip, 
-  authRole 
-} : {
-  trip: any,
+// props passed not from redux
+interface OwnProps {
+  tripId: number,
+  tripStatus: TripStatus,
+}
+
+interface ReduxProps {
   updateTrip: (status: TripStatus, tripId: number) => any,
   loadingTrip: (status: TripStatus, tripId: number) => any,
   deleteTrip: (status: 'delete', tripId: number) => any,
   authRole: string
-}) => {
-  const { id: tripId, status: tripStatus } = trip;
+}
+
+const TripStatus = ({ 
+  tripId,
+  tripStatus, 
+  updateTrip, 
+  deleteTrip, 
+  loadingTrip, 
+  authRole 
+} : OwnProps & ReduxProps ) => {
 
   const spinner = <Spinner
     as="span"

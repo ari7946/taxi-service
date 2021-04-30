@@ -2,7 +2,15 @@ import React, { useState} from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import './trip-nav.styles.css';
 
-const TripNav = ({ activeTab, setActiveTab }) => {
+type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
+
+const TripNav = ({ 
+  activeTab, 
+  setActiveTab 
+} : {
+  activeTab: string,
+  setActiveTab: (s: TabState) => void
+}) => {
 
   return (
     <Nav className='mb-2 nav-tabs' tabs color="light">

@@ -6,7 +6,7 @@ interface ObjectLiteral {
 
 interface TripState {
   trips: ObjectLiteral[],
-  loadingType: 'confirm' | 'complete' | 'delete' | '',
+  loadingType: 'confirm' | 'complete' | 'delete' | 'archive' | '',
   error: string,
   loadingTripId: null | number
 }

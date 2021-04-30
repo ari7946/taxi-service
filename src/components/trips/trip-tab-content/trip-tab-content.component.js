@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabContent } from 'reactstrap';
-import AdminTabPane from '../trip-tab-pane/trip-tab-pane.component';
+import TabPane from '../trip-tab-pane/trip-tab-pane.component';
 import '../trips.styles.css';
 
 import { selectAllTrips, selectConfirmedTrips, selectCompletedTrips, selectArchivedTrips } from '../../../redux/trips/trips.selectors';
@@ -12,25 +12,25 @@ const TripTabContent = ({
 }) => {
   return (
     <TabContent activeTab={activeTab}>
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewAll'}
         trips={allTrips}
         tripStatus={'trips'}
       />
 
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewConfirmed'}
         trips={confirmedTrips}
         tripStatus={'confirmed'}
       />
 
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewCompleted'}
         trips={completedTrips}
         tripStatus={'completed'}
       />
 
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewArchived'}
         trips={archivedTrips}
         tripStatus={'archived'}

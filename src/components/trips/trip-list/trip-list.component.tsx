@@ -11,8 +11,17 @@ import { getTrips } from '../../../redux/trips/trips.actions';
 import { selectLoadingType } from '../../../redux/trips/trips.selectors';
 import { selectAuthRole } from '../../../redux/auth/auth.selectors';
 
-const TripList = ({ getTrips, loadingType, authRole }) => {
-  const [activeTab, setActiveTab] = useState('viewAll');
+const TripList = ({ 
+  getTrips, 
+  loadingType, 
+  authRole 
+} : {
+  getTrips: () => any,
+  loadingType: string,
+  authRole: string
+}) => {
+  type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
+  const [activeTab, setActiveTab] = useState<TabState>('viewAll');
 
   useEffect(() => {
     getTrips();
@@ -23,7 +32,7 @@ const TripList = ({ getTrips, loadingType, authRole }) => {
       {loadingType === 'getTrips' ? (
         <Spinner size="lg" className="text-grey-light-2" />
       ) : (
-        <>
+        <React.Fragment>
           <TripNav 
             setActiveTab={setActiveTab} 
             activeTab={activeTab}  
@@ -32,7 +41,7 @@ const TripList = ({ getTrips, loadingType, authRole }) => {
           <TripTabContent 
             activeTab={activeTab} 
           />
-        </>
+        </React.Fragment>
       )}
     </Container>
   )

@@ -5,7 +5,13 @@ import './book-map-header.styles.css';
 import { createStructuredSelector } from 'reselect';
 import { selectStartAddress, selectEndAddress } from '../../../redux/book/book.selectors';
 
-function MapHeader({ startAddress, endAddress }) {
+function MapHeader({ 
+  startAddress, 
+  endAddress 
+}: {
+  startAddress: string,
+  endAddress: string
+}): React.ReactElement {
   const startHeading = <span className="address-heading-starting">Starting Point</span>;
   const destinationHeading = <span className="address-heading-destination">Destination</span>;
 

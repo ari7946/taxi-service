@@ -1,13 +1,20 @@
 import TripActionTypes from './auth.types';
 
-const INITIAL_STATE = {
+interface AuthState {
+  currentUser: string,
+  token: string,
+  loading: boolean,
+  errorMessage: string
+}
+
+const INITIAL_STATE: AuthState = {
   currentUser: '',
   token: '',
   loading: false,
   errorMessage: '',
 }
 
-const authReducer = (state = INITIAL_STATE, action) => {
+const authReducer = (state = INITIAL_STATE, action): AuthState => {
   switch (action.type) {
     case TripActionTypes.FETCH_USER:
       return {

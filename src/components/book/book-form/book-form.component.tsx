@@ -13,6 +13,28 @@ import { selectStartAddress, selectEndAddress, selectName, selectEmail, selectCo
 
 import { setInput, submitForm  } from '../../../redux/book/book.actions';
 
+interface ActionCreators {
+  submitForm: () => any,
+  setInput: (options: object) => any
+}
+
+interface FormFields {
+  name: string,
+  email: string,
+  comments: string,
+  phone: string,
+  date: string,
+  time: string
+}
+
+interface Other {
+  loading: boolean,
+  invalidFields: string[],
+  alertSuccess: boolean,
+  startAddress: string,
+  endAddress: string
+}
+
 const TaxiForm = ({ 
   // action creators
   submitForm, setInput, 
@@ -21,9 +43,9 @@ const TaxiForm = ({
   // other 
   loading, invalidFields, alertSuccess,
   startAddress, endAddress,
-}) => {
+} : ActionCreators & FormFields & Other) : React.ReactElement => {
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     submitForm();
   }

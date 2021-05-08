@@ -1,10 +1,13 @@
 import React from 'react';
-import { ListGroup, ListGroupItem, Button, Popover, PopoverBody, Col, Row } from 'reactstrap';
-import AdminTripStatusGroup from '../trip-status/trip-status.component';
+import { ListGroupItem, Col, Row } from 'reactstrap';
+import TripStatusButtonGroup from '../trip-status/trip-status.component';
 import '../trips.styles.css';
 
-const TripItem = ({ trip }) => {
-  
+interface ObjectLiteral {
+  [key: string]: any;
+}
+
+const TripItem = ({ trip } : { trip: ObjectLiteral }) => {
   return (
     <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">
       <Row>
@@ -27,7 +30,10 @@ const TripItem = ({ trip }) => {
         </Col>
       </Row>
 
-      <AdminTripStatusGroup trip={trip} />
+      <TripStatusButtonGroup 
+        tripId={trip.id}
+        tripStatus={trip.status}
+      />
     </ListGroupItem>
   )
 }

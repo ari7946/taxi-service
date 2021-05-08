@@ -1,36 +1,58 @@
 import React from 'react';
 import { TabContent } from 'reactstrap';
-import AdminTabPane from '../trip-tab-pane/trip-tab-pane.component';
+import TabPane from '../trip-tab-pane/trip-tab-pane.component';
 import '../trips.styles.css';
 
 import { selectAllTrips, selectConfirmedTrips, selectCompletedTrips, selectArchivedTrips } from '../../../redux/trips/trips.selectors';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+interface ObjectLiteral {
+  [key: string]: any;
+}
+
+type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
+
+interface OwnProps {
+  activeTab: TabState,
+  allTrips: ObjectLiteral[],
+}
+
+interface ReduxProps {
+  allTrips: ObjectLiteral[],
+  confirmedTrips: ObjectLiteral[],
+  completedTrips: ObjectLiteral[],
+  archivedTrips: ObjectLiteral[]
+}
+
 const TripTabContent = ({ 
-  activeTab, allTrips, confirmedTrips, completedTrips, archivedTrips
-}) => {
+  activeTab, 
+  allTrips, 
+  confirmedTrips, 
+  completedTrips, 
+  archivedTrips
+} : OwnProps & ReduxProps ) => {
   return (
     <TabContent activeTab={activeTab}>
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewAll'}
         trips={allTrips}
         tripStatus={'trips'}
       />
 
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewConfirmed'}
         trips={confirmedTrips}
         tripStatus={'confirmed'}
       />
 
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewCompleted'}
         trips={completedTrips}
         tripStatus={'completed'}
       />
 
-      <AdminTabPane 
+      <TabPane 
         tabId={'viewArchived'}
         trips={archivedTrips}
         tripStatus={'archived'}

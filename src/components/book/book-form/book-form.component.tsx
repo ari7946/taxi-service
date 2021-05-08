@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
 import './book-form.styles.css';
 
-import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component.tsx';
+import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -13,6 +13,28 @@ import { selectStartAddress, selectEndAddress, selectName, selectEmail, selectCo
 
 import { setInput, submitForm  } from '../../../redux/book/book.actions';
 
+interface ActionCreators {
+  submitForm: () => any,
+  setInput: (options: object) => any
+}
+
+interface FormFields {
+  name: string,
+  email: string,
+  comments: string,
+  phone: string,
+  date: string,
+  time: string
+}
+
+interface Other {
+  loading: boolean,
+  invalidFields: string[],
+  alertSuccess: boolean,
+  startAddress: string,
+  endAddress: string
+}
+
 const TaxiForm = ({ 
   // action creators
   submitForm, setInput, 
@@ -21,9 +43,9 @@ const TaxiForm = ({
   // other 
   loading, invalidFields, alertSuccess,
   startAddress, endAddress,
-}) => {
+} : ActionCreators & FormFields & Other) : React.ReactElement => {
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     submitForm();
   }

@@ -15,7 +15,7 @@ export const getTrips = () => {
   }
 }
 
-export const updateTrip = (status, id) => {
+export const updateTrip = (status: string, id: number) => {
   return async (dispatch, getState) => {
     const authHeaders = selectAuthHeaders(getState());
     dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id })
@@ -32,7 +32,7 @@ export const updateTrip = (status, id) => {
   }
 }
 
-export const deleteTrip = (status, id) => {
+export const deleteTrip = (status: string, id: number) => {
   return async (dispatch, getState) => {
     const authHeaders = selectAuthHeaders(getState());
     dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id})

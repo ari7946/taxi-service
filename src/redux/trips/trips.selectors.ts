@@ -1,5 +1,9 @@
 import { createSelector } from 'reselect';
 
+interface ObjectLiteral {
+  [key: string]: any;
+}
+
 export const selectTripState = state => state.trips;
 
 export const selectAllTrips = createSelector(
@@ -38,7 +42,7 @@ export const selectArchivedTrips = createSelector(
   )
 )
 
-export const selectLoadingTrip = (loadingId, loadingType) =>
+export const selectLoadingTrip = (loadingId: number, loadingType: string) =>
   createSelector(
     [selectLoadingType, selectLoadingTripId],
     (type, id) => 

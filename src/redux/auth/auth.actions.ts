@@ -1,7 +1,9 @@
 import AuthActionTypes from './auth.types';
 import axios from 'axios';
 
-export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
+type AuthType = 'login' | 'register'
+
+export const userAuth = (authType: AuthType, username: string, password: string, name = '', email = '', phone = '') => {
 
   return async dispatch => {
     dispatch({ type: AuthActionTypes.FETCH_USER });
@@ -19,7 +21,7 @@ export const userAuth = (authType, username, password, name = '', email = '', ph
   }
 }
 
-export const adminLogin = (username, password, guestAdmin = false) => {
+export const adminLogin = (username: string, password: string, guestAdmin = false) => {
   const guestAdminUsername = process.env.REACT_APP_GUEST_USERNAME;
   const guestAdminPassword = process.env.REACT_APP_GUEST_PASSWORD;
 

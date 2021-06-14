@@ -3,15 +3,11 @@ Coastal Yellow Cabs enables users to book a taxi and recieve an instant estimate
 
 **Unauthenticated(not registered) User Books a Taxi**
 
-![Unauth user demo GIF](http://g.recordit.co/9a2TZpOu04.gif)
-
-**Authenticated(logged in) User Books a Taxi**
-
-![Auth user demo GIF](http://g.recordit.co/lsBQjwYuml.gif)
+![user books taxi GIF](http://g.recordit.co/DJ6g7fdx9j.gif)
 
 **Admin Uses Panel**
 
-![Admin demo GIF](http://g.recordit.co/NjzMDfoGqu.gif)
+![Admin demo GIF](http://g.recordit.co/gGvp601gPn.gif)
 
 ## Deployment
 
@@ -76,7 +72,7 @@ Follow these steps to get the app running:
 
 - All the core redux functionality for this app is stored inside the "redux" directory. 
 
-- The three main redux components(not refering to react UI components) are "trips", "book", and "auth". Each component contains its own actions, reducer, selectors, and types. This organization was chosen to encourage reusabilty. For instance, both users and admins use the "trips" component functionality for react and redux. However, only admin can see every trip for every user and change the status of any trip, whereas a user can only see their own trips and cannot change its status.
+- The three main redux modules are "trips", "book", and "auth". Each module contains its own actions, reducer, selectors, and types. This organization encourages reusabilty across modules and React components. For instance, both users and admin use the "trips" redux module. The main difference being that only the admin can see every trip for every user and change the status of any trip, whereas a user can only see their own trips.
 
 - The root-reducer, which combines "auth", "trips" and "book" reducers, is also located inside the redux directory alongside the store.
   

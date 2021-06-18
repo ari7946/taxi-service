@@ -1,8 +1,7 @@
 ## Coastal Yellow Cabs
 Coastal Yellow Cabs enables users to book a taxi and recieve an instant estimate that is calculated by the distance and the type of cab requested. The admin may login and view every trip requested by users. Additionally, the admin can change the status of each trip. Users may register and/or login to view their own trips.
 
-**Unauthenticated(not registered) User Books a Taxi**
-
+**User Books a Taxi 
 ![user books taxi GIF](http://g.recordit.co/DJ6g7fdx9j.gif)
 
 **Admin Uses Panel**

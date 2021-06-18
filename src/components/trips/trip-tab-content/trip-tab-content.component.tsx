@@ -15,7 +15,6 @@ type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
 
 interface OwnProps {
   activeTab: TabState,
-  allTrips: ObjectLiteral[],
 }
 
 interface ReduxProps {

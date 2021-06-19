@@ -69,15 +69,16 @@ Follow these steps to get the app running:
 
 ## How Redux Is Used
 
-- All the core redux functionality for this app is stored inside the "redux" directory. 
+- There are three main Redux modules: Auth, Book, and Trips. They're located inside the "redux" directory. 
 
-- The three main redux modules are "trips", "book", and "auth". Each module contains its own actions, reducer, selectors, and types. This organization encourages reusabilty across modules and React components. For instance, both users and admin use the "trips" redux module. The main difference being that only the admin can see every trip for every user and change the status of any trip, whereas a user can only see their own trips.
+- Each module contains its own actions, reducer, selectors, and types. This organization allows for reusability across other Redux modules and React components. For instance, both users and admin use the trips redux module. Another example is the auth module, in that it's used throughout the app for authentication and also as part of the headers for HTTP requests across other redux modules. 
 
 - The root-reducer, which combines "auth", "trips" and "book" reducers, is also located inside the redux directory alongside the store.
   
 - The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "auth" state in local storage. This ensures the user's authentication status persists even after a user refreshes the page or navigates to a different page.
 
-- The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called [createSelector](https://redux-toolkit.js.org/api/createSelector) to create these memoized selector functions. Selectors can be also be composed as shown below.
+- The [reselect](https://github.com/reduxjs/reselect) library supplies memoized functions that get state. Specifically, a function called [createSelector](https://redux-toolkit.js.org/api/createSelector), creates these memoized selector functions. Selectors can be composed as shown below.
+  
 ```javascript
 export const selectAllTrips = createSelector(
   [selectTripState],
@@ -94,7 +95,7 @@ export const selectCompletedTrips =
 
 ```
 
-- [Reselect](https://github.com/reduxjs/reselect) also provides a function called [createStructuredSelector](https://github.com/reduxjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector) that takes an object and returns an object with the same keys, but with selectors replaced with their values. This is used throughout the app to map state to props. Here's an example.
+- [Reselect](https://github.com/reduxjs/reselect) also provides a function called [createStructuredSelector](https://github.com/reduxjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector) that takes an object and returns an object with the same keys, but with selectors replaced with their values. This is used throughout the app to map state to props.
 ```javascript
 const mapStateToProps = createStructuredSelector({
   startAddress: selectStartAddress,
@@ -111,7 +112,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 ```
 
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk) is used to handle asynchronous logic that interacts with the store. Here's an example.
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) handles asynchronous requests as follows.
 ```javascript
 export const updateTrip = (status, id) => {
   return async dispatch => {
@@ -130,7 +131,7 @@ export const updateTrip = (status, id) => {
 }
 ```
 
-- User authentication and authorization functionality is placed inside the "auth" redux component. Login and Register functionality is handled using redux thunks as follows
+- User authentication and authorization functionality is placed inside the "auth" redux module.
 ```javascript
 export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
 
@@ -151,8 +152,8 @@ export const userAuth = (authType, username, password, name = '', email = '', ph
 }
 ```
 
-- Auth selectors are used throughout React components to conditionally render UI based
-on authorized roles. Currently there are users and one admin.
+- Auth selectors help React components to conditionally render UI based
+on auth role. Currently there are users and one admin.
 ```javascript
 export const selectAuthRole = createSelector(
   [selectAuthState],
@@ -168,7 +169,7 @@ export const selectAuthRole = createSelector(
 )
 ```
 
-- Another example of an auth selector is the "selectAuthHeaders". This selector, which uses includes a json web token for HTTP request headers, is used for booking taxis(both authenticated and unauthenticated users can book). It is also used for admin only authorized requests such as updating trip status and deleting trips. Further implementation of authorization is done in the [server API](https://github.com/ari7946/backend-taxi-service)
+- Another example of an auth selector is the "selectAuthHeaders". This selector provides a JSON web token for HTTP request headers. This enables admin-only authorized requests such as updating trip statuses and deleting trips. Furthermore, sensitive content(user/admin auth, trip information) is managed on the [back-end](https://github.com/ari7946/backend-taxi-service) by encoding and decoding credentials on a JSON web token. 
 ```javascript
 export const selectAuthHeaders = createSelector(
   [selectAuthState],

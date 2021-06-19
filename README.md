@@ -71,11 +71,11 @@ Follow these steps to get the app running:
 
 - There are three main Redux modules: Auth, Book, and Trips. They're located inside the "redux" directory. 
 
-- Each module contains its own actions, reducer, selectors, and types. This organization allows for reusability across other Redux modules and React components. For instance, both users and admin use the trips redux module. Another example is the auth module, in that it's used throughout the app for authentication and also as part of the headers for HTTP requests across other redux modules. 
+- Each module contains its own actions, reducer, selectors, and types. This organization allows for reusability across other Redux modules and React components. For instance, both users and admin use the trips redux module. Another example is the auth module, in that it's used throughout the app for authentication and also as part of the headers for HTTP requests. 
 
 - The root-reducer, which combines "auth", "trips" and "book" reducers, is also located inside the redux directory alongside the store.
   
-- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "auth" state in local storage. This ensures the user's authentication status persists even after a user refreshes the page or navigates to a different page.
+- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "auth" state in local storage. This ensures the user's authentication status persists even after a user refreshes the page or navigates to a different website.
 
 - The [reselect](https://github.com/reduxjs/reselect) library supplies memoized functions that get state. Specifically, a function called [createSelector](https://redux-toolkit.js.org/api/createSelector), creates these memoized selector functions. Selectors can be composed as shown below.
   
@@ -169,7 +169,7 @@ export const selectAuthRole = createSelector(
 )
 ```
 
-- Another example of an auth selector is the "selectAuthHeaders". This selector provides a JSON web token for HTTP request headers. This enables admin-only authorized requests such as updating trip statuses and deleting trips. Furthermore, sensitive content(user/admin auth, trip information) is managed on the [back-end](https://github.com/ari7946/backend-taxi-service) by encoding and decoding credentials on a JSON web token. 
+- Another example of an auth selector is the "selectAuthHeaders". This selector provides authentication headers with a JSON web token for HTTP requests. This enables admin-only authorized requests such as updating trip statuses and deleting trips. Furthermore, sensitive content(user/admin auth, trip information) is managed on the [back-end](https://github.com/ari7946/backend-taxi-service) by encoding and decoding credentials on a JSON web token. 
 ```javascript
 export const selectAuthHeaders = createSelector(
   [selectAuthState],

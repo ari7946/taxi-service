@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// @ts-ignore
 import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import './book-trip-info-button.styles.css';
@@ -14,7 +15,14 @@ const TripInfoButton = ({
     endAddress,
     estimate,
     vehicle,
-  }) => {
+  } : {
+    distance: number
+    startAddress: string
+    endAddress: string
+    estimate: number
+    vehicle: string
+  }): React.ReactElement => {
+
   const [popoverOpen, setPopoverOpen] = useState(false);
   // const total = (Number(price) + dropFee).toFixed(2);
   // const discount = (total * 0.20).toFixed(2);
@@ -32,7 +40,7 @@ const TripInfoButton = ({
         <div
           className="text-right py-2 px-3 font-weight-bold bg-light" 
           onClick={toggle}
-          style={{ cursor: 'pointer', clearfix: 'left' }}
+          style={{ cursor: 'pointer'}}
         >
           X
         </div>

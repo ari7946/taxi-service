@@ -1,17 +1,12 @@
 ## Coastal Yellow Cabs
 Coastal Yellow Cabs enables users to book a taxi and recieve an instant estimate that is calculated by the distance and the type of cab requested. The admin may login and view every trip requested by users. Additionally, the admin can change the status of each trip. Users may register and/or login to view their own trips.
 
-**Unauthenticated(not registered) User Books a Taxi**
-
-![Unauth user demo GIF](http://g.recordit.co/9a2TZpOu04.gif)
-
-**Authenticated(logged in) User Books a Taxi**
-
-![Auth user demo GIF](http://g.recordit.co/lsBQjwYuml.gif)
+**User Books a Taxi 
+![user books taxi GIF](http://g.recordit.co/DJ6g7fdx9j.gif)
 
 **Admin Uses Panel**
 
-![Admin demo GIF](http://g.recordit.co/NjzMDfoGqu.gif)
+![Admin demo GIF](http://g.recordit.co/gGvp601gPn.gif)
 
 ## Deployment
 
@@ -74,15 +69,16 @@ Follow these steps to get the app running:
 
 ## How Redux Is Used
 
-- All the core redux functionality for this app is stored inside the "redux" directory. 
+- There are three main Redux modules: Auth, Book, and Trips. They're located inside the "redux" directory. 
 
-- The two main components are "trips" and "book". Each component contains its own actions, reducer, selectors, and types.
+- Each module contains its own actions, reducer, selectors, and types. This organization allows for reusability across other Redux modules and React components. For instance, both users and admin use the trips redux module. Another example is the auth module, in that it's used throughout the app for authentication and also as part of the headers for HTTP requests. 
 
-- The root-reducer, which combines both "trips" and "book" reducers, is also located inside the redux directory alongside the store.
+- The root-reducer, which combines "auth", "trips" and "book" reducers, is also located inside the redux directory alongside the store.
   
-- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "book" state in local storage. This ensures the book component maintains its state even after a user refreshes the page or navigates to a different page.
+- The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "auth" state in local storage. This ensures the user's authentication status persists even after a user refreshes the page or navigates to a different website.
 
-- The [reselect](https://github.com/reduxjs/reselect) library is used to memoize functions that get state. Reselect provides a function called [createSelector](https://redux-toolkit.js.org/api/createSelector) to create these memoized selector functions. Selectors can be also be composed as shown below.
+- The [reselect](https://github.com/reduxjs/reselect) library supplies memoized functions that get state. Specifically, a function called [createSelector](https://redux-toolkit.js.org/api/createSelector), creates these memoized selector functions. Selectors can be composed as shown below.
+  
 ```javascript
 export const selectAllTrips = createSelector(
   [selectTripState],
@@ -99,7 +95,7 @@ export const selectCompletedTrips =
 
 ```
 
-- [Reselect](https://github.com/reduxjs/reselect) also provides a function called [createStructuredSelector](https://github.com/reduxjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector) that takes an object and returns an object with the same keys, but with selectors replaced with their values. This is used throughout the app to map state to props. Here's an example.
+- [Reselect](https://github.com/reduxjs/reselect) also provides a function called [createStructuredSelector](https://github.com/reduxjs/reselect#createstructuredselectorinputselectors-selectorcreator--createselector) that takes an object and returns an object with the same keys, but with selectors replaced with their values. This is used throughout the app to map state to props.
 ```javascript
 const mapStateToProps = createStructuredSelector({
   startAddress: selectStartAddress,
@@ -116,7 +112,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 ```
 
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk) is used to handle asynchronous logic that interacts with the store. Here's an example.
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) handles asynchronous requests as follows.
 ```javascript
 export const updateTrip = (status, id) => {
   return async dispatch => {
@@ -133,4 +129,59 @@ export const updateTrip = (status, id) => {
     }
   }
 }
+```
+
+- User authentication and authorization functionality is placed inside the "auth" redux module.
+```javascript
+export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
+
+  return async dispatch => {
+    dispatch({ type: AuthActionTypes.FETCH_USER });
+    try {
+      const result = authType === 'login'
+        ? await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password })
+        // for user registration, "name", "email", and "phone" are not required. If
+        // excluded, they default to empty strings
+        : await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password, name, email, phone })
+      const { token } = result.data;
+      dispatch({ type: AuthActionTypes.FETCH_SUCCESS, token, currentUser: username })
+    } catch (error) {
+      dispatch({ type: AuthActionTypes.ERROR, errorMesssage: error })
+    }
+  }
+}
+```
+
+- Auth selectors help React components to conditionally render UI based
+on auth role. Currently there are users and one admin.
+```javascript
+export const selectAuthRole = createSelector(
+  [selectAuthState],
+  authState => {
+    if (!authState.currentUser) {
+      return ''
+    } else if (authState.currentUser === 'admin') {
+      return 'admin'
+    } else {
+      return 'user'
+    }
+  }
+)
+```
+
+- Another example of an auth selector is the "selectAuthHeaders". This selector provides authentication headers with a JSON web token for HTTP requests. This enables admin-only authorized requests such as updating trip statuses and deleting trips. Furthermore, sensitive content(user/admin auth, trip information) is managed on the [back-end](https://github.com/ari7946/backend-taxi-service) by encoding and decoding credentials on a JSON web token. 
+```javascript
+export const selectAuthHeaders = createSelector(
+  [selectAuthState],
+  authState => {
+    if (authState.token && authState.currentUser) {
+      return {
+        headers: {
+          Authorization: authState.token
+        }
+      }
+    }
+
+  }
+)
 ```

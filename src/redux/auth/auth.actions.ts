@@ -1,13 +1,17 @@
 import AuthActionTypes from './auth.types';
 import axios from 'axios';
 
-export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
+type AuthType = 'login' | 'register'
+
+export const userAuth = (authType: AuthType, username: string, password: string, name = '', email = '', phone = '') => {
 
   return async dispatch => {
     dispatch({ type: AuthActionTypes.FETCH_USER });
     try {
       const result = authType === 'login'
         ? await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password })
+        // for user registration, "name", "email", and "phone" are not required. If
+        // excluded, they default to empty strings
         : await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, { username, password, name, email, phone })
       const { token } = result.data;
       dispatch({ type: AuthActionTypes.FETCH_SUCCESS, token, currentUser: username })
@@ -17,7 +21,7 @@ export const userAuth = (authType, username, password, name = '', email = '', ph
   }
 }
 
-export const adminLogin = (username, password, guestAdmin = false) => {
+export const adminLogin = (username: string, password: string, guestAdmin = false) => {
   const guestAdminUsername = process.env.REACT_APP_GUEST_USERNAME;
   const guestAdminPassword = process.env.REACT_APP_GUEST_PASSWORD;
 

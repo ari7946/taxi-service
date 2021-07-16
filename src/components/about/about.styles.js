@@ -1,8 +1,10 @@
-const AboutPageContainer = styled.div`
+import styled from 'styled-components';
+
+export const AboutPageContainer = styled.div`
   padding: 1rem 1.5rem;
 `
 
-const AboutSectionContainer = styled.div`
+export const AboutSectionContainer = styled.div`
   margin: 2rem 0;
   height: auto;
   display: flex;
@@ -30,7 +32,7 @@ const AboutSectionContainer = styled.div`
   }
 `
 
-const AboutSectionMiddle = styled(AboutSectionContainer)`
+export const AboutSectionMiddle = styled(AboutSectionContainer)`
   padding: 3rem 0;
   @media (max-width: 600px) {
     flex-direction: column-reverse;
@@ -49,23 +51,23 @@ const AboutSectionMiddle = styled(AboutSectionContainer)`
   }
 `
 
-const AboutHeading = styled.h3`
+export const AboutHeading = styled.h3`
   color: var(--color-yellow);
 `
 
-const AboutDescription = styled.p`
+export const AboutDescription = styled.p`
   line-height: 25px;
   font-weight: 300;
   font-size: 18px;
   color: var(--color-grey-light-2) !important;
 `
 
-const AboutImgContainerTop = styled.div` 
+export const AboutImgContainerTop = styled.div` 
   border-left: 2px solid var(--color-yellow);
   padding-top: 2rem;
 `
 
-const AboutImgContainerMiddle = styled.div` 
+export const AboutImgContainerMiddle = styled.div` 
   margin-top: 1rem;
   border-right: 2px solid var(--color-yellow);
 
@@ -74,7 +76,7 @@ const AboutImgContainerMiddle = styled.div`
   }
 `
 
-const AboutImgContainerBottom = styled.div` 
+export const AboutImgContainerBottom = styled.div` 
   border-left: 2px solid var(--color-yellow);
   padding-bottom: 1rem;
 `

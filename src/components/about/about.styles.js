@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const AboutPageContainer = styled.div`
   padding: 1rem 1.5rem;
@@ -10,6 +10,11 @@ export const AboutSectionContainer = styled.div`
   display: flex;
   width: 100%;
 
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
   .left {
     width: 75%;
   }
@@ -19,7 +24,6 @@ export const AboutSectionContainer = styled.div`
 
   @media (max-width: 600px) {
     flex-direction: column;
-
     .left {
       width: 100%;
       div {
@@ -51,6 +55,7 @@ export const AboutSectionMiddle = styled(AboutSectionContainer)`
   }
 `
 
+// heading and description
 export const AboutHeading = styled.h3`
   color: var(--color-yellow);
 `
@@ -62,12 +67,13 @@ export const AboutDescription = styled.p`
   color: var(--color-grey-light-2) !important;
 `
 
-export const AboutImgContainerTop = styled.div` 
+// Images
+const AboutImgContainerTop = css` 
   border-left: 2px solid var(--color-yellow);
   padding-top: 2rem;
 `
 
-export const AboutImgContainerMiddle = styled.div` 
+const AboutImgContainerMiddle = css` 
   margin-top: 1rem;
   border-right: 2px solid var(--color-yellow);
 
@@ -76,7 +82,22 @@ export const AboutImgContainerMiddle = styled.div`
   }
 `
 
-export const AboutImgContainerBottom = styled.div` 
+const AboutImgContainerBottom = css` 
   border-left: 2px solid var(--color-yellow);
   padding-bottom: 1rem;
 `
+
+const getImgContainerStyles = props => {
+  if (props.top) {
+    return AboutImgContainerTop
+  } else if (props.middle) {
+    return AboutImgContainerMiddle
+  } else if (props.bottom) {
+    return AboutImgContainerBottom
+  }
+} 
+
+export const AboutImgContainer = styled.div` 
+  ${getImgContainerStyles}
+`
+

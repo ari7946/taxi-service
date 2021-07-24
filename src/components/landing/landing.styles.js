@@ -23,10 +23,6 @@ export const LandingPageContainer = styled.div`
     z-index: 0;
   }
 
-  /* .landing .landing-header {
-    position: relative;
-  } */
-
   .landing-title {
     margin-top: 4rem;
     font-weight: lighter;
@@ -102,7 +98,7 @@ export const LandingPageContainer = styled.div`
     }
 
     &::before {
-      background-position: top; /* Center the image */
+      background-position: top; 
       top: 0;
       right: 0;
       bottom: 0;
@@ -127,21 +123,21 @@ export const LandingPageContainer = styled.div`
 
   @media (max-width: 600px) {
     .landing-title {
-      font-size: 20px;
+      font-size: 2rem;
       margin-bottom: .5rem;
     }
 
     .landing-subtitle {
       font-size: 25px;
       font-weight: 200;
-      margin-top: 1rem;
-      margin-bottom: 0;
+      margin-top: 2rem;
+      margin-right: 1rem;
     }
 
     .landing-buttons {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.5rem;
       width: 80%;
       font-size: 15px;
     }
@@ -165,7 +161,7 @@ export const LandingPageContainer = styled.div`
     }
 
     .landing-title {
-      font-size: 1rem;
+      font-size: 1.8rem;
       color: #fff;
       z-index: 2;
     }

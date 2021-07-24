@@ -1,10 +1,12 @@
 import React from 'react';
-import './book-estimate.styles.css';
+// import './book-estimate.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { selectPrice, selectDropFee, selectDirection, selectTaxiFare, selectValidDropFee, selectValidEstimate } from '../../../redux/book/book.selectors';
 
 import { connect } from 'react-redux';
+
+import { EstimateContainer } from './book-estimate.styles'
 
 const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
   // const taxiFare = startAddressAndEndAddressAreValid ? (Number(price) - dropFee).toFixed(2) : 0;
@@ -12,7 +14,7 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
   // const discountTotal = (total - discount).toFixed(2);
   
   return (
-    <div className="estimate my-4">
+    <EstimateContainer className="">
         {/* //TODO Implement as a future feature */}
         {/* <ul className="pt-3">
           <li>Distance: {distance} miles</li>
@@ -21,12 +23,17 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
           <li>passengers: {vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</li>
         </ul> */}
 
-      <div className="text-center mx-auto">
+      <div className="estimate-info">
         {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
-        <p className='mb-0'>Taxi Fare: ${taxiFare}</p>
-        <p className="mb-0"><span className="mr-3 lead">+</span>Drop Fee: ${dropFee}</p>
+        <p className="fare">Taxi Fare: ${taxiFare}</p>
+        <p className="drop-free">
+          <span className="plus-sign">
+            +
+          </span>
+          Drop Fee: ${dropFee}
+        </p>
         {direction === 'oneWay'
-          ? <h2 className='price border-top border-light pt-2 w-100'>Estimate: ${estimate}</h2>
+          ? <h2 className='price'>Estimate: ${estimate}</h2>
           : null
           //TODO Implement TwoWay as a potential future feature
           // : (
@@ -38,7 +45,7 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
           // )
         }
       </div>
-    </div>
+    </EstimateContainer>
   )
 }
 

@@ -20,11 +20,12 @@ export const EstimateContainer = styled.div`
     }
 
     .plus-sign {
-      margin-right: 1rem;
+      margin-right: .8rem;
+      font-size: 20px;
     }
 
     .fare, .drop-fee {
-      margin-bottom: .1rem;
+      margin: .4rem auto;
     }
 
     .price {

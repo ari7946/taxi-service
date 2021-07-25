@@ -26,7 +26,7 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
       <div className="estimate-info">
         {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
         <p className="fare">Taxi Fare: ${taxiFare}</p>
-        <p className="drop-free">
+        <p className="drop-fee">
           <span className="plus-sign">
             +
           </span>

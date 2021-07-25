@@ -15,7 +15,8 @@ import { createStructuredSelector } from 'reselect';
 import { selectVehicle } from '../../../redux/book/book.selectors';
 
 const VehicleType = ({ 
-  setInput, vehicle 
+  setInput, 
+  vehicle 
   } : {
     setInput: (options: object) => any,
     vehicle: string

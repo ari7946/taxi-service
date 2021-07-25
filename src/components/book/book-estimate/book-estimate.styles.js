@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
 export const EstimateContainer = styled.div` 
-  & {
-    background-color: var(--color-green-dark) !important;
-    color: var(--color-green-light);
-    border: none !important;
-    font-family: var(--font-monospaced-bold);
-    letter-spacing: 0.25rem;
-    margin: 2rem 0;
-    text-transform: uppercase;
-  }
+  background-color: var(--color-green-dark) !important;
+  color: var(--color-green-light);
+  border: none !important;
+  font-family: var(--font-monospaced-bold);
+  letter-spacing: 0.25rem;
+  margin: 2rem 0;
+  text-transform: uppercase;
 
   .estimate-info {
     margin: 0 auto;
@@ -36,22 +34,15 @@ export const EstimateContainer = styled.div`
   }
 
   @media (max-width: 1200px) {
-    &, .price {
-      font-size: 20px;
-    }
+    font-size: 20px;
   }
 
   @media (max-width: 600px) {
-    & {
-      font-family: var(--font-monospaced);
-      letter-spacing: 0.2rem;
-    }
+    font-family: var(--font-monospaced);
+    letter-spacing: 0.2rem;
   }
 
   @media (max-width: 415px) {
-    & {
-      font-family: var(--font-monospaced);
-      letter-spacing: 0.1rem;
-    }
+    letter-spacing: 0.1rem;
   }
 `

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import './book-map.styles.css';
+// import './book-map.styles.css';
 import { connect } from 'react-redux';
 import { locationsCleared, locationsFound, routeChanged } from '../../../redux/book/book.actions';
+
+import { MapContainer } from './book-map.styles'
 
 const Map = ({ locationsCleared, locationsFound, routeChanged }) => {
 
@@ -107,7 +109,7 @@ const Map = ({ locationsCleared, locationsFound, routeChanged }) => {
   }, [])
 
   return (
-    <div className="mt-1 border border-light" id='map'></div>
+    <MapContainer id="map" />
   );
 }
 

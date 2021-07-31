@@ -1,23 +1,48 @@
 import styled from 'styled-components'
 
 export const BookVehicleTypeContainer = styled.div` 
-  .vehicle-type-card {
-    border: none !important;
-    cursor: pointer;
+  & {
+    width: 100%;
+    display: flex;
+    flex: 1 1 0;
+    justify-content: space-between;
   }
 
-  ul.vehicle-card-text {
-    margin-left: 0 !important;
-    padding-left: 1rem !important;
-    letter-spacing: 2px;
+  .vehicle-type-card {
+    border: 1px solid red;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    border: none;
+
+    @media (max-width: 415px) {
+      padding: 0 .4rem;
+    }
+  }
+
+  .vehicle-title {
+    font-size: 20px;
+    margin: .9rem 0;
+  }
+
+  .vehicle-card-text {
+    margin: .5rem 0;
+    padding-left: 1.2rem;
+    letter-spacing: 1px;
     font-family: var(--font-monospaced);
     font-size: 18px;
   }
 
   .vehicle-img {
+    display: block;
     height: 9rem;
-    width: 90% !important;
+    width: 30rem;
     margin: 0 auto;
+  }
+
+  .vehicle-type-button {
+    border-radius: 3px;
+    width: 100%;
+    padding: .3rem;
   }
 
   .vehicle-img-opacity {
@@ -29,13 +54,13 @@ export const BookVehicleTypeContainer = styled.div`
       margin-bottom: 1rem;
     }
 
-    .vehicle-type button {
+    .vehicle-type-button {
       font-size: 14px;
     }
   }
 
   @media (max-width: 1100px) {
-    & .vehicle-img {
+    .vehicle-img {
       height: 6rem;
     }
   }
@@ -47,7 +72,7 @@ export const BookVehicleTypeContainer = styled.div`
   }
 
   @media (max-width: 415px) {
-    & .vehicle-type-text {
+    .vehicle-type-text {
       display: none;
     }
   }

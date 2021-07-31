@@ -1,9 +1,5 @@
 import React from 'react';
 
-import { 
-  Card, Button, CardImg, CardTitle, CardText, CardBody, Col, Row
-  //@ts-ignore
-} from 'reactstrap';
 import { connect } from 'react-redux';
 import { setInput } from '../../../redux/book/book.actions';
 
@@ -25,85 +21,77 @@ const VehicleType = ({
   }) => {
   return (
     <BookVehicleTypeContainer>
-      <Row>
-        <Col xs="6">
-          <Card 
-            className={`
-              ${vehicle === 'sedan' ? 'text-yellow border-warning' : 'border-light text-green-light'}
-              bg-green-dark
-              vehicle-type-card
-            `}
-            value="sedan"
-            onClick={() => setInput({name: 'vehicle', value:'sedan'})}
-          >   
-            <CardImg 
-              className={`
-                vehicle-img
-                ${vehicle === 'van' && 'vehicle-img-opacity'}
-              `}
-              top 
-              width="100%" 
-              src={sedan} 
-              alt="Card image cap" 
-            />
-            <CardBody>
-              <CardTitle>SEDAN</CardTitle>
-              <CardText>
-                <ul className="vehicle-card-text">
-                  <li>$2.95 / MILE </li>
-                  <li>1-4 PASSENGERS</li>
-                </ul>
-              </CardText>
-              <Button 
-                className={`
-                  ${vehicle === 'sedan' ? 'text-dark bg-yellow border-warning' : 'border-light bg-green-light text-dark'}
-                  w-100
-                `}
-                onClick={() => setInput({name: 'vehicle', value:'sedan'})}
-              >SEDAN</Button>
-            </CardBody>
-          </Card>
-        </Col>
+      <div 
+        className={`
+          ${vehicle === 'sedan' ? 'text-yellow' : 'text-green-light'}
+          bg-green-dark
+          vehicle-type-card
+        `}
+        onClick={() => setInput({name: 'vehicle', value:'sedan'})}
+      >   
+        <img 
+          className={`
+            vehicle-img
+            ${vehicle === 'van' && 'vehicle-img-opacity'}
+          `} 
+          src={sedan} 
+          alt="Sedan" 
+        />
 
-        <Col xs="6">
-          <Card 
+        <div>
+          <h3 className="vehicle-title">SEDAN</h3>
+          <ul className="vehicle-card-text">
+            <li>$2.95 / MILE </li>
+            <li>1-4 PASSENGERS</li>
+          </ul>
+
+          <button 
             className={`
-              ${vehicle === 'van' ? 'text-yellow border-warning' : 'border-light text-green-light'}
-              bg-green-dark
-              vehicle-type-card
+              ${vehicle === 'sedan' ? 'bg-yellow' : 'bg-green-light'}
+              vehicle-type-button
             `}
-            value="van"
+            onClick={() => setInput({name: 'vehicle', value:'sedan'})}
+          >
+            SEDAN
+          </button>
+        </div>
+      </div>
+
+      <div 
+        className={`
+          ${vehicle === 'van' ? 'text-yellow' : 'text-green-light'}
+          bg-green-dark
+          vehicle-type-card
+        `}
+        onClick={() => setInput({ name: 'vehicle', value: 'van' })}
+      >
+        <img 
+          className={`
+            vehicle-img
+            ${vehicle === 'sedan' && 'vehicle-img-opacity'}
+          `}
+          src={van} 
+          alt="Van" 
+        />
+
+        <div>
+          <h3 className="vehicle-title">VAN</h3>
+          <ul className="vehicle-card-text">
+            <li>$3.95 / MILE </li>
+            <li>1-7 PASSENGERS</li>
+          </ul>
+
+          <button 
+            className={`
+              ${vehicle === 'van' ? 'bg-yellow' : ' bg-green-light'}
+              vehicle-type-button
+            `}
             onClick={() => setInput({ name: 'vehicle', value: 'van' })}
           >
-            <CardImg 
-              className={`
-                vehicle-img
-                ${vehicle === 'sedan' && 'vehicle-img-opacity'}
-              `}
-              top 
-              width="100%" 
-              src={van} 
-              alt="Card image cap" 
-            />
-            <CardBody>
-              <CardTitle>VAN</CardTitle>
-              <CardText>
-                <ul className="vehicle-card-text">
-                  <li>$3.95 / MILE </li>
-                  <li>1-7 PASSENGERS</li>
-                </ul>
-              </CardText>
-              <Button 
-                className={`
-                  ${vehicle === 'van' ? 'text-dark bg-yellow border-warning' : 'border-light bg-green-light text-dark'}
-                  w-100
-                `}
-                onClick={() => setInput({ name: 'vehicle', value: 'van' })}
-              >VAN</Button>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+            VAN
+          </button>
+        </div>
+      </div>
     </BookVehicleTypeContainer>
   )
 }

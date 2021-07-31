@@ -7,12 +7,14 @@ import {
 import { connect } from 'react-redux';
 import { setInput } from '../../../redux/book/book.actions';
 
-import './book-vehicle-type.styles.css';
+// import './book-vehicle-type.styles.css';
 import van from '../../../assets/van10.png';
 import sedan from '../../../assets/sedan10.png';
 
 import { createStructuredSelector } from 'reselect';
 import { selectVehicle } from '../../../redux/book/book.selectors';
+
+import { BookVehicleTypeContainer } from './book-vehicle-type.styles'
 
 const VehicleType = ({ 
   setInput, 
@@ -22,7 +24,7 @@ const VehicleType = ({
     vehicle: string
   }) => {
   return (
-    <div className="vehicle-type">
+    <BookVehicleTypeContainer>
       <Row>
         <Col xs="6">
           <Card 
@@ -102,7 +104,7 @@ const VehicleType = ({
           </Card>
         </Col>
       </Row>
-    </div>
+    </BookVehicleTypeContainer>
   )
 }
 

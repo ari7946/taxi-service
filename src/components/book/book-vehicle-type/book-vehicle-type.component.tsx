@@ -48,8 +48,8 @@ const VehicleType = ({
               <CardTitle>SEDAN</CardTitle>
               <CardText>
                 <ul className="vehicle-card-text">
-                  <li>$2.95 / mile </li>
-                  <li>1-4 Passengers</li>
+                  <li>$2.95 / MILE </li>
+                  <li>1-4 PASSENGERS</li>
                 </ul>
               </CardText>
               <Button 
@@ -87,8 +87,8 @@ const VehicleType = ({
               <CardTitle>VAN</CardTitle>
               <CardText>
                 <ul className="vehicle-card-text">
-                  <li>$3.95 / mile </li>
-                  <li>1-7 Passengers</li>
+                  <li>$3.95 / MILE </li>
+                  <li>1-7 PASSENGERS</li>
                 </ul>
               </CardText>
               <Button 

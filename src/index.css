@@ -12,6 +12,7 @@
     --color-flat-green: #00887A;
     --color-flat-blue: #77A6F7;
 
+    /* grey with an 'e' */
     --color-grey-light-1: #faf9f9;
     --color-grey-light-2: #f4f2f2;
     --color-grey-light-3: #f0eeee;
@@ -20,6 +21,16 @@
     --color-grey-dark-1: #333;
     --color-grey-dark-2: #777;
     --color-grey-dark-3: #999;
+
+    /* gray with a 'a' */
+    --color-gray-light-1: #faf9f9;
+    --color-gray-light-2: #f4f2f2;
+    --color-gray-light-3: #f0eeee;
+    --color-gray-light-4: #ccc;
+    
+    --color-gray-dark-1: #333;
+    --color-gray-dark-2: #777;
+    --color-gray-dark-3: #999;
 
     /* FONTS */
     --font-monospaced: "Courier New", Courier, monospace;
@@ -75,13 +86,12 @@ dd {
 
 ul[class],
 ol[class] {
-  list-style: none;
   padding: 0;
 }
 
 /* body takes up the entire viewport even if its content does not. */
 body {
-  min-block-size: 100vh
+  min-block-size: 100vh;
 }
 
 /*  max-inline-size set to 100% makes images responsive by default */

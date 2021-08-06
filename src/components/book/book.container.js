@@ -6,33 +6,32 @@ import Addresses from './book-addresses/book-addresses.component';
 import Estimate from './book-estimate/book-estimate.component';
 import VehicleType from './book-vehicle-type/book-vehicle-type.component';
 import TripInfoMain from './book-trip-info-main/book-trip-info-main.component';
-import './book.styles.css';
+// import './book.styles.js';
 import { Container, Row, Col, ListGroup } from 'reactstrap';
+import { BookContainer } from './book.styles'
 const Map = React.lazy(() => import('./book-map/book-map.component'));
 
 const MapFormContainer = () => {
 
   return (
-    <Container fluid>
+    <BookContainer>
       <MapHeader />
-      <Row>
-        <Col md='6'>
+      <div className="main-content">
+        <div className="aside">
           <Suspense fallback={<Loading />} >
             <Map />
           </Suspense>
           <Addresses />
           <TripInfoMain />
-        </Col>
+        </div>
 
-        <Col md='6'>
-          <ListGroup flush>
-            <VehicleType />
-            <Estimate />
-            <TaxiForm />
-          </ListGroup>
-        </Col>
-      </Row>
-    </Container>
+        <div className="main">
+          <VehicleType />
+          <Estimate />
+          <TaxiForm />
+        </div>
+      </div>
+    </BookContainer>
   )
 } 
 

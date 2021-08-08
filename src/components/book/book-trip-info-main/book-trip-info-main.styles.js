@@ -26,11 +26,16 @@ export const BookTripInfoMainContainer = styled.div`
     }
   }
 
+  .fa-chevron {
+    margin-right: 1rem;
+  }
+
   .trip-info-button {
     width: 100%;
     display: block;
     padding: .3rem;
     margin: 0 auto;
+    margin-bottom: 1rem;
     background-color: var(--color-yellow);
     text-align: center;
     border-radius: 3px;

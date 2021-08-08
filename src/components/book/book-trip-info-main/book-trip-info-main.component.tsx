@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// @ts-ignore
-import { Col, Row, Button, Collapse  } from 'reactstrap';
 import './book-trip-info-main.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
@@ -15,11 +13,11 @@ const TripInfoMain = ({
   vehicle, passengers, estimate, distance, direction, startAddressAndEndAddressAreValid
 }: { 
   vehicle: string, 
-  passengers:number, 
-  estimate:number, 
-  distance:number, 
-  direction:string, 
-  startAddressAndEndAddressAreValid:boolean
+  passengers: number, 
+  estimate: number, 
+  distance: number, 
+  direction: string, 
+  startAddressAndEndAddressAreValid: boolean
 }): React.ReactElement => {
   const [collapse, setCollapse] = useState(true);
 
@@ -32,13 +30,12 @@ const TripInfoMain = ({
           <button 
             className="trip-info-button" 
             onClick={toggle} 
-            style={{ marginBottom: '1rem' }}
           >
             <FontAwesomeIcon 
-              className="mr-4 trip-info-main-chevron" 
+              className="fa-chevron"
               icon={collapse ? faChevronUp : faChevronDown} 
             />
-            <span>{collapse ? '   HIDE ' : 'SHOW '}TRIP DETAILS</span>
+            <span>{collapse ? 'HIDE ' : 'SHOW '}TRIP DETAILS</span>
           </button>
 
           {collapse && ( 

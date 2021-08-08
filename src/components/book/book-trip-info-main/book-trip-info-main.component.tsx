@@ -3,87 +3,83 @@ import React, { useState } from 'react';
 import { Col, Row, Button, Collapse  } from 'reactstrap';
 import './book-trip-info-main.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTaxi, faChevronDown, faChevronUp, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { selectVehicle, selectPassengers, selectValidEstimate, selectDistance, selectDirection, selectStartAddressAndEndAddressAreValid } from '../../../redux/book/book.selectors';
 
+import { BookTripInfoMainContainer } from './book-trip-info-main.styles'
+
 const TripInfoMain = ({ 
   vehicle, passengers, estimate, distance, direction, startAddressAndEndAddressAreValid
-}: { vehicle: string, passengers:number, estimate:number, distance:number, direction:string, startAddressAndEndAddressAreValid:boolean}): React.ReactElement => {
-    const [collapse, setCollapse] = useState(true);
+}: { 
+  vehicle: string, 
+  passengers:number, 
+  estimate:number, 
+  distance:number, 
+  direction:string, 
+  startAddressAndEndAddressAreValid:boolean
+}): React.ReactElement => {
+  const [collapse, setCollapse] = useState(true);
 
-    const [status, setStatus] = useState('Closed');
-
-    const onEntering = () => setStatus('Opening...');
-
-    const onEntered = () => setStatus('Opened');
-
-    const onExiting = () => setStatus('Closing...');
-
-    const onExited = () => setStatus('Closed');
-
-    const toggle = () => setCollapse(!collapse);
+  const toggle = () => setCollapse(!collapse);
 
   return (
     <React.Fragment>
       {startAddressAndEndAddressAreValid && (
-        <div className="pt-3 trip-info-main-container my-5">
-          <Button 
-            className="w-100 bg-yellow text-dark mb-3" 
-            onClick={toggle} style={{ marginBottom: '1rem' }}
+        <BookTripInfoMainContainer>
+          <button 
+            className="trip-info-button" 
+            onClick={toggle} 
+            style={{ marginBottom: '1rem' }}
           >
-            <FontAwesomeIcon className="mr-4 trip-info-main-chevron" icon={collapse ? faChevronUp : faChevronDown} />
-            <span>
-              <span>{collapse ? '   HIDE ' : 'SHOW '}</span>TRIP DETAILS
-            </span>
-          </Button>
+            <FontAwesomeIcon 
+              className="mr-4 trip-info-main-chevron" 
+              icon={collapse ? faChevronUp : faChevronDown} 
+            />
+            <span>{collapse ? '   HIDE ' : 'SHOW '}TRIP DETAILS</span>
+          </button>
 
-          <Collapse
-            isOpen={collapse}
-            onEntering={onEntering}
-            onEntered={onEntered}
-            onExiting={onExiting}
-            onExited={onExited}
-          >
-            <Row>
-              <Col xs="6">
-                <div className="trip-info-main">
-                  <h3 className="trip-info-main-heading">Distance</h3>
-                  <p>{distance} miles</p>
+          {collapse && ( 
+            <div className="trip-info-container">
+              <div className='trip-info-container__first'>
+                <div className="trip-info-item">
+                  <h3 className="trip-info-item-heading">Distance</h3>
+                  <p className="trip-info-item-value">{distance} miles</p>
                 </div>
 
-                <div className="trip-info-main">
-                  <h3 className="trip-info-main-heading">Rate</h3>
-                  <p>{vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</p>
+                <div className="trip-info-item">
+                  <h3 className="trip-info-item-heading">Rate</h3>
+                  <p className="trip-info-item-value">{vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</p>
                 </div>
 
-                <div className="trip-info-main">
-                  <h3 className="trip-info-main-heading">Vehicle</h3>
-                  <p>{vehicle}</p>
+                <div className="trip-info-item">
+                  <h3 className="trip-info-item-heading">Vehicle</h3>
+                  <p className="trip-info-item-value">{vehicle}</p>
                 </div>
-              </Col>
+              </div>
 
-              <Col xs="6">
-                <div className="trip-info-main">
-                  <h3 className="trip-info-main-heading">Direction</h3>
-                  <p>{direction === 'oneWay' ? 'One Way' : 'Two Way'}</p>
-                </div>
-
-                <div className="trip-info-main">
-                  <h3 className="trip-info-main-heading">Passengers</h3>
-                  <p>{passengers} Passengers</p>
+              <div className="trip-info-container__second">
+                <div className="trip-info-item">
+                  <h3 className="trip-info-item-heading">Direction</h3>
+                  <p className="trip-info-item-value">{direction === 'oneWay' ? 'One Way' : 'Two Way'}</p>
                 </div>
 
-                <div className="trip-info-main">
-                  <h3 className="trip-info-main-heading">Estimate</h3>
-                  <p>$ {estimate}</p>
+                <div className="trip-info-item">
+                  <h3 className="trip-info-item-heading">Passengers</h3>
+                  <p className="trip-info-item-value">{passengers} Passengers</p>
                 </div>
-              </Col>
-            </Row>
-          </Collapse>
-        </div>
+
+                <div className="trip-info-item">
+                  <h3 className="trip-info-item-heading">Estimate</h3>
+                  <p className="trip-info-item-value">$ {estimate}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+        </BookTripInfoMainContainer>
       )}
     </React.Fragment>
   )

@@ -7,7 +7,6 @@ import Estimate from './book-estimate/book-estimate.component';
 import VehicleType from './book-vehicle-type/book-vehicle-type.component';
 import TripInfoMain from './book-trip-info-main/book-trip-info-main.component';
 // import './book.styles.js';
-import { Container, Row, Col, ListGroup } from 'reactstrap';
 import { BookContainer } from './book.styles'
 const Map = React.lazy(() => import('./book-map/book-map.component'));
 

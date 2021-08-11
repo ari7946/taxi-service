@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './book-map-header.styles.css';
+// import './book-map-header.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { selectStartAddress, selectEndAddress } from '../../../redux/book/book.selectors';
+
+import { MapHeaderContainer } from './book-map-header.styles'
 
 function MapHeader({ 
   startAddress, 
@@ -16,23 +18,23 @@ function MapHeader({
   const destinationHeading = <span className="address-heading-destination">Destination</span>;
 
   return (
-    <div className='mb-3'>
+    <MapHeaderContainer>
       {!startAddress && !endAddress && (
-        <h4 className="mb-0 text-white map-heading">Please Select {startHeading} and {destinationHeading}</h4>
+        <h4 className="map-heading">Please Select {startHeading} and {destinationHeading}</h4>
       )}
 
       {!startAddress && endAddress && (
-        <h4 className="mb-0 text-white map-heading">Please Select {startHeading}</h4>
+        <h4 className="map-heading">Please Select {startHeading}</h4>
       )} 
 
       {startAddress && !endAddress && (
-        <h4 className="mb-0 text-white map-heading">Please Select {destinationHeading}</h4>
+        <h4 className="map-heading">Please Select {destinationHeading}</h4>
       )}
 
       {startAddress && endAddress && (
-        <h4 className="mb-9 text-white map-heading">Please submit the form to book a taxi</h4>
+        <h4 className="map-heading">Please submit the form to book a taxi</h4>
       )} 
-    </div>
+    </MapHeaderContainer>
   )
 }
 

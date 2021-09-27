@@ -1,22 +1,24 @@
 import React, { FC } from 'react';
-import './book-addresses.styles.css';
+// import './book-addresses.styles.css';
 
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { selectStartAddress, selectEndAddress } from '../../../redux/book/book.selectors';
 
+import { BookAddressContainer } from './book-addresses.styles'
+
 const Addresses: FC<{startAddress: string, endAddress: string}> = ({ 
   startAddress, endAddress
 }) => {
   return (
-    <div className="mt-3">
+    <BookAddressContainer>
       {!startAddress && !endAddress && (
-        <div className="text-grey-light-2 mt-4 instructions">
-          <p className="text-yellow">(Optional) Register or Login to track your trips</p>
+        <div className="instructions">
+          <p className="register-cta">(Optional) Register or Login to track your trips</p>
           <ol>
-            <li className="my-3">Provide a starting point and a destination</li>
-            <li className="my-3">Select SEDAN or VAN</li>
-            <li className="">Fill out the form to book a taxi</li>
+            <li>Provide a starting point and a destination</li>
+            <li>Select SEDAN or VAN</li>
+            <li>Fill out the form to book a taxi</li>
           </ol>
         </div>
       )}
@@ -38,7 +40,7 @@ const Addresses: FC<{startAddress: string, endAddress: string}> = ({
           </p>
         </div>
       )}
-    </div>
+    </BookAddressContainer>
   )
 }
 

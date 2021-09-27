@@ -6,6 +6,9 @@
 ul.vehicle-card-text {
   margin-left: 0 !important;
   padding-left: 1rem !important;
+  letter-spacing: 2px;
+  font-family: var(--font-monospaced);
+  font-size: 18px;
 }
 
 .vehicle-img {

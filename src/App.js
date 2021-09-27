@@ -12,26 +12,25 @@ import { ProvideAuth } from "./auth/use-auth";
 import './index.css';
 import './App.css';
 import UserContainer from './components/user';
+// import {} from 'styled-components/cssprop'
 
 
 class App extends Component {
   render() {
     return (
-      <ProvideAuth>
-        <div className="wrapper container-fluid">
-          <NavbarContainer />
-          <Switch>
-            <Route path='/' exact component={Landing} /> 
-            <Route path='/about' exact component={About} /> 
-            <Route path='/book' exact component={MapFormContainer} />
-            <Route path='/admin' exact component={AdminContainer} />
-            <Route path='/trips' exact component={TripsContainer} /> 
-            <Route path='/user' exact component={UserContainer} />
-            <Route path='/register' exact component={UserRegister} />
-            <Route path='/login' exact component={UserLogin} />
-          </Switch>
-        </div>
-      </ProvideAuth>
+      <div className="wrapper container-fluid">
+        <NavbarContainer />
+        <Switch>
+          <Route path='/' exact component={Landing} /> 
+          <Route path='/about' exact component={About} /> 
+          <Route path='/book' exact component={MapFormContainer} />
+          <Route path='/admin' exact component={AdminContainer} />
+          <Route path='/trips' exact component={TripsContainer} /> 
+          <Route path='/user' exact component={UserContainer} />
+          <Route path='/register' exact component={UserRegister} />
+          <Route path='/login' exact component={UserLogin} />
+        </Switch>
+      </div>
     );
   }
 }

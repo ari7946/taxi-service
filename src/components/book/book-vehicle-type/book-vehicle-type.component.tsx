@@ -21,7 +21,7 @@ interface InputOptions {
 
 const VehicleType = () : React.ReactElement => {
   const dispatch = useDispatch();
-  const vehicleType : VehicleType = useSelector(selectVehicle);
+  const vehicleType: VehicleType = useSelector(selectVehicle);
 
   const setVehicleType = (inputOptions: InputOptions) => {
     dispatch(setInput(inputOptions))

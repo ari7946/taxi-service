@@ -1,38 +1,46 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setInput } from '../../../redux/book/book.actions';
 
 // import './book-vehicle-type.styles.css';
 import van from '../../../assets/van10.png';
 import sedan from '../../../assets/sedan10.png';
 
-import { createStructuredSelector } from 'reselect';
 import { selectVehicle } from '../../../redux/book/book.selectors';
 
 import { BookVehicleTypeContainer } from './book-vehicle-type.styles'
 
-const VehicleType = ({ 
-  setInput, 
-  vehicle 
-  } : {
-    setInput: (options: object) => any,
-    vehicle: string
-  }) => {
+
+type VehicleType = 'sedan' | 'van';
+
+interface InputOptions {
+  name: 'vehicle',
+  value: VehicleType
+}
+
+const VehicleType = () : React.ReactElement => {
+  const dispatch = useDispatch();
+  const vehicleType : VehicleType = useSelector(selectVehicle);
+
+  const setVehicleType = (inputOptions: InputOptions) => {
+    dispatch(setInput(inputOptions))
+  }
+
   return (
     <BookVehicleTypeContainer>
       <div 
         className={`
-          ${vehicle === 'sedan' ? 'text-yellow' : 'text-green-light'}
+          ${vehicleType === 'sedan' ? 'text-yellow' : 'text-green-light'}
           bg-green-dark
           vehicle-type-card
         `}
-        onClick={() => setInput({name: 'vehicle', value:'sedan'})}
+        onClick={() => setVehicleType({ name: 'vehicle', value:'sedan' })}
       >   
         <img 
           className={`
             vehicle-img
-            ${vehicle === 'van' && 'vehicle-img-opacity'}
+            ${vehicleType === 'van' && 'vehicle-img-opacity'}
           `} 
           src={sedan} 
           alt="Sedan" 
@@ -47,10 +55,10 @@ const VehicleType = ({
 
           <button 
             className={`
-              ${vehicle === 'sedan' ? 'bg-yellow' : 'bg-green-light'}
+              ${vehicleType === 'sedan' ? 'bg-yellow' : 'bg-green-light'}
               vehicle-type-button
             `}
-            onClick={() => setInput({name: 'vehicle', value:'sedan'})}
+            onClick={() => setVehicleType({ name: 'vehicle', value:'sedan' })}
           >
             SEDAN
           </button>
@@ -59,16 +67,16 @@ const VehicleType = ({
 
       <div 
         className={`
-          ${vehicle === 'van' ? 'text-yellow' : 'text-green-light'}
+          ${vehicleType === 'van' ? 'text-yellow' : 'text-green-light'}
           bg-green-dark
           vehicle-type-card
         `}
-        onClick={() => setInput({ name: 'vehicle', value: 'van' })}
+        onClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}
       >
         <img 
           className={`
             vehicle-img
-            ${vehicle === 'sedan' && 'vehicle-img-opacity'}
+            ${vehicleType === 'sedan' && 'vehicle-img-opacity'}
           `}
           src={van} 
           alt="Van" 
@@ -83,10 +91,10 @@ const VehicleType = ({
 
           <button 
             className={`
-              ${vehicle === 'van' ? 'bg-yellow' : ' bg-green-light'}
+              ${vehicleType === 'van' ? 'bg-yellow' : ' bg-green-light'}
               vehicle-type-button
             `}
-            onClick={() => setInput({ name: 'vehicle', value: 'van' })}
+            onClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}
           >
             VAN
           </button>
@@ -96,12 +104,13 @@ const VehicleType = ({
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  vehicle: selectVehicle,
-})
+//!! refactored to react-redux hooks instead of using code below
+// const mapStateToProps = createStructuredSelector({
+//   vehicle: selectVehicle,
+// })
 
-const mapDispatchToProps = dispatch => ({
-  setInput: (options) => dispatch(setInput(options)),
-})
+// const mapDispatchToProps = dispatch => ({
+//   setInput: (options) => dispatch(setInput(options)),
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(VehicleType);
+export default VehicleType;

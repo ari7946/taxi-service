@@ -1,19 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-// import './book-map-header.styles.css';
+import { useSelector } from 'react-redux';
 
-import { createStructuredSelector } from 'reselect';
 import { selectStartAddress, selectEndAddress } from '../../../redux/book/book.selectors';
 
 import { MapHeaderContainer } from './book-map-header.styles'
 
-function MapHeader({ 
-  startAddress, 
-  endAddress 
-}: {
-  startAddress: string,
-  endAddress: string
-}): React.ReactElement {
+const MapHeader = () : React.ReactElement => {
+  const startAddress: string = useSelector(selectStartAddress);
+  const endAddress: string = useSelector(selectEndAddress);
+
   const startHeading = <span className="address-heading-starting">Starting Point</span>;
   const destinationHeading = <span className="address-heading-destination">Destination</span>;
 
@@ -38,9 +33,4 @@ function MapHeader({
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  startAddress: selectStartAddress,
-  endAddress: selectEndAddress,
-})
-
-export default connect(mapStateToProps)(MapHeader);
+export default MapHeader;

@@ -30,15 +30,17 @@ const TripStatus = ({
   tripId,
   tripStatus, 
 } : TripStatusProps ) => {
-  // auth selector hook
+  // auth useSelector hook
   const authRole = useSelector(selectAuthRole);
-  // dispatch selector hook
+  // dispatch hook
   const dispatch = useDispatch();
-  // handleloadingtrip selector hook is a HOF
-  // It checks if the a trip's status matches the id of the trip whose status was clicked
-  // and it resolves to a boolean
+
+  // handleLoadingTrip useSelector passes in the state obj using a HOF (returns a function).
+  // The returned function maintains closure over state.
+  // When the returned function is invoked, it ultimatly resolves to a boolean
+  // after checking if the loading status matches the id of the trip.
   const handleLoadingTrip = useSelector(state => {
-    return (tripId: number, tripStatus: TripStatus) : boolean => {
+    return (tripId: number, tripStatus: TripStatus): boolean => {
       return selectLoadingTrip(tripId, tripStatus)(state)
     }
   })

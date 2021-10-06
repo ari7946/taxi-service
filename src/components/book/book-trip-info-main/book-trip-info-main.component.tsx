@@ -9,16 +9,18 @@ import { selectVehicle, selectPassengers, selectValidEstimate, selectDistance, s
 
 import { BookTripInfoMainContainer } from './book-trip-info-main.styles'
 
-const TripInfoMain = ({ 
-  vehicle, passengers, estimate, distance, direction, startAddressAndEndAddressAreValid
-}: { 
+interface TripInfoMainProps {
   vehicle: string, 
   passengers: number, 
   estimate: number, 
   distance: number, 
   direction: string, 
   startAddressAndEndAddressAreValid: boolean
-}): React.ReactElement => {
+}
+
+const TripInfoMain = ({ 
+  vehicle, passengers, estimate, distance, direction, startAddressAndEndAddressAreValid
+}: TripInfoMainProps ): React.ReactElement => {
   const [collapse, setCollapse] = useState(true);
 
   const toggle = () => setCollapse(!collapse);

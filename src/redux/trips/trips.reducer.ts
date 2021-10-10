@@ -1,12 +1,8 @@
-import TripsActionTypes from './trips.types';
-
-interface ObjectLiteral {
-  [key: string]: any;
-}
+import { TripsActionTypes, Action, TripStatus, ObjectLiteral } from './trips.types';
 
 interface TripState {
   trips: ObjectLiteral[],
-  loadingType: 'confirm' | 'complete' | 'delete' | 'archive' | '',
+  loadingType: string,
   error: string,
   loadingTripId: null | number
 }
@@ -24,17 +20,17 @@ const tripsReducer = (state = INITIAL_STATE, action): TripState => {
     case TripsActionTypes.SUBMIT:
       return {
         ...state,
-        loadingType: action.loadingType,
-        loadingTripId: action.tripId,
+        loadingType: action.payload.loadingType,
+        loadingTripId: action.payload.loadingTripId,
       }
     case TripsActionTypes.GET_TRIPS:
       return {
         ...state,
         loadingType: '',
-        trips: action.trips.reverse(),
+        trips: action.payload.trips.reverse(),
       }
     case TripsActionTypes.UPDATE_TRIP:
-      const updatedTrip = action.trip;
+      const updatedTrip = action.payload.trip;
       const updatedTrips = state.trips.map(trip => {
         if (trip.id === updatedTrip.id) {
           return updatedTrip;
@@ -49,7 +45,7 @@ const tripsReducer = (state = INITIAL_STATE, action): TripState => {
         trips: updatedTrips,
       }
     case TripsActionTypes.DELETE_TRIP:
-      const filteredTrips = state.trips.filter(trip => trip.id !== action.trip.id)
+      const filteredTrips = state.trips.filter(trip => trip.id !== action.payload.trip.id)
       return {
         ...state,
         loadingType: '',
@@ -60,7 +56,7 @@ const tripsReducer = (state = INITIAL_STATE, action): TripState => {
       return {
         ...state,
         loadingType: '',
-        error: action.error,
+        error: action.payload.error,
       }
     default: return state;
   }

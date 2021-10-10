@@ -1,49 +1,85 @@
-import TripsActionTypes from './trips.types';
+import { TripsActionTypes, TripStatus } from './trips.types';
 import axios from 'axios';
 import { selectAuthHeaders } from '../auth/auth.selectors';
+import { Dispatch } from 'react';
+import { Action } from './trips.types'
 
 export const getTrips = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch: Dispatch<Action>, getState) => {
     const authHeaders = selectAuthHeaders(getState());
-    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: 'getTrips' })
+    const GET_TRIPS: TripStatus = 'getTrips'
+    dispatch({ 
+      type: TripsActionTypes.SUBMIT, 
+      payload: { loadingType: GET_TRIPS }
+    })
     try {
       const result = await axios.get(`${process.env.REACT_APP_TRIPS}/api/trips`, authHeaders);
-      dispatch({ type: TripsActionTypes.GET_TRIPS, trips: result.data })
+      dispatch({ 
+        type: TripsActionTypes.GET_TRIPS, 
+        payload: {
+          trips: result.data 
+        }
+      })
     } catch (error) {
-      dispatch({ type: TripsActionTypes.ERROR, error })
+      dispatch({ type: TripsActionTypes.ERROR, payload: { error } })
     }
   }
 }
 
-export const updateTrip = (status: string, id: number) => {
-  return async (dispatch, getState) => {
+export const updateTrip = (status: TripStatus, id: number) => {
+  return async (dispatch: Dispatch<Action>, getState) => {
     const authHeaders = selectAuthHeaders(getState());
-    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id })
+    dispatch({ 
+      type: TripsActionTypes.SUBMIT, 
+      payload: {
+        loadingType: status, 
+        loadingTripId: id 
+      }
+    })
     try {
       const result = await axios.put(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
         { status },
         authHeaders
       );
-      dispatch({ type: TripsActionTypes.UPDATE_TRIP, trip: result.data })
+      dispatch({ 
+        type: TripsActionTypes.UPDATE_TRIP, 
+        payload: {
+          trip: result.data 
+        }
+      })
     } catch (error) {
-      dispatch({ type: TripsActionTypes.ERROR, error })
+      dispatch({ 
+        type: TripsActionTypes.ERROR, 
+        payload: { error }
+      })
     }
   }
 }
 
-export const deleteTrip = (status: string, id: number) => {
-  return async (dispatch, getState) => {
+export const deleteTrip = (status: TripStatus, id: number) => {
+  return async (dispatch: Dispatch<Action>, getState) => {
     const authHeaders = selectAuthHeaders(getState());
-    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id})
+    dispatch({ 
+      type: TripsActionTypes.SUBMIT, 
+      payload: {
+        loadingType: status, 
+        loadingTripId: id
+      }
+    })
     try {
       const result = await axios.delete(
         `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
         authHeaders
       );
-      dispatch({ type: TripsActionTypes.DELETE_TRIP, trip: result.data.removedTrip })
+      dispatch({ 
+        type: TripsActionTypes.DELETE_TRIP, 
+        payload: {
+          trip: result.data.removedTrip 
+        }
+      })
     } catch (error) {
-      dispatch({ type: TripsActionTypes.ERROR, error })
+      dispatch({ type: TripsActionTypes.ERROR, payload: { error } })
     }
   }
 }

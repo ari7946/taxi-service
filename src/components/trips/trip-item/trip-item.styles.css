@@ -3,6 +3,10 @@
   font-size: 15px;
 }
 
+.trip-item {
+  width: 100%;
+}
+
 .trip-list-heading {
   font-family: 'Courier New', Courier, monospace;
   text-transform: uppercase;

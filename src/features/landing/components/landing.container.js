@@ -2,9 +2,9 @@ import React from 'react';
 
 import { LandingPageContainer } from './landing.styles'
 import { Link } from 'react-router-dom';
-import phoneCab from '../../assets/phone-hand.png'
+import phoneCab from '../assets/phone-hand.png'
 
-const Landing = () => {
+const LandingContainer = () => {
   return (
     <LandingPageContainer>
       <div className='landing-header'>
@@ -24,4 +24,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default LandingContainer;

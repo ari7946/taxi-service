@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import img from '../../assets/cab-blue2.png'
+import img from '../assets/cab-blue2.png'
 
 export const LandingPageContainer = styled.div` 
   & {

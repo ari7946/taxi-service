@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import TripList from './components/trip-list/trip-list.component';
-import './trips.template.styles.css';
-import { selectAuthRole } from '../auth/redux/auth.selectors';
+import TripList from '../components/trip-list/trip-list.component';
+import './trips.styles.css';
+import { selectAuthRole } from '../../auth/redux/auth.selectors';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';

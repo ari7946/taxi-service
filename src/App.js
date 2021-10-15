@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapFormContainer from './features/book';
+import { BookContainer } from './features/book';
 import NavbarContainer from './features/navbar';
 import Landing from './features/landing';
 import About from './features/about';
@@ -20,7 +20,7 @@ class App extends Component {
         <Switch>
           <Route path='/' exact component={Landing} /> 
           <Route path='/about' exact component={About} /> 
-          <Route path='/book' exact component={MapFormContainer} />
+          <Route path='/book' exact component={BookContainer} />
           <Route path='/admin' exact component={AdminContainer} />
           <Route path='/trips' exact component={TripsContainer} /> 
           <Route path='/user' exact component={UserContainer} />

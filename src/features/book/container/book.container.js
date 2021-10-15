@@ -6,13 +6,13 @@ import Addresses from '../components/book-addresses/book-addresses.component';
 import Estimate from '../components/book-estimate/book-estimate.component';
 import VehicleType from '../components/book-vehicle-type/book-vehicle-type.component';
 import TripInfoMain from '../components/book-trip-info-main/book-trip-info-main.component';
-import { BookContainer } from './book.layout.styles';
+import { BookContainer as Book } from './book.styles';
 const Map = React.lazy(() => import('../components/book-map/book-map.component'));
 
-const BookLayout = () => {
+const BookContainer = () => {
 
   return (
-    <BookContainer>
+    <Book>
       <MapHeader />
       <div className="main-content">
         <div className="aside">
@@ -29,8 +29,8 @@ const BookLayout = () => {
           <TaxiForm />
         </div>
       </div>
-    </BookContainer>
+    </Book>
   )
 } 
 
-export { BookLayout };
+export { BookContainer };

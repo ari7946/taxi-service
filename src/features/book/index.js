@@ -1,3 +1,2 @@
-import { BookLayout } from './layout/book.layout';
+export * from './container/book.container';
 
-export default BookLayout;

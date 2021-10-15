@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../auth/redux/auth.actions';
+import { logout } from '../../auth/redux/auth.actions';
 
 import {
   Collapse,
@@ -15,14 +15,13 @@ import {
   DropdownMenu,
 } from 'reactstrap';
 import "./navbar.styles.css";
-import logo2 from '../../assets/logo2.png';
+import logo2 from '../assets/logo2.png';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-// import { useAuth } from '../../auth/use-auth';
 import { useHistory } from 'react-router-dom';
 
-const AdminNavbar = ({ logout }) => {
+const UserNavbar = ({ logout }) => {
   // const { logout } = useAuth();
   let history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +66,7 @@ const AdminNavbar = ({ logout }) => {
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>
               <div className="pt-2">
-                <span className="px-5 ml-1 py-1 text-grey-light-2 lead">Admin</span>
+                <span className="px-5 ml-1 py-1 text-grey-light-2 lead">Options</span>
               </div>
             </DropdownToggle>
 
@@ -105,4 +104,4 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
 })
 
-export default connect(null, mapDispatchToProps)(AdminNavbar);
+export default connect(null, mapDispatchToProps)(UserNavbar);

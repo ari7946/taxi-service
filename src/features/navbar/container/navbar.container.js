@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import DefaultNavbar from './navbar-default.component';
-import AdminNavbar from './navbar-admin.component';
-import UserNavbar from './navbar-user.component';
-import { selectAuthRole } from '../auth/redux/auth.selectors';
+import DefaultNavbar from '../components/navbar-default.component';
+import AdminNavbar from '../components/navbar-admin.component';
+import UserNavbar from '../components/navbar-user.component';
+import { selectAuthRole } from '../../auth/redux/auth.selectors';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';

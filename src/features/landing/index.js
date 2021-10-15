@@ -1,4 +1,4 @@
-import Landing from './landing.component';
+import LandingContainer from './components/landing.container';
 
-export default Landing;
+export default LandingContainer;
 

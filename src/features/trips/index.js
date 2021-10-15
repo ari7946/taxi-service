@@ -1,3 +1,3 @@
-import TripsTemplate from './trips.template';
+import TripsContainer from './container/trips.container';
 
-export default TripsTemplate;
+export default TripsContainer;

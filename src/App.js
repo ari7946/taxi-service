@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import MapFormContainer from './components/book';
-import NavbarContainer from './components/navbar';
-import Landing from './components/landing';
-import About from './components/about';
-import AdminContainer from './components/admin';
-import UserRegister from './components/user/user-register.component';
-import UserLogin from './components/user/user-login.component';
-import TripsContainer from './components/trips'
+import { BookContainer } from './features/book';
+import NavbarContainer from './features/navbar';
+import Landing from './features/landing';
+import About from './features/about';
+import { AdminContainer, UserContainer } from './features/auth/';
+import UserRegister from './features/auth/components/user/user-register.component';
+import UserLogin from './features/auth/components/user/user-login.component';
+import TripsContainer from './features/trips'
 import { Route, Switch } from 'react-router-dom';
-import { ProvideAuth } from "./auth/use-auth";
 import './index.css';
-import './App.css';
-import UserContainer from './components/user';
-// import {} from 'styled-components/cssprop'
+import './utility.css';
 
 
 class App extends Component {
@@ -23,7 +20,7 @@ class App extends Component {
         <Switch>
           <Route path='/' exact component={Landing} /> 
           <Route path='/about' exact component={About} /> 
-          <Route path='/book' exact component={MapFormContainer} />
+          <Route path='/book' exact component={BookContainer} />
           <Route path='/admin' exact component={AdminContainer} />
           <Route path='/trips' exact component={TripsContainer} /> 
           <Route path='/user' exact component={UserContainer} />

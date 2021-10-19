@@ -9,12 +9,12 @@ import { createStructuredSelector } from 'reselect';
 function TripContainer({ authRole }) {
 
   return (
-    <Fragment>
+    <div className="w-100">
       {authRole !== 'user' && authRole !== 'admin' && <h3 className="text-green-light mb-3">Login required to view trips</h3>}
       {authRole === 'user' || authRole === 'admin' ? (
         <TripList />
       ) : null}
-    </Fragment>
+    </div>
   )
 }
 

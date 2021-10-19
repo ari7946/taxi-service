@@ -7,6 +7,7 @@ import { deleteTrip, updateTrip } from '../../redux/trips.actions';
 
 import { selectLoadingTrip } from '../../redux/trips.selectors';
 import { selectAuthRole } from '../../../auth/redux/auth.selectors';
+import { TripStatus } from '../../types/trips.types';
 
 //! should probably move this to different file :/
 const SpinnerComponent = () => <Spinner
@@ -18,7 +19,8 @@ const SpinnerComponent = () => <Spinner
   className="mr-2"
 />
 
-type TripStatus = 'confirm' | 'complete' | 'archive' | 'delete';
+//! Important note: This component has been refactored to redux hooks for trial
+
 
 // props passed not from redux
 interface TripStatusProps {
@@ -26,7 +28,7 @@ interface TripStatusProps {
   tripStatus: TripStatus,
 }
 
-const TripStatus = ({ 
+const TripStatusButtons = ({ 
   tripId,
   tripStatus, 
 } : TripStatusProps ) => {
@@ -112,4 +114,4 @@ const TripStatus = ({
 //     selectLoadingTrip(loadingTripId, loadingType)(state),
 // })
 
-export default TripStatus;
+export default TripStatusButtons;

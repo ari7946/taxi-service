@@ -1,4 +1,4 @@
-import TripsActionTypes from './trips.types';
+import TripsActionTypes from '../types/trips.types';
 import { selectAuthHeaders } from '../../_global/redux/auth/auth.selectors';
 import { adminLogin } from '../../_global/redux/auth/auth.actions'
 

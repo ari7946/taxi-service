@@ -1,7 +1,7 @@
-import { TripsActionTypes, Action, TripStatus, ObjectLiteral } from './trips.types';
-
+import { TripsActionTypes, Action, TripLoadingStatus, TripStatus, ObjectLiteral, Trip } from '../types/trips.types';
+ 
 interface TripState {
-  trips: ObjectLiteral[],
+  trips: Trip[],
   loadingType: string,
   error: string,
   loadingTripId: null | number

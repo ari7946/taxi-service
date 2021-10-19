@@ -1,14 +1,7 @@
 import React, { useState} from 'react';
 import { TabPane, ListGroup } from 'reactstrap';
-import Trip from '../trip-item/trip-item.component';
-
-interface ObjectLiteral {
-  [key: string]: any;
-}
-
-type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
-
-type TripStatus = 'trips' | 'confirmed' | 'completed' | 'archived';
+import TripItem from '../trip-item/trip-item.component';
+import { Trip as TripObj, TripStatus, TabState } from '../../types/trips.types';
 
 const TripTabPane = ({ 
   tabId, 
@@ -17,16 +10,16 @@ const TripTabPane = ({
 } : {
   tabId: TabState,
   tripStatus: TripStatus,
-  trips: ObjectLiteral[]
+  trips: TripObj[]
 }) => {
   return (
     <TabPane tabId={tabId}>
       {trips.length ? (
-        <ListGroup>
+        <div>
           {trips.map(trip =>
-            <Trip key={trip.id} trip={trip} />
+            <TripItem key={trip.id} trip={trip} />
           )}
-        </ListGroup>     
+        </div>     
         ) : (
           <h4 className="text-green-light">There are no {tripStatus} trips.</h4>
         )

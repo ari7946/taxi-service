@@ -1,15 +1,15 @@
 import React, { useState} from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 import './trip-nav.styles.css';
+import { TabState } from '../../types/trips.types';
 
-type TabState = 'viewAll' | 'viewConfirmed' | 'viewCompleted' | 'viewArchived';
 
 const TripNav = ({ 
   activeTab, 
   setActiveTab 
 } : {
   activeTab: string,
-  setActiveTab: (s: TabState) => void
+  setActiveTab: (activeTab: TabState) => void
 }) => {
 
   return (

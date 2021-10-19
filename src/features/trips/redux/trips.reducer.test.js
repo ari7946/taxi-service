@@ -1,4 +1,4 @@
-import TripsActionTypes from './trips.types';
+import TripsActionTypes from '../types/trips.types';
 import tripsReducer from './trips.reducer';
 
 const initialState = {

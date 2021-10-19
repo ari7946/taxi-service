@@ -1,13 +1,13 @@
-import { TripsActionTypes, TripStatus } from './trips.types';
+import { TripsActionTypes, TripLoadingStatus } from '../types/trips.types';
 import axios from 'axios';
 import { selectAuthHeaders } from '../../auth/redux/auth.selectors';
 import { Dispatch } from 'react';
-import { Action } from './trips.types'
+import { Action } from '../types/trips.types'
 
 export const getTrips = () => {
   return async (dispatch: Dispatch<Action>, getState) => {
     const authHeaders = selectAuthHeaders(getState());
-    const GET_TRIPS: TripStatus = 'getTrips'
+    const GET_TRIPS: TripLoadingStatus = 'getTrips'
     dispatch({ 
       type: TripsActionTypes.SUBMIT, 
       payload: { loadingType: GET_TRIPS }
@@ -26,7 +26,7 @@ export const getTrips = () => {
   }
 }
 
-export const updateTrip = (status: TripStatus, id: number) => {
+export const updateTrip = (status: TripLoadingStatus, id: number) => {
   return async (dispatch: Dispatch<Action>, getState) => {
     const authHeaders = selectAuthHeaders(getState());
     dispatch({ 
@@ -57,7 +57,7 @@ export const updateTrip = (status: TripStatus, id: number) => {
   }
 }
 
-export const deleteTrip = (status: TripStatus, id: number) => {
+export const deleteTrip = (status: TripLoadingStatus, id: number) => {
   return async (dispatch: Dispatch<Action>, getState) => {
     const authHeaders = selectAuthHeaders(getState());
     dispatch({ 

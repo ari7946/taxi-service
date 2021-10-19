@@ -1,15 +1,12 @@
 import React from 'react';
-import { ListGroupItem, Col, Row } from 'reactstrap';
+import { Container, Col, Row } from 'reactstrap';
 import TripStatusButtonGroup from '../trip-status/trip-status.component';
 import './trip-item.styles.css';
+import { Trip } from '../../types/trips.types';
 
-interface ObjectLiteral {
-  [key: string]: any;
-}
-
-const TripItem = ({ trip } : { trip: ObjectLiteral }) => {
+const TripItem = ({ trip } : { trip: Trip }) => {
   return (
-    <ListGroupItem className="bg-grey-light-2 mb-3 trip-item">
+    <Container fluid className="bg-grey-light-2 mb-3 trip-item px-3 py-3">
       <Row>
         <Col md="6">
           <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">name:</span> {trip.name}</div>
@@ -34,7 +31,7 @@ const TripItem = ({ trip } : { trip: ObjectLiteral }) => {
         tripId={trip.id}
         tripStatus={trip.status}
       />
-    </ListGroupItem>
+    </Container>
   )
 }
 

@@ -16,8 +16,9 @@ const INITIAL_STATE = {
   time: '',
   dropFee: 10,
   vehicle: 'sedan',
-  alertSuccess: false,
   // other
+  alertSuccess: false,
+  direction: 'oneWay',
   price: 0,
   loading: false,
   error: false,

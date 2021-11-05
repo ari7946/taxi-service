@@ -1,22 +1,15 @@
 import BookActionTypes from './book.types';
 
 const INITIAL_STATE = {
-  // map
   distance: 0,
   startAddress: '',
   endAddress: '',
-  // fields
-  name: '',
-  comments: '',
-  phone: '',
+
   passengers: 1,
-  email: '',
   direction: 'oneWay',
-  date: '',
-  time: '',
   dropFee: 10,
   vehicle: 'sedan',
-  // other
+
   alertSuccess: false,
   direction: 'oneWay',
   price: 0,
@@ -112,19 +105,11 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         invalidFields: [],
         valid: true,
         alertSuccess: true,
-        // map
         distance: 0,
         startAddress: '',
         endAddress: '',
-        // fields
-        name: '',
-        comments: '',
-        phone: '',
         passengers: 1,
-        email: '',
         direction: 'oneWay',
-        date: '',
-        time: '',
         dropFee: 10,
         vehicle: 'sedan',
       }
@@ -138,10 +123,14 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         alertSuccess: false,
       }
     case BookActionTypes.SUBMIT:
-      const { name, phone, email, passengers, direction, startAddress, endAddress, date, time } = state;
-      const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
+      const { passengers, direction, startAddress, endAddress } = state;
+      const { name, email, phone, date, time } = action.payload;
+      const fields = { 
+        passengers, direction, startAddress, endAddress,
+        // form fields
+        name, email, phone, date, time
+      };
       const invalidFields = [];
-
       // Format fields for grammar
       const formatField = field => {
         if (field == "endAddress")

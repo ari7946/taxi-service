@@ -1,33 +1,21 @@
 import React, { Fragment } from 'react';
-import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
+import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, Alert } from 'reactstrap';
 import './book-form.styles.css';
 
 import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectStartAddress, selectEndAddress, selectName, selectEmail, selectComments, 
-  selectPhone, selectPassengers, selectLoading, selectSubmitted, 
-  selectInvalidFields, selectDate, selectTime, selectAlertSuccess 
+import { selectStartAddress, selectEndAddress, selectPassengers, selectLoading, selectSubmitted, selectInvalidFields, selectAlertSuccess 
 } from '../../redux/book.selectors';
 
-import { setInput, submitForm  } from '../../redux/book.actions';
+import { submitForm  } from '../../redux/book.actions';
 
 interface ActionCreators {
-  submitForm: () => any,
-  setInput: (options: object) => any
+  submitForm: (obj: FormFields) => any,
 }
 
-interface FormFields {
-  name: string,
-  email: string,
-  comments: string,
-  phone: string,
-  date: string,
-  time: string
-}
-
-interface Other {
+interface ReduxProps {
   loading: boolean,
   invalidFields: string[],
   alertSuccess: boolean,
@@ -35,19 +23,59 @@ interface Other {
   endAddress: string
 }
 
+interface FormFields {
+  name: string,
+  email: string,
+  phone: string,
+  date: string,
+  time: string,
+  comments?: string
+}
+
+const initialFormFields: FormFields = {
+  name: '',
+  email: '',
+  comments: '',
+  phone: '',
+  date: '',
+  time: ''
+}
+
+interface Action {
+  type: "SET_VALUE";
+  payload: { [name: string]: string };
+}
+
+const bookFormReducer = (state: FormFields, action: Action) => {
+  switch(action.type) {
+    case "SET_VALUE": {
+      return { ...state, ...action.payload}
+    }
+    default: {
+      return state
+    }
+  }
+}
+
 const TaxiForm = ({ 
   // action creators
-  submitForm, setInput, 
-  // form fields
-  name, email, comments, phone, date, time, 
-  // other 
+  submitForm,
+  // redux props 
   loading, invalidFields, alertSuccess,
   startAddress, endAddress,
-} : ActionCreators & FormFields & Other) : React.ReactElement => {
+} : ActionCreators & ReduxProps) : React.ReactElement => {
+  const [values, dispatch] = React.useReducer(bookFormReducer, initialFormFields);
 
-  const handleSubmitForm = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (name: string, value: string) => {
+    const updatedValue = { [name]: value };
+    return dispatch({ type: "SET_VALUE", payload: updatedValue });
+  };
+
+
+  const handleSubmitForm = (e) => {
     e.preventDefault();
-    submitForm();
+    const { name, email, comments, phone, date, time } = values;
+    submitForm({ name, email, comments, phone, date, time });
   }
 
   return (
@@ -60,15 +88,11 @@ const TaxiForm = ({
           <Input
             type="text"
             name="name"
-            id="form-name"
             placeholder="name"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'name',
-              value: e.target.value,
-            })}
-            value={name}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.name}
           />
         </FormGroup>
 
@@ -81,12 +105,9 @@ const TaxiForm = ({
             id="exampleNumber"
             placeholder="###-###-####"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'phone',
-              value: e.target.value,
-            })}
-            value={phone}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.phone}
           />
         </FormGroup>
 
@@ -99,12 +120,9 @@ const TaxiForm = ({
             id="form-email"
             placeholder="email"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'email',
-              value: e.target.value,
-            })}
-            value={email}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.email}
           />
         </FormGroup>
 
@@ -116,12 +134,9 @@ const TaxiForm = ({
             name="date"
             placeholder="date"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'date',
-              value: e.target.value,
-            })}
-            value={date}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.date}
           />
         </FormGroup>
 
@@ -133,12 +148,9 @@ const TaxiForm = ({
             name="time"
             placeholder="time"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'time',
-              value: e.target.value,
-            })}
-            value={time}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.time}
           />
         </FormGroup>
 
@@ -150,12 +162,9 @@ const TaxiForm = ({
             name="comments"
             id="form-comments"
             placeholder="luggage, pets, wheelchair, ect"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'comments',
-              value: e.target.value,
-            })}
-            value={comments}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.comments}
           />
         </FormGroup>
 
@@ -186,10 +195,10 @@ const TaxiForm = ({
         <ButtonGroup className="mt-3 mb-5">
           <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
             Book
-            {!!loading && (
+            {loading && (
               <Fragment>
-                <Spinner className="mx-2" size="sm" color="warning" />
-                <span className="text-green-light"></span>
+                <Spinner className="mx-2" size="sm" color="light" />
+                <span className="text-white">processing...</span>
               </Fragment>
             )}
           </Button>
@@ -205,22 +214,15 @@ const TaxiForm = ({
 const mapStateToProps = createStructuredSelector({ 
   startAddress: selectStartAddress, 
   endAddress: selectEndAddress, 
-  name: selectName, 
-  email: selectEmail, 
-  comments: selectComments, 
-  phone: selectPhone, 
   passengers: selectPassengers, 
   submitted: selectSubmitted,
   loading: selectLoading,  
   invalidFields: selectInvalidFields, 
-  date: selectDate, 
-  time: selectTime, 
   alertSuccess: selectAlertSuccess,
 })
 
 const mapDispatchToProps = dispatch => ({
-  setInput: (options) => dispatch(setInput(options)),
-  submitForm: () => dispatch(submitForm()),
+  submitForm: (values: FormFields) => dispatch(submitForm(values)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaxiForm);

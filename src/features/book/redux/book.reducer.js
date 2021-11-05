@@ -1,23 +1,17 @@
 import BookActionTypes from './book.types';
 
 const INITIAL_STATE = {
-  // map
   distance: 0,
   startAddress: '',
   endAddress: '',
-  // fields
-  name: '',
-  comments: '',
-  phone: '',
-  passengers: 1,
-  email: '',
+
+  passengers: '1-4',
   direction: 'oneWay',
-  date: '',
-  time: '',
   dropFee: 10,
   vehicle: 'sedan',
+
   alertSuccess: false,
-  // other
+  direction: 'oneWay',
   price: 0,
   loading: false,
   error: false,
@@ -25,6 +19,16 @@ const INITIAL_STATE = {
   invalidFields: [],
   valid: false,
   status: 'pending',
+}
+
+const SEDAN_RATE = 2.95;
+const VAN_RATE = 3.95;
+
+const AMOUNT_SEDAN_PASSENGERS = '1-4';
+const AMOUNT_VAN_PASSENGERS = '1-7';
+
+const convertMetersToMiles = (distance) => {
+  return Number(distance * 0.000621371192).toFixed(1);
 }
 
 const bookReducer = (state = INITIAL_STATE, action) => {
@@ -47,9 +51,9 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       }
     case BookActionTypes.ROUTE_CHANGED:
       //convert meters to miles
-      let distance = (action.distance * 0.000621371192).toFixed(1);
+      let distance = convertMetersToMiles(action.distance);
       //price set at 2.95 dollars per mile
-      let price = (distance * 2.95).toFixed(2);
+      let price = (distance * SEDAN_RATE).toFixed(2);
       return {
         ...state,
         distance,
@@ -81,8 +85,8 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           alertSuccess: false,
           [action.name]: action.value,
           passengers: action.value === "sedan"
-            ? '1-4'
-            : '1-7',
+            ? AMOUNT_SEDAN_PASSENGERS
+            : AMOUNT_VAN_PASSENGERS,
 
           // if the startAddress AND/OR endAddress is cleared/not defined, set the price
           // to zero because a distance between both defined points is needed to calculate the price.
@@ -91,8 +95,8 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           price: (!state.startAddress || !state.endAddress) 
             ? 0 
             : action.value === 'sedan' 
-              ? (Number((state.distance * 2.95).toFixed(2)) + state.dropFee).toFixed(2)
-              : (Number((state.distance * 3.95).toFixed(2)) + state.dropFee).toFixed(2),
+              ? (Number((state.distance * SEDAN_RATE).toFixed(2)) + state.dropFee).toFixed(2)
+              : (Number((state.distance * VAN_RATE).toFixed(2)) + state.dropFee).toFixed(2),
           invalidFields: [],
         }
       }
@@ -111,19 +115,11 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         invalidFields: [],
         valid: true,
         alertSuccess: true,
-        // map
         distance: 0,
         startAddress: '',
         endAddress: '',
-        // fields
-        name: '',
-        comments: '',
-        phone: '',
         passengers: 1,
-        email: '',
         direction: 'oneWay',
-        date: '',
-        time: '',
         dropFee: 10,
         vehicle: 'sedan',
       }
@@ -137,10 +133,14 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         alertSuccess: false,
       }
     case BookActionTypes.SUBMIT:
-      const { name, phone, email, passengers, direction, startAddress, endAddress, date, time } = state;
-      const fields = { name, phone, email, passengers, direction, startAddress, endAddress, date, time };
+      const { passengers, direction, startAddress, endAddress } = state;
+      const { name, email, phone, date, time } = action.payload;
+      const fields = { 
+        passengers, direction, startAddress, endAddress,
+        // form fields
+        name, email, phone, date, time
+      };
       const invalidFields = [];
-
       // Format fields for grammar
       const formatField = field => {
         if (field == "endAddress")

@@ -27,9 +27,9 @@ export const submitSuccess = () => {
   return { type: BookActionTypes.SUCCESS };
 }
 
-export const submitForm = () => {
+export const submitForm = (formFields) => {
   return (dispatch, getState) => {
-    dispatch({ type: BookActionTypes.SUBMIT });
+    dispatch({ type: BookActionTypes.SUBMIT, payload: formFields });
     
     const username = selectCurrentUser(getState());
     const { 
@@ -39,20 +39,13 @@ export const submitForm = () => {
       vehicle, 
       price, 
       status, 
-      name, 
-      email, 
-      comments, 
-      phone, 
       passengers, 
       direction, 
       submitted, 
       valid, 
-      date,
-      time,
     } = selectBook(getState());
 
     const processForm = async () => {
-      const formFields = { name, comments, phone, email, date, time };
       const body = { 
         distance, startAddress, endAddress, price, passengers, direction, vehicle, status, username, 
         ...formFields 

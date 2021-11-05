@@ -6,7 +6,7 @@ import TripInfoButton from '../book-trip-info-button/book-trip-info-button.compo
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectStartAddress, selectEndAddress, selectPassengers, selectLoading, selectSubmitted, selectInvalidFields, selectAlertSuccess 
+import { selectStartAddress, selectEndAddress, selectLoading, selectInvalidFields, selectAlertSuccess 
 } from '../../redux/book.selectors';
 
 import { submitForm  } from '../../redux/book.actions';
@@ -35,10 +35,10 @@ interface FormFields {
 const initialFormFields: FormFields = {
   name: '',
   email: '',
-  comments: '',
   phone: '',
   date: '',
-  time: ''
+  time: '',
+  comments: '',
 }
 
 interface Action {
@@ -70,7 +70,6 @@ const TaxiForm = ({
     const updatedValue = { [name]: value };
     return dispatch({ type: "SET_VALUE", payload: updatedValue });
   };
-
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -170,7 +169,7 @@ const TaxiForm = ({
 
         {/* REQUIRED FIELDS */}
         {(invalidFields.length > 0) && (
-          <div className="text-flat-orange mb-0">Required fields:  < br />
+          <div className="text-flat-orange mb-0">Required:  < br />
             {invalidFields.map(field => {
               let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
               let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
@@ -214,8 +213,6 @@ const TaxiForm = ({
 const mapStateToProps = createStructuredSelector({ 
   startAddress: selectStartAddress, 
   endAddress: selectEndAddress, 
-  passengers: selectPassengers, 
-  submitted: selectSubmitted,
   loading: selectLoading,  
   invalidFields: selectInvalidFields, 
   alertSuccess: selectAlertSuccess,

@@ -8,7 +8,7 @@ import BookFormRequiredFields from '../book-form-required-fields/book-form-requi
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectStartAddress, selectEndAddress, selectLoading, selectInvalidFields, selectAlertSuccess 
+import { selectStartAddress, selectEndAddress, selectLoading, selectAlertSuccess 
 } from '../../redux/book.selectors';
 
 import { submitForm  } from '../../redux/book.actions';
@@ -19,7 +19,6 @@ interface ActionCreators {
 
 interface ReduxProps {
   loading: boolean,
-  invalidFields: string[],
   alertSuccess: boolean,
   startAddress: string,
   endAddress: string
@@ -63,8 +62,10 @@ const TaxiForm = ({
   // action creators
   submitForm,
   // redux props 
-  loading, invalidFields, alertSuccess,
-  startAddress, endAddress,
+  loading, 
+  alertSuccess,
+  startAddress, 
+  endAddress,
 } : ActionCreators & ReduxProps) : React.ReactElement => {
   const [values, dispatch] = React.useReducer(bookFormReducer, initialFormFields);
 
@@ -170,9 +171,7 @@ const TaxiForm = ({
         </FormGroup>
 
         {/* REQUIRED FIELDS */}
-        {(invalidFields.length > 0) && (
-          <BookFormRequiredFields invalidFields={invalidFields} />
-        )}
+        <BookFormRequiredFields />
 
         {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
         { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
@@ -201,7 +200,6 @@ const mapStateToProps = createStructuredSelector({
   startAddress: selectStartAddress, 
   endAddress: selectEndAddress, 
   loading: selectLoading,  
-  invalidFields: selectInvalidFields, 
   alertSuccess: selectAlertSuccess,
 })
 

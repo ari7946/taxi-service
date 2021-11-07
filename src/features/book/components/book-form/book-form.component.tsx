@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, Alert } fr
 import './book-form.styles.css';
 
 import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
+import BookFormRequiredFields from '../book-form-required-fields/book-form-required-fields';
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -169,22 +171,7 @@ const TaxiForm = ({
 
         {/* REQUIRED FIELDS */}
         {(invalidFields.length > 0) && (
-          <div className="text-flat-orange mb-0">Required:  < br />
-            {invalidFields.map(field => {
-              let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
-              let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
-              return (
-                <Fragment key={field}>
-                  {field}{!lastField
-                    ? invalidFields.length === 2 
-                      ? null : ', ' : null}
-                  {secondToLast
-                    ? invalidFields.length === 2 
-                      ? ' and ' : 'and ' : null}
-                </Fragment>
-              )
-            })}
-          </div>
+          <BookFormRequiredFields invalidFields={invalidFields} />
         )}
 
         {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}

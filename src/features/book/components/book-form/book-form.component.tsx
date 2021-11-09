@@ -12,6 +12,7 @@ import { selectStartAddress, selectEndAddress, selectLoading, selectAlertSuccess
 } from '../../redux/book.selectors';
 
 import { submitForm  } from '../../redux/book.actions';
+import { bindActionCreators } from 'redux';
 
 interface ActionCreators {
   submitForm: (obj: FormFields) => any,
@@ -58,6 +59,8 @@ const bookFormReducer = (state: FormFields, action: Action) => {
   }
 }
 
+type TaxiFormProps = ActionCreators & ReduxProps;
+
 const TaxiForm = ({ 
   // action creators
   submitForm,
@@ -66,7 +69,7 @@ const TaxiForm = ({
   alertSuccess,
   startAddress, 
   endAddress,
-} : ActionCreators & ReduxProps) : React.ReactElement => {
+} : TaxiFormProps) : React.ReactElement => {
   const [values, dispatch] = React.useReducer(bookFormReducer, initialFormFields);
 
   const handleChange = (name: string, value: string) => {
@@ -114,7 +117,7 @@ const TaxiForm = ({
         </FormGroup>
 
         {/*  EMAIL */}
-        <FormGroup form>
+        <FormGroup>
           <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="email"

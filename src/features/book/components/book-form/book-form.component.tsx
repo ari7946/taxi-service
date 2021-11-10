@@ -185,7 +185,7 @@ const TaxiForm = ({
 
         {/* SUBMIT BUTTON */}
         <ButtonGroup className="mt-3 mb-5">
-          <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
+          <Button className="px-5 mr-3 book-button bg-yellow" color="warning" name="submit">
             Book
             {loading && (
               <Fragment>

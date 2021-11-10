@@ -12,7 +12,7 @@ import { selectStartAddress, selectEndAddress, selectLoading, selectAlertSuccess
 } from '../../redux/book.selectors';
 
 import { submitForm  } from '../../redux/book.actions';
-import { bindActionCreators } from 'redux';
+
 
 interface ActionCreators {
   submitForm: (obj: FormFields) => any,
@@ -89,12 +89,14 @@ const TaxiForm = ({
 
         {/* NAME */}
         <FormGroup>
-          <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-name">Name: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="text"
             name="name"
+            id="form-name"
             placeholder="name"
             bsSize="sm"
+            data-testid='form-name'
             onChange={(event) => 
               handleChange(event.target.name, event.target.value)}
             value={values.name}
@@ -103,11 +105,11 @@ const TaxiForm = ({
 
         {/*  PHONE */}
         <FormGroup>
-          <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-phone">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="text"
             name="phone"
-            id="exampleNumber"
+            id="form-phone"
             placeholder="###-###-####"
             bsSize="sm"
             onChange={(event) => 
@@ -133,10 +135,11 @@ const TaxiForm = ({
 
         {/* DATE */}
         <FormGroup>
-          <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-date">Date: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="date"
             name="date"
+            id="form-date"
             placeholder="date"
             bsSize="sm"
             onChange={(event) => 
@@ -147,10 +150,11 @@ const TaxiForm = ({
 
         {/* TIME */}
         <FormGroup>
-          <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-time">Time: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="time"
             name="time"
+            id='form-time'
             placeholder="time"
             bsSize="sm"
             onChange={(event) => 
@@ -161,7 +165,7 @@ const TaxiForm = ({
 
         {/* COMMENTS */}
         <FormGroup>
-          <Label for="exampleText">Comments: </Label>
+          <Label for="form-comments">Comments: </Label>
           <Input
             type="textarea"
             name="comments"

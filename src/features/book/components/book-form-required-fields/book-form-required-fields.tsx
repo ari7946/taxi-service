@@ -8,7 +8,7 @@ const BookFormRequiredFields = () => {
   return (
     <Fragment>
       {(invalidFields.length > 0) && (
-        <div data-testid="required-fields" className="text-flat-orange mb-0">Required:  < br />
+        <div data-testid="required-fields-container" className="text-flat-orange mb-0">Required:  < br />
           {invalidFields.map(field => {
             let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
             let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;

@@ -30,6 +30,7 @@ describe('BookForm', () => {
     userEvent.click(submitButton);
 
     // debug( await screen.findByTestId('required-fields'))
-    expect(await screen.findByTestId('required-fields')).toBeInTheDocument()
+    expect(await screen.findByTestId('required-fields-container'))
+      .toBeInTheDocument()
   })
 })

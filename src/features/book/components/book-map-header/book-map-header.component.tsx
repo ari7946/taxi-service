@@ -13,21 +13,33 @@ const MapHeader = () : React.ReactElement => {
   const destinationHeading = <span className="address-heading-destination">Destination</span>;
 
   return (
-    <MapHeaderContainer>
+    <MapHeaderContainer data-testid='mapheader-container'>
       {!startAddress && !endAddress && (
-        <h4 className="map-heading">Please Select {startHeading} and {destinationHeading}</h4>
+        <h4 
+          data-testid="startAddress-and-endAddress-invalid" 
+          className="map-heading">Please Select {startHeading} and {destinationHeading}
+        </h4>
       )}
 
       {!startAddress && endAddress && (
-        <h4 className="map-heading">Please Select {startHeading}</h4>
+        <h4 
+          data-testid="startAddress-invalid" 
+          className="map-heading">Please Select {startHeading}
+        </h4>
       )} 
 
       {startAddress && !endAddress && (
-        <h4 className="map-heading">Please Select {destinationHeading}</h4>
+        <h4 
+          data-testid="endAddress-invalid" 
+          className="map-heading">Please Select {destinationHeading}
+        </h4>
       )}
 
       {startAddress && endAddress && (
-        <h4 className="map-heading">Please submit the form to book a taxi</h4>
+        <h4 
+          data-testid="startAddress-and-endAddress-valid" 
+          className="map-heading">Please submit the form to book a taxi
+        </h4>
       )} 
     </MapHeaderContainer>
   )

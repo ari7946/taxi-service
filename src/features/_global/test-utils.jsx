@@ -4,12 +4,26 @@
 import React from 'react'
 import {render as rtlRender } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+
+import rootReducer from '../_global/redux/root-reducer';
+
+const middlewares = [thunk];
+
+// only apply logger in development
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
+
+export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
 const render = (
   ui,
   {
     preloadedState,
+    store = createStore(rootReducer, preloadedState, applyMiddleware(...middlewares)),
     ...renderOptions
   } = {}
 ) => {

@@ -13,6 +13,7 @@ import { selectStartAddress, selectEndAddress, selectLoading, selectAlertSuccess
 
 import { submitForm  } from '../../redux/book.actions';
 
+
 interface ActionCreators {
   submitForm: (obj: FormFields) => any,
 }
@@ -58,6 +59,8 @@ const bookFormReducer = (state: FormFields, action: Action) => {
   }
 }
 
+type TaxiFormProps = ActionCreators & ReduxProps;
+
 const TaxiForm = ({ 
   // action creators
   submitForm,
@@ -66,7 +69,7 @@ const TaxiForm = ({
   alertSuccess,
   startAddress, 
   endAddress,
-} : ActionCreators & ReduxProps) : React.ReactElement => {
+} : TaxiFormProps) : React.ReactElement => {
   const [values, dispatch] = React.useReducer(bookFormReducer, initialFormFields);
 
   const handleChange = (name: string, value: string) => {
@@ -86,12 +89,14 @@ const TaxiForm = ({
 
         {/* NAME */}
         <FormGroup>
-          <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-name">Name: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="text"
             name="name"
+            id="form-name"
             placeholder="name"
             bsSize="sm"
+            data-testid='form-name'
             onChange={(event) => 
               handleChange(event.target.name, event.target.value)}
             value={values.name}
@@ -100,11 +105,11 @@ const TaxiForm = ({
 
         {/*  PHONE */}
         <FormGroup>
-          <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-phone">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="text"
             name="phone"
-            id="exampleNumber"
+            id="form-phone"
             placeholder="###-###-####"
             bsSize="sm"
             onChange={(event) => 
@@ -114,7 +119,7 @@ const TaxiForm = ({
         </FormGroup>
 
         {/*  EMAIL */}
-        <FormGroup form>
+        <FormGroup>
           <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="email"
@@ -130,10 +135,11 @@ const TaxiForm = ({
 
         {/* DATE */}
         <FormGroup>
-          <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-date">Date: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="date"
             name="date"
+            id="form-date"
             placeholder="date"
             bsSize="sm"
             onChange={(event) => 
@@ -144,10 +150,11 @@ const TaxiForm = ({
 
         {/* TIME */}
         <FormGroup>
-          <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-time">Time: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="time"
             name="time"
+            id='form-time'
             placeholder="time"
             bsSize="sm"
             onChange={(event) => 
@@ -158,7 +165,7 @@ const TaxiForm = ({
 
         {/* COMMENTS */}
         <FormGroup>
-          <Label for="exampleText">Comments: </Label>
+          <Label for="form-comments">Comments: </Label>
           <Input
             type="textarea"
             name="comments"
@@ -178,7 +185,7 @@ const TaxiForm = ({
 
         {/* SUBMIT BUTTON */}
         <ButtonGroup className="mt-3 mb-5">
-          <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
+          <Button className="px-5 mr-3 book-button bg-yellow" color="warning" name="submit">
             Book
             {loading && (
               <Fragment>

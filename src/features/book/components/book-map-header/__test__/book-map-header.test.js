@@ -3,7 +3,7 @@ import { render, screen } from '../../../../_global/test-utils'
 import BookMapHeader from '../book-map-header.component.tsx'
 
 describe('BookMapHeader', () => {
-  it('should prompt user to submit taxi form', async () => {
+  it('should prompt user to submit taxi form', () => {
    render(<BookMapHeader />, {
      preloadedState: {
        book: {
@@ -15,7 +15,7 @@ describe('BookMapHeader', () => {
     expect(screen.getByText(/Please submit the form to book a taxi/i)).toBeInTheDocument()
   })
 
-it('should prompt user to select endAddress', async () => {
+  it('should prompt user to select endAddress', () => {
    render(<BookMapHeader />, {
      preloadedState: {
        book: {

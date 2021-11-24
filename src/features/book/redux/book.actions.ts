@@ -1,10 +1,15 @@
-import BookActionTypes from './book.types';
+import { BookActionTypes } from '../types/book.types';
 import { selectBook } from './book.selectors';
-import { selectCurrentUser } from '../../../features/auth/redux/auth.selectors';
+import { selectCurrentUser } from '../../auth/redux/auth.selectors';
 import axios from 'axios';
+import { Dispatch } from 'react';
+import { SetInput } from '../types/book.types'
 
-export const setInput = ({ name, value }) => {
-  return { type: BookActionTypes.INPUT, name, value }
+export const setInput = ({ name, value }) : SetInput => {
+  return { 
+    type: BookActionTypes.INPUT, 
+    payload: { name, value }  
+  }
 }
 
 export const locationsFound = ({ startAddress, endAddress }) => {

@@ -31,6 +31,15 @@ const convertMetersToMiles = (distance) => {
   return Number(distance * 0.000621371192).toFixed(1);
 }
 
+const formatField = (field) => {
+  // edge case 1
+  if (field == "endAddress") field = "Destination";
+  // edge case 2
+  else if (field === 'startAddress') field = "Starting Point";
+  // returning capitalized field
+  return field.charAt(0).toUpperCase() + field.slice(1);
+}
+
 const bookReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case BookActionTypes.LOCATIONS_FOUND:
@@ -67,24 +76,25 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         alertSuccess: false,
       }
     case BookActionTypes.INPUT:
-
-      if (action.name === 'direction') {
+      const { payload } = action;
+      
+      if (payload.name === 'direction') {
         return {
           ...state,
           alertSuccess: false,
-          [action.name]: action.value,
-          price: action.value === 'oneWay'
+          [payload.name]: payload.value,
+          price: payload.value === 'oneWay'
             ? state.price / 2
             : state.price * 2,
-          dropFee: action.value === 'oneWay' ? 10 : 20,
+          dropFee: payload.value === 'oneWay' ? 10 : 20,
           invalidFields: [],
         }
-      } else if (action.name === 'vehicle') {
+      } else if (payload.name === 'vehicle') {
         return {
           ...state,
           alertSuccess: false,
-          [action.name]: action.value,
-          passengers: action.value === "sedan"
+          [payload.name]: payload.value,
+          passengers: payload.value === "sedan"
             ? AMOUNT_SEDAN_PASSENGERS
             : AMOUNT_VAN_PASSENGERS,
 
@@ -94,7 +104,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           // calculate the price based on the total distance (between startAddress & endAddress) and rate according to type of vehicle (sedan or van).
           price: (!state.startAddress || !state.endAddress) 
             ? 0 
-            : action.value === 'sedan' 
+            : payload.value === 'sedan' 
               ? (Number((state.distance * SEDAN_RATE).toFixed(2)) + state.dropFee).toFixed(2)
               : (Number((state.distance * VAN_RATE).toFixed(2)) + state.dropFee).toFixed(2),
           invalidFields: [],
@@ -103,7 +113,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         alertSuccess: false,
-        [action.name]: action.value,
+        [payload.name]: action.value,
         invalidFields: [],
       }
     case BookActionTypes.SUCCESS:
@@ -141,14 +151,6 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         name, email, phone, date, time
       };
       const invalidFields = [];
-      // Format fields for grammar
-      const formatField = field => {
-        if (field == "endAddress")
-          field = "Destination";
-        else if (field === 'startAddress')
-          field = "Starting Point";
-        return field.charAt(0).toUpperCase() + field.slice(1);
-      }
 
       for (const field in fields) {
         if (!fields[field]) {

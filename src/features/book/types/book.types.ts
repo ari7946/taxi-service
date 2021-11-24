@@ -1,4 +1,3 @@
-import { TripsActionTypes } from "../../trips/types/trips.types";
 
 export const BookActionTypes = {
   LOCATIONS_FOUND: 'LOCATIONS_FOUND',
@@ -10,9 +9,6 @@ export const BookActionTypes = {
   SUBMIT: 'BOOK_SUBMIT',
 }
 
-export interface ObjectLiteral {
-  [key: string]: any;
-}
 
 export interface Trip {
   date: string
@@ -39,31 +35,31 @@ export interface SetInput {
   payload: { name: string, value: string }
 }
 
-interface locationsFound {
+export interface LocationsFound {
   type: typeof BookActionTypes.LOCATIONS_FOUND,
   payload: { startAddress: string, endAddress: string }
 }
 
-interface locationsCleared {
+export interface LocationsCleared {
   type: typeof BookActionTypes.LOCATIONS_CLEARED,
   payload: { startAddress: string, endAddress: string }
 }
 
-interface routeChanged {
+export interface RouteChanged {
   type: typeof BookActionTypes.ROUTE_CHANGED,
   payload: { distance: number }
 }
 
-interface submitError {
+export interface SubmitError {
   type: typeof BookActionTypes.ERROR,
   payload: { errorMessage: string }
 }
 
-interface submitSuccess {
+export interface SubmitSuccess {
   type: typeof BookActionTypes.SUCCESS
 }
 
-interface submit {
+export interface Submit {
   type: typeof BookActionTypes.SUBMIT,
   payload: { 
     formFields: { [key: string]: any } 

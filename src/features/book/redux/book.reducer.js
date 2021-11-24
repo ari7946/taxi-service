@@ -41,26 +41,27 @@ const formatField = (field) => {
 }
 
 const bookReducer = (state = INITIAL_STATE, action) => {
+
   switch (action.type) {
     case BookActionTypes.LOCATIONS_FOUND:
       return {
         ...state,
-        startAddress: action.startAddress,
-        endAddress: action.endAddress,
+        startAddress: action.payload.startAddress,
+        endAddress: action.payload.endAddress,
         alertSuccess: false,
       }
     case BookActionTypes.LOCATIONS_CLEARED:
       return {
         ...state,
-        startAddress: action.startAddress,
-        endAddress: action.endAddress,
+        startAddress: action.payload.startAddress,
+        endAddress: action.payload.endAddress,
         // alert is deactivated if startAddress or endAddress is "cleared"; they're both needed to calculate a distance and price
         alertSuccess: false,
         price: 0,
       }
     case BookActionTypes.ROUTE_CHANGED:
       //convert meters to miles
-      let distance = convertMetersToMiles(action.distance);
+      let distance = convertMetersToMiles(action.payload.distance);
       //price set at 2.95 dollars per mile
       let price = (distance * SEDAN_RATE).toFixed(2);
       return {
@@ -76,25 +77,24 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         alertSuccess: false,
       }
     case BookActionTypes.INPUT:
-      const { payload } = action;
-      
-      if (payload.name === 'direction') {
+
+      if (action.payload.name === 'direction') {
         return {
           ...state,
           alertSuccess: false,
-          [payload.name]: payload.value,
-          price: payload.value === 'oneWay'
+          [action.payload.name]: action.payload.value,
+          price: action.payload.value === 'oneWay'
             ? state.price / 2
             : state.price * 2,
-          dropFee: payload.value === 'oneWay' ? 10 : 20,
+          dropFee: action.payload.value === 'oneWay' ? 10 : 20,
           invalidFields: [],
         }
-      } else if (payload.name === 'vehicle') {
+      } else if (action.payload.name === 'vehicle') {
         return {
           ...state,
           alertSuccess: false,
-          [payload.name]: payload.value,
-          passengers: payload.value === "sedan"
+          [action.payload.name]: action.payload.value,
+          passengers: action.payload.value === "sedan"
             ? AMOUNT_SEDAN_PASSENGERS
             : AMOUNT_VAN_PASSENGERS,
 
@@ -104,7 +104,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           // calculate the price based on the total distance (between startAddress & endAddress) and rate according to type of vehicle (sedan or van).
           price: (!state.startAddress || !state.endAddress) 
             ? 0 
-            : payload.value === 'sedan' 
+            : action.payload.value === 'sedan' 
               ? (Number((state.distance * SEDAN_RATE).toFixed(2)) + state.dropFee).toFixed(2)
               : (Number((state.distance * VAN_RATE).toFixed(2)) + state.dropFee).toFixed(2),
           invalidFields: [],
@@ -113,7 +113,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         alertSuccess: false,
-        [payload.name]: action.value,
+        [action.payload.name]: action.value,
         invalidFields: [],
       }
     case BookActionTypes.SUCCESS:
@@ -139,7 +139,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         error: true,
         loading: false,
         submitted: false,
-        errorMessage: action.errorMessage,
+        errorMessage: action.payload.errorMessage,
         alertSuccess: false,
       }
     case BookActionTypes.SUBMIT:

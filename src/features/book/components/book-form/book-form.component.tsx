@@ -4,6 +4,7 @@ import './book-form.styles.css';
 
 import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
 import BookFormRequiredFields from '../book-form-required-fields/book-form-required-fields';
+import { FormFields } from '../../types/book.types';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -23,15 +24,6 @@ interface ReduxProps {
   alertSuccess: boolean,
   startAddress: string,
   endAddress: string
-}
-
-interface FormFields {
-  name: string,
-  email: string,
-  phone: string,
-  date: string,
-  time: string,
-  comments?: string
 }
 
 const initialFormFields: FormFields = {
@@ -79,7 +71,7 @@ const TaxiForm = ({
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    const { name, email, comments, phone, date, time } = values;
+    const { name, email, comments, phone, date, time } : FormFields = values;
     submitForm({ name, email, comments, phone, date, time });
   }
 

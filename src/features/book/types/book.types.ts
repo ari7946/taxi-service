@@ -9,23 +9,32 @@ export const BookActionTypes = {
   SUBMIT: 'BOOK_SUBMIT',
 }
 
+// required fields from book form
+export interface FormFields {
+  name: string,
+  email: string,
+  phone: string,
+  date: string,
+  time: string,
+  comments?: string
+}
 
-export interface Trip {
-  date: string
-  distance: number
-  email: string
-  endAddress: string
-  id: number
-  name: string
-  passengers: number
-  phone: number | string
-  price: number
+// Extends book form fields
+// All fields that a user is required to select and/or input
+export interface UserRequiredFields extends FormFields {
   startAddress: string
-  username: string | null
-  vehicle: string
+  endAddress: string
+}
 
-  // optional
-  comments?: string | null
+// Extends UserRequiredFields, which inludes all user selected inputs
+// required fields to make post request to server: computed AND user selected 
+export interface BookTripRequestBody extends UserRequiredFields {
+  distance: number, 
+  price: number, 
+  passengers: string, 
+  vehicle: string, 
+  status: string, 
+  username?: string,
   direction?: string | null
 }
 
@@ -62,6 +71,6 @@ export interface SubmitSuccess {
 export interface Submit {
   type: typeof BookActionTypes.SUBMIT,
   payload: { 
-    formFields: { [key: string]: any } 
+    formFields: FormFields
   }
 }

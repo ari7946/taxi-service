@@ -1,12 +1,32 @@
-import BookActionTypes from './book.types';
+import { FormFields, UserRequiredFields, BookActionTypes } from '../types/book.types';
 
-const INITIAL_STATE = {
+interface BookState {
+  distance: number,
+  startAddress: string,
+  endAddress: string,
+
+  passengers: string,
+  dropFee: number,
+  vehicle: string,
+
+  alertSuccess: boolean,
+  direction: string,
+  price: number,
+  loading: boolean,
+  error: boolean,
+  errorMessage: string,
+  invalidFields: string[],
+  valid: boolean,
+  status: string,
+  submitted: boolean,
+}
+
+const INITIAL_STATE: BookState = {
   distance: 0,
   startAddress: '',
   endAddress: '',
 
   passengers: '1-4',
-  direction: 'oneWay',
   dropFee: 10,
   vehicle: 'sedan',
 
@@ -19,16 +39,17 @@ const INITIAL_STATE = {
   invalidFields: [],
   valid: false,
   status: 'pending',
+  submitted: false,
 }
 
-const SEDAN_RATE = 2.95;
-const VAN_RATE = 3.95;
+const SEDAN_RATE: number = 2.95;
+const VAN_RATE: number = 3.95;
 
-const AMOUNT_SEDAN_PASSENGERS = '1-4';
-const AMOUNT_VAN_PASSENGERS = '1-7';
+const AMOUNT_SEDAN_PASSENGERS: string = '1-4';
+const AMOUNT_VAN_PASSENGERS: string = '1-7';
 
-const convertMetersToMiles = (distance) => {
-  return Number(distance * 0.000621371192).toFixed(1);
+const convertMetersToMiles = (distance: number) : number => {
+  return Number((distance * 0.000621371192).toFixed(1));
 }
 
 const formatField = (field) => {
@@ -40,8 +61,8 @@ const formatField = (field) => {
   return field.charAt(0).toUpperCase() + field.slice(1);
 }
 
-const bookReducer = (state = INITIAL_STATE, action) => {
 
+const bookReducer = (state = INITIAL_STATE, action) : BookState => {
   switch (action.type) {
     case BookActionTypes.LOCATIONS_FOUND:
       return {
@@ -63,11 +84,11 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       //convert meters to miles
       let distance = convertMetersToMiles(action.payload.distance);
       //price set at 2.95 dollars per mile
-      let price = (distance * SEDAN_RATE).toFixed(2);
+      let price = (Number(distance) * SEDAN_RATE).toFixed(2);
       return {
         ...state,
         distance,
-        price: (Number(price) + state.dropFee).toFixed(2),
+        price: Number((Number(price) + state.dropFee).toFixed(2)),
         direction: 'oneWay',
         // dropFee is set to 10 (dollars) by default in case a user changes its state prior to defining both startAddress and endAddress
         dropFee: 10,
@@ -105,8 +126,8 @@ const bookReducer = (state = INITIAL_STATE, action) => {
           price: (!state.startAddress || !state.endAddress) 
             ? 0 
             : action.payload.value === 'sedan' 
-              ? (Number((state.distance * SEDAN_RATE).toFixed(2)) + state.dropFee).toFixed(2)
-              : (Number((state.distance * VAN_RATE).toFixed(2)) + state.dropFee).toFixed(2),
+              ? Number((Number((state.distance * SEDAN_RATE).toFixed(2)) + state.dropFee).toFixed(2))
+              : Number((Number((state.distance * VAN_RATE).toFixed(2)) + state.dropFee).toFixed(2)),
           invalidFields: [],
         }
       }
@@ -128,7 +149,7 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         distance: 0,
         startAddress: '',
         endAddress: '',
-        passengers: 1,
+        passengers: '1-4',
         direction: 'oneWay',
         dropFee: 10,
         vehicle: 'sedan',
@@ -143,11 +164,11 @@ const bookReducer = (state = INITIAL_STATE, action) => {
         alertSuccess: false,
       }
     case BookActionTypes.SUBMIT:
-      const { passengers, direction, startAddress, endAddress } = state;
-      const { name, email, phone, date, time } = action.payload;
-      const fields = { 
-        passengers, direction, startAddress, endAddress,
-        // form fields
+      const { startAddress, endAddress } = state;
+      const { name, email, phone, date, time } : FormFields = action.payload;
+      const fields: UserRequiredFields = { 
+        startAddress, endAddress,
+        // form fields. NOTE: excludes comments because its not required
         name, email, phone, date, time
       };
       const invalidFields = [];

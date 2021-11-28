@@ -12,44 +12,6 @@ const AdminLogin = ({ adminLogin, loading }) => {
   const [username, setAdmin] = useState('');
   const [password, setPassword] = useState('');
   let history = useHistory();
-  // const { adminLogin } = useAuth();
-
-  // const handleFormSubmit = async (formSubmitEvent) => {
-  //   formSubmitEvent.preventDefault();
-
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
-  //     if (response) {
-  //       setLoading(false);
-  //       adminLogin(response.data.token, response.data.username);
-  //       history.push('/trips');
-  //     }
-  //   } catch (error) {
-  //     setLoading(false)
-  //     console.log('error', error);
-  //   }
-  // }
-
-  // const handleGuestSubmit = async (formSubmitEvent) => {
-  //   formSubmitEvent.preventDefault();
-
-  //   const username = process.env.REACT_APP_GUEST_USERNAME;
-  //   const password = process.env.REACT_APP_GUEST_PASSWORD;
-
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/admin`, { username, password });
-  //     if (response) {
-  //       setLoading(false);
-  //       adminLogin(response.data.token, response.data.username);
-  //       history.push('/trips');
-  //     }
-  //   } catch (error) {
-  //     setLoading(false)
-  //     console.log('error', error);
-  //   }
-  // }
  
   return (
     <Container className="text-green-light auth" fluid>
@@ -88,7 +50,7 @@ const AdminLogin = ({ adminLogin, loading }) => {
           onClick={ async (event) => {
             event.preventDefault();
             // third argument is true that user is signing in as a guest
-            await adminLogin(username, password, true);
+            await adminLogin({username, password, guestAdmin: true });
             history.push('/trips');
           }}
         >

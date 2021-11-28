@@ -1,4 +1,4 @@
-import TripActionTypes from './auth.types';
+import { AuthActionTypes } from '../types/auth.types';
 
 interface AuthState {
   currentUser: string,
@@ -16,13 +16,13 @@ const INITIAL_STATE: AuthState = {
 
 const authReducer = (state = INITIAL_STATE, action): AuthState => {
   switch (action.type) {
-    case TripActionTypes.FETCH_USER:
+    case AuthActionTypes.FETCH_USER:
       return {
         ...state,
         loading: true,
         errorMessage: '',
       }
-    case TripActionTypes.FETCH_SUCCESS:
+    case AuthActionTypes.FETCH_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -30,13 +30,13 @@ const authReducer = (state = INITIAL_STATE, action): AuthState => {
         currentUser: action.currentUser,
         token: action.token,
       }
-    case TripActionTypes.ERROR:
+    case AuthActionTypes.ERROR:
       return {
         ...state,
         loading: false,
         errorMessage: action.errorMessage,
       }
-    case TripActionTypes.LOGOUT:
+    case AuthActionTypes.LOGOUT:
       return {
         ...state,
         currentUser: '',

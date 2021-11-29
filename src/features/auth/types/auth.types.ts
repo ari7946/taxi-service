@@ -7,13 +7,19 @@ export const AuthActionTypes = {
 
 export type AuthType = 'login' | 'register'
 
-export interface userAuth {
+export interface UserAuth {
   authType: AuthType,
   username: string,
   password: string,
   name?: string,
   email?: string,
   phone?: string,
+}
+
+export interface AdminLogin {
+  username: string,
+  password: string,
+  guestAdmin: boolean
 }
 
 export interface FetchUser {

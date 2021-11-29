@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
 import { createStructuredSelector } from 'reselect';
 import { selectAuthLoading } from '../../redux/auth.selectors';
+import { UserAuth } from '../../types/auth.types'
 
 const UserRegister = ({ userAuth, loading }) => {
   const [username, setUsername] = useState('');
@@ -17,23 +18,6 @@ const UserRegister = ({ userAuth, loading }) => {
   const [phone, setPhone] = useState('');
   let history = useHistory();
 
-  // const handleFormSubmit = async (formSubmitEvent) => {
-  //   formSubmitEvent.preventDefault();
-
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/register`, { username, password, name, email, phone });
-  //     if (response) {
-  //       setLoading(false);
-  //       userRegister(response.data.token, response.data.username);
-  //       history.push('/book');
-  //     }
-  //   } catch (error) {
-  //     setLoading(false)
-  //     console.log('error', error);
-  //   }
-  // }
-
   return (
     <Container className="text-green-light auth" fluid>
       <h1 className="mb-3 color-grey-light-2">Register</h1>
@@ -41,7 +25,7 @@ const UserRegister = ({ userAuth, loading }) => {
       <Form
         onSubmit={ async (event) => {
           event.preventDefault();
-          await userAuth('register', username, password, name, email, phone);
+          await userAuth({authType: 'register', username, password, name, email, phone});
           history.push('./trips');
         }}
       >
@@ -104,8 +88,8 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  userAuth: (register, username, password, name, email, phone ) => 
-    dispatch(userAuth(register, username, password, name, email, phone))
+  userAuth: (userRegisterData: UserAuth) => 
+    dispatch(userAuth({ ...userRegisterData }))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRegister);

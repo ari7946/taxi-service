@@ -1,10 +1,10 @@
-import  { AuthActionTypes, FetchUser, FetchSuccess, Error, Logout } from '../types/auth.types';
+import  { AuthActionTypes, FetchUser, FetchSuccess, Error, Logout, UserAuth, AdminLogin} from '../types/auth.types';
 import axios from 'axios';
 import { Dispatch } from 'react';
 
-type AuthType = 'login' | 'register'
-
-export const userAuth = (authType: AuthType, username: string, password: string, name = '', email = '', phone = '') => {
+export const userAuth = ({ 
+  authType, username, password, name = '', email = '', phone = ''
+} : UserAuth) => {
 
   return async (dispatch: Dispatch<FetchUser | FetchSuccess | Error>) => {
     dispatch({ type: AuthActionTypes.FETCH_USER });
@@ -28,17 +28,9 @@ export const userAuth = (authType: AuthType, username: string, password: string,
   }
 }
 
-export const adminLogin = (
-  { 
-    username, 
-    password, 
-    guestAdmin = false 
-  } : { 
-    username: string, 
-    password: string, 
-    guestAdmin: boolean
-  }
-) => {
+export const adminLogin = ({ 
+  username, password, guestAdmin = false 
+} : AdminLogin) => {
   console.log('guestAdmin', guestAdmin)
   const guestAdminUsername = process.env.REACT_APP_GUEST_USERNAME;
   const guestAdminPassword = process.env.REACT_APP_GUEST_PASSWORD;

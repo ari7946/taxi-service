@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { userAuth } from '../../redux/auth.actions'
 import { selectAuthLoading } from '../../redux/auth.selectors';
+import { UserAuth } from '../../types/auth.types'
 
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -14,25 +15,6 @@ const UserLogin = ({ userAuth, loading }) => {
   const [currentUsername, setCurrentUsername] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
   let history = useHistory();
-  // const { userAuth } = useAuth();
-
-  // const handleFormSubmit = async (formSubmitEvent) => {
-  //   formSubmitEvent.preventDefault();
-
-  //   try {
-  //     setLoading(true);
-  //     const response = await axios.post(`${process.env.REACT_APP_TRIPS}/api/login`, { username, password });
-  //     if (response) {
-  //       setLoading(false);
-  //       userAuth(response.data.token, response.data.username);
-  //       history.push('/trips');
-  //       window.location.reload();
-  //     }
-  //   } catch (error) {
-  //     setLoading(false)
-  //     console.log('error', error);
-  //   }
-  // }
 
   return (
     <Container className="text-green-light auth" fluid>
@@ -41,7 +23,11 @@ const UserLogin = ({ userAuth, loading }) => {
       <Form 
         onSubmit={ async (event) => {
           event.preventDefault();
-          await userAuth('login', currentUsername, currentPassword);
+          await userAuth({
+            authType: 'login', 
+            username: currentUsername, 
+            password: currentPassword
+          });
           history.push('/trips');
         }}
       >
@@ -78,8 +64,8 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  userAuth: (authType, username, password) => 
-    dispatch(userAuth(authType, username, password))
+  userAuth: (userLoginData: UserAuth) => 
+    dispatch(userAuth({ ...userLoginData }))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

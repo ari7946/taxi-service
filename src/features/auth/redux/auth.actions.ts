@@ -39,6 +39,7 @@ export const adminLogin = (
     guestAdmin: boolean
   }
 ) => {
+  console.log('guestAdmin', guestAdmin)
   const guestAdminUsername = process.env.REACT_APP_GUEST_USERNAME;
   const guestAdminPassword = process.env.REACT_APP_GUEST_PASSWORD;
 

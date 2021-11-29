@@ -50,7 +50,7 @@ const AdminLogin = ({ adminLogin, loading }) => {
           onClick={ async (event) => {
             event.preventDefault();
             // third argument is true that user is signing in as a guest
-            await adminLogin({username, password, guestAdmin: true });
+            await adminLogin({ username, password, guestAdmin: true });
             history.push('/trips');
           }}
         >
@@ -66,8 +66,8 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  adminLogin: (username, password, guestAdmin) => 
-    dispatch(adminLogin(username, password, guestAdmin))
+  adminLogin: (adminLoginData) => 
+    dispatch(adminLogin({ ...adminLoginData }))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminLogin);

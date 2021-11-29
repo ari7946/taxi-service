@@ -27,14 +27,14 @@ const authReducer = (state = INITIAL_STATE, action): AuthState => {
         ...state,
         loading: false,
         errorMessage: '',
-        currentUser: action.currentUser,
-        token: action.token,
+        currentUser: action.payload.currentUser,
+        token: action.payload.token,
       }
     case AuthActionTypes.ERROR:
       return {
         ...state,
         loading: false,
-        errorMessage: action.errorMessage,
+        errorMessage: action.payload.errorMessage,
       }
     case AuthActionTypes.LOGOUT:
       return {

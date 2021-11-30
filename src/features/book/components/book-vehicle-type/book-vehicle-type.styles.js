@@ -10,7 +10,7 @@ export const BookVehicleTypeContainer = styled.div`
 
   .vehicle-type-card {
     border: 1px solid red;
-    padding: 1rem 1rem;
+    padding: 1rem 1rem 1rem 0;
     cursor: pointer;
     border: none;
 
@@ -35,6 +35,7 @@ export const BookVehicleTypeContainer = styled.div`
   .vehicle-img {
     display: block;
     height: 9rem;
+    padding: 1rem 1rem 1rem 0;
     width: 30rem;
     margin: 0 auto;
   }
@@ -46,7 +47,7 @@ export const BookVehicleTypeContainer = styled.div`
   }
 
   .vehicle-img-opacity {
-    opacity: 50%;
+    opacity: 35%;
   }
 
   @media (max-width: 1200px) {

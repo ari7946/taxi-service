@@ -97,11 +97,11 @@ export const AboutImgContainer = styled.div`
   ${getImgContainerStyles}
 
   img {
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
     margin-top: 2rem;
-    border: 2px solid var(--color-yellow);
-    padding: 1rem 1rem;
+    border: 1px solid var(--color-yellow);
+    padding: 1.5rem 1.5rem;
     border-radius: 50%;
   }
 `

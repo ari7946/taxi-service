@@ -5,18 +5,17 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  NavbarBrand,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownItem,
   DropdownMenu,
 } from 'reactstrap';
 import "./navbar.styles.css";
-import logo2 from '../assets/logo2.png';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
+import NavbarBrandContainer from './navbar-brand.component';
 
 const DefaultNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,10 +25,7 @@ const DefaultNavbar = () => {
   return (
     <Navbar className="mb-5 mt-1" expand="md">
       <NavLink to="/">
-        <NavbarBrand className="text-grey-light-2 navbar-brand">
-          <img src={logo2} alt="website logo" className="logo" />
-          <span className="ml-3 logo-title">Coastal Yellow Cabs</span>
-        </NavbarBrand>
+        <NavbarBrandContainer />
       </NavLink>
 
       <NavbarToggler className="text-grey-light-2 mr-3" onClick={toggle} >

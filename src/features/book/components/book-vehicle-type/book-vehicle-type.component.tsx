@@ -34,6 +34,7 @@ const VehicleType = () : React.ReactElement => {
           ${vehicleType === 'sedan' ? 'text-yellow' : 'text-green-light'}
           bg-green-dark
           vehicle-type-card
+          vehicle-type-card__first
         `}
         onClick={() => setVehicleType({ name: 'vehicle', value:'sedan' })}
       >   

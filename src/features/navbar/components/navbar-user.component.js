@@ -8,7 +8,6 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  NavbarBrand,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownItem,
@@ -21,6 +20,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useHistory } from 'react-router-dom';
 
+import NavbarBrandContainer from './navbar-brand.component';
+
 const UserNavbar = ({ logout }) => {
   // const { logout } = useAuth();
   let history = useHistory();
@@ -31,10 +32,7 @@ const UserNavbar = ({ logout }) => {
   return (
     <Navbar className="mb-5 mt-1" expand="md">
       <NavLink to="/">
-        <NavbarBrand className="text-grey-light-2 navbar-brand">
-          <img src={logo2} alt="website logo" className="logo" />
-          <span className="ml-3 logo-title">Coastal Yellow Cabs</span>
-        </NavbarBrand>
+        <NavbarBrandContainer />
       </NavLink>
 
       <NavbarToggler className="text-grey-light-2 mr-3" onClick={toggle} >

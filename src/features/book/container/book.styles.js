@@ -4,7 +4,7 @@ export const BookContainer = styled.div`
   & {
     margin: 2rem;
     @media (max-width: 750px) {
-      margin: 0 auto;
+      margin: 0 .6rem;
     }
   }
 

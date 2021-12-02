@@ -1,6 +1,4 @@
 import React from 'react';
-// import './book-addresses.styles.css';
-
 
 import { useSelector } from 'react-redux';
 import { selectStartAddress, selectEndAddress } from '../../redux/book.selectors';

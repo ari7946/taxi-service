@@ -5,14 +5,14 @@ import { selectStartAddress, selectEndAddress } from '../../redux/book.selectors
 
 import { BookAddressContainer } from './book-addresses.styles'
 
-const Addresses = () : React.ReactElement => {
+const BookAddresses = () : React.ReactElement => {
   const startAddress: string = useSelector(selectStartAddress)
   const endAddress: string = useSelector(selectEndAddress)
 
   return (
     <BookAddressContainer>
       {!startAddress && !endAddress && (
-        <div className="instructions">
+        <div className="instructions" data-testid="instructions">
           <p className="register-cta">(Optional) Register or Login to track your trips</p>
           <ol>
             <li>Provide a starting point and a destination</li>
@@ -23,7 +23,7 @@ const Addresses = () : React.ReactElement => {
       )}
 
       {startAddress && (
-        <div className="book-address">
+        <div className="book-address" data-testid='addresses-starting-point'>
           <h3 className="address-heading-starting">Starting Point</h3>
           <p>
             {startAddress}
@@ -32,7 +32,7 @@ const Addresses = () : React.ReactElement => {
       )}
 
       {endAddress && (
-        <div className="book-address">
+        <div className="book-address" data-testid='addresses-destination'>
           <h3 className='address-heading-destination'>Destination</h3>
           <p>
             {endAddress}
@@ -43,9 +43,4 @@ const Addresses = () : React.ReactElement => {
   )
 }
 
-// const mapStateToProps = createStructuredSelector({
-//   startAddress: selectStartAddress,
-//   endAddress: selectEndAddress,
-// })
-
-export default Addresses;
+export default BookAddresses;

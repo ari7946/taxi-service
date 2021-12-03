@@ -41,38 +41,38 @@ const TripInfoMain = ({
           </button>
 
           {collapse && ( 
-            <div className="trip-info-container">
+            <div className="trip-info-container" data-testid="trip-info-container">
               <div className='trip-info-container__first'>
                 <div className="trip-info-item">
                   <h3 className="trip-info-item-heading">Distance</h3>
-                  <p className="trip-info-item-value">{distance} miles</p>
+                  <h6 className="trip-info-item-value">{distance} miles</h6>
                 </div>
 
                 <div className="trip-info-item">
                   <h3 className="trip-info-item-heading">Rate</h3>
-                  <p className="trip-info-item-value">{vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</p>
+                  <h6 className="trip-info-item-value">{vehicle === 'sedan' ? "$2.95 per mile" : '$3.95 per mile'}</h6>
                 </div>
 
                 <div className="trip-info-item">
                   <h3 className="trip-info-item-heading">Vehicle</h3>
-                  <p className="trip-info-item-value">{vehicle}</p>
+                  <h6 className="trip-info-item-value">{vehicle}</h6>
                 </div>
               </div>
 
               <div className="trip-info-container__second">
                 <div className="trip-info-item">
                   <h3 className="trip-info-item-heading">Direction</h3>
-                  <p className="trip-info-item-value">{direction === 'oneWay' ? 'One Way' : 'Two Way'}</p>
+                  <h6 className="trip-info-item-value">{direction === 'oneWay' ? 'One Way' : 'Two Way'}</h6>
                 </div>
 
                 <div className="trip-info-item">
                   <h3 className="trip-info-item-heading">Passengers</h3>
-                  <p className="trip-info-item-value">{passengers} Passengers</p>
+                  <h6 className="trip-info-item-value">{passengers} Passengers</h6>
                 </div>
 
                 <div className="trip-info-item">
                   <h3 className="trip-info-item-heading">Estimate</h3>
-                  <p className="trip-info-item-value">$ {estimate}</p>
+                  <h6 className="trip-info-item-value" datatest-id="heading-estimate-val">$ {estimate}</h6>
                 </div>
               </div>
             </div>

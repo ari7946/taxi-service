@@ -182,7 +182,7 @@ const TaxiForm = ({
             {loading && (
               <Fragment>
                 <Spinner className="mx-2" size="sm" color="light" />
-                <span className="text-white">processing...</span>
+                <span className="text-dark ml-2">processing...</span>
               </Fragment>
             )}
           </Button>

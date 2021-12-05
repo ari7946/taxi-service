@@ -112,7 +112,7 @@ const TaxiForm = ({
 
         {/*  EMAIL */}
         <FormGroup>
-          <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-email">Email: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="email"
             name="email"

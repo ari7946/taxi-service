@@ -90,6 +90,6 @@ describe('BookTripInfoMain', () => {
     expect(priceHeading).toBeInTheDocument();
 
     const passengerHeading = screen.getByRole('heading', { name: '1-7 Passengers'});
-    expect(priceHeading).toBeInTheDocument();
+    expect(passengerHeading).toBeInTheDocument();
   })
 })

@@ -1,9 +1,12 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
+        "airbnb",
+        "prettier",
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended"
@@ -21,5 +24,10 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "no-unused-vars": "warn",
+        "no-console": "off",
+        "func-names": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": "off"
     }
 };

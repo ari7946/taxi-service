@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { selectInvalidFields } from '../../redux/book.selectors';
 
-const BookFormRequiredFields = () => {
+const BookFormRequiredFields = function() {
   const invalidFields = useSelector(selectInvalidFields);
 
   return (
@@ -10,8 +10,8 @@ const BookFormRequiredFields = () => {
       {(invalidFields.length > 0) && (
         <div data-testid="required-fields-container" className="text-flat-orange mb-0">Required:  < br />
           {invalidFields.map(field => {
-            let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
-            let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
+            const lastField = field === invalidFields[invalidFields.length - 1];
+            const secondToLast = field === invalidFields[invalidFields.length - 2];
             return (
               <Fragment key={field}>
                 {field}{!lastField

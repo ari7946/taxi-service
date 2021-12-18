@@ -5,7 +5,7 @@ import { selectStartAddress, selectEndAddress } from '../../redux/book.selectors
 
 import { BookAddressContainer } from './book-addresses.styles'
 
-const BookAddresses = () : React.ReactElement => {
+const BookAddresses = function() {
   const startAddress: string = useSelector(selectStartAddress)
   const endAddress: string = useSelector(selectEndAddress)
 

@@ -25,6 +25,7 @@ module.exports = {
     'no-console': 'off',
     'func-names': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': 'off'
+    'react/jsx-filename-extension': 'off',
+    'import/prefer-default-export': 'off'
   }
 };

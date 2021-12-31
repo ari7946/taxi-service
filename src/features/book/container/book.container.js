@@ -7,9 +7,10 @@ import Estimate from '../components/book-estimate/book-estimate.component';
 import VehicleType from '../components/book-vehicle-type/book-vehicle-type.component';
 import TripInfoMain from '../components/book-trip-info-main/book-trip-info-main.component';
 import { BookContainer as Book } from './book.styles';
+
 const Map = React.lazy(() => import('../components/book-map/book-map.component'));
 
-const BookContainer = () => {
+const BookContainer = function() {
 
   return (
     <Book>

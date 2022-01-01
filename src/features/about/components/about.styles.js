@@ -58,6 +58,7 @@ export const AboutSectionMiddle = styled(AboutSectionContainer)`
 // heading and description
 export const AboutHeading = styled.h3`
   color: var(--color-yellow);
+  margin-bottom: 1rem;
 `
 
 export const AboutDescription = styled.p`
@@ -70,16 +71,11 @@ export const AboutDescription = styled.p`
 // Images
 const AboutImgContainerTop = css` 
   border-left: 2px solid var(--color-yellow);
-  padding-top: 2rem;
 `
 
 const AboutImgContainerMiddle = css` 
   margin-top: 1rem;
   border-right: 2px solid var(--color-yellow);
-
-  img {
-    width: 15rem;
-  }
 `
 
 const AboutImgContainerBottom = css` 
@@ -99,5 +95,14 @@ const getImgContainerStyles = props => {
 
 export const AboutImgContainer = styled.div` 
   ${getImgContainerStyles}
+
+  img {
+    width: 10rem;
+    height: 10rem;
+    margin-top: 2rem;
+    border: 1px solid var(--color-yellow);
+    padding: 1.5rem 1.5rem;
+    border-radius: 50%;
+  }
 `
 

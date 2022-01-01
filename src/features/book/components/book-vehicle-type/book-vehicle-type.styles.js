@@ -10,13 +10,17 @@ export const BookVehicleTypeContainer = styled.div`
 
   .vehicle-type-card {
     border: 1px solid red;
-    padding: 1rem 1rem;
+    padding: 1rem 0 1rem 0;
     cursor: pointer;
     border: none;
 
     @media (max-width: 415px) {
       padding: 0 .4rem;
     }
+  }
+
+  .vehicle-type-card__first {
+    padding: 1rem 2rem 1rem 0;
   }
 
   .vehicle-title {
@@ -35,6 +39,7 @@ export const BookVehicleTypeContainer = styled.div`
   .vehicle-img {
     display: block;
     height: 9rem;
+    padding: 1rem 1rem 1rem 0;
     width: 30rem;
     margin: 0 auto;
   }
@@ -46,7 +51,7 @@ export const BookVehicleTypeContainer = styled.div`
   }
 
   .vehicle-img-opacity {
-    opacity: 50%;
+    opacity: 35%;
   }
 
   @media (max-width: 1200px) {

@@ -11,7 +11,7 @@ export const BookTripInfoMainContainer = styled.div`
     align-items: center;
     .trip-info-item {
       margin-bottom: 2.4rem;
-      background-color: var(--color-green-dark);
+      background-color: var(--color-primary-dark);
       color: var(--color-grey-light-2);
       text-align: center;
     }

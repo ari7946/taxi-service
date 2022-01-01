@@ -17,7 +17,7 @@ const LandingContainer = () => {
           <Link className="landing-button" to="/book" style={{ textDecoration: 'none', color: 'black' }}>GET ESTIMATE</Link>
         </div>
         <div>
-          <img className="phone-cab" src={phoneCab} alt="user holding phone displaying a cab"/>
+          {/* <img className="phone-cab" src={phoneCab} alt="user holding phone displaying a cab"/> */}
         </div>
       </div>
     </LandingPageContainer>

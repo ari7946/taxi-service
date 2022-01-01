@@ -1,53 +1,78 @@
 import React, { Fragment } from 'react';
-import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, ListGroupItem, Alert } from 'reactstrap';
+import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, Alert } from 'reactstrap';
 import './book-form.styles.css';
 
 import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
+import BookFormRequiredFields from '../book-form-required-fields/book-form-required-fields';
+import { FormFields } from '../../types/book.types';
+
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectStartAddress, selectEndAddress, selectName, selectEmail, selectComments, 
-  selectPhone, selectPassengers, selectLoading, selectSubmitted, 
-  selectInvalidFields, selectDate, selectTime, selectAlertSuccess 
+import { selectStartAddress, selectEndAddress, selectLoading, selectAlertSuccess 
 } from '../../redux/book.selectors';
 
-import { setInput, submitForm  } from '../../redux/book.actions';
+import { submitForm  } from '../../redux/book.actions';
+
 
 interface ActionCreators {
-  submitForm: () => any,
-  setInput: (options: object) => any
+  submitForm: (obj: FormFields) => any,
 }
 
-interface FormFields {
-  name: string,
-  email: string,
-  comments: string,
-  phone: string,
-  date: string,
-  time: string
-}
-
-interface Other {
+interface ReduxProps {
   loading: boolean,
-  invalidFields: string[],
   alertSuccess: boolean,
   startAddress: string,
   endAddress: string
 }
 
+const initialFormFields: FormFields = {
+  name: '',
+  email: '',
+  phone: '',
+  date: '',
+  time: '',
+  comments: '',
+}
+
+interface Action {
+  type: "SET_VALUE";
+  payload: { [name: string]: string };
+}
+
+const bookFormReducer = (state: FormFields, action: Action) => {
+  switch(action.type) {
+    case "SET_VALUE": {
+      return { ...state, ...action.payload}
+    }
+    default: {
+      return state
+    }
+  }
+}
+
+type TaxiFormProps = ActionCreators & ReduxProps;
+
 const TaxiForm = ({ 
   // action creators
-  submitForm, setInput, 
-  // form fields
-  name, email, comments, phone, date, time, 
-  // other 
-  loading, invalidFields, alertSuccess,
-  startAddress, endAddress,
-} : ActionCreators & FormFields & Other) : React.ReactElement => {
+  submitForm,
+  // redux props 
+  loading, 
+  alertSuccess,
+  startAddress, 
+  endAddress,
+} : TaxiFormProps) : React.ReactElement => {
+  const [values, dispatch] = React.useReducer(bookFormReducer, initialFormFields);
 
-  const handleSubmitForm = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (name: string, value: string) => {
+    const updatedValue = { [name]: value };
+    return dispatch({ type: "SET_VALUE", payload: updatedValue });
+  };
+
+  const handleSubmitForm = (e) => {
     e.preventDefault();
-    submitForm();
+    const { name, email, comments, phone, date, time } : FormFields = values;
+    submitForm({ name, email, comments, phone, date, time });
   }
 
   return (
@@ -56,140 +81,108 @@ const TaxiForm = ({
 
         {/* NAME */}
         <FormGroup>
-          <Label for="exampleEmail">Name: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-name">Name: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="text"
             name="name"
             id="form-name"
             placeholder="name"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'name',
-              value: e.target.value,
-            })}
-            value={name}
+            data-testid='form-name'
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.name}
           />
         </FormGroup>
 
         {/*  PHONE */}
         <FormGroup>
-          <Label for="exampleNumber">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-phone">Phone: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="text"
             name="phone"
-            id="exampleNumber"
+            id="form-phone"
             placeholder="###-###-####"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'phone',
-              value: e.target.value,
-            })}
-            value={phone}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.phone}
           />
         </FormGroup>
 
         {/*  EMAIL */}
-        <FormGroup form>
-          <Label for="exampleEmail">Email: <span className="text-flat-orange small ml-2">required</span></Label>
+        <FormGroup>
+          <Label for="form-email">Email: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="email"
             name="email"
             id="form-email"
             placeholder="email"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'email',
-              value: e.target.value,
-            })}
-            value={email}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.email}
           />
         </FormGroup>
 
         {/* DATE */}
         <FormGroup>
-          <Label for="exampleDate">Date: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-date">Date: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="date"
             name="date"
+            id="form-date"
             placeholder="date"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'date',
-              value: e.target.value,
-            })}
-            value={date}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.date}
           />
         </FormGroup>
 
         {/* TIME */}
         <FormGroup>
-          <Label for="exampleTime">Time: <span className="text-flat-orange small ml-2">required</span></Label>
+          <Label for="form-time">Time: <span className="text-flat-orange small ml-2">required</span></Label>
           <Input
             type="time"
             name="time"
+            id='form-time'
             placeholder="time"
             bsSize="sm"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'time',
-              value: e.target.value,
-            })}
-            value={time}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.time}
           />
         </FormGroup>
 
         {/* COMMENTS */}
         <FormGroup>
-          <Label for="exampleText">Comments: </Label>
+          <Label for="form-comments">Comments: </Label>
           <Input
             type="textarea"
             name="comments"
             id="form-comments"
             placeholder="luggage, pets, wheelchair, ect"
-            onChange={(e) => setInput({
-              type: 'input',
-              name: 'comments',
-              value: e.target.value,
-            })}
-            value={comments}
+            onChange={(event) => 
+              handleChange(event.target.name, event.target.value)}
+            value={values.comments}
           />
         </FormGroup>
 
         {/* REQUIRED FIELDS */}
-        {(invalidFields.length > 0) && (
-          <div className="text-flat-orange mb-0">Required fields:  < br />
-            {invalidFields.map(field => {
-              let lastField = field === invalidFields[invalidFields.length - 1] ? true : false;
-              let secondToLast = field === invalidFields[invalidFields.length - 2] ? true : false;
-              return (
-                <Fragment key={field}>
-                  {field}{!lastField
-                    ? invalidFields.length === 2 
-                      ? null : ', ' : null}
-                  {secondToLast
-                    ? invalidFields.length === 2 
-                      ? ' and ' : 'and ' : null}
-                </Fragment>
-              )
-            })}
-          </div>
-        )}
+        <BookFormRequiredFields />
 
         {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
         { alertSuccess && <Alert color="success">Thank you. We have booked your request for a taxi</Alert>}
 
         {/* SUBMIT BUTTON */}
         <ButtonGroup className="mt-3 mb-5">
-          <Button className="px-5 mr-3 book-button bg-yellow" color="warning">
+          <Button className="px-5 mr-3 book-button bg-yellow" color="warning" name="submit">
             Book
-            {!!loading && (
+            {loading && (
               <Fragment>
-                <Spinner className="mx-2" size="sm" color="warning" />
-                <span className="text-green-light"></span>
+                <Spinner className="mx-2" size="sm" color="light" />
+                <span className="text-dark ml-2">processing...</span>
               </Fragment>
             )}
           </Button>
@@ -205,22 +198,12 @@ const TaxiForm = ({
 const mapStateToProps = createStructuredSelector({ 
   startAddress: selectStartAddress, 
   endAddress: selectEndAddress, 
-  name: selectName, 
-  email: selectEmail, 
-  comments: selectComments, 
-  phone: selectPhone, 
-  passengers: selectPassengers, 
-  submitted: selectSubmitted,
   loading: selectLoading,  
-  invalidFields: selectInvalidFields, 
-  date: selectDate, 
-  time: selectTime, 
   alertSuccess: selectAlertSuccess,
 })
 
 const mapDispatchToProps = dispatch => ({
-  setInput: (options) => dispatch(setInput(options)),
-  submitForm: () => dispatch(submitForm()),
+  submitForm: (values: FormFields) => dispatch(submitForm(values)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaxiForm);

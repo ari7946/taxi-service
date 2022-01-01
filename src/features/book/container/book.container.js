@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import React, { Suspense } from 'react';
 import TaxiForm from '../components/book-form/book-form.component';
 import Loading from '../components/book-loading/book-loading.component';

@@ -25,7 +25,7 @@ export const BookAddressContainer = styled.div`
     margin-bottom: 0.8rem !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
-    background-color: var(--color-green-dark) !important;
+    background-color: var(--color-primary-dark) !important;
     color: var(--color-grey-light-2);
   }
 

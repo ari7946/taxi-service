@@ -3,7 +3,7 @@ import img from '../assets/cab-blue2.png'
 
 export const LandingPageContainer = styled.div` 
   & {
-    height: 80vh; 
+    height: 90vh; 
     width: 100%;
     margin: 0 1.5rem;
     position: relative;
@@ -15,12 +15,12 @@ export const LandingPageContainer = styled.div`
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire 
     container */
-    opacity: .9;
+    opacity: .8;
     content: "";
     position: absolute;
     top: 100px;
     bottom: 0px;
-    right: -150px;
+    right: 0;
     left: 0;
     z-index: 0;
   }

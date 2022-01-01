@@ -25,6 +25,10 @@
   color: var(--color-green-dark) !important;
 }
 
+.bg-primary-dark {
+  background-color: var(--color-primary-dark) !important;
+}
+
 .bg-green-dark {
   background-color: var(--color-green-dark) !important;
 }
@@ -67,13 +71,13 @@
 
 /************************** FONTS  *****/
 .font-monospaced {
-  font-family: var(--font-monospaced)
+  font-family: var(--font-monospaced);
 }
 
 .font-monospaced-bold {
-  font-family: var(--font-monospaced-bold)
+  font-family: var(--font-monospaced-bold);
 }
 
 .font-montserrat {
-  font-family: "Montserrat", "Helvetica-Neue", "Helvetica", "Arial", "sans-serif"
+  font-family: 'Montserrat', 'Helvetica-Neue', 'Helvetica', 'Arial', 'sans-serif';
 }

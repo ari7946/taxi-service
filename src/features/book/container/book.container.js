@@ -44,22 +44,6 @@ const BookContainer = function() {
       <Styled.TaxiForm>
         <TaxiForm />
       </Styled.TaxiForm>
-{/* 
-      <div className="main-content">
-        <div className="aside">
-          <Suspense fallback={<Loading />} >
-            <Map />
-          </Suspense>
-          <Addresses />
-          <TripInfoMain />
-        </div>
-
-        <div className="main">
-          <VehicleType />
-          <Estimate />
-          <TaxiForm />
-        </div>
-      </div> */}
     </Styled.BookContainer>
   )
 } 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const EstimateContainer = styled.div` 
-  background-color: var(--color-green-dark) !important;
+  background-color: var(--color-primary-dark) !important;
   color: var(--color-green-light);
   border: none !important;
   font-family: var(--font-monospaced-bold);

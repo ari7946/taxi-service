@@ -46,7 +46,7 @@
   },
   "scripts": {
     "start": "CI=false react-scripts start",
-    "build": "CI=false react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN='true' react-scripts build",
     "test": "react-scripts test --env jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"

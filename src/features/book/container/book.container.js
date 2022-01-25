@@ -18,7 +18,6 @@ const Map = React.lazy(() => import('../components/book-map/book-map.component')
 
 const BookContainer = function() {
   const indicatorSection = useSelector(selectIndicatorSection);
-  console.log('indicatorSection', indicatorSection);
 
   return (
     <Styled.BookContainer>
@@ -27,7 +26,7 @@ const BookContainer = function() {
       </Styled.MapHeader>
 
       <Styled.Map>
-        <Indicator num={1} isActive={indicatorSection === 'header' && true} />
+        <Indicator num={1} isActive={indicatorSection === 'header'} />
         <Suspense fallback={<Loading />} >
           <Map />
         </Suspense>
@@ -42,16 +41,17 @@ const BookContainer = function() {
       </Styled.TripInfoMain>
 
       <Styled.VehicleType>
-        <Indicator num={2} isActive={indicatorSection === 'vehicle' && true} />
+        <Indicator num={2} isActive={indicatorSection === 'vehicle'} />
         <VehicleType />
+        <Estimate />
       </Styled.VehicleType>
 
       <Styled.Estimate>
-        <Estimate />
+        {/* <Estimate /> */}
       </Styled.Estimate>
 
       <Styled.TaxiForm>
-        <Indicator num={3} isActive={indicatorSection === 'form' && true} />
+        <Indicator num={3} isActive={indicatorSection === 'form'} />
         <TaxiForm />
       </Styled.TaxiForm>
     </Styled.BookContainer>

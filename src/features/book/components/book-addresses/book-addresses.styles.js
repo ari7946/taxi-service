@@ -4,6 +4,10 @@ export const BookAddressContainer = styled.div`
 
   & {
     margin-top: 2rem;
+
+    @media (min-width: 750px) {
+      margin-top: -1rem;
+    }
   }
   
   .instructions {

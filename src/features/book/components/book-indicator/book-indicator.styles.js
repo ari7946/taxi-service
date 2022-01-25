@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const IndicatorWrapper = styled.div`
-  border: solid 5px yellow;
+  border: 5px solid var(--color-grey-light-2);
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -11,4 +11,8 @@ export const IndicatorWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({ isActive }) => isActive && css`
+    border: 5px solid var(--color-yellow);
+  `}
 `

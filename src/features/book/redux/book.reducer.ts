@@ -75,6 +75,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         ...state,
         startAddress: action.payload.startAddress,
         endAddress: action.payload.endAddress,
+        vehicle: '',
         // alert is deactivated if startAddress or endAddress is "cleared"; they're both needed to calculate a distance and price
         alertSuccess: false,
         price: 0

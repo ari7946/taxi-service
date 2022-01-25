@@ -12,7 +12,9 @@ import {
   selectStartAddress,
   selectEndAddress,
   selectLoading,
-  selectAlertSuccess
+  selectAlertSuccess,
+  selectStartAddressAndEndAddressAreValid,
+  selectVehicle
 } from '../../redux/book.selectors';
 
 import { submitForm } from '../../redux/book.actions';
@@ -26,6 +28,8 @@ interface ReduxProps {
   alertSuccess: boolean;
   startAddress: string;
   endAddress: string;
+  startAddressAndEndAddressAreValid: boolean;
+  vehicle: string;
 }
 
 const initialFormFields: FormFields = {
@@ -62,7 +66,9 @@ const TaxiForm = function ({
   loading,
   alertSuccess,
   startAddress,
-  endAddress
+  endAddress,
+  vehicle,
+  startAddressAndEndAddressAreValid
 }: TaxiFormProps): React.ReactElement {
   const [values, dispatch] = React.useReducer(bookFormReducer, initialFormFields);
 
@@ -79,124 +85,126 @@ const TaxiForm = function ({
 
   return (
     <div className="book-form">
-      <Form onSubmit={(e) => handleSubmitForm(e)}>
-        {/* NAME */}
-        <FormGroup>
-          <Label for="form-name">
-            Name: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="text"
-            name="name"
-            id="form-name"
-            placeholder="name"
-            bsSize="sm"
-            data-testid="form-name"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.name}
-          />
-        </FormGroup>
+      {startAddressAndEndAddressAreValid && vehicle && (
+        <Form onSubmit={(e) => handleSubmitForm(e)}>
+          {/* NAME */}
+          <FormGroup>
+            <Label for="form-name">
+              Name: <span className="text-flat-orange small ml-2">required</span>
+            </Label>
+            <Input
+              type="text"
+              name="name"
+              id="form-name"
+              placeholder="name"
+              bsSize="sm"
+              data-testid="form-name"
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
+              value={values.name}
+            />
+          </FormGroup>
 
-        {/*  PHONE */}
-        <FormGroup>
-          <Label for="form-phone">
-            Phone: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="text"
-            name="phone"
-            id="form-phone"
-            placeholder="###-###-####"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.phone}
-          />
-        </FormGroup>
+          {/*  PHONE */}
+          <FormGroup>
+            <Label for="form-phone">
+              Phone: <span className="text-flat-orange small ml-2">required</span>
+            </Label>
+            <Input
+              type="text"
+              name="phone"
+              id="form-phone"
+              placeholder="###-###-####"
+              bsSize="sm"
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
+              value={values.phone}
+            />
+          </FormGroup>
 
-        {/*  EMAIL */}
-        <FormGroup>
-          <Label for="form-email">
-            Email: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="email"
-            name="email"
-            id="form-email"
-            placeholder="email"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.email}
-          />
-        </FormGroup>
+          {/*  EMAIL */}
+          <FormGroup>
+            <Label for="form-email">
+              Email: <span className="text-flat-orange small ml-2">required</span>
+            </Label>
+            <Input
+              type="email"
+              name="email"
+              id="form-email"
+              placeholder="email"
+              bsSize="sm"
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
+              value={values.email}
+            />
+          </FormGroup>
 
-        {/* DATE */}
-        <FormGroup>
-          <Label for="form-date">
-            Date: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="date"
-            name="date"
-            id="form-date"
-            placeholder="date"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.date}
-          />
-        </FormGroup>
+          {/* DATE */}
+          <FormGroup>
+            <Label for="form-date">
+              Date: <span className="text-flat-orange small ml-2">required</span>
+            </Label>
+            <Input
+              type="date"
+              name="date"
+              id="form-date"
+              placeholder="date"
+              bsSize="sm"
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
+              value={values.date}
+            />
+          </FormGroup>
 
-        {/* TIME */}
-        <FormGroup>
-          <Label for="form-time">
-            Time: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="time"
-            name="time"
-            id="form-time"
-            placeholder="time"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.time}
-          />
-        </FormGroup>
+          {/* TIME */}
+          <FormGroup>
+            <Label for="form-time">
+              Time: <span className="text-flat-orange small ml-2">required</span>
+            </Label>
+            <Input
+              type="time"
+              name="time"
+              id="form-time"
+              placeholder="time"
+              bsSize="sm"
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
+              value={values.time}
+            />
+          </FormGroup>
 
-        {/* COMMENTS */}
-        <FormGroup>
-          <Label for="form-comments">Comments: </Label>
-          <Input
-            type="textarea"
-            name="comments"
-            id="form-comments"
-            placeholder="luggage, pets, wheelchair, ect"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.comments}
-          />
-        </FormGroup>
+          {/* COMMENTS */}
+          <FormGroup>
+            <Label for="form-comments">Comments: </Label>
+            <Input
+              type="textarea"
+              name="comments"
+              id="form-comments"
+              placeholder="luggage, pets, wheelchair, ect"
+              onChange={(event) => handleChange(event.target.name, event.target.value)}
+              value={values.comments}
+            />
+          </FormGroup>
 
-        {/* REQUIRED FIELDS */}
-        <BookFormRequiredFields />
+          {/* REQUIRED FIELDS */}
+          <BookFormRequiredFields />
 
-        {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
-        {alertSuccess && (
-          <Alert color="success">Thank you. We have booked your request for a taxi</Alert>
-        )}
+          {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
+          {alertSuccess && (
+            <Alert color="success">Thank you. We have booked your request for a taxi</Alert>
+          )}
 
-        {/* SUBMIT BUTTON */}
-        <ButtonGroup className="mt-3 mb-5">
-          <Button className="px-5 mr-3 book-button bg-yellow" color="warning" name="submit">
-            Book
-            {loading && (
-              <>
-                <Spinner className="mx-2" size="sm" color="light" />
-                <span className="text-dark ml-2">processing...</span>
-              </>
-            )}
-          </Button>
+          {/* SUBMIT BUTTON */}
+          <ButtonGroup className="mt-3 mb-5">
+            <Button className="px-5 mr-3 book-button bg-yellow" color="warning" name="submit">
+              Book
+              {loading && (
+                <>
+                  <Spinner className="mx-2" size="sm" color="light" />
+                  <span className="text-dark ml-2">processing...</span>
+                </>
+              )}
+            </Button>
 
-          {startAddress && endAddress && <TripInfoButton />}
-        </ButtonGroup>
-      </Form>
+            {startAddress && endAddress && <TripInfoButton />}
+          </ButtonGroup>
+        </Form>
+      )}
     </div>
   );
 };
@@ -205,7 +213,9 @@ const mapStateToProps = createStructuredSelector({
   startAddress: selectStartAddress,
   endAddress: selectEndAddress,
   loading: selectLoading,
-  alertSuccess: selectAlertSuccess
+  alertSuccess: selectAlertSuccess,
+  startAddressAndEndAddressAreValid: selectStartAddressAndEndAddressAreValid,
+  vehicle: selectVehicle
 });
 
 const mapDispatchToProps = (dispatch) => ({

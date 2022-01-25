@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const BookContainer = styled.section` 
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;

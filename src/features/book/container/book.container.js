@@ -46,10 +46,6 @@ const BookContainer = function() {
         <Estimate />
       </Styled.VehicleType>
 
-      <Styled.Estimate>
-        {/* <Estimate /> */}
-      </Styled.Estimate>
-
       <Styled.TaxiForm>
         <Indicator num={3} isActive={indicatorSection === 'form'} />
         <TaxiForm />

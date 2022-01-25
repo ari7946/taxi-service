@@ -2,7 +2,15 @@ import styled from 'styled-components'
 
 export const BookTripInfoMainContainer = styled.div`
   & {
-    margin: 3rem 0 2rem 0;
+    margin: 1rem 0 2rem 0;
+  }
+
+  h2 {
+    color: lightblue;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
   }
 
   .trip-info-container {
@@ -23,27 +31,15 @@ export const BookTripInfoMainContainer = styled.div`
     .trip-info-item-heading {
       color: var(--color-green-light);
       font-weight: bold;
+      font-size: 1.5rem;
     }
   }
 
-  .fa-chevron {
-    margin-right: 1rem;
-  }
 
-  .trip-info-button {
-    width: 100%;
-    display: block;
-    padding: .3rem;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-    background-color: var(--color-yellow);
-    text-align: center;
-    border-radius: 3px;
 
-    @media (max-width: 600px) {
-      & {
-        width: 97%;
-      }
+  @media (max-width: 600px) {
+    & {
+      width: 97%;
     }
   }
 `

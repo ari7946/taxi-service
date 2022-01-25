@@ -2,13 +2,13 @@ import React from 'react';
 // import './book-estimate.styles.css';
 
 import { createStructuredSelector } from 'reselect';
-import { selectPrice, selectDropFee, selectDirection, selectTaxiFare, selectValidDropFee, selectValidEstimate } from '../../redux/book.selectors';
+import { selectVehicle, selectPrice, selectDropFee, selectDirection, selectTaxiFare, selectValidDropFee, selectValidEstimate } from '../../redux/book.selectors';
 
 import { connect } from 'react-redux';
 
 import { EstimateContainer } from './book-estimate.styles'
 
-const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
+const Estimate = ({ price, direction, taxiFare, estimate, dropFee, vehicle }) => {
   // const taxiFare = startAddressAndEndAddressAreValid ? (Number(price) - dropFee).toFixed(2) : 0;
   // const discount = (total * 0.20).toFixed(2);
   // const discountTotal = (total - discount).toFixed(2);
@@ -25,15 +25,15 @@ const Estimate = ({ price, direction, taxiFare, estimate, dropFee }) => {
 
       <div className="estimate-info">
         {/* <p><Badge color="info">Distance: </Badge><br />{distance} mi</p> */}
-        <p className="fare">Taxi Fare: ${taxiFare}</p>
+        <p className="fare">Taxi Fare: ${vehicle ? taxiFare : '0.00'}</p>
         <p className="drop-fee">
           <span className="plus-sign">
             +
           </span>
-          Drop Fee: ${dropFee}
+          Drop Fee: ${dropFee}.00
         </p>
         {direction === 'oneWay'
-          ? <h2 className='price'>Estimate: ${estimate}</h2>
+          ? <h2 className='price'>Estimate: ${vehicle ? estimate : '0.00'}</h2>
           : null
           //TODO Implement TwoWay as a potential future feature
           // : (
@@ -56,6 +56,7 @@ const mapStateToProps = createStructuredSelector({
   taxiFare: selectTaxiFare,
   estimate: selectValidEstimate,
   dropFee: selectValidDropFee,
+  vehicle: selectVehicle,
 })
 
 export default connect(mapStateToProps)(Estimate);

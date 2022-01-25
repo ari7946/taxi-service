@@ -1,8 +1,10 @@
 import React from 'react';
 import * as Styled from './book-indicator.styles';
 
-const Indicator = function ({ num }: { num: number }) {
-  return <Styled.IndicatorWrapper>{num}</Styled.IndicatorWrapper>;
+import { selectStartAddressAndEndAddressAreValid } from '../../redux/book.selectors';
+
+const Indicator = function ({ num, isActive }: { num: number; isActive: boolean }) {
+  return <Styled.IndicatorWrapper isActive={isActive}>{num}</Styled.IndicatorWrapper>;
 };
 
 export default Indicator;

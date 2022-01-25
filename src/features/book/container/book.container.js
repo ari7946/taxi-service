@@ -9,11 +9,16 @@ import VehicleType from '../components/book-vehicle-type/book-vehicle-type.compo
 import TripInfoMain from '../components/book-trip-info-main/book-trip-info-main.component';
 import Indicator from '../components/book-indicator/book-indicator.component';
 
+import { useSelector } from 'react-redux';
+import { selectIndicatorSection } from '../redux/book.selectors';
+
 import * as Styled from './book.styles';
 
 const Map = React.lazy(() => import('../components/book-map/book-map.component'));
 
 const BookContainer = function() {
+  const indicatorSection = useSelector(selectIndicatorSection);
+  console.log('indicatorSection', indicatorSection);
 
   return (
     <Styled.BookContainer>
@@ -22,7 +27,7 @@ const BookContainer = function() {
       </Styled.MapHeader>
 
       <Styled.Map>
-        <Indicator num={1} />
+        <Indicator num={1} isActive={indicatorSection === 'header' && true} />
         <Suspense fallback={<Loading />} >
           <Map />
         </Suspense>
@@ -37,7 +42,7 @@ const BookContainer = function() {
       </Styled.TripInfoMain>
 
       <Styled.VehicleType>
-        <Indicator num={2} />
+        <Indicator num={2} isActive={indicatorSection === 'vehicle' && true} />
         <VehicleType />
       </Styled.VehicleType>
 
@@ -46,7 +51,7 @@ const BookContainer = function() {
       </Styled.Estimate>
 
       <Styled.TaxiForm>
-        <Indicator num={3} />
+        <Indicator num={3} isActive={indicatorSection === 'form' && true} />
         <TaxiForm />
       </Styled.TaxiForm>
     </Styled.BookContainer>

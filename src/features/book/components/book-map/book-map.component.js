@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux';
-import { locationsCleared, locationsFound, routeChanged } from '../../../redux/book.actions';
+import { locationsCleared, locationsFound, routeChanged } from '../../redux/book.actions';
 
 import { MapContainer } from './book-map.styles'
 

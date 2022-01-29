@@ -17,7 +17,7 @@ interface InputOptions {
   value: VehicleType;
 }
 
-const VehicleType = (): React.ReactElement => {
+const VehicleType = () => {
   const dispatch = useDispatch();
   const vehicleType = useSelector<VehicleType>(selectVehicle);
 
@@ -52,6 +52,7 @@ const VehicleType = (): React.ReactElement => {
           </ul>
 
           <button
+            type="button"
             className={`
               ${vehicleType === 'sedan' ? 'bg-yellow' : 'bg-green-light'}
               vehicle-type-button
@@ -86,6 +87,7 @@ const VehicleType = (): React.ReactElement => {
           </ul>
 
           <button
+            type="button"
             className={`
               ${vehicleType === 'van' ? 'bg-yellow' : ' bg-green-light'}
               vehicle-type-button

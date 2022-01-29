@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const IndicatorWrapper = styled.div`
-  border: 5px solid var(--color-grey-light-2);
+  border: 5px solid lightgray;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -15,4 +15,9 @@ export const IndicatorWrapper = styled.div`
   ${({ isActive }) => isActive && css`
     border: 5px solid var(--color-yellow);
   `}
+
+  ${({ sectionName }) => sectionName === 'form' && css`
+    margin-bottom: .8rem;
+  `}
+
 `

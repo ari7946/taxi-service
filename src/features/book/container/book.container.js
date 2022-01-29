@@ -10,7 +10,10 @@ import TripInfoMain from '../components/book-trip-info-main/book-trip-info-main.
 import Indicator from '../components/book-indicator/book-indicator.component';
 
 import { useSelector } from 'react-redux';
-import { selectIndicatorSection } from '../redux/book.selectors';
+import { 
+  selectAreAddressesAndVehicleValid,
+  selectIndicatorSection 
+} from '../redux/book.selectors';
 
 import * as Styled from './book.styles';
 
@@ -18,6 +21,7 @@ const Map = React.lazy(() => import('../components/book-map/book-map.component')
 
 const BookContainer = function() {
   const indicatorSection = useSelector(selectIndicatorSection);
+  const areAddressesAndVehicleValid = useSelector(selectAreAddressesAndVehicleValid);
 
   return (
     <Styled.BookContainer>
@@ -46,10 +50,12 @@ const BookContainer = function() {
         <Estimate />
       </Styled.VehicleType>
 
-      <Styled.TaxiForm>
-        <Indicator num={3} isActive={indicatorSection === 'form'} />
-        <TaxiForm />
-      </Styled.TaxiForm>
+      {areAddressesAndVehicleValid && (
+        <Styled.TaxiForm>
+          <Indicator num={3} isActive={indicatorSection === 'form'} sectionName='form' />
+          <TaxiForm />
+        </Styled.TaxiForm>
+      )}
     </Styled.BookContainer>
   )
 } 

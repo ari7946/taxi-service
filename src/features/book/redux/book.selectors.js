@@ -145,3 +145,9 @@ export const selectIndicatorSection = createSelector(
   }
 )
 
+export const selectAreAddressesAndVehicleValid = createSelector(
+  [selectStartAddressAndEndAddressAreValid, selectVehicle],
+  (startAddressAndEndAddressAreValid, vehicle) => 
+    !!startAddressAndEndAddressAreValid && !!vehicle
+)
+

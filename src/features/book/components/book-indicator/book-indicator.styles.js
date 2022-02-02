@@ -11,13 +11,15 @@ export const IndicatorWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1rem;
 
   ${({ isActive }) => isActive && css`
     border: 5px solid var(--color-yellow);
   `}
 
   ${({ sectionName }) => sectionName === 'form' && css`
-    margin-bottom: .8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   `}
 
 `

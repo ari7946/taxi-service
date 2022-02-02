@@ -5,7 +5,9 @@ export const BookVehicleTypeContainer = styled.div`
     width: 100%;
     display: flex;
     flex: 1 1 0;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    max-width: 35rem;
+    margin: 1.5rem auto 0 auto;
   }
 
   .vehicle-type-card {
@@ -38,9 +40,9 @@ export const BookVehicleTypeContainer = styled.div`
 
   .vehicle-img {
     display: block;
-    height: 9rem;
+    height: 8em;
     padding: 1rem 1rem 1rem 0;
-    width: 30rem;
+    width: 15em;
     margin: 0 auto;
   }
 

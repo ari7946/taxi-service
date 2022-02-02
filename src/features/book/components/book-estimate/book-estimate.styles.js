@@ -6,7 +6,7 @@ export const EstimateContainer = styled.div`
   border: none !important;
   font-family: var(--font-monospaced-bold);
   letter-spacing: 0.25rem;
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
   text-transform: uppercase;
 
   .estimate-info {

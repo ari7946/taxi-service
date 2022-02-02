@@ -1,14 +1,6 @@
 import styled from 'styled-components'
 
 export const BookAddressContainer = styled.div` 
-
-  & {
-    margin-top: 2rem;
-
-    @media (min-width: 850px) {
-      margin-top: -1rem;
-    }
-  }
   
   .instructions {
     font-weight: 300 !important;

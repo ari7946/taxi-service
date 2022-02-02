@@ -1,16 +1,15 @@
 import styled from 'styled-components'
 
 export const BookTripInfoMainContainer = styled.div`
-  & {
-    margin: 1rem 0 2rem 0;
-  }
 
   h2 {
-    color: lightblue;
+    color: white;
     font-weight: bold;
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    border-bottom: 1px solid #fff;
+    padding-bottom: .3rem;
   }
 
   .trip-info-container {

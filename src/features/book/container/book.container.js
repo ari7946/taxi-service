@@ -1,5 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { Suspense } from 'react';
+import { useSelector } from 'react-redux';
+
 import TaxiForm from '../components/book-form/book-form.component';
 import Loading from '../components/book-loading/book-loading.component';
 import MapHeader from '../components/book-map-header/book-map-header.component';
@@ -9,7 +11,6 @@ import VehicleType from '../components/book-vehicle-type/book-vehicle-type.compo
 import TripInfoMain from '../components/book-trip-info-main/book-trip-info-main.component';
 import Indicator from '../components/book-indicator/book-indicator.component';
 
-import { useSelector } from 'react-redux';
 import { 
   selectAreAddressesAndVehicleValid,
   selectIndicatorSection 
@@ -26,11 +27,13 @@ const BookContainer = function() {
   return (
     <Styled.BookContainer>
       <Styled.MapHeader>
-        <MapHeader />
+        <Styled.HeaderIndicatorWrapper>
+          <Indicator num={1} isActive={indicatorSection === 'header'} />
+          <MapHeader sectionName='header' />
+        </Styled.HeaderIndicatorWrapper>
       </Styled.MapHeader>
 
       <Styled.Map>
-        <Indicator num={1} isActive={indicatorSection === 'header'} />
         <Suspense fallback={<Loading />} >
           <Map />
         </Suspense>
@@ -45,14 +48,20 @@ const BookContainer = function() {
       </Styled.TripInfoMain>
 
       <Styled.VehicleType>
-        <Indicator num={2} isActive={indicatorSection === 'vehicle'} />
+        <Styled.HeaderIndicatorWrapper>
+          <Indicator num={2} isActive={indicatorSection === 'vehicle'} />
+          <MapHeader sectionName='vehicle' />
+        </Styled.HeaderIndicatorWrapper>
         <VehicleType />
         <Estimate />
       </Styled.VehicleType>
 
       {areAddressesAndVehicleValid && (
         <Styled.TaxiForm>
-          <Indicator num={3} isActive={indicatorSection === 'form'} sectionName='form' />
+          <Styled.HeaderIndicatorWrapper>
+            <Indicator num={3} isActive={indicatorSection === 'form'} sectionName='form' />
+            <MapHeader sectionName='form' />
+          </Styled.HeaderIndicatorWrapper>
           <TaxiForm />
         </Styled.TaxiForm>
       )}

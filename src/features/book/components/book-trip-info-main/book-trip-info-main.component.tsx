@@ -37,7 +37,7 @@ const TripInfoMain = ({
     <React.Fragment>
       {startAddressAndEndAddressAreValid && vehicle && (
         <BookTripInfoMainContainer>
-          <h2>Trip Details:</h2>
+          <h2>Trip Details</h2>
 
           <div className="trip-info-container" data-testid="trip-info-container">
             <div className="trip-info-container__first">

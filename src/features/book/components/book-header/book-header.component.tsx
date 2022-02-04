@@ -9,9 +9,13 @@ import {
   selectVehicle
 } from '../../redux/book.selectors';
 
-import { MapHeaderContainer } from './book-map-header.styles';
+import * as Styled from './book-header.styles';
 
-const MapHeader = ({ sectionName }: { sectionName: string }): React.ReactElement | null => {
+interface HeaderProps {
+  sectionName: 'map' | 'vehicle' | 'form';
+}
+
+const Header = ({ sectionName }: HeaderProps): React.ReactElement | null => {
   const startAddress: string = useSelector(selectStartAddress);
   const endAddress: string = useSelector(selectEndAddress);
   const startAddressAndEndAddressAreValid: boolean = useSelector(
@@ -20,7 +24,7 @@ const MapHeader = ({ sectionName }: { sectionName: string }): React.ReactElement
   const areAddressesAndVehicleValid: boolean = useSelector(selectAreAddressesAndVehicleValid);
   const vehicle: string = useSelector(selectVehicle);
 
-  const isSectionMap = sectionName === 'header';
+  const isSectionMap = sectionName === 'map';
   const isSectionVehicle = sectionName === 'vehicle';
   const isSectionForm = sectionName === 'form';
 
@@ -28,7 +32,8 @@ const MapHeader = ({ sectionName }: { sectionName: string }): React.ReactElement
   const destinationHeading = <span className="address-heading-destination">Destination</span>;
 
   return (
-    <MapHeaderContainer data-testid="mapheader-container">
+    <Styled.HeaderWrapper data-testid="mapheader-container">
+      {/* Map Section */}
       {!startAddress && !endAddress && isSectionMap && (
         <h4 data-testid="startAddress-and-endAddress-invalid" className="heading">
           Please Select {startHeading} <br />
@@ -48,15 +53,17 @@ const MapHeader = ({ sectionName }: { sectionName: string }): React.ReactElement
         </h4>
       )}
 
+      {/* Vehicle Section */}
       {startAddressAndEndAddressAreValid && isSectionVehicle && !vehicle && (
         <h4 className="heading">Please Choose A Vehicle</h4>
       )}
 
+      {/* Form Section */}
       {areAddressesAndVehicleValid && isSectionForm && (
         <h4 className="heading">Book A Taxi Below</h4>
       )}
-    </MapHeaderContainer>
+    </Styled.HeaderWrapper>
   );
 };
 
-export default MapHeader;
+export default Header;

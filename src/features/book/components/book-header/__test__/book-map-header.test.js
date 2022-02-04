@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '../../../../_global/test-utils'
-import BookMapHeader from '../book-map-header.component.tsx'
+import BookMapHeader from '../book-header.component.tsx'
 
 describe('BookMapHeader', () => {
   it('should prompt user to submit taxi form', () => {

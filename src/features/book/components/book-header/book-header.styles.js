@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const MapHeaderContainer = styled.div` 
+export const HeaderWrapper = styled.div` 
   .address-heading-starting {
     color: var(--color-yellow);
     font-weight: bold;

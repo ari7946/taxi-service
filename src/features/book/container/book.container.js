@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import TaxiForm from '../components/book-form/book-form.component';
 import Loading from '../components/book-loading/book-loading.component';
-import MapHeader from '../components/book-map-header/book-map-header.component';
+import Header from '../components/book-header/book-header.component';
 import Addresses from '../components/book-addresses/book-addresses.component';
 import Estimate from '../components/book-estimate/book-estimate.component';
 import VehicleType from '../components/book-vehicle-type/book-vehicle-type.component';
@@ -28,8 +28,8 @@ const BookContainer = function() {
     <Styled.BookContainer>
       <Styled.MapHeader>
         <Styled.HeaderIndicatorWrapper>
-          <Indicator num={1} isActive={indicatorSection === 'header'} />
-          <MapHeader sectionName='header' />
+          <Indicator num={1} isActive={indicatorSection === 'map'} />
+          <Header sectionName='map' />
         </Styled.HeaderIndicatorWrapper>
       </Styled.MapHeader>
 
@@ -50,7 +50,7 @@ const BookContainer = function() {
       <Styled.VehicleType>
         <Styled.HeaderIndicatorWrapper>
           <Indicator num={2} isActive={indicatorSection === 'vehicle'} />
-          <MapHeader sectionName='vehicle' />
+          <Header sectionName='vehicle' />
         </Styled.HeaderIndicatorWrapper>
         <VehicleType />
         <Estimate />
@@ -60,7 +60,7 @@ const BookContainer = function() {
         <Styled.TaxiForm>
           <Styled.HeaderIndicatorWrapper>
             <Indicator num={3} isActive={indicatorSection === 'form'} sectionName='form' />
-            <MapHeader sectionName='form' />
+            <Header sectionName='form' />
           </Styled.HeaderIndicatorWrapper>
           <TaxiForm />
         </Styled.TaxiForm>

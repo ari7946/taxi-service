@@ -7,7 +7,7 @@ interface IndicatorProps {
   sectionName?: string;
 }
 
-const Indicator = function ({ num, isActive, sectionName }: IndicatorProps) {
+const Indicator = function ({ num, isActive, sectionName = '' }: IndicatorProps) {
   return (
     <Styled.IndicatorWrapper isActive={isActive} sectionName={sectionName}>
       {num}

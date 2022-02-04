@@ -129,10 +129,10 @@ export const selectValidEstimate = createSelector(
 )
 
 export const selectIndicatorSection = createSelector(
-  [selectBook, selectStartAddressAndEndAddressAreValid, selectVehicle],
-  (book, validAddresses, vehicle) => {
+  [selectStartAddressAndEndAddressAreValid, selectVehicle],
+  (validAddresses, vehicle) => {
     if (!validAddresses) {
-      return 'header'
+      return 'map'
     }
     if (validAddresses && !vehicle) {
       return 'vehicle'
@@ -141,7 +141,7 @@ export const selectIndicatorSection = createSelector(
       return 'form'
     }
 
-    return 'header';
+    return 'map';
   }
 )
 

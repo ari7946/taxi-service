@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 export const HeaderWrapper = styled.div` 
-  .address-heading-starting {
+  .address-heading-start {
     color: var(--color-yellow);
     font-weight: bold;
   }
 
-  .address-heading-destination {
+  .address-heading-end {
     color: var(--color-flat-orange);
     font-weight: bold;
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import ReactTextTransition, { presets } from 'react-text-transition';
 
 import {
   selectStartAddress,
@@ -15,7 +16,9 @@ interface HeaderProps {
   sectionName: 'map' | 'vehicle' | 'form';
 }
 
-const Header = ({ sectionName }: HeaderProps): React.ReactElement | null => {
+const Header = ({ sectionName }: HeaderProps) => {
+  const [showText, setShowText] = React.useState(false);
+
   const startAddress: string = useSelector(selectStartAddress);
   const endAddress: string = useSelector(selectEndAddress);
   const startAddressAndEndAddressAreValid: boolean = useSelector(
@@ -28,39 +31,113 @@ const Header = ({ sectionName }: HeaderProps): React.ReactElement | null => {
   const isSectionVehicle = sectionName === 'vehicle';
   const isSectionForm = sectionName === 'form';
 
-  const startHeading = <span className="address-heading-starting">Starting Point</span>;
-  const destinationHeading = <span className="address-heading-destination">Destination</span>;
+  React.useEffect(() => {
+    const timer = setTimeout(() => setShowText(!showText), 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const startHeading = (
+    <span className="address-heading-start">
+      {'Starting Point'.split('').map((letter, i) => (
+        <ReactTextTransition
+          key={i}
+          text={letter}
+          style={
+            letter === ' ' && {
+              margin: '0 5px'
+            }
+          }
+          delay={i * 40}
+          springConfig={presets.molasses}
+          inline
+          noOverflow
+        />
+      ))}
+    </span>
+  );
+  const destinationHeading = (
+    <span className="address-heading-end">
+      {showText &&
+        'Destination'.split('').map((letter, i) => (
+          <ReactTextTransition
+            key={i}
+            text={letter}
+            style={
+              letter === ' ' && {
+                margin: '0 5px'
+              }
+            }
+            delay={i * 60}
+            springConfig={presets.molasses}
+            inline
+            noOverflow
+          />
+        ))}
+    </span>
+  );
 
   return (
     <Styled.HeaderWrapper data-testid="mapheader-container">
       {/* Map Section */}
       {!startAddress && !endAddress && isSectionMap && (
-        <h4 data-testid="startAddress-and-endAddress-invalid" className="heading">
+        <h2 data-testid="startAddress-and-endAddress-invalid" className="heading">
           Please Select {startHeading} <br />
           and {destinationHeading}
-        </h4>
+        </h2>
       )}
 
       {!startAddress && endAddress && isSectionMap && (
-        <h4 data-testid="startAddress-invalid" className="heading">
+        <h2 data-testid="startAddress-invalid" className="heading">
           Please Select {startHeading}
-        </h4>
+        </h2>
       )}
 
       {startAddress && !endAddress && isSectionMap && (
-        <h4 data-testid="endAddress-invalid" className="heading">
+        <h2 data-testid="endAddress-invalid" className="heading">
           Please Select {destinationHeading}
-        </h4>
+        </h2>
       )}
 
       {/* Vehicle Section */}
-      {startAddressAndEndAddressAreValid && isSectionVehicle && !vehicle && (
-        <h4 className="heading">Please Choose A Vehicle</h4>
+      {startAddressAndEndAddressAreValid && isSectionVehicle && !vehicle && showText && (
+        <h2 className="heading">
+          {'Please Select a Vehicle'.split('').map((letter, i) => (
+            <ReactTextTransition
+              key={i}
+              text={letter}
+              style={
+                letter === ' ' && {
+                  margin: '0 5px'
+                }
+              }
+              delay={i * 40}
+              springConfig={presets.molasses}
+              inline
+              noOverflow
+            />
+          ))}
+        </h2>
       )}
-
       {/* Form Section */}
       {areAddressesAndVehicleValid && isSectionForm && (
-        <h4 className="heading">Book A Taxi Below</h4>
+        <h2 className="heading">
+          {'Book a Taxi Below'.split('').map((letter, i) => (
+            <ReactTextTransition
+              key={i}
+              text={letter}
+              style={
+                letter === ' ' && {
+                  margin: '0 5px'
+                }
+              }
+              delay={i * 60}
+              springConfig={presets.molasses}
+              inline
+              noOverflow
+            />
+          ))}
+        </h2>
       )}
     </Styled.HeaderWrapper>
   );

@@ -108,9 +108,9 @@ export const selectStartAddressAndEndAddressAreValid = createSelector(
 )
 
 export const selectTaxiFare = createSelector(
-  [selectBook, selectStartAddressAndEndAddressAreValid],
-  (book, validAddresses) => {
-    return validAddresses ? (Number(book.price) - book.dropFee).toFixed(2) : 0
+  [selectBook, selectStartAddressAndEndAddressAreValid, selectVehicle],
+  (book, validAddresses, vehicle) => {
+    return validAddresses && !!vehicle ? (Number(book.price) - book.dropFee).toFixed(2) : '0.00 '
   }
 )
 
@@ -122,9 +122,9 @@ export const selectValidDropFee = createSelector(
 )
 
 export const selectValidEstimate = createSelector(
-  [selectBook, selectStartAddressAndEndAddressAreValid],
-  (book, validAddresses) => {
-    return validAddresses ? book.price : 0
+  [selectBook, selectStartAddressAndEndAddressAreValid, selectVehicle],
+  (book, validAddresses, vehicle) => {
+    return validAddresses && !!vehicle ? book.price : '0.00 '
   }
 )
 

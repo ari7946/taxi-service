@@ -14,7 +14,8 @@ export const EstimateContainer = styled.div`
     text-align: center;
 
     .fare {
-      margin-left: 1rem;  
+      margin-left: 1rem;
+      padding-left: 1rem;  
     }
 
     .plus-sign {

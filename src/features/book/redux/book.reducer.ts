@@ -52,9 +52,9 @@ const convertMetersToMiles = (distance: number): number => {
   return Number((distance * 0.000621371192).toFixed(1));
 };
 
-const formatField = (field) => {
+const formatField = (field: string): string => {
   // edge case 1
-  if (field == 'endAddress') field = 'Destination';
+  if (field === 'endAddress') field = 'Destination';
   // edge case 2
   else if (field === 'startAddress') field = 'Starting Point';
   // returning capitalized field

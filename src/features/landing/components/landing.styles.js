@@ -1,36 +1,33 @@
 import styled from 'styled-components'
 import img from '../assets/cab-blue2.png'
 
-export const LandingPageContainer = styled.div` 
+export const LandingPageContainer = styled.section` 
   & {
-    height: 90vh; 
-    width: 100%;
+    height: 70vh; 
+    width: 95%;
     margin: 0 1.5rem;
-    position: relative;
   }
 
-  &::before {
-    background-image: url(${img}); 
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire 
-    container */
-    opacity: .8;
-    content: "";
-    position: absolute;
-    top: 100px;
-    bottom: 0px;
-    right: 0;
-    left: 0;
-    z-index: 0;
+  .landing-header {
+    display: flex;
+    margin-top: 8rem;
+    height: inherit;
+    flex-direction: column;
+
+    @media (max-width: 500px) {
+      margin-top: 4rem;
+    }
   }
 
   .landing-title {
-    margin-top: 4rem;
     font-weight: lighter;
-    font-size: 50px;
+    font-size: 4rem;
     text-transform: uppercase;
     color: #fff;
+
+    @media (max-width: 500px) {
+      font-size: 45px;
+    }
 
     span {
       color: var(--color-yellow);
@@ -42,6 +39,10 @@ export const LandingPageContainer = styled.div`
     font-weight: 200;
     color: var(--color-grey-light-2);
     margin-top: 1rem;
+
+    @media (max-width: 500px) {
+      font-size: 30px;
+    }
   }
 
   .landing-message {
@@ -49,15 +50,20 @@ export const LandingPageContainer = styled.div`
     color: var(--color-grey-light-2);
     margin-top: 1.5rem;
     font-weight: 200;
+
+    @media (max-width: 500px) {
+      font-size: 20px;
+    }
   }
 
   .landing-buttons {
     padding-top: 2rem;
+    display: flex;
+    wrap: nowrap;
   }
 
   .landing-button {
     background-color: var(--color-yellow);
-    position: relative;
     z-index: 2;
     margin-right: 1.3rem;
     padding: .8rem 3rem;
@@ -66,106 +72,24 @@ export const LandingPageContainer = styled.div`
     &:hover {
       cursor: pointer;
     }
-  }
 
-  .phone-cab {
-    height: 9rem;
-    width: 10rem;
-    margin-top: 4rem;
-  }
-
-  @media (max-width: 1200px) {
-    .landing-title {
-      font-size: 45px;
-    }
-
-    .landing-subtitle {
-      font-size: 25px;
-    }
-
-    .landing-message {
-      font-size: 20px;
-    }
-  }
-
-  @media (max-width: 850px) {
-    .phone-cab {
-      height: auto;
-      width: 9rem;
-      margin-top: 2rem;
-    }
-
-    .landing-title {
-      margin-top: 2rem;
-    }
-
-    &::before {
-      background-position: top; 
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      opacity: .5;
-    }
-
-    .landing-subtitle {
-      font-size: 30px;
-      font-weight: 200;
-      /* width: 80%; */
-    }
-
-    .landing-message {
-      font-size: 20px;
-    }
-
-    .landing-buttons {
-      margin-top: .5rem;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .landing-title {
-      font-size: 2rem;
-      margin-bottom: .5rem;
-    }
-
-    .landing-subtitle {
-      font-size: 25px;
-      font-weight: 200;
-      margin-top: 2rem;
-      margin-right: 1rem;
-    }
-
-    .landing-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      width: 80%;
+    @media (max-width: 500px) {
       font-size: 15px;
-    }
-
-    .landing-button {
-      padding-top: .5rem;
-      font-size: 17px;
-      padding: .5rem 1rem;
-      text-align: center;
-    }
-
-    .phone-cab {
-      display: none;
+      padding: .8rem 1rem;
     }
   }
 
-  @media (max-width: 415px) {
-
-    .landing-message {
+  .bottom-filler {
+    position: absolute;
+    background-color: #222831;
+    border-radius: 95% 0 0 0;
+    width: 50%;
+    height: 35rem;
+    bottom: 0;
+    right: 0;
+    border-top: 20px solid var(--color-yellow);
+    @media (max-width: 600px) {
       display: none;
-    }
-
-    .landing-title {
-      font-size: 1.8rem;
-      color: #fff;
-      z-index: 2;
     }
   }
 `

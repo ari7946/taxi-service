@@ -5,7 +5,7 @@ export const BookVehicleTypeContainer = styled.div`
     width: 100%;
     display: flex;
     flex: 1 1 0;
-    justify-content: space-evenly;
+    justify-content: space-between;
     max-width: 35rem;
     margin: 1.5rem auto 0 auto;
   }

@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 
-export const AboutPageContainer = styled.div`
-  padding: 1rem 1.5rem;
+export const AboutPageContainer = styled.section`
+  width: 90%;
+  min-height: 90vh;
+  margin: 5rem auto 0 auto;
 `
 
-export const AboutSectionContainer = styled.div`
+export const AboutSectionContainer = styled.section`
   margin: 2rem 0;
   height: auto;
   display: flex;

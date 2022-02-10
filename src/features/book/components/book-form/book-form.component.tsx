@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Button, ButtonGroup, Form, FormGroup, Label, Input, Spinner, Alert } from 'reactstrap';
+import { Button, ButtonGroup, Form, Spinner, Alert } from 'reactstrap';
 import './book-form.styles.css';
 
 import { connect } from 'react-redux';
@@ -7,12 +7,13 @@ import { createStructuredSelector } from 'reselect';
 import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
 import BookFormRequiredFields from '../book-form-required-fields/book-form-required-fields';
 import { FormFields } from '../../types/book.types';
+import BookFormInput from '../book-form-input/book-form-input.component';
 
 import {
   selectStartAddress,
   selectEndAddress,
   selectLoading,
-  selectAlertSuccess
+  selectAlertSuccess,
 } from '../../redux/book.selectors';
 
 import { submitForm } from '../../redux/book.actions';
@@ -34,7 +35,7 @@ const initialFormFields: FormFields = {
   phone: '',
   date: '',
   time: '',
-  comments: ''
+  comments: '',
 };
 
 interface Action {
@@ -62,7 +63,7 @@ const TaxiForm = function ({
   loading,
   alertSuccess,
   startAddress,
-  endAddress
+  endAddress,
 }: TaxiFormProps): React.ReactElement {
   const [values, dispatch] = React.useReducer(bookFormReducer, initialFormFields);
 
@@ -71,108 +72,87 @@ const TaxiForm = function ({
     return dispatch({ type: 'SET_VALUE', payload: updatedValue });
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = (e): void => {
     e.preventDefault();
     const { name, email, comments, phone, date, time }: FormFields = values;
     submitForm({ name, email, comments, phone, date, time });
   };
 
+  console.log('form values', values);
+
   return (
     <div className="book-form">
       <Form onSubmit={(e) => handleSubmitForm(e)}>
         {/* NAME */}
-        <FormGroup>
-          <Label for="form-name">
-            Name: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="text"
-            name="name"
-            id="form-name"
-            placeholder="name"
-            bsSize="sm"
-            data-testid="form-name"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.name}
-          />
-        </FormGroup>
+        <BookFormInput
+          id="form-name"
+          type="text"
+          name="name"
+          placeholder="name"
+          dataTestId="form-name"
+          handleChange={handleChange}
+          value={values.name}
+          required
+        />
 
         {/*  PHONE */}
-        <FormGroup>
-          <Label for="form-phone">
-            Phone: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="text"
-            name="phone"
-            id="form-phone"
-            placeholder="###-###-####"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.phone}
-          />
-        </FormGroup>
+        <BookFormInput
+          id="form-phone"
+          type="phone"
+          name="phone"
+          placeholder="###-###-####"
+          dataTestId="form-phone"
+          handleChange={handleChange}
+          value={values.phone}
+          required
+        />
 
         {/*  EMAIL */}
-        <FormGroup>
-          <Label for="form-email">
-            Email: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="email"
-            name="email"
-            id="form-email"
-            placeholder="email"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.email}
-          />
-        </FormGroup>
+        <BookFormInput
+          id="form-email"
+          type="email"
+          name="email"
+          placeholder="email"
+          dataTestId="form-email"
+          handleChange={handleChange}
+          value={values.email}
+          required
+        />
 
         {/* DATE */}
-        <FormGroup>
-          <Label for="form-date">
-            Date: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="date"
-            name="date"
-            id="form-date"
-            placeholder="date"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.date}
-          />
-        </FormGroup>
+        <BookFormInput
+          id="form-date"
+          type="date"
+          name="date"
+          placeholder="date"
+          dataTestId="form-date"
+          handleChange={handleChange}
+          value={values.date}
+          required
+        />
 
         {/* TIME */}
-        <FormGroup>
-          <Label for="form-time">
-            Time: <span className="text-flat-orange small ml-2">required</span>
-          </Label>
-          <Input
-            type="time"
-            name="time"
-            id="form-time"
-            placeholder="time"
-            bsSize="sm"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.time}
-          />
-        </FormGroup>
+        <BookFormInput
+          id="form-time"
+          type="time"
+          name="time"
+          placeholder="time"
+          dataTestId="form-time"
+          handleChange={handleChange}
+          value={values.time}
+          required
+        />
 
         {/* COMMENTS */}
-        <FormGroup>
-          <Label for="form-comments">Comments: </Label>
-          <Input
-            type="textarea"
-            name="comments"
-            id="form-comments"
-            placeholder="luggage, pets, wheelchair, ect"
-            onChange={(event) => handleChange(event.target.name, event.target.value)}
-            value={values.comments}
-          />
-        </FormGroup>
+        <BookFormInput
+          id="form-comments"
+          type="textarea"
+          name="comments"
+          placeholder="luggage, pets, wheelchair, ect"
+          dataTestId="form-comments"
+          handleChange={handleChange}
+          value={values.comments}
+        />
 
         {/* REQUIRED FIELDS */}
         <BookFormRequiredFields />
@@ -185,11 +165,11 @@ const TaxiForm = function ({
         {/* SUBMIT BUTTON */}
         <ButtonGroup className="mt-3 mb-5">
           <Button className="px-5 mr-3 book-button bg-yellow" color="warning" name="submit">
-            Book
+            {!loading && 'Book'}
             {loading && (
               <>
                 <Spinner className="mx-2" size="sm" color="light" />
-                <span className="text-dark ml-2">processing...</span>
+                <span className="text-dark ml-2">Processing...</span>
               </>
             )}
           </Button>
@@ -205,11 +185,11 @@ const mapStateToProps = createStructuredSelector({
   startAddress: selectStartAddress,
   endAddress: selectEndAddress,
   loading: selectLoading,
-  alertSuccess: selectAlertSuccess
+  alertSuccess: selectAlertSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  submitForm: (values: FormFields) => dispatch(submitForm(values))
+  submitForm: (values: FormFields) => dispatch(submitForm(values)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaxiForm);

@@ -1,7 +1,3 @@
-.book-form label {
-  color: var(--color-green-light);
-}
-
 .book-form {
   background-color: var(--color-primary-dark) !important;
   padding-top: 0 !important;

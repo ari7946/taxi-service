@@ -2,43 +2,47 @@ import styled, { css } from 'styled-components';
 
 export const NavItemWrapper = styled.li`
   margin: 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  padding-top: 0.7rem;
   cursor: pointer;
   margin: 1rem 2.5rem;
   display: block;
-  ${({ isMobileMenuOpen }) =>
-    isMobileMenuOpen &&
-    css`
-      z-index: 3;
-      margin-left: 2.5rem;
-    `}
+  font-weight: bold;
 
-  .dropdown {
-    display: flex;
-    flex-direction: column;
-    a {
-      display: block;
-    }
-  }
-
-  .dropdown_list {
-    position: absolute;
-    margin-top: 2rem;
-    color: white;
-
-    a {
-      display: block;
-      margin: 0.7rem 2rem;
-    }
-  }
-
+  a,
   .dropdown__first-item,
-  a {
-    color: white;
-    ${({ isMobileMenuOpen }) =>
-      isMobileMenuOpen &&
+  .dropdown__first-item a {
+    color: lightblue !important;
+
+    ${({ isDesktop }) =>
+      !isDesktop &&
       css`
-        color: black;
+        color: blue;
       `}
+  }
+
+  .active {
+    color: white !important;
+    ${({ isDesktop }) =>
+      !isDesktop &&
+      css`
+        color: darkgray !important;
+        font-weight: bold;
+      `}
+  }
+
+  .dropdown__list {
+    position: absolute;
+    .list-item {
+      display: block;
+      margin-left: 2rem;
+      margin-top: 0.8rem;
+
+      ${({ isDesktop }) =>
+        isDesktop &&
+        css`
+          position: relative;
+        `}
+    }
   }
 `;

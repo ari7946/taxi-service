@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import NavbarItem from '../navbar-item/navbar-item.component';
 import NavbarLogo from '../navbar-logo/navbar-logo.component';
@@ -6,11 +7,11 @@ import NavbarLogo from '../navbar-logo/navbar-logo.component';
 import * as Styled from './navbar-default.styles';
 
 export default function NavBarDefault() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDesktop, setDesktop] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
+  const toggleDropdownMenu = () => setDropdownOpen(!isDropdownOpen);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
 
@@ -24,46 +25,40 @@ export default function NavBarDefault() {
     return () => window.removeEventListener('resize', updateMedia);
   });
 
-  const checkOpen = () => {
-    if (isDesktop) {
-      return true;
-    } else if (isMobileMenuOpen) {
-      return true;
-    } else if (!isMobileMenuOpen) {
-      return false;
-    }
-  };
-  // console.log('status', status);
-  // console.log('isDesktop', isDesktop)
+  console.log('isDesktop', isDesktop);
 
   return (
-    <Styled.NavbarWrapper isMobileMenuOpen={checkOpen}>
-      <NavbarLogo />
+    <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+      <NavLink to="/">
+        <NavbarLogo />
+      </NavLink>
 
-      <Styled.CloseButton onClick={toggleMobileMenu} isMobileMenuOpen={checkOpen}>
-        {checkOpen() ? 'X' : 'Menu'}
+      <Styled.CloseButton
+        onClick={toggleMobileMenu}
+        isMobileMenuOpen={isMobileMenuOpen}
+        isDesktop={isDesktop}>
+        {isMobileMenuOpen ? 'x' : '+'}
       </Styled.CloseButton>
 
-      <Styled.NavList isMobileMenuOpen={isMobileMenuOpen}>
-        <NavbarItem path="/book" setIsOpen={setIsOpen} isMobileMenuOpen={checkOpen}>
+      <Styled.NavList isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+        <NavbarItem path="/book" isDesktop={isDesktop} toggleMobileMenu={toggleMobileMenu}>
           Book
         </NavbarItem>
 
-        <NavbarItem path="/about" setIsOpen={setIsOpen} isMobileMenuOpen={isMobileMenuOpen}>
+        <NavbarItem path="/about" isDesktop={isDesktop} toggleMobileMenu={toggleMobileMenu}>
           About
         </NavbarItem>
 
-        <NavbarItem path="/register" setIsOpen={setIsOpen} isMobileMenuOpen={isMobileMenuOpen}>
+        <NavbarItem path="/register" isDesktop={isDesktop} toggleMobileMenu={toggleMobileMenu}>
           Register
         </NavbarItem>
 
         <NavbarItem
           path="/login"
           isMobileMenuOpen={isMobileMenuOpen}
-          setIsOpen={setIsOpen}
           isDropdown
-          isOpen={isOpen}
-          toggle={toggle}
+          isDropdownOpen={isDropdownOpen}
+          toggleDropdownMenu={toggleDropdownMenu}
           items={[
             { name: 'User', dropdownPath: 'login' },
             { name: 'Admin', dropdownPath: 'admin' },

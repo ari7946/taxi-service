@@ -7,34 +7,35 @@ import * as Styled from './navbar-item.styles';
 export default function NavbarItem({
   path,
   children,
-  setIsOpen,
-  isDropdown,
-  items,
-  isOpen,
-  toggle,
   isMobileMenuOpen,
+  isDropdown,
+  isDropdownOpen,
+  isDesktop,
+  toggleDropdownMenu,
+  toggleMobileMenu,
+  items,
 }) {
   return (
-    <Styled.NavItemWrapper isMobileMenuOpen={isMobileMenuOpen}>
+    <Styled.NavItemWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
       {isDropdown ? (
         <div className="dropdown">
           <div
             className="dropdown__first-item"
             style={{ textDecoration: 'none' }}
-            onClick={() => toggle()}>
+            onClick={() => toggleDropdownMenu()}>
             {children}
           </div>
 
-          {isOpen && (
-            <div className="dropdown_list">
+          {isDropdownOpen && (
+            <div className="dropdown__list">
               {items.map(({ name, dropdownPath }) => (
                 <NavLink
                   key={name}
-                  exact
                   to={dropdownPath}
                   className="list-item"
                   style={{ textDecoration: 'none' }}
-                  onClick={() => setIsOpen(false)}>
+                  // onClick={() => toggleMobileMenu()}
+                >
                   {name}
                 </NavLink>
               ))}
@@ -42,7 +43,7 @@ export default function NavbarItem({
           )}
         </div>
       ) : (
-        <NavLink to={path} style={{ textDecoration: 'none' }} onClick={() => setIsOpen(false)}>
+        <NavLink to={path} style={{ textDecoration: 'none' }} onClick={() => toggleMobileMenu()}>
           {children}
         </NavLink>
       )}

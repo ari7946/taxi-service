@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const HeaderWrapper = styled.div` 
+export const HeaderWrapper = styled.div`
   .address-heading-start {
     color: var(--color-yellow);
     font-weight: bold;
@@ -14,7 +14,14 @@ export const HeaderWrapper = styled.div`
   .heading {
     color: #fff;
     margin-bottom: 0;
-    font-size: 1.8rem;
-  }
+    font-size: 1.7rem;
 
-`
+    @media (max-width: 1200px) {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 1.2rem;
+    }
+  }
+`;

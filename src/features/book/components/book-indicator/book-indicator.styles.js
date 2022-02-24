@@ -13,13 +13,20 @@ export const IndicatorWrapper = styled.div`
   align-items: center;
   margin-right: 1rem;
 
-  ${({ isActive }) => isActive && css`
-    border: 5px solid var(--color-yellow);
-  `}
+  @media (max-width: 500px) {
+    margin-right: 0;
+  }
 
-  ${({ sectionName }) => sectionName === 'form' && css`
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  `}
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      border: 5px solid var(--color-yellow);
+    `}
 
-`
+  ${({ sectionName }) =>
+    sectionName === 'form' &&
+    css`
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    `}
+`;

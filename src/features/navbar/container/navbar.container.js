@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import NavbarDefault from '../components/navbar-default/navbar-default.component';
-import NavbarAdmin from '../components/navbar-default/navbar-admin.components';
-import NavbarUser from '../components/navbar-default/navbar-user.components';
+import NavbarDefault from '../components/navbar-wrapper/navbar-wrapper-default.component';
+import NavbarAdmin from '../components/navbar-wrapper/navbar-wrapper-admin.component';
+import NavbarUser from '../components/navbar-wrapper/navbar-wrapper-user.component';
 
 import { selectAuthRole } from '../../auth/redux/auth.selectors';
 

@@ -21,6 +21,11 @@ export const NavItemWrapper = styled.li`
       `}
   }
 
+  .icon {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+  }
+
   .active {
     color: white !important;
     ${({ isDesktop }) =>
@@ -34,7 +39,8 @@ export const NavItemWrapper = styled.li`
   .dropdown__list {
     position: absolute;
     .list-item {
-      display: block;
+      display: flex;
+      flex-direction: column;
       margin-left: 2rem;
       margin-top: 0.8rem;
 

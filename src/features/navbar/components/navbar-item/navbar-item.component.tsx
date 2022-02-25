@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import * as Styled from './navbar-item.styles';
 
@@ -24,23 +26,26 @@ export default function NavbarItem({
             style={{ textDecoration: 'none' }}
             onClick={() => toggleDropdownMenu()}>
             {children}
+            <span>
+              <FontAwesomeIcon
+                className="icon"
+                icon={isDropdownOpen ? faChevronUp : faChevronDown}
+              />
+            </span>
           </div>
 
           {isDropdownOpen && (
             <div className="dropdown__list">
-              {items.map(({ name, dropdownPath = null, handleClick = null }) => {
-                return (
-                  <NavLink
-                    key={name}
-                    to={dropdownPath}
-                    className="list-item"
-                    style={{ textDecoration: 'none' }}
-                    onClick={handleClick}>
-                    {name}
-                  </NavLink>
-                );
-              })}
-              )
+              {items.map(({ name, dropdownPath = null, handleClick = null }) => (
+                <NavLink
+                  key={name}
+                  to={dropdownPath}
+                  className="list-item"
+                  style={{ textDecoration: 'none' }}
+                  onClick={handleClick}>
+                  {name}
+                </NavLink>
+              ))}
             </div>
           )}
         </div>

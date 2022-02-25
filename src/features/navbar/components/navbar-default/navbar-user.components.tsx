@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { logout } from '../../../auth/redux/auth.actions';
+import { useDispatch } from 'react-redux';
+
 import NavbarItem from '../navbar-item/navbar-item.component';
 import NavbarLogo from '../navbar-logo/navbar-logo.component';
 
@@ -10,10 +13,13 @@ export default function NavbarUser() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDesktop, setDesktop] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleDropdownMenu = () => setDropdownOpen(!isDropdownOpen);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
+
+  const handleLogout = () => dispatch(logout());
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 800);
@@ -47,21 +53,25 @@ export default function NavbarUser() {
           About
         </NavbarItem>
 
-        <NavbarItem path="/register" isDesktop={isDesktop} toggleMobileMenu={toggleMobileMenu}>
-          Register
-        </NavbarItem>
-
         <NavbarItem
-          path="/login"
+          path="/trips"
           isMobileMenuOpen={isMobileMenuOpen}
           isDropdown
           isDropdownOpen={isDropdownOpen}
           toggleDropdownMenu={toggleDropdownMenu}
           items={[
-            { name: 'User', dropdownPath: 'login' },
-            { name: 'Admin', dropdownPath: 'admin' },
+            {
+              name: 'Trips',
+              dropdownPath: 'trips',
+              handleClick: null,
+            },
+            {
+              name: 'Logout',
+              dropdownPath: '/',
+              handleClick: handleLogout,
+            },
           ]}>
-          Login
+          Options
         </NavbarItem>
       </Styled.NavList>
     </Styled.NavbarWrapper>

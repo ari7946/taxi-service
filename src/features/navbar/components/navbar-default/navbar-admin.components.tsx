@@ -59,7 +59,6 @@ export default function NavbarAdmin() {
           isDropdown
           isDropdownOpen={isDropdownOpen}
           toggleDropdownMenu={toggleDropdownMenu}
-          onClick={() => logout()}
           items={[
             {
               name: 'Trips',
@@ -72,7 +71,7 @@ export default function NavbarAdmin() {
               handleClick: handleLogout,
             },
           ]}>
-          Admin
+          Options
         </NavbarItem>
       </Styled.NavList>
     </Styled.NavbarWrapper>

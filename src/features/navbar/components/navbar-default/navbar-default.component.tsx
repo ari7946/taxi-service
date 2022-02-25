@@ -6,7 +6,7 @@ import NavbarLogo from '../navbar-logo/navbar-logo.component';
 
 import * as Styled from './navbar-default.styles';
 
-export default function NavBarDefault() {
+export default function NavbarDefault() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDesktop, setDesktop] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import NavbarDefault from '../components/navbar-default/navbar-default.component';
-import AdminNavbar from '../components/navbar-admin.component';
+// import AdminNavbar from '../components/navbar-admin.component';
+import NavbarAdmin from '../components/navbar-default/navbar-admin.components';
 import UserNavbar from '../components/navbar-user.component';
 import { selectAuthRole } from '../../auth/redux/auth.selectors';
 
@@ -11,7 +12,7 @@ const NavbarContainer = ({ authRole }) => {
   return (
     <>
       {authRole !== 'admin' && authRole !== 'user' && <NavbarDefault />}
-      {authRole === 'admin' && <AdminNavbar />}
+      {authRole === 'admin' && <NavbarAdmin />}
       {authRole === 'user' && <UserNavbar />}
     </>
   );

@@ -28,17 +28,19 @@ export default function NavbarItem({
 
           {isDropdownOpen && (
             <div className="dropdown__list">
-              {items.map(({ name, dropdownPath }) => (
-                <NavLink
-                  key={name}
-                  to={dropdownPath}
-                  className="list-item"
-                  style={{ textDecoration: 'none' }}
-                  // onClick={() => toggleMobileMenu()}
-                >
-                  {name}
-                </NavLink>
-              ))}
+              {items.map(({ name, dropdownPath = null, handleClick = null }) => {
+                return (
+                  <NavLink
+                    key={name}
+                    to={dropdownPath}
+                    className="list-item"
+                    style={{ textDecoration: 'none' }}
+                    onClick={handleClick}>
+                    {name}
+                  </NavLink>
+                );
+              })}
+              )
             </div>
           )}
         </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../auth/redux/auth.actions';
 
 import {
   Collapse,
@@ -13,11 +12,14 @@ import {
   DropdownItem,
   DropdownMenu,
 } from 'reactstrap';
-import "./navbar.styles.css";
+import './navbar.styles.css';
 import logo2 from '../assets/logo2.png';
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+
+import { logout } from '../../auth/redux/auth.actions';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 // import { useAuth } from '../../auth/use-auth';
 import { useHistory } from 'react-router-dom';
 import NavbarContainer from './navbar-brand.component';
@@ -35,30 +37,35 @@ const AdminNavbar = ({ logout }) => {
         <NavbarContainer />
       </NavLink>
 
-      <NavbarToggler className="text-grey-light-2 mr-3" onClick={toggle} >
+      <NavbarToggler className="text-grey-light-2 mr-3" onClick={toggle}>
         {/* <FontAwesomeIcon className="mr-2" icon={isOpen ? faChevronUp : faChevronDown} /> */}
         <FontAwesomeIcon className="fa-brand" icon={faBars} />
-      </NavbarToggler >
+      </NavbarToggler>
 
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <NavItem className='py-3'>
+          <NavItem className="py-3">
             <NavLink
               className="px-5 mx-2 py-3 text-grey-light-2 lead"
               exact
               activeClassName="font-weight-bold"
-              to="/book" style={{ textDecoration: 'none' }}
-              onClick={() => setIsOpen(false)}>Book</NavLink>
+              to="/book"
+              style={{ textDecoration: 'none' }}
+              onClick={() => setIsOpen(false)}>
+              Book
+            </NavLink>
           </NavItem>
 
-          <NavItem className='py-3'>
+          <NavItem className="py-3">
             <NavLink
               className="px-5 mx-2 py-3 text-grey-light-2 lead"
               exact
               activeClassName="font-weight-bold"
               to="/about"
               style={{ textDecoration: 'none' }}
-              onClick={() => setIsOpen(false)} >About</NavLink>
+              onClick={() => setIsOpen(false)}>
+              About
+            </NavLink>
           </NavItem>
 
           <UncontrolledDropdown nav inNavbar>
@@ -71,7 +78,9 @@ const AdminNavbar = ({ logout }) => {
             <DropdownMenu right>
               <DropdownItem>
                 <NavLink to="/trips" style={{ textDecoration: 'none' }}>
-                  <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>Trips</NavItem>
+                  <NavItem className="text-flat-blue py-2" onClick={() => setIsOpen(false)}>
+                    Trips
+                  </NavItem>
                 </NavLink>
               </DropdownItem>
 
@@ -86,8 +95,7 @@ const AdminNavbar = ({ logout }) => {
                 onClick={() => {
                   logout();
                   history.replace('/');
-                }}
-              >
+                }}>
                 Logout
               </DropdownItem>
             </DropdownMenu>
@@ -96,10 +104,10 @@ const AdminNavbar = ({ logout }) => {
       </Collapse>
     </Navbar>
   );
-}
+};
 
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
-})
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout()),
+});
 
 export default connect(null, mapDispatchToProps)(AdminNavbar);

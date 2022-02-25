@@ -48,11 +48,15 @@ export const CloseButton = styled.button`
   position: absolute;
   border: none;
   border-radius: 10%;
-  background-color: var(--color-yellow);
+  background-color: var(--color-gray-dark-2);
   right: 7%;
   font-size: 2rem;
   width: 3rem;
   margin-top: 0.5rem;
+
+  .fa-brand {
+    color: var(--color-yellow);
+  }
 
   ${({ isMobileMenuOpen, isDesktop }) =>
     isDesktop
@@ -62,7 +66,9 @@ export const CloseButton = styled.button`
       : isMobileMenuOpen &&
         !isDesktop &&
         css`
-          color: red;
+          .fa-brand {
+            color: var(--color-flat-orange);
+          }
           z-index: 102;
           display: block;
           position: absolute;

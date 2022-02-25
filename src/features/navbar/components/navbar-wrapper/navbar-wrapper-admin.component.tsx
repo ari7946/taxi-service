@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../auth/redux/auth.actions';
+
 import NavbarItem from '../navbar-item/navbar-item.component';
 import NavbarLogo from '../navbar-logo/navbar-logo.component';
 
-import * as Styled from './navbar-default.styles';
+import * as Styled from './navbar-wrapper.styles';
 
-export default function NavBarDefault() {
+export default function NavbarAdmin() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDesktop, setDesktop] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleDropdownMenu = () => setDropdownOpen(!isDropdownOpen);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
+
+  const handleLogout = () => dispatch(logout());
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 800);
@@ -24,8 +30,6 @@ export default function NavBarDefault() {
     updateMedia();
     return () => window.removeEventListener('resize', updateMedia);
   });
-
-  console.log('isDesktop', isDesktop);
 
   return (
     <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
@@ -49,21 +53,25 @@ export default function NavBarDefault() {
           About
         </NavbarItem>
 
-        <NavbarItem path="/register" isDesktop={isDesktop} toggleMobileMenu={toggleMobileMenu}>
-          Register
-        </NavbarItem>
-
         <NavbarItem
-          path="/login"
+          path="/admin"
           isMobileMenuOpen={isMobileMenuOpen}
           isDropdown
           isDropdownOpen={isDropdownOpen}
           toggleDropdownMenu={toggleDropdownMenu}
           items={[
-            { name: 'User', dropdownPath: 'login' },
-            { name: 'Admin', dropdownPath: 'admin' },
+            {
+              name: 'Trips',
+              dropdownPath: 'trips',
+              handleClick: null,
+            },
+            {
+              name: 'Logout',
+              dropdownPath: '/',
+              handleClick: handleLogout,
+            },
           ]}>
-          Login
+          Options
         </NavbarItem>
       </Styled.NavList>
     </Styled.NavbarWrapper>

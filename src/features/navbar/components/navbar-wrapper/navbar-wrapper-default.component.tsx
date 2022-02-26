@@ -1,32 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
+import useIsDesktop from '../../hooks/useIsDesktop';
 
 import NavbarItem from '../navbar-item/navbar-item.component';
 import NavbarLogo from '../navbar-logo/navbar-logo.component';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import NavbarCloseButton from '../navbar-close-button/navbar-close-button.component';
 
 import * as Styled from './navbar-wrapper.styles';
 
 export default function NavbarDefault() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isDesktop, setDesktop] = useState(true);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isDesktop = useIsDesktop();
 
   const toggleDropdownMenu = () => setDropdownOpen(!isDropdownOpen);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
-
-  const updateMedia = () => {
-    setDesktop(window.innerWidth > 800);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', updateMedia);
-    updateMedia();
-    return () => window.removeEventListener('resize', updateMedia);
-  });
 
   return (
     <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
@@ -34,16 +24,11 @@ export default function NavbarDefault() {
         <NavbarLogo />
       </NavLink>
 
-      <Styled.CloseButton
-        onClick={toggleMobileMenu}
+      <NavbarCloseButton
+        toggleMobileMenu={toggleMobileMenu}
         isMobileMenuOpen={isMobileMenuOpen}
-        isDesktop={isDesktop}>
-        <FontAwesomeIcon
-          className="fa-brand"
-          size="sm"
-          icon={isMobileMenuOpen ? faWindowClose : faBars}
-        />
-      </Styled.CloseButton>
+        isDesktop={isDesktop}
+      />
 
       <Styled.NavList isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
         <NavbarItem path="/book" isDesktop={isDesktop} toggleMobileMenu={toggleMobileMenu}>

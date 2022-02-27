@@ -1,22 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import * as Styled from './navbar-item.styles';
+import { useMobileMenuOpen } from '../../hooks/useMobileMenuOpen';
 
 // eslint-disable-next-line react/display-name
-export default function NavbarItem({
-  path,
-  children,
-  isMobileMenuOpen,
-  isDropdown,
-  isDropdownOpen,
-  isDesktop,
-  toggleDropdownMenu,
-  toggleMobileMenu,
-  items,
-}) {
+export default function NavbarItem({ path, children, isDropdown, isDesktop, items }) {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenuOpen();
+
+  const toggleDropdownMenu = () => setDropdownOpen(!isDropdownOpen);
+
   return (
     <Styled.NavItemWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
       {isDropdown ? (

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../auth/redux/auth.actions';
+
 import useIsDesktop from '../../hooks/useIsDesktop';
 
 import NavbarItem from '../navbar-item/navbar-item.component';
@@ -10,10 +13,47 @@ import { useMobileMenuOpen } from '../../hooks/useMobileMenuOpen';
 
 import * as Styled from './navbar-wrapper.styles';
 
-export default function NavbarDefault() {
+export default function NavbarWrapper({ authRole }) {
   const { isMobileMenuOpen } = useMobileMenuOpen();
+
   const isDesktop = useIsDesktop();
 
+  const dispatch = useDispatch();
+
+  const handleLogout = () => dispatch(logout());
+
+  // return if user is an admin or an authenticated user
+  if (authRole === 'admin' || authRole === 'user') {
+    return (
+      <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+        <NavbarLogo />
+
+        <NavbarCloseButton isDesktop={isDesktop} />
+
+        <Styled.NavList isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+          <NavbarItem path="/book" isDesktop={isDesktop}>
+            Book
+          </NavbarItem>
+
+          <NavbarItem path="/about" isDesktop={isDesktop}>
+            About
+          </NavbarItem>
+
+          <NavbarItem
+            isDropdown
+            isDesktop={isDesktop}
+            items={[
+              { name: 'Trips', dropdownPath: 'trips' },
+              { name: 'Logout', dropdownPath: '/', handleClick: handleLogout },
+            ]}>
+            Options
+          </NavbarItem>
+        </Styled.NavList>
+      </Styled.NavbarWrapper>
+    );
+  }
+
+  // return if user or  is unauthenticated
   return (
     <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
       <NavbarLogo />

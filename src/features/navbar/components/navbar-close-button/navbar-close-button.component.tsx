@@ -6,7 +6,11 @@ import { faBars, faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import * as Styled from './navbar-close-button.styles';
 import { useMobileMenuOpen } from '../../hooks/useMobileMenuOpen';
 
-export default function NavbarCloseButton({ isDesktop }) {
+interface NavbarCloseButtonProps {
+  isDesktop: boolean;
+}
+
+export default function NavbarCloseButton({ isDesktop }: NavbarCloseButtonProps) {
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenuOpen();
   return (
     <Styled.CloseButton

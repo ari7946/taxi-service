@@ -6,8 +6,28 @@ import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import * as Styled from './navbar-item.styles';
 import { useMobileMenuOpen } from '../../hooks/useMobileMenuOpen';
 
+type Items = {
+  name: string;
+  dropdownPath: string;
+  handleClick?: () => void;
+};
+
+interface NavbarItemProps {
+  path: string;
+  children: any;
+  isDropdown?: boolean;
+  isDesktop?: boolean;
+  items?: Items[];
+}
+
 // eslint-disable-next-line react/display-name
-export default function NavbarItem({ path, children, isDropdown, isDesktop, items }) {
+export default function NavbarItem({
+  path,
+  children,
+  isDropdown,
+  isDesktop,
+  items,
+}: NavbarItemProps) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenuOpen();
@@ -33,7 +53,7 @@ export default function NavbarItem({ path, children, isDropdown, isDesktop, item
 
           {isDropdownOpen && (
             <div className="dropdown__list">
-              {items.map(({ name, dropdownPath = null, handleClick = null }) => (
+              {items.map(({ name, dropdownPath = null, handleClick = null }: NavbarItemProps) => (
                 <NavLink
                   key={name}
                   to={dropdownPath}

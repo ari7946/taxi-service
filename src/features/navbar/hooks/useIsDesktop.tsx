@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export default function useIsDesktop() {
-  const [isDesktop, setDesktop] = useState(true);
+export default function useIsDesktop(): boolean {
+  const [isDesktop, setDesktop] = useState<boolean>(true);
 
   const updateMedia = () => {
     setDesktop(window.innerWidth > 800);

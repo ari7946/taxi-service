@@ -13,7 +13,11 @@ import { useMobileMenuOpen } from '../../hooks/useMobileMenuOpen';
 
 import * as Styled from './navbar-wrapper.styles';
 
-export default function NavbarWrapper({ authRole }) {
+interface NavbarWrapperProps {
+  authRole: 'admin' | 'user' | '';
+}
+
+export default function NavbarWrapper({ authRole }: NavbarWrapperProps) {
   const { isMobileMenuOpen } = useMobileMenuOpen();
 
   const isDesktop = useIsDesktop();
@@ -53,7 +57,7 @@ export default function NavbarWrapper({ authRole }) {
     );
   }
 
-  // return if user or  is unauthenticated
+  // return if user is unauthenticated
   return (
     <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
       <NavbarLogo />

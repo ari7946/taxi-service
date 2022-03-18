@@ -17,7 +17,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "ignoreBuildErrors": true
+    "ignoreBuildErrors": true,
+    "baseUrl": "./",
+    "paths": {
+      "@features/*": ["src/features/*"]
+    }
   },
   "include": ["src"]
 }

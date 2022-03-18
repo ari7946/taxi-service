@@ -9,6 +9,7 @@ import sedan from '../../assets/sedan10.png';
 import { selectVehicle } from '../../redux/book.selectors';
 
 import { BookVehicleTypeContainer } from './book-vehicle-type.styles';
+import Button from '../../../_global/components/button/button.component';
 
 type VehicleType = 'sedan' | 'van';
 
@@ -51,15 +52,13 @@ const VehicleType = () => {
             <li>1-4 PASSENGERS</li>
           </ul>
 
-          <button
+          <Button
             type="button"
-            className={`
-              ${vehicleType === 'sedan' ? 'bg-yellow' : 'bg-green-light'}
-              vehicle-type-button
-            `}
-            onClick={() => setVehicleType({ name: 'vehicle', value: 'sedan' })}>
+            onClick={() => setVehicleType({ name: 'vehicle', value: 'sedan' })}
+            primary={vehicleType === 'sedan'}
+            secondary={vehicleType === 'van'}>
             SEDAN
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -86,15 +85,12 @@ const VehicleType = () => {
             <li>1-7 PASSENGERS</li>
           </ul>
 
-          <button
-            type="button"
-            className={`
-              ${vehicleType === 'van' ? 'bg-yellow' : ' bg-green-light'}
-              vehicle-type-button
-            `}
-            onClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}>
+          <Button
+            onClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}
+            primary={vehicleType === 'van'}
+            secondary={vehicleType === 'sedan'}>
             VAN
-          </button>
+          </Button>
         </div>
       </div>
     </BookVehicleTypeContainer>

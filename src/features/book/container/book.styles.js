@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const BookContainer = styled.section`
   padding-top: 4rem;
   display: grid;
-  grid-row-gap: 1rem;
+  grid-row-gap: 3rem;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   grid-template-areas:

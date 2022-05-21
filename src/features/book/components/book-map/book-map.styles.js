@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const MapContainer = styled.div` 
+export const MapContainer = styled.div`
   & {
     border: 1px solid var(--color-grey-light-2);
-    max-height: 40vh;
+    max-height: 50vh;
     width: 100%;
     width: auto;
     height: 60vh;
@@ -15,4 +15,4 @@ export const MapContainer = styled.div`
       margin: 0 auto;
     }
   }
-`
+`;

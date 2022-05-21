@@ -13,7 +13,8 @@ export const BookContainer = styled.section`
     'vehicle-type'
     'estimate'
     'trip-info-main'
-    'taxi-form';
+    'taxi-form'
+    'alert-success';
 
   @media (min-width: 850px) {
     grid-column-gap: 5%;
@@ -22,7 +23,8 @@ export const BookContainer = styled.section`
       'map-header map-header vehicle-type vehicle-type'
       'map map vehicle-type vehicle-type'
       'addresses addresses taxi-form taxi-form'
-      'trip-info-main trip-info-main taxi-form taxi-form';
+      'trip-info-main trip-info-main taxi-form taxi-form'
+      '. alert-success alert-success alert-success';
   }
 
   @media (min-width: 1200px) {
@@ -32,7 +34,8 @@ export const BookContainer = styled.section`
       'map-header map-header map-header vehicle-type vehicle-type vehicle-type'
       'map map map vehicle-type vehicle-type vehicle-type'
       'addresses addresses addresses taxi-form taxi-form taxi-form'
-      'trip-info-main trip-info-main trip-info-main taxi-form taxi-form taxi-form';
+      'trip-info-main trip-info-main trip-info-main taxi-form taxi-form taxi-form'
+      '. alert-success alert-success alert-success alert-success alert-success';
   }
 
   margin: 2rem;
@@ -83,4 +86,8 @@ export const Estimate = styled.div`
 
 export const TaxiForm = styled.div`
   grid-area: taxi-form;
+`;
+
+export const AlertSuccess = styled.div`
+  grid-area: alert-success;
 `;

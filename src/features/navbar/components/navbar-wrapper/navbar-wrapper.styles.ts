@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components';
 
-export const NavbarWrapper = styled.nav`
+export const NavbarWrapper = styled.nav<{
+  isMobileMenuOpen: boolean;
+  isDesktop: boolean;
+}>`
   display: flex;
   justify-content: space-between;
   align-items: start;
   margin: 2rem;
+  transform: translateX(0);
   /* ${({ isMobileMenuOpen, isDesktop }) =>
     isMobileMenuOpen &&
     !isDesktop &&
@@ -13,7 +17,8 @@ export const NavbarWrapper = styled.nav`
     `} */
 `;
 
-export const NavList = styled.ul`
+export const NavList = styled.ul<{ isDesktop: boolean; isMobileMenuOpen: boolean }>`
+  transform: translateX(0);
   ${({ isDesktop }) =>
     isDesktop &&
     css`

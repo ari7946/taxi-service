@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const NavItemWrapper = styled.li`
+export const NavItemWrapper = styled.li<{ isDesktop: boolean }>`
   margin: 0.5rem;
   font-size: 1.2rem;
   padding-top: 0.7rem;

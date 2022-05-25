@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { Fragment } from 'react';
 import { Spinner, Alert } from 'reactstrap';
 import './book-form.styles.js';
@@ -7,7 +8,7 @@ import { createStructuredSelector } from 'reselect';
 import TripInfoButton from '../book-trip-info-button/book-trip-info-button.component';
 import BookFormRequiredFields from '../book-form-required-fields/book-form-required-fields';
 import { FormFields } from '../../types/book.types';
-import BookFormInput from '../book-form-input/book-form-input.component';
+import LabeledInput from '../../../_global/components/labeled-input/labeled-input.component';
 import Button from '../../../_global/components/button/button.component';
 
 import {
@@ -80,12 +81,11 @@ const TaxiForm = function ({
     submitForm({ name, email, comments, phone, date, time });
   };
 
-  console.log('form values', values);
 
   return (
     <Styled.BookFormWrapper onSubmit={(e) => handleSubmitForm(e)}>
       {/* NAME */}
-      <BookFormInput
+      <LabeledInput
         id="form-name"
         type="text"
         name="name"
@@ -97,7 +97,7 @@ const TaxiForm = function ({
       />
 
       {/*  PHONE */}
-      <BookFormInput
+      <LabeledInput
         id="form-phone"
         type="phone"
         name="phone"
@@ -109,7 +109,7 @@ const TaxiForm = function ({
       />
 
       {/*  EMAIL */}
-      <BookFormInput
+      <LabeledInput
         id="form-email"
         type="email"
         name="email"
@@ -121,7 +121,7 @@ const TaxiForm = function ({
       />
 
       {/* DATE */}
-      <BookFormInput
+      <LabeledInput
         id="form-date"
         type="date"
         name="date"
@@ -133,7 +133,7 @@ const TaxiForm = function ({
       />
 
       {/* TIME */}
-      <BookFormInput
+      <LabeledInput
         id="form-time"
         type="time"
         name="time"
@@ -145,7 +145,7 @@ const TaxiForm = function ({
       />
 
       {/* COMMENTS */}
-      <BookFormInput
+      <LabeledInput
         id="form-comments"
         type="textarea"
         name="comments"

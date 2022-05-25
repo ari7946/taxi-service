@@ -7,6 +7,7 @@ export const ButtonWrapper = styled.button.attrs((props) => ({
   width: 100%;
   padding: 0.3rem;
   margin-top: 0.5rem;
+  text-transform: uppercase;
   width: ${(props) => props.width || '100%'};
   ${(props) =>
     props.primary &&

@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
-export const CloseButton = styled.button`
+export const CloseButton = styled.button<{
+  isMobileMenuOpen: boolean;
+  isDesktop: boolean;
+}>`
   color: gray;
   z-index: 102;
   position: absolute;

@@ -1,30 +1,30 @@
 import React from 'react';
 
-import * as Styled from './book-form-input.styles';
+import * as Styled from './labeled-input.styles';
 
-interface BookFormInputProps {
+interface LabeledInputProps {
   id: string;
   type: string;
   name: string;
   placeholder: string;
   value: string;
   handleChange: (name: string, value: string) => void;
-  dataTestId?: string;
+  dataTestId?: string | null;
   required?: boolean;
 }
 
-export default function BookFormInput({
+export default function LabeledInput({
   id,
   type,
   name,
   placeholder,
-  dataTestId = null,
   handleChange,
   value,
+  dataTestId = null,
   required = false,
-}: BookFormInputProps) {
+}: LabeledInputProps) {
   return (
-    <Styled.InputContainer>
+    <Styled.LabeledInputWrapper>
       <Styled.Label htmlFor={id}>
         {name}:{required && <span className="required">*required</span>}
       </Styled.Label>
@@ -55,6 +55,6 @@ export default function BookFormInput({
           value={value}
         />
       )}
-    </Styled.InputContainer>
+    </Styled.LabeledInputWrapper>
   );
 }

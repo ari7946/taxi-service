@@ -1,95 +1,111 @@
 import React, { useState } from 'react';
-import { Container, Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
-import './user.styles.css';
+import * as Styled from './user.styles';
 
 import { userAuth } from '../../redux/auth.actions';
 import { connect } from 'react-redux';
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { selectAuthLoading } from '../../redux/auth.selectors';
-import { UserAuth } from '../../types/auth.types'
+import { UserAuth } from '../../types/auth.types';
 
-const UserRegister = ({ userAuth, loading }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  let history = useHistory();
-
-  return (
-    <Container className="text-green-light auth" fluid>
-      <h1 className="mb-3 color-grey-light-2">Register</h1>
-      {loading && <Spinner size="md" color="light"></Spinner>}
-      <Form
-        onSubmit={ async (event) => {
-          event.preventDefault();
-          await userAuth({authType: 'register', username, password, name, email, phone});
-          history.push('./trips');
-        }}
-      >
-        <FormGroup>
-          <Label for="admin">Username<span className="text-flat-orange small ml-2 text-center">required</span></Label>
-          <Input
-            type="text"
-            name="username"
-            onChange={e => setUsername(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="admin">Password<span className="text-flat-orange small ml-2">required</span></Label>
-          <Input
-            type="password"
-            name="password"
-            onChange={e => setPassword(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="admin">Name</Label>
-          <Input
-            type="text"
-            name="name"
-            onChange={e => setName(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="admin">Email</Label>
-          <Input
-            type="text"
-            name="email"
-            onChange={e => setEmail(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="admin">Phone</Label>
-          <Input
-            type="text"
-            name="phone"
-            onChange={e => setPhone(e.target.value)}
-          />
-        </FormGroup>
-        <Button className="text-green-light">
-          Register
-        </Button>
-        <span className="ml-4">
-          Already registered? 
-          <Link className="ml-3 text-grey-light-2" to="/login">Login here</Link>
-        </span>
-        
-      </Form>
-    </Container>
-  )
+import LabeledInput from '../../../_global/components/labeled-input/labeled-input.component';
+import Button from '../../../_global/components/button/button.component';
+interface UserRegisterProps {
+  userAuth: (obj: UserAuth) => any;
+  loading: boolean;
 }
 
+const UserRegister = ({ userAuth, loading }: UserRegisterProps) => {
+  const [userCredentials, setUserCredentials] = useState<Omit<UserAuth, 'authType'>>({
+    username: '',
+    password: '',
+    name: '',
+    email: '',
+    phone: '',
+  });
+  const history = useHistory();
+
+  const handleChange = (name: string, value: string) => {
+    setUserCredentials({
+      ...userCredentials,
+      [name]: value,
+    });
+  };
+
+  return (
+    <Styled.UserAuthWrapper>
+      <h1>Register</h1>
+      {loading && <p>loading...</p>}
+      <form
+        onSubmit={async (event) => {
+          event.preventDefault();
+          const { username, password, name, email, phone } = userCredentials;
+          await userAuth({ authType: 'register', username, password, name, email, phone });
+          history.push('./trips');
+        }}>
+        <LabeledInput
+          id="user-username"
+          type="text"
+          name="username"
+          placeholder="username"
+          handleChange={handleChange}
+          value={userCredentials.username}
+          required
+        />
+        <LabeledInput
+          id="user-password"
+          type="password"
+          name="password"
+          placeholder="password"
+          handleChange={handleChange}
+          value={userCredentials.password}
+          required
+        />
+        <LabeledInput
+          id="user-name"
+          type="text"
+          name="name"
+          placeholder="name"
+          handleChange={handleChange}
+          value={userCredentials.name}
+        />
+        <LabeledInput
+          id="user-email"
+          type="email"
+          name="email"
+          placeholder="email"
+          handleChange={handleChange}
+          value={userCredentials.email}
+        />
+        <LabeledInput
+          id="user-phone"
+          type="phone"
+          name="phone"
+          placeholder="phone"
+          handleChange={handleChange}
+          value={userCredentials.phone}
+        />
+        <Styled.ButtonGroupWrapper>
+          <Button type="submit" name="submit" primary>
+            Register
+          </Button>
+          <span>
+            Need to register?
+            <Link to="/login">Login here</Link>
+          </span>
+        </Styled.ButtonGroupWrapper>
+      </form>
+    </Styled.UserAuthWrapper>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   loading: selectAuthLoading,
-})
+});
 
-const mapDispatchToProps = dispatch => ({
-  userAuth: (userRegisterData: UserAuth) => 
-    dispatch(userAuth({ ...userRegisterData }))
-})
+const mapDispatchToProps = (dispatch) => ({
+  userAuth: (userRegisterData: UserAuth) => dispatch(userAuth({ ...userRegisterData })),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRegister);

@@ -7,11 +7,20 @@ import { selectAuthLoading } from '../../redux/auth.selectors';
 import { connect } from 'react-redux';
 import { adminLogin } from '../../redux/auth.actions';
 
+import { AdminLogin as AdminLoginType } from '../../types/auth.types';
+
 import LabeledInput from '../../../_global/components/labeled-input/labeled-input.component';
 import Button from '../../../_global/components/button/button.component';
 
-const AdminLogin = ({ adminLogin, loading }) => {
-  const [adminCredentials, setAdminCredentials] = useState({
+interface AdminLoginProps {
+  adminLogin: (obj: AdminLoginType) => any;
+  loading: boolean;
+}
+
+type AdminCredentials = Pick<AdminLoginType, 'username' | 'password'>;
+
+const AdminLogin = ({ adminLogin, loading }: AdminLoginProps) => {
+  const [adminCredentials, setAdminCredentials] = useState<AdminCredentials>({
     username: '',
     password: '',
   });

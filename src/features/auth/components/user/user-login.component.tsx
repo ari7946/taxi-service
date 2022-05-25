@@ -12,8 +12,13 @@ import { useHistory, Link } from 'react-router-dom';
 import LabeledInput from '../../../_global/components/labeled-input/labeled-input.component';
 import Button from '../../../_global/components/button/button.component';
 
-const UserLogin = ({ userAuth, loading }) => {
-  const [userCredentials, setUserCredentials] = useState({
+interface UserLoginProps {
+  userAuth: (obj: Pick<UserAuth, 'username' | 'password' | 'authType'>) => any;
+  loading: boolean;
+}
+
+const UserLogin = ({ userAuth, loading }: UserLoginProps) => {
+  const [userCredentials, setUserCredentials] = useState<Pick<UserAuth, 'username' | 'password'>>({
     username: '',
     password: '',
   });

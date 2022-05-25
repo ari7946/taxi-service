@@ -11,16 +11,20 @@ import { UserAuth } from '../../types/auth.types';
 
 import LabeledInput from '../../../_global/components/labeled-input/labeled-input.component';
 import Button from '../../../_global/components/button/button.component';
+interface UserRegisterProps {
+  userAuth: (obj: UserAuth) => any;
+  loading: boolean;
+}
 
-const UserRegister = ({ userAuth, loading }) => {
-  const [userCredentials, setUserCredentials] = useState({
+const UserRegister = ({ userAuth, loading }: UserRegisterProps) => {
+  const [userCredentials, setUserCredentials] = useState<Omit<UserAuth, 'authType'>>({
     username: '',
     password: '',
     name: '',
     email: '',
     phone: '',
   });
-  let history = useHistory();
+  const history = useHistory();
 
   const handleChange = (name: string, value: string) => {
     setUserCredentials({

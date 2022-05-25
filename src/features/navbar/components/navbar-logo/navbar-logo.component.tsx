@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 
 import logo2 from '../../assets/cyc-brand.png';
-import * as Styled from './navbar-logo.styles.js';
+import * as Styled from './navbar-logo.styles';
 
 export default function NavbarLogo() {
   return (

@@ -37,5 +37,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/function-component-definition': 'off',
     'arrow-body-style': ['off'],
+    'react/require-default-props': [0],
+    'import/extensions': ['never'],
   },
 };

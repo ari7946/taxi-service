@@ -30,8 +30,6 @@ const BookContainer = function () {
 
   return (
     <Styled.BookContainer>
-      {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
-
       <Styled.MapHeader>
         <Styled.HeaderIndicatorWrapper>
           <Indicator num={1} isActive={indicatorSection === 'map'} />
@@ -72,6 +70,7 @@ const BookContainer = function () {
         </Styled.TaxiForm>
       )}
 
+      {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
       {selectStartAddressAndEndAddressAreValid && alertSuccess && (
         <Styled.AlertSuccess>
           <BookAlertSuccess />

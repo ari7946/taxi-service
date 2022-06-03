@@ -54,6 +54,7 @@ const UserLogin = ({ userAuth, loading }: UserLoginProps) => {
           placeholder="username"
           handleChange={handleChange}
           value={userCredentials.username}
+          required
         />
         <LabeledInput
           id="user-password"
@@ -62,6 +63,7 @@ const UserLogin = ({ userAuth, loading }: UserLoginProps) => {
           placeholder="password"
           handleChange={handleChange}
           value={userCredentials.password}
+          required
         />
 
         <Styled.ButtonGroupWrapper>

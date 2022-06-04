@@ -4,7 +4,7 @@ import * as Styled from './book-indicator.styles';
 interface IndicatorProps {
   num: number;
   isActive: boolean;
-  sectionName?: string;
+  sectionName?: 'map' | 'form' | 'vehicle';
 }
 
 const Indicator = function ({ num, isActive, sectionName = '' }: IndicatorProps) {

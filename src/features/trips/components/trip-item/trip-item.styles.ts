@@ -1,33 +1,3 @@
-// .trip-list-info {
-//   font-family: 'Lucida Console', Monaco, monospace;
-//   font-size: 15px;
-// }
-
-// .trip-item {
-//   width: 100%;
-// }
-
-// .trip-list-heading {
-//   font-family: 'Courier New', Courier, monospace;
-//   text-transform: uppercase;
-// }
-
-// @media (max-width: 600px) {
-//   .trip-item .trip-list-info {
-//     font-size: 0.9rem;
-//   }
-// }
-
-// @media (max-width: 415px) {
-//   .trip-item .trip-list-info {
-//     font-size: 0.9rem;
-//   }
-
-//   .trip-item button {
-//     padding: 0.3rem;
-//   }
-// }
-
 import styled from 'styled-components';
 
 export const TripItemWrapper = styled.div`

@@ -4,10 +4,10 @@ import * as Styled from './book-indicator.styles';
 interface IndicatorProps {
   num: number;
   isActive: boolean;
-  sectionName?: 'map' | 'form' | 'vehicle';
+  sectionName: 'map' | 'form' | 'vehicle';
 }
 
-const Indicator = function ({ num, isActive, sectionName = '' }: IndicatorProps) {
+const Indicator = function ({ num, isActive, sectionName }: IndicatorProps) {
   return (
     <Styled.IndicatorWrapper isActive={isActive} sectionName={sectionName}>
       {num}

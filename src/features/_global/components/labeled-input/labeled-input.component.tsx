@@ -13,7 +13,7 @@ interface LabeledInputProps {
   required?: boolean;
 }
 
-export default function LabeledInput({
+function LabeledInput({
   id,
   type,
   name,
@@ -58,3 +58,5 @@ export default function LabeledInput({
     </Styled.LabeledInputWrapper>
   );
 }
+
+export default LabeledInput;

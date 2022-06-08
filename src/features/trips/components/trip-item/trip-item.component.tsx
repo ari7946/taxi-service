@@ -1,5 +1,4 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
 import TripStatusButtonGroup from '../trip-status/trip-status.component';
 import * as Styled from './trip-item.styles';
 import { Trip } from '../../types/trips.types';

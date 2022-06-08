@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import './book-trip-info-main.styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
@@ -11,7 +8,7 @@ import {
   selectValidEstimate,
   selectDistance,
   selectDirection,
-  selectStartAddressAndEndAddressAreValid
+  selectStartAddressAndEndAddressAreValid,
 } from '../../redux/book.selectors';
 
 import { BookTripInfoMainContainer } from './book-trip-info-main.styles';
@@ -31,7 +28,7 @@ const TripInfoMain = ({
   estimate,
   distance,
   direction,
-  startAddressAndEndAddressAreValid
+  startAddressAndEndAddressAreValid,
 }: TripInfoMainProps): React.ReactElement => {
   return (
     <React.Fragment>
@@ -92,7 +89,7 @@ const mapStateToProps = createStructuredSelector({
   estimate: selectValidEstimate,
   distance: selectDistance,
   direction: selectDirection,
-  startAddressAndEndAddressAreValid: selectStartAddressAndEndAddressAreValid
+  startAddressAndEndAddressAreValid: selectStartAddressAndEndAddressAreValid,
 });
 
 export default connect(mapStateToProps)(TripInfoMain);

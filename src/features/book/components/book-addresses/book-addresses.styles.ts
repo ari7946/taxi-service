@@ -1,7 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const BookAddressContainer = styled.div` 
-  
+export const BookAddressContainer = styled.div`
   .instructions {
     font-weight: 300 !important;
     font-size: 22px;
@@ -74,4 +73,4 @@ export const BookAddressContainer = styled.div`
       font-size: 17px;
     }
   }
-`
+`;

@@ -1,7 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { Fragment } from 'react';
-import { Spinner, Alert } from 'reactstrap';
-import './book-form.styles.js';
+import React from 'react';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -158,18 +156,12 @@ const TaxiForm = function ({
       {/* REQUIRED FIELDS */}
       <BookFormRequiredFields />
 
-      {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
-      {alertSuccess && (
-        <Alert color="success">Thank you. We have booked your request for a taxi</Alert>
-      )}
-
       {/* SUBMIT BUTTON */}
       <Styled.ButtonWrapper>
         <Button type="submit" name="submit" width="8rem" primary>
           {!loading && 'BOOK'}
           {loading && (
             <span>
-              <Spinner className="mx-2" size="sm" color="light" />{' '}
               <span className="text-dark ml-2">Processing...</span>
             </span>
           )}

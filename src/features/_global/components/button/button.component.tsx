@@ -3,6 +3,7 @@ import * as Styled from './button.styles';
 
 interface ButtonProps {
   children: any;
+  className?: string;
   name?: string;
   primary?: boolean | undefined | null;
   secondary?: boolean | undefined | null;
@@ -14,6 +15,7 @@ interface ButtonProps {
 export default function Button({
   children,
   name,
+  className = '',
   primary = null,
   secondary = null,
   type = 'button',
@@ -27,6 +29,7 @@ export default function Button({
       width={width}
       primary={primary}
       secondary={secondary}
+      className={className}
       onClick={handleClick}>
       {children}
     </Styled.ButtonWrapper>

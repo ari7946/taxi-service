@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
-export const IndicatorWrapper = styled.div`
+export const IndicatorWrapper = styled.div<{
+  isActive: boolean;
+  sectionName?: 'map' | 'vehicle' | 'form';
+}>`
   border: 5px solid lightgray;
   width: 3rem;
   height: 3rem;

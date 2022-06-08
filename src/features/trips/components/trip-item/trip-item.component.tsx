@@ -1,38 +1,78 @@
 import React from 'react';
-import { Container, Col, Row } from 'reactstrap';
 import TripStatusButtonGroup from '../trip-status/trip-status.component';
-import './trip-item.styles.css';
+import * as Styled from './trip-item.styles';
 import { Trip } from '../../types/trips.types';
 
-const TripItem = ({ trip } : { trip: Trip }) => {
+const TripItem = ({ trip }: { trip: Trip }) => {
   return (
-    <Container fluid className="bg-grey-light-2 mb-3 trip-item px-3 py-3">
-      <Row>
-        <Col md="6">
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">name:</span> {trip.name}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">phone:</span> {trip.phone}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">email:</span> {trip.email}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">vehicle:</span> {trip.vehicle}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">distance:</span> {trip.distance} miles</div>
-          <div className="trip-list-info text-green-dark my-1"><span className="trip-list-heading text-dark">start address:</span> {trip.startAddress}</div>
-        </Col>
+    <Styled.TripItemWrapper>
+      <Styled.List>
+        <Styled.ListItem>
+          <span className="list-heading">name:</span>
+          <span className="list-value">{trip.name}</span>
+        </Styled.ListItem>
 
-        <Col md="6">
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">date:</span> {trip.date}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">time:</span> {trip.time}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">estimate:</span> ${trip.price}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">requested-at:</span> {trip.created_at}</div>
-          <div className="trip-list-info text-green-dark mb-1"><span className="trip-list-heading text-dark">direction:</span> {trip.direction === 'oneWay' ? 'one way' : 'two way'}</div>
-          <div className="trip-list-info text-green-dark mb-2"><span className="trip-list-heading text-dark">destination:</span> {trip.endAddress}</div>
-        </Col>
-      </Row>
+        <Styled.ListItem>
+          <span className="list-heading">phone:</span>
+          <span className="list-value">{trip.phone}</span>
+        </Styled.ListItem>
 
-      <TripStatusButtonGroup 
-        tripId={trip.id}
-        tripStatus={trip.status}
-      />
-    </Container>
-  )
-}
+        <Styled.ListItem>
+          <span className="list-heading">email:</span>
+          <span className="list-value">{trip.email}</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">vehicle:</span>
+          <span className="list-value">{trip.vehicle}</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">distance:</span>
+          <span className="list-value">{trip.distance} miles</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">start address:</span>
+          <span className="list-value">{trip.startAddress}</span>
+        </Styled.ListItem>
+      </Styled.List>
+
+      <Styled.List>
+        <Styled.ListItem>
+          <span className="list-heading">date:</span>
+          <span className="list-value">{trip.date}</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">time:</span>
+          <span className="list-value">{trip.time}</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">estimate:</span>
+          <span className="list-value">${trip.price}</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">requested-at:</span>
+          <span className="list-value">{trip.created_at}</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">direction:</span>{' '}
+          <span className="list-value">{trip.direction === 'oneWay' ? 'one way' : 'two way'}</span>
+        </Styled.ListItem>
+
+        <Styled.ListItem>
+          <span className="list-heading">destination:</span>
+          <span className="list-value">{trip.endAddress}</span>
+        </Styled.ListItem>
+      </Styled.List>
+
+      <TripStatusButtonGroup tripId={trip.id} tripStatus={trip.status} />
+    </Styled.TripItemWrapper>
+  );
+};
 
 export default TripItem;

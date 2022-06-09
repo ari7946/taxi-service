@@ -7,6 +7,8 @@ export const AuthActionTypes = {
 
 export type AuthType = 'login' | 'register';
 
+export type AuthRole = 'admin' | 'user' | '';
+
 export interface UserAuth {
   authType: AuthType;
   username: string;

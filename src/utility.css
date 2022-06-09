@@ -69,6 +69,10 @@
   background-color: var(--color-grey-light-2) !important;
 }
 
+.text-light {
+  color: azure !important;
+}
+
 /************************** FONTS  *****/
 .font-monospaced {
   font-family: var(--font-monospaced);

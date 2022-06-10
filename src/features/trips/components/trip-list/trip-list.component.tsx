@@ -15,7 +15,7 @@ import { AuthRole } from '@features/auth/types/auth.types';
 import * as Styled from './trip-list.styles';
 
 const TripList = () => {
-  const [activeTab, setActiveTab] = useState<TabState>('viewAll');
+  const [activeTab, setActiveTab] = useState<TabState>('all');
   const loadingType = useSelector<TripLoadingStatus>(selectLoadingType);
   const authRole = useSelector<AuthRole>(selectAuthRole);
   const dispatch = useDispatch();

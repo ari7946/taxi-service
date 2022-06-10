@@ -5,57 +5,54 @@ import { TabState } from '../../types/trips.types';
 import * as Styled from './trip-nav.styles';
 
 interface TripNavProps {
-  activeTab: string;
+  activeTab: TabState;
   setActiveTab: (activeTab: TabState) => void;
 }
 
-const TripNav = ({
-  activeTab,
-  setActiveTab,
-}: TripNavProps) => {
+const TripNav = ({ activeTab, setActiveTab }: TripNavProps) => {
   return (
     <Styled.TripNavWrapper>
       <Styled.NavList>
         <Styled.NavItem>
           <Styled.NavLink
-            isTabActive={activeTab === 'viewAll'}
+            isTabActive={activeTab === 'all'}
             className={`
-            ${activeTab === 'viewAll' ? 'active' : 'text-light'}
+            ${activeTab === 'all' ? 'active' : 'text-light'}
           `}
-            onClick={() => setActiveTab('viewAll')}>
+            onClick={() => setActiveTab('all')}>
             All
           </Styled.NavLink>
         </Styled.NavItem>
 
         <Styled.NavItem>
           <Styled.NavLink
-            isTabActive={activeTab === 'viewConfirmed'}
+            isTabActive={activeTab === 'confirmed'}
             className={`
-            ${activeTab === 'viewConfirmed' ? 'active' : 'text-light'}
+            ${activeTab === 'confirmed' ? 'active' : 'text-light'}
           `}
-            onClick={() => setActiveTab('viewConfirmed')}>
+            onClick={() => setActiveTab('confirmed')}>
             Confirmed
           </Styled.NavLink>
         </Styled.NavItem>
 
         <Styled.NavItem>
           <Styled.NavLink
-            isTabActive={activeTab === 'viewCompleted'}
+            isTabActive={activeTab === 'completed'}
             className={`
-            ${activeTab === 'viewCompleted' ? 'active' : 'text-light'}
+            ${activeTab === 'completed' ? 'active' : 'text-light'}
           `}
-            onClick={() => setActiveTab('viewCompleted')}>
+            onClick={() => setActiveTab('completed')}>
             Completed
           </Styled.NavLink>
         </Styled.NavItem>
 
         <Styled.NavItem>
           <Styled.NavLink
-            isTabActive={activeTab === 'viewArchived'}
+            isTabActive={activeTab === 'archived'}
             className={`
-            ${activeTab === 'viewArchived' ? 'active' : 'text-light'}
+            ${activeTab === 'archived' ? 'active' : 'text-light'}
           `}
-            onClick={() => setActiveTab('viewArchived')}>
+            onClick={() => setActiveTab('archived')}>
             Archived
           </Styled.NavLink>
         </Styled.NavItem>

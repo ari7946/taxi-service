@@ -12,7 +12,7 @@ interface ButtonProps {
   handleClick?: (event: any) => any;
 }
 
-export default function Button({
+function Button({
   children,
   name,
   className = '',
@@ -35,3 +35,5 @@ export default function Button({
     </Styled.ButtonWrapper>
   );
 }
+
+export default Button;

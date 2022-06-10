@@ -1,65 +1,64 @@
-import React, { useState} from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
-import './trip-nav.styles.css';
+import React from 'react';
+import './trip-nav.styles.ts';
 import { TabState } from '../../types/trips.types';
 
+import * as Styled from './trip-nav.styles';
 
-const TripNav = ({ 
-  activeTab, 
-  setActiveTab 
-} : {
-  activeTab: string,
-  setActiveTab: (activeTab: TabState) => void
-}) => {
-
-  return (
-    <Nav className='mb-2 nav-tabs' tabs color="light">
-      <NavItem>
-        <NavLink
-          className={`
-            ${activeTab === 'viewAll' ? 'active' : 'text-light'}
-          `}
-          onClick={() => setActiveTab('viewAll')}
-        >
-          All
-        </NavLink>
-      </NavItem>
-
-      <NavItem>
-        <NavLink
-          className={`
-            ${activeTab === 'viewConfirmed' ? 'active' : 'text-light'}
-          `}
-          onClick={() => setActiveTab('viewConfirmed')}
-        >
-          Confirmed
-        </NavLink>
-      </NavItem>
-
-      <NavItem>
-        <NavLink
-          className={`
-            ${activeTab === 'viewCompleted' ? 'active' : 'text-light'}
-          `}
-          onClick={() => setActiveTab('viewCompleted')}
-        >
-          Completed
-        </NavLink>
-      </NavItem>
-
-      <NavItem>
-        <NavLink
-          className={`
-            ${activeTab === 'viewArchived' ? 'active' : 'text-light'}
-          `}
-          onClick={() => setActiveTab('viewArchived')}
-        >
-          Archived
-        </NavLink>
-      </NavItem>
-    </Nav>
-  )
+interface TripNavProps {
+  activeTab: string;
+  setActiveTab: (activeTab: TabState) => void;
 }
 
-export default TripNav;
+const TripNav = ({ activeTab, setActiveTab }: TripNavProps) => {
+  return (
+    <Styled.TripNavWrapper>
+      <Styled.NavList>
+        <Styled.NavItem>
+          <Styled.NavLink
+            isTabActive={activeTab === 'viewAll'}
+            className={`
+            ${activeTab === 'viewAll' ? 'active' : 'text-light'}
+          `}
+            onClick={() => setActiveTab('viewAll')}>
+            All
+          </Styled.NavLink>
+        </Styled.NavItem>
 
+        <Styled.NavItem>
+          <Styled.NavLink
+            isTabActive={activeTab === 'viewConfirmed'}
+            className={`
+            ${activeTab === 'viewConfirmed' ? 'active' : 'text-light'}
+          `}
+            onClick={() => setActiveTab('viewConfirmed')}>
+            Confirmed
+          </Styled.NavLink>
+        </Styled.NavItem>
+
+        <Styled.NavItem>
+          <Styled.NavLink
+            isTabActive={activeTab === 'viewCompleted'}
+            className={`
+            ${activeTab === 'viewCompleted' ? 'active' : 'text-light'}
+          `}
+            onClick={() => setActiveTab('viewCompleted')}>
+            Completed
+          </Styled.NavLink>
+        </Styled.NavItem>
+
+        <Styled.NavItem>
+          <Styled.NavLink
+            isTabActive={activeTab === 'viewArchived'}
+            className={`
+            ${activeTab === 'viewArchived' ? 'active' : 'text-light'}
+          `}
+            onClick={() => setActiveTab('viewArchived')}>
+            Archived
+          </Styled.NavLink>
+        </Styled.NavItem>
+      </Styled.NavList>
+    </Styled.TripNavWrapper>
+  );
+};
+
+export default TripNav;

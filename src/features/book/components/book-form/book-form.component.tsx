@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React from 'react';
 
 import { connect } from 'react-redux';
@@ -78,7 +77,6 @@ const TaxiForm = function ({
     const { name, email, comments, phone, date, time }: FormFields = values;
     submitForm({ name, email, comments, phone, date, time });
   };
-
 
   return (
     <Styled.BookFormWrapper onSubmit={(e) => handleSubmitForm(e)}>

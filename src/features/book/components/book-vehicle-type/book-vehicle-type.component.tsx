@@ -54,7 +54,7 @@ const VehicleType = () => {
 
           <Button
             type="button"
-            onClick={() => setVehicleType({ name: 'vehicle', value: 'sedan' })}
+            handleClick={() => setVehicleType({ name: 'vehicle', value: 'sedan' })}
             primary={vehicleType === 'sedan'}
             secondary={vehicleType === 'van'}>
             SEDAN
@@ -86,7 +86,7 @@ const VehicleType = () => {
           </ul>
 
           <Button
-            onClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}
+            handleClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}
             primary={vehicleType === 'van'}
             secondary={vehicleType === 'sedan'}>
             VAN

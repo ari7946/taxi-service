@@ -9,7 +9,10 @@ interface TripNavProps {
   setActiveTab: (activeTab: TabState) => void;
 }
 
-const TripNav = ({ activeTab, setActiveTab }: TripNavProps) => {
+const TripNav = ({
+  activeTab,
+  setActiveTab,
+}: TripNavProps) => {
   return (
     <Styled.TripNavWrapper>
       <Styled.NavList>

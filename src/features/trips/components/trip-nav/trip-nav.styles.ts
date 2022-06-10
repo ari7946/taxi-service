@@ -23,7 +23,7 @@ export const NavItem = styled.li`
 export const NavLink = styled.a<{ isTabActive: boolean }>`
   position: inline-block;
   padding-inline: 0.8rem;
-  padding-block: 0.5rem;
+  padding-block: 0.7rem;
   z-index: 5;
   border-top: ${({ isTabActive }) => (isTabActive ? '2px solid white' : 'none')};
   border-left: ${({ isTabActive }) => (isTabActive ? '2px solid white' : 'none')};

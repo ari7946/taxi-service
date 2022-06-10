@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import TripList from '../components/trip-list/trip-list.component';
 import { selectAuthRole } from '../../auth/redux/auth.selectors';
 
@@ -7,12 +7,12 @@ import { createStructuredSelector } from 'reselect';
 
 function TripContainer({ authRole }) {
   return (
-    <div className="w-100">
+    <section>
       {authRole !== 'user' && authRole !== 'admin' && (
         <h3 className="text-green-light mb-3">Login required to view trips</h3>
       )}
       {authRole === 'user' || authRole === 'admin' ? <TripList /> : null}
-    </div>
+    </section>
   );
 }
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TabState } from '../../types/trips.types';
 
 export const TripNavWrapper = styled.nav`
   width: 100%;
@@ -20,10 +21,10 @@ export const NavItem = styled.li`
   }
 `;
 
-export const NavLink = styled.a<{ isTabActive: boolean }>`
+export const NavLink = styled.a<{ isTabActive: TabState }>`
   position: inline-block;
   padding-inline: 0.8rem;
-  padding-block: 0.5rem;
+  padding-block: 0.7rem;
   z-index: 5;
   border-top: ${({ isTabActive }) => (isTabActive ? '2px solid white' : 'none')};
   border-left: ${({ isTabActive }) => (isTabActive ? '2px solid white' : 'none')};

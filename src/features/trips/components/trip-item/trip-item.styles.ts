@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TripItemWrapper = styled.div`
+export const TripItemWrapper = styled.article`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap-column: 2rem;

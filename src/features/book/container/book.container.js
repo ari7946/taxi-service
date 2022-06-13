@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 
 import TaxiForm from '../components/book-form/book-form.component';
-import Loading from '../components/book-loading/book-loading.component';
+import { Spinner } from '../../_global/components';
 import Header from '../components/book-header/book-header.component';
 import Addresses from '../components/book-addresses/book-addresses.component';
 import Estimate from '../components/book-estimate/book-estimate.component';
@@ -38,7 +38,7 @@ const BookContainer = function () {
       </Styled.MapHeader>
 
       <Styled.Map>
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<Spinner />}>
           <Map />
         </Suspense>
       </Styled.Map>

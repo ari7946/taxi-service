@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-// @ts-ignore
-import { Button, Popover, PopoverBody, ListGroup, ListGroupItem } from 'reactstrap';
 import { connect } from 'react-redux';
-import './book-trip-info-button.styles.css';
+
+import { Button } from '../../../_global/components';
+import Modal from 'react-modal';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+
+import * as Styled from './book-trip-info-button.styles';
 
 import { createStructuredSelector } from 'reselect';
 import {
@@ -14,7 +19,21 @@ import {
   selectDropFee,
 } from '../../redux/book.selectors';
 
-const TripInfoButton = ({
+Modal.setAppElement(document.getElementById('root'));
+
+const customStyles = {
+  content: {
+    top: '65%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: 'rgba(0,0,0,.9)',
+  },
+};
+
+const TripInfoModal = ({
   distance,
   startAddress,
   endAddress,
@@ -27,60 +46,49 @@ const TripInfoButton = ({
   estimate: number;
   vehicle: string;
 }): React.ReactElement => {
-  const [popoverOpen, setPopoverOpen] = useState(false);
-  // const total = (Number(price) + dropFee).toFixed(2);
-  // const discount = (total * 0.20).toFixed(2);
-  // const discountTotal = (total - discount).toFixed(2);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setPopoverOpen(!popoverOpen);
+  const toggle = () => setIsOpen(!modalIsOpen);
 
   return (
-    <div>
-      <Button
-        className="trip-info-button px-4 bg-green-light text-dark mt-2"
-        id="Popover1"
-        type="button">
-        TRIP DETAILS
+    <Styled.TripInfoModalWrapper>
+      <Button handleClick={toggle} width="9rem" secondary>
+        View Info
       </Button>
+      <Modal
+        isOpen={modalIsOpen}
+        style={customStyles}
+        shouldCloseOnOverlayClick
+        preventScroll={true}
+        contentLabel="Trip Details">
+        <Styled.ButtonWrapper width="5rem" handleClick={() => toggle()}>
+          <FontAwesomeIcon size="lg" icon={faWindowClose} />
+        </Styled.ButtonWrapper>
 
-      <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
-        <div
-          className="text-right py-2 px-3 font-weight-bold bg-light"
-          onClick={toggle}
-          style={{ cursor: 'pointer' }}>
-          X
-        </div>
-        <PopoverBody className="bg-grey-light-2 font-monospaced">
-          <ListGroup>
-            <ListGroupItem>
-              <span className="font-weight-bold">Starting Point: </span>
-              {startAddress}{' '}
-            </ListGroupItem>
-            <ListGroupItem>
-              <span className="font-weight-bold">Destination: </span> {endAddress}{' '}
-            </ListGroupItem>
-            <ListGroupItem>
-              <span className="font-weight-bold">Distance: </span> {distance} miles
-            </ListGroupItem>
-            <ListGroupItem>
-              <span className="font-weight-bold">Rate: </span>{' '}
-              {vehicle === 'sedan' ? '$2.95 per mile' : '$3.95 per mile'}
-            </ListGroupItem>
-            <ListGroupItem>
-              <span className="font-weight-bold">Vehicle: </span>
-              {vehicle}
-            </ListGroupItem>
-            <ListGroupItem>
-              <span className="font-weight-bold">passengers: </span>
-              {vehicle === 'sedan' ? '1 - 4' : '1 - 7'}
-            </ListGroupItem>
-            <ListGroupItem>
-              <span className="font-weight-bold">Estimate: </span>${estimate}
-            </ListGroupItem>
-          </ListGroup>
-        </PopoverBody>
-      </Popover>
-    </div>
+        <Styled.Heading className="text-green-light">Starting Point: </Styled.Heading>
+        <p className="text-grey-light-2">{startAddress}</p>
+
+        <Styled.Heading className="text-green-light">Destination: </Styled.Heading>
+        <p className="text-grey-light-2">{endAddress}</p>
+
+        <Styled.Heading className="text-green-light">Distance: </Styled.Heading>
+        <p className="text-grey-light-2">{distance} miles</p>
+
+        <Styled.Heading className="text-green-light">Rate: </Styled.Heading>
+        <p className="text-grey-light-2">
+          {vehicle === 'sedan' ? '$2.95 per mile' : '$3.95 per mile'}
+        </p>
+
+        <Styled.Heading className="text-green-light">Vehicle: </Styled.Heading>
+        <p className="text-grey-light-2">{vehicle}</p>
+
+        <Styled.Heading className="text-green-light">passengers: </Styled.Heading>
+        <p className="text-grey-light-2">{vehicle === 'sedan' ? '1 - 4' : '1 - 7'}</p>
+
+        <Styled.Heading className="text-green-light">Estimate: </Styled.Heading>
+        <p className="text-grey-light-2">${estimate}</p>
+      </Modal>
+    </Styled.TripInfoModalWrapper>
   );
 };
 
@@ -93,4 +101,4 @@ const mapStateToProps = createStructuredSelector({
   dropFee: selectDropFee,
 });
 
-export default connect(mapStateToProps)(TripInfoButton);
+export default connect(mapStateToProps)(TripInfoModal);

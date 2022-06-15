@@ -4,10 +4,12 @@ export const ButtonWrapper = styled.button.attrs((props) => ({
   type: props.type || 'button',
 }))`
   border-radius: 3px;
+  cursor: pointer;
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.5rem;
   margin-top: 0.5rem;
   text-transform: uppercase;
+  letter-spacing: 1px;
   width: ${(props) => props.width || '100%'};
   ${(props) =>
     props.primary &&

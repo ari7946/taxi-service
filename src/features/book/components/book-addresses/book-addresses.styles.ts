@@ -17,9 +17,10 @@ export const BookAddressContainer = styled.div`
   }
 
   .book-address {
-    margin-bottom: 0.8rem !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 0;
+    padding-top: 0;
     color: var(--color-grey-light-2);
   }
 
@@ -29,18 +30,23 @@ export const BookAddressContainer = styled.div`
 
   .address-heading-starting {
     color: var(--color-yellow);
-    font-weight: bold !important;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
 
   .address-heading-destination {
     color: var(--color-flat-orange);
-    font-weight: bold !important;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
 
   @media (max-width: 1100px) {
     .instructions {
       font-weight: 300 !important;
       font-size: 20px;
+      margin-bottom: 0.5rem;
     }
   }
 

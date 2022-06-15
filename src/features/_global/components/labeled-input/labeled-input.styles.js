@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const LabeledInputWrapper = styled.div`
   height: 100%;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.3rem;
 `;
 
 export const Label = styled.label`
@@ -24,6 +24,7 @@ export const Input = styled.input`
   border-radius: 4px;
   padding: 0.3rem 1rem;
   font-size: 14px;
+  margin-top: 0.3rem;
 
   &:focus {
     border: 1px solid var(--color-yellow);

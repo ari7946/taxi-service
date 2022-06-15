@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const BookVehicleTypeContainer = styled.div` 
+export const BookVehicleTypeContainer = styled.div`
   & {
     width: 100%;
     display: flex;
@@ -17,7 +17,7 @@ export const BookVehicleTypeContainer = styled.div`
     border: none;
 
     @media (max-width: 415px) {
-      padding: 0 .4rem;
+      padding: 0 0.4rem;
     }
   }
 
@@ -26,16 +26,20 @@ export const BookVehicleTypeContainer = styled.div`
   }
 
   .vehicle-title {
-    font-size: 20px;
-    margin: .9rem 0;
+    font-size: 1.5rem;
+    margin: 0.9rem 0;
   }
 
   .vehicle-card-text {
-    margin: .5rem 0;
+    margin: 0.5rem 0;
     padding-left: 1.2rem;
     letter-spacing: 1px;
     font-family: var(--font-monospaced);
-    font-size: 18px;
+    font-size: 1.2rem;
+  }
+
+  .vehicle-card-text li {
+    margin-block: 0.4rem;
   }
 
   .vehicle-img {
@@ -49,7 +53,7 @@ export const BookVehicleTypeContainer = styled.div`
   .vehicle-type-button {
     border-radius: 3px;
     width: 100%;
-    padding: .3rem;
+    padding: 0.3rem;
   }
 
   .vehicle-img-opacity {
@@ -83,4 +87,4 @@ export const BookVehicleTypeContainer = styled.div`
       display: none;
     }
   }
-`
+`;

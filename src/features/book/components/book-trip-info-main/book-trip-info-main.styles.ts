@@ -1,7 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const BookTripInfoMainContainer = styled.div`
-
   h2 {
     color: white;
     font-weight: bold;
@@ -9,7 +8,7 @@ export const BookTripInfoMainContainer = styled.div`
     margin-bottom: 2rem;
     font-size: 2.2rem;
     border-bottom: 1px solid #fff;
-    padding-bottom: .3rem;
+    padding-bottom: 0.3rem;
   }
 
   .trip-info-container {
@@ -25,20 +24,22 @@ export const BookTripInfoMainContainer = styled.div`
 
     .trip-info-item-value {
       font-family: var(--font-monospaced-bold);
+      font-size: 1rem;
+      padding: 0;
+      margin: 0;
+      margin-top: 1rem;
     }
 
     .trip-info-item-heading {
       color: var(--color-green-light);
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
   }
-
-
 
   @media (max-width: 600px) {
     & {
       width: 97%;
     }
   }
-`
+`;

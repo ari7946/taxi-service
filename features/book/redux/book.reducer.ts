@@ -39,7 +39,7 @@ const INITIAL_STATE: BookState = {
   invalidFields: [],
   valid: false,
   status: 'pending',
-  submitted: false
+  submitted: false,
 };
 
 const SEDAN_RATE: number = 2.95;
@@ -68,7 +68,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         ...state,
         startAddress: action.payload.startAddress,
         endAddress: action.payload.endAddress,
-        alertSuccess: false
+        alertSuccess: false,
       };
     case BookActionTypes.LOCATIONS_CLEARED:
       return {
@@ -78,7 +78,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         vehicle: '',
         // alert is deactivated if startAddress or endAddress is "cleared"; they're both needed to calculate a distance and price
         alertSuccess: false,
-        price: 0
+        price: 0,
       };
     case BookActionTypes.ROUTE_CHANGED:
       //convert meters to miles
@@ -95,7 +95,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         // vehicle is set to "sedan" by default in case a user changes its state prior to defining both startAddress and endAddress
         vehicle: '',
         // alert is deactivated if endAddress is "cleared"; as both startAddress and endAddress are needed to calculate total distance and price
-        alertSuccess: false
+        alertSuccess: false,
       };
     case BookActionTypes.INPUT:
       if (action.payload.name === 'direction') {
@@ -105,7 +105,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
           [action.payload.name]: action.payload.value,
           price: action.payload.value === 'oneWay' ? state.price / 2 : state.price * 2,
           dropFee: action.payload.value === 'oneWay' ? 10 : 20,
-          invalidFields: []
+          invalidFields: [],
         };
       } else if (action.payload.name === 'vehicle') {
         return {
@@ -127,14 +127,14 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
                   (Number((state.distance * SEDAN_RATE).toFixed(2)) + state.dropFee).toFixed(2)
                 )
               : Number((Number((state.distance * VAN_RATE).toFixed(2)) + state.dropFee).toFixed(2)),
-          invalidFields: []
+          invalidFields: [],
         };
       }
       return {
         ...state,
         alertSuccess: false,
         [action.payload.name]: action.value,
-        invalidFields: []
+        invalidFields: [],
       };
     case BookActionTypes.SUCCESS:
       return {
@@ -151,7 +151,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         passengers: '1-4',
         direction: 'oneWay',
         dropFee: 10,
-        vehicle: 'sedan'
+        vehicle: 'sedan',
       };
     case BookActionTypes.ERROR:
       return {
@@ -160,7 +160,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         loading: false,
         submitted: false,
         errorMessage: action.payload.errorMessage,
-        alertSuccess: false
+        alertSuccess: false,
       };
     case BookActionTypes.SUBMIT:
       const { startAddress, endAddress } = state;
@@ -173,7 +173,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         email,
         phone,
         date,
-        time
+        time,
       };
       const invalidFields = [];
 
@@ -194,7 +194,7 @@ const bookReducer = (state = INITIAL_STATE, action): BookState => {
         errorMessage: '',
         error: false,
         submitted: true,
-        loading: true
+        loading: true,
       };
     default:
       return state;

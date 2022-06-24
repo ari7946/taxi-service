@@ -19,7 +19,8 @@ const TripNav = ({ activeTab, setActiveTab }: TripNavProps) => {
             className={`
             ${activeTab === 'all' ? 'text-yellow' : 'text-light'}
           `}
-            onClick={() => setActiveTab('all')}>
+            onClick={() => setActiveTab('all')}
+          >
             All
           </Styled.NavLink>
         </Styled.NavItem>
@@ -30,7 +31,8 @@ const TripNav = ({ activeTab, setActiveTab }: TripNavProps) => {
             className={`
             ${activeTab === 'confirmed' ? 'text-green-light' : 'text-light'}
           `}
-            onClick={() => setActiveTab('confirmed')}>
+            onClick={() => setActiveTab('confirmed')}
+          >
             Confirmed
           </Styled.NavLink>
         </Styled.NavItem>
@@ -41,7 +43,8 @@ const TripNav = ({ activeTab, setActiveTab }: TripNavProps) => {
             className={`
             ${activeTab === 'completed' ? 'text-green-dark' : 'text-light'}
           `}
-            onClick={() => setActiveTab('completed')}>
+            onClick={() => setActiveTab('completed')}
+          >
             Completed
           </Styled.NavLink>
         </Styled.NavItem>
@@ -52,7 +55,8 @@ const TripNav = ({ activeTab, setActiveTab }: TripNavProps) => {
             className={`
             ${activeTab === 'archived' ? 'text-yellow' : 'text-light'}
           `}
-            onClick={() => setActiveTab('archived')}>
+            onClick={() => setActiveTab('archived')}
+          >
             Archived
           </Styled.NavLink>
         </Styled.NavItem>

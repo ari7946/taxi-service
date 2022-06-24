@@ -7,7 +7,7 @@ import {
   selectEndAddress,
   selectStartAddressAndEndAddressAreValid,
   selectAreAddressesAndVehicleValid,
-  selectVehicle
+  selectVehicle,
 } from '../../redux/book.selectors';
 
 import * as Styled from './book-header.styles';
@@ -45,7 +45,7 @@ const Header = ({ sectionName }: HeaderProps) => {
           text={letter}
           style={
             letter === ' ' && {
-              margin: '0 5px'
+              margin: '0 5px',
             }
           }
           delay={i * 40}
@@ -65,7 +65,7 @@ const Header = ({ sectionName }: HeaderProps) => {
             text={letter}
             style={
               letter === ' ' && {
-                margin: '0 5px'
+                margin: '0 5px',
               }
             }
             delay={i * 60}
@@ -108,7 +108,7 @@ const Header = ({ sectionName }: HeaderProps) => {
               text={letter}
               style={
                 letter === ' ' && {
-                  margin: '0 5px'
+                  margin: '0 5px',
                 }
               }
               delay={i * 40}
@@ -128,7 +128,7 @@ const Header = ({ sectionName }: HeaderProps) => {
               text={letter}
               style={
                 letter === ' ' && {
-                  margin: '0 5px'
+                  margin: '0 5px',
                 }
               }
               delay={i * 60}

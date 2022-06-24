@@ -8,15 +8,15 @@ import authReducer from '../../auth/redux/auth.reducer';
 
 // auth state will persist in localstorage
 const persistConfig = {
-	key: 'root',
-	storage,
-	whitelist: ['auth'],
+  key: 'root',
+  storage,
+  whitelist: ['auth'],
 };
 
 const rootReducer = combineReducers({
-	trips: tripsReducer,
-	book: bookReducer,
-	auth: authReducer,
+  trips: tripsReducer,
+  book: bookReducer,
+  auth: authReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

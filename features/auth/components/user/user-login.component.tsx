@@ -14,85 +14,82 @@ import LabeledInput from '../../../_global/components/labeled-input/labeled-inpu
 import Button from '../../../_global/components/button/button.component';
 
 interface UserLoginProps {
-	userAuth: (obj: Pick<UserAuth, 'username' | 'password' | 'authType'>) => any;
-	loading: boolean;
+  userAuth: (obj: Pick<UserAuth, 'username' | 'password' | 'authType'>) => any;
+  loading: boolean;
 }
 
 const UserLogin = ({ userAuth, loading }: UserLoginProps) => {
-	const [userCredentials, setUserCredentials] = useState<
-		Pick<UserAuth, 'username' | 'password'>
-	>({
-		username: '',
-		password: '',
-	});
+  const [userCredentials, setUserCredentials] = useState<Pick<UserAuth, 'username' | 'password'>>({
+    username: '',
+    password: '',
+  });
 
-	const router = useRouter();
+  const router = useRouter();
 
-	const handleChange = (name: string, value: string) => {
-		setUserCredentials({
-			...userCredentials,
-			[name]: value,
-		});
-	};
+  const handleChange = (name: string, value: string) => {
+    setUserCredentials({
+      ...userCredentials,
+      [name]: value,
+    });
+  };
 
-	return (
-		<Styled.UserAuthWrapper>
-			<h1>Login</h1>
-			{loading && <p>loading...</p>}
-			<form
-				onSubmit={async (event) => {
-					event.preventDefault();
-					const { username, password } = userCredentials;
-					await userAuth({
-						authType: 'login',
-						username: username,
-						password: password,
-					});
-					router.push('/trips');
-				}}
-			>
-				<LabeledInput
-					id='user-username'
-					type='text'
-					name='username'
-					placeholder='username'
-					handleChange={handleChange}
-					value={userCredentials.username}
-					required
-				/>
-				<LabeledInput
-					id='user-password'
-					type='password'
-					name='password'
-					placeholder='password'
-					handleChange={handleChange}
-					value={userCredentials.password}
-					required
-				/>
+  return (
+    <Styled.UserAuthWrapper>
+      <h1>Login</h1>
+      {loading && <p>loading...</p>}
+      <form
+        onSubmit={async (event) => {
+          event.preventDefault();
+          const { username, password } = userCredentials;
+          await userAuth({
+            authType: 'login',
+            username: username,
+            password: password,
+          });
+          router.push('/trips');
+        }}
+      >
+        <LabeledInput
+          id="user-username"
+          type="text"
+          name="username"
+          placeholder="username"
+          handleChange={handleChange}
+          value={userCredentials.username}
+          required
+        />
+        <LabeledInput
+          id="user-password"
+          type="password"
+          name="password"
+          placeholder="password"
+          handleChange={handleChange}
+          value={userCredentials.password}
+          required
+        />
 
-				<Styled.ButtonGroupWrapper>
-					<Button type='submit' name='submit' primary>
-						Login
-					</Button>
-					<span>
-						Need to register?
-						<Link href='/register'>
-							<a>Register here</a>
-						</Link>
-					</span>
-				</Styled.ButtonGroupWrapper>
-			</form>
-		</Styled.UserAuthWrapper>
-	);
+        <Styled.ButtonGroupWrapper>
+          <Button type="submit" name="submit" primary>
+            Login
+          </Button>
+          <span>
+            Need to register?
+            <Link href="/register">
+              <a>Register here</a>
+            </Link>
+          </span>
+        </Styled.ButtonGroupWrapper>
+      </form>
+    </Styled.UserAuthWrapper>
+  );
 };
 
 const mapStateToProps = createStructuredSelector({
-	loading: selectAuthLoading,
+  loading: selectAuthLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	userAuth: (userLoginData: UserAuth) =>
-		dispatch(userAuth({ ...userLoginData })),
+  userAuth: (userLoginData: UserAuth) => dispatch(userAuth({ ...userLoginData })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

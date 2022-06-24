@@ -9,7 +9,7 @@ import {
   selectDropFee,
   selectDirection,
   selectTaxiFare,
-  selectValidEstimate
+  selectValidEstimate,
 } from '../../redux/book.selectors';
 
 import { EstimateContainer } from './book-estimate.styles';
@@ -35,7 +35,7 @@ const Estimate = ({ taxiFare, estimate, dropFee }) => {
                 text={letter}
                 style={
                   letter === ' ' && {
-                    margin: '0 5px'
+                    margin: '0 5px',
                   }
                 }
                 delay={i * 100}
@@ -55,7 +55,7 @@ const mapStateToProps = createStructuredSelector({
   dropFee: selectDropFee,
   direction: selectDirection,
   taxiFare: selectTaxiFare,
-  estimate: selectValidEstimate
+  estimate: selectValidEstimate,
 });
 
 export default connect(mapStateToProps)(Estimate);

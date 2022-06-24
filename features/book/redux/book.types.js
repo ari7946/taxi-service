@@ -6,6 +6,6 @@ const BookActionTypes = {
   SUCCESS: 'BOOK_SUCCESS',
   ERROR: 'BOOk_ERROR',
   SUBMIT: 'BOOK_SUBMIT',
-}
+};
 
 export default BookActionTypes;

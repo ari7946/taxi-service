@@ -7,80 +7,70 @@ import * as Styled from './navbar-item.styles';
 import { useMobileMenuOpen } from '../../hooks/useMobileMenuOpen';
 
 type Items = {
-	name: string;
-	dropdownPath: string;
-	handleClick?: () => void;
+  name: string;
+  dropdownPath: string;
+  handleClick?: () => void;
 };
 
 interface NavbarItemProps {
-	path: string;
-	children: any;
-	isDropdown?: boolean;
-	isDesktop?: boolean;
-	items?: Items[];
+  path: string;
+  children: any;
+  isDropdown?: boolean;
+  isDesktop?: boolean;
+  items?: Items[];
 }
 
 // eslint-disable-next-line react/display-name
 export default function NavbarItem({
-	path,
-	children,
-	isDropdown,
-	isDesktop,
-	items,
+  path,
+  children,
+  isDropdown,
+  isDesktop,
+  items,
 }: NavbarItemProps) {
-	const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-	const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenuOpen();
+  const { isMobileMenuOpen, toggleMobileMenu } = useMobileMenuOpen();
 
-	const toggleDropdownMenu = () => setDropdownOpen(!isDropdownOpen);
+  const toggleDropdownMenu = () => setDropdownOpen(!isDropdownOpen);
 
-	return (
-		<Styled.NavItemWrapper
-			isMobileMenuOpen={isMobileMenuOpen}
-			isDesktop={isDesktop}
-		>
-			{isDropdown ? (
-				<div className='dropdown'>
-					<div
-						className='dropdown__first-item'
-						onClick={() => toggleDropdownMenu()}
-					>
-						{children}
-						<div>
-							<FontAwesomeIcon
-								className='icon'
-								size={'sm'}
-								icon={isDropdownOpen ? faChevronUp : faChevronDown}
-							/>
-						</div>
-					</div>
+  return (
+    <Styled.NavItemWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+      {isDropdown ? (
+        <div className="dropdown">
+          <div className="dropdown__first-item" onClick={() => toggleDropdownMenu()}>
+            {children}
+            <div>
+              <FontAwesomeIcon
+                className="icon"
+                size={'sm'}
+                icon={isDropdownOpen ? faChevronUp : faChevronDown}
+              />
+            </div>
+          </div>
 
-					{isDropdownOpen && (
-						<div className='dropdown__list'>
-							{items?.map(({ name, dropdownPath, handleClick }) => (
-								<Link
-									key={name}
-									href={dropdownPath}
-									className='list-item'
-									style={{ textDecoration: 'none' }}
-									onClick={handleClick}
-									passHref
-								>
-									<a onClick={handleClick}>{name}</a>
-								</Link>
-							))}
-						</div>
-					)}
-				</div>
-			) : (
-				<Link
-					href={path}
-					style={{ textDecoration: 'none' }}
-					onClick={() => toggleMobileMenu()}
-				>
-					{children}
-				</Link>
-			)}
-		</Styled.NavItemWrapper>
-	);
+          {isDropdownOpen && (
+            <div className="dropdown__list">
+              {items?.map(({ name, dropdownPath, handleClick }) => (
+                <Link
+                  key={name}
+                  href={dropdownPath}
+                  className="list-item"
+                  style={{ textDecoration: 'none' }}
+                  onClick={handleClick}
+                  passHref
+                >
+                  <a onClick={handleClick}>{name}</a>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <Link href={path} style={{ textDecoration: 'none' }} onClick={() => toggleMobileMenu()}>
+          {children}
+        </Link>
+      )}
+    </Styled.NavItemWrapper>
+  );
 }

@@ -14,93 +14,84 @@ import { useMobileMenuOpen } from '../../hooks/useMobileMenuOpen';
 import * as Styled from './navbar-wrapper.styles';
 
 interface NavbarWrapperProps {
-	authRole: 'admin' | 'user' | '';
+  authRole: 'admin' | 'user' | '';
 }
 
 export default function NavbarWrapper({ authRole }: NavbarWrapperProps) {
-	const { isMobileMenuOpen } = useMobileMenuOpen();
+  const { isMobileMenuOpen } = useMobileMenuOpen();
 
-	const isDesktop = useIsDesktop();
+  const isDesktop = useIsDesktop();
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const handleLogout = () => {
-		console.log('logout hit');
-		dispatch(logout());
-	};
+  const handleLogout = () => {
+    console.log('logout hit');
+    dispatch(logout());
+  };
 
-	// return if user is an admin or an authenticated user
-	if (authRole === 'admin' || authRole === 'user') {
-		return (
-			<Styled.NavbarWrapper
-				isMobileMenuOpen={isMobileMenuOpen}
-				isDesktop={isDesktop}
-			>
-				<NavbarLogo />
+  // return if user is an admin or an authenticated user
+  if (authRole === 'admin' || authRole === 'user') {
+    return (
+      <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+        <NavbarLogo />
 
-				<NavbarCloseButton isDesktop={isDesktop} />
+        <NavbarCloseButton isDesktop={isDesktop} />
 
-				<Styled.NavList
-					isMobileMenuOpen={isMobileMenuOpen}
-					isDesktop={isDesktop}
-				>
-					<NavbarItem path='/book' isDesktop={isDesktop}>
-						Book
-					</NavbarItem>
+        <Styled.NavList isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+          <NavbarItem path="/book" isDesktop={isDesktop}>
+            Book
+          </NavbarItem>
 
-					<NavbarItem path='/about' isDesktop={isDesktop}>
-						About
-					</NavbarItem>
+          <NavbarItem path="/about" isDesktop={isDesktop}>
+            About
+          </NavbarItem>
 
-					<NavbarItem
-						isDropdown
-						isDesktop={isDesktop}
-						items={[
-							{ name: 'Trips', dropdownPath: 'trips' },
-							{ name: 'Logout', dropdownPath: '/', handleClick: handleLogout },
-						]}
-					>
-						Options
-					</NavbarItem>
-				</Styled.NavList>
-			</Styled.NavbarWrapper>
-		);
-	}
+          <NavbarItem
+            isDropdown
+            isDesktop={isDesktop}
+            items={[
+              { name: 'Trips', dropdownPath: 'trips' },
+              { name: 'Logout', dropdownPath: '/', handleClick: handleLogout },
+            ]}
+          >
+            Options
+          </NavbarItem>
+        </Styled.NavList>
+      </Styled.NavbarWrapper>
+    );
+  }
 
-	// return if user is unauthenticated
-	return (
-		<Styled.NavbarWrapper
-			isMobileMenuOpen={isMobileMenuOpen}
-			isDesktop={isDesktop}
-		>
-			<NavbarLogo />
+  // return if user is unauthenticated
+  return (
+    <Styled.NavbarWrapper isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+      <NavbarLogo />
 
-			<NavbarCloseButton isDesktop={isDesktop} />
+      <NavbarCloseButton isDesktop={isDesktop} />
 
-			<Styled.NavList isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
-				<NavbarItem path='/book' isDesktop={isDesktop}>
-					Book
-				</NavbarItem>
+      <Styled.NavList isMobileMenuOpen={isMobileMenuOpen} isDesktop={isDesktop}>
+        <NavbarItem path="/book" isDesktop={isDesktop}>
+          Book
+        </NavbarItem>
 
-				<NavbarItem path='/about' isDesktop={isDesktop}>
-					About
-				</NavbarItem>
+        <NavbarItem path="/about" isDesktop={isDesktop}>
+          About
+        </NavbarItem>
 
-				<NavbarItem path='/register' isDesktop={isDesktop}>
-					Register
-				</NavbarItem>
+        <NavbarItem path="/register" isDesktop={isDesktop}>
+          Register
+        </NavbarItem>
 
-				<NavbarItem
-					isDropdown
-					isDesktop={isDesktop}
-					items={[
-						{ name: 'User', dropdownPath: 'login' },
-						{ name: 'Admin', dropdownPath: 'admin' },
-					]}
-				>
-					Login
-				</NavbarItem>
-			</Styled.NavList>
-		</Styled.NavbarWrapper>
-	);
+        <NavbarItem
+          isDropdown
+          isDesktop={isDesktop}
+          items={[
+            { name: 'User', dropdownPath: 'login' },
+            { name: 'Admin', dropdownPath: 'admin' },
+          ]}
+        >
+          Login
+        </NavbarItem>
+      </Styled.NavList>
+    </Styled.NavbarWrapper>
+  );
 }

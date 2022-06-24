@@ -47,7 +47,8 @@ const TripStatus = function ({ tripId, tripStatus }: TripStatusProps) {
             className={`
               ${tripStatus === 'confirm' ? 'bg-green-light' : ''}
             `}
-            handleClick={() => handleUpdateTrip('confirm', tripId)}>
+            handleClick={() => handleUpdateTrip('confirm', tripId)}
+          >
             {handleLoadingTrip(tripId, 'confirm') && <Spinner />}
             Confirm
           </Button>
@@ -56,7 +57,8 @@ const TripStatus = function ({ tripId, tripStatus }: TripStatusProps) {
             className={`
               ${tripStatus === 'complete' ? 'bg-green-dark text-grey-light-2' : ''}
             `}
-            handleClick={() => handleUpdateTrip('complete', tripId)}>
+            handleClick={() => handleUpdateTrip('complete', tripId)}
+          >
             {handleLoadingTrip(tripId, 'complete') && <Spinner />}
             Complete
           </Button>
@@ -65,7 +67,8 @@ const TripStatus = function ({ tripId, tripStatus }: TripStatusProps) {
             className={`
               ${tripStatus === 'archive' ? 'bg-yellow' : ''}
             `}
-            handleClick={() => handleUpdateTrip('archive', tripId)}>
+            handleClick={() => handleUpdateTrip('archive', tripId)}
+          >
             {handleLoadingTrip(tripId, 'archive') && <Spinner />}
             Archive
           </Button>

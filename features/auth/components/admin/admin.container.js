@@ -8,19 +8,19 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 const AdminContainer = ({ authRole }) => {
-	const router = useRouter();
+  const router = useRouter();
 
-	useEffect(() => {
-		if ((authRole === 'user') | (authRole === 'admin')) {
-			router.push('/trips');
-		}
-	}, [authRole]);
+  useEffect(() => {
+    if ((authRole === 'user') | (authRole === 'admin')) {
+      router.push('/trips');
+    }
+  }, [authRole]);
 
-	return <AdminLogin />;
+  return <AdminLogin />;
 };
 
 const mapStateToProps = createStructuredSelector({
-	authRole: selectAuthRole,
+  authRole: selectAuthRole,
 });
 
 export default connect(mapStateToProps)(AdminContainer);

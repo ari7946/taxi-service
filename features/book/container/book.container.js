@@ -14,80 +14,74 @@ import Indicator from '../components/book-indicator/book-indicator.component';
 import BookAlertSuccess from '../components/book-alert-success/book-alert-success.component';
 
 import {
-	selectAreAddressesAndVehicleValid,
-	selectIndicatorSection,
-	selectAlertSuccess,
-	selectStartAddressAndEndAddressAreValid,
+  selectAreAddressesAndVehicleValid,
+  selectIndicatorSection,
+  selectAlertSuccess,
+  selectStartAddressAndEndAddressAreValid,
 } from '../redux/book.selectors';
 
 import * as Styled from './book.styles';
 
 const Map = dynamic(() => import('../components/book-map/book-map.component'), {
-	ssr: false,
-	suspense: true,
+  ssr: false,
+  suspense: true,
 });
 
 const BookContainer = function () {
-	const indicatorSection = useSelector(selectIndicatorSection);
-	const areAddressesAndVehicleValid = useSelector(
-		selectAreAddressesAndVehicleValid
-	);
-	const alertSuccess = useSelector(selectAlertSuccess);
+  const indicatorSection = useSelector(selectIndicatorSection);
+  const areAddressesAndVehicleValid = useSelector(selectAreAddressesAndVehicleValid);
+  const alertSuccess = useSelector(selectAlertSuccess);
 
-	return (
-		<Styled.BookContainer>
-			<Styled.MapHeader>
-				<Styled.HeaderIndicatorWrapper>
-					<Indicator num={1} isActive={indicatorSection === 'map'} />
-					<Header sectionName='map' />
-				</Styled.HeaderIndicatorWrapper>
-			</Styled.MapHeader>
+  return (
+    <Styled.BookContainer>
+      <Styled.MapHeader>
+        <Styled.HeaderIndicatorWrapper>
+          <Indicator num={1} isActive={indicatorSection === 'map'} />
+          <Header sectionName="map" />
+        </Styled.HeaderIndicatorWrapper>
+      </Styled.MapHeader>
 
-			<Styled.Map>
-				<Suspense fallback={<Spinner />}>
-					<Map />
-				</Suspense>
-			</Styled.Map>
+      <Styled.Map>
+        <Suspense fallback={<Spinner />}>
+          <Map />
+        </Suspense>
+      </Styled.Map>
 
-			<Styled.Addresses>
-				<Addresses />
-			</Styled.Addresses>
+      <Styled.Addresses>
+        <Addresses />
+      </Styled.Addresses>
 
-			<Styled.TripInfoMain>
-				<TripInfoMain />
-			</Styled.TripInfoMain>
+      <Styled.TripInfoMain>
+        <TripInfoMain />
+      </Styled.TripInfoMain>
 
-			<Styled.VehicleType>
-				<Styled.HeaderIndicatorWrapper>
-					<Indicator num={2} isActive={indicatorSection === 'vehicle'} />
-					<Header sectionName='vehicle' />
-				</Styled.HeaderIndicatorWrapper>
-				<VehicleType />
-				<Estimate />
-			</Styled.VehicleType>
+      <Styled.VehicleType>
+        <Styled.HeaderIndicatorWrapper>
+          <Indicator num={2} isActive={indicatorSection === 'vehicle'} />
+          <Header sectionName="vehicle" />
+        </Styled.HeaderIndicatorWrapper>
+        <VehicleType />
+        <Estimate />
+      </Styled.VehicleType>
 
-			{areAddressesAndVehicleValid && (
-				<Styled.TaxiForm>
-					<Styled.HeaderIndicatorWrapper>
-						<Indicator
-							num={3}
-							isActive={indicatorSection === 'form'}
-							sectionName='form'
-						/>
-						<Header sectionName='form' />
-					</Styled.HeaderIndicatorWrapper>
-					<TaxiForm />
-				</Styled.TaxiForm>
-			)}
+      {areAddressesAndVehicleValid && (
+        <Styled.TaxiForm>
+          <Styled.HeaderIndicatorWrapper>
+            <Indicator num={3} isActive={indicatorSection === 'form'} sectionName="form" />
+            <Header sectionName="form" />
+          </Styled.HeaderIndicatorWrapper>
+          <TaxiForm />
+        </Styled.TaxiForm>
+      )}
 
-			{/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
-			{selectStartAddressAndEndAddressAreValid && alertSuccess && (
-				<Styled.AlertSuccess>
-					<BookAlertSuccess />
-				</Styled.AlertSuccess>
-			)}
-		</Styled.BookContainer>
-	);
+      {/* ALERT USER IF SUBMIT FORM WAS SUCCESSFUL */}
+      {selectStartAddressAndEndAddressAreValid && alertSuccess && (
+        <Styled.AlertSuccess>
+          <BookAlertSuccess />
+        </Styled.AlertSuccess>
+      )}
+    </Styled.BookContainer>
+  );
 };
 
 export { BookContainer };

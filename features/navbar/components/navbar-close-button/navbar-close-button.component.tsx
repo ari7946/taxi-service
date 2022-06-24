@@ -16,7 +16,8 @@ export default function NavbarCloseButton({ isDesktop }: NavbarCloseButtonProps)
     <Styled.CloseButton
       onClick={toggleMobileMenu}
       isMobileMenuOpen={isMobileMenuOpen}
-      isDesktop={isDesktop}>
+      isDesktop={isDesktop}
+    >
       <FontAwesomeIcon
         className="fa-brand"
         size="sm"

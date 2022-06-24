@@ -5,7 +5,7 @@ export const BookActionTypes = {
   INPUT: 'BOOK_INPUT',
   SUCCESS: 'BOOK_SUCCESS',
   ERROR: 'BOOk_ERROR',
-  SUBMIT: 'BOOK_SUBMIT'
+  SUBMIT: 'BOOK_SUBMIT',
 };
 
 // required fields from book form.

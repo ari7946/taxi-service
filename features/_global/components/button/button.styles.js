@@ -5,6 +5,7 @@ export const ButtonWrapper = styled.button.attrs((props) => ({
 }))`
   border-radius: 3px;
   text-decoration: none;
+  color: black;
   text-align: center;
   cursor: pointer;
   width: 100%;

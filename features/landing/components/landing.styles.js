@@ -83,13 +83,29 @@ export const LandingPageContainer = styled.section`
 
   .bottom-filler {
     position: absolute;
-    background-color: #222831;
-    border-radius: 95% 0 0 0;
+    /* background-color: #222831; */
+    border-radius: 100% 0 0 0;
     width: 50%;
-    height: 35rem;
+    height: 30rem;
     bottom: 0;
     right: 0;
-    border-top: 20px solid var(--color-yellow);
+    border-top: 10px solid var(--color-yellow);
+    z-index: -1;
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  .bottom-filler2 {
+    position: absolute;
+    /* background-color: #222831; */
+    border-radius: 0 -50% 0 0;
+    width: 80%;
+    height: 10rem;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid var(--color-yellow);
+    z-index: -2;
     @media (max-width: 600px) {
       display: none;
     }

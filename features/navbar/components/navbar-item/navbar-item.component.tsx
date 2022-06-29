@@ -40,13 +40,13 @@ export default function NavbarItem({
         <div className="dropdown">
           <div className="dropdown__first-item" onClick={() => toggleDropdownMenu()}>
             {children}
-            <div>
+            {/* <div>
               <FontAwesomeIcon
                 className="icon"
                 size={'sm'}
                 icon={isDropdownOpen ? faChevronUp : faChevronDown}
               />
-            </div>
+            </div> */}
           </div>
 
           {isDropdownOpen && (
@@ -58,8 +58,7 @@ export default function NavbarItem({
                   className="list-item"
                   style={{ textDecoration: 'none' }}
                   onClick={handleClick}
-                  passHref
-                >
+                  passHref>
                   <a onClick={handleClick}>{name}</a>
                 </Link>
               ))}

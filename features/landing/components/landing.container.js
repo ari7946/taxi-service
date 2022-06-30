@@ -32,7 +32,6 @@ const LandingContainer = () => {
           </Link>
         </div>
         <div className="bottom-filler" />
-        <div className="bottom-filler2" />
       </header>
     </LandingPageContainer>
   );

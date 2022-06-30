@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const EstimateContainer = styled.div`
-  background-color: #343434 !important;
+  background-color: #222831 !important;
   padding-block: 1.7rem;
   padding-inline: 1rem;
   color: var(--color-green-light);

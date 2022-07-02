@@ -26,11 +26,12 @@ spaces.larger = spaces[4];
 export default {
   colors: {
     primary: '#fccd04',
-    secondary: '#c9e1c8',
+    secondary: '#222831',
     tertiary: '#ff652f',
+    info: '#ADD8E6',
     dark: '#1c1c1c',
     success: '#31D0AA',
-    text: '#4A4A68',
+    text: '#c9e1c8',
     subtleText: '#8C8CA1',
     accent: '#ECF1F4',
     light: '#FAFCFE',

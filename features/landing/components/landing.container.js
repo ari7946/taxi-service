@@ -20,13 +20,13 @@ const LandingContainer = () => {
 
         <div className="landing-buttons">
           <Link href="/book" passHref>
-            <Button as="a" primary width="10rem" padding="1rem">
+            <Button as="a" primary width="12rem" padding="1rem 2rem">
               BOOK TAXI
             </Button>
           </Link>
 
           <Link href="/book" passHref>
-            <Button as="a" primary width="10rem" padding="1rem">
+            <Button as="a" primary width="12rem" padding="1rem 2rem">
               GET ESTIMATE
             </Button>
           </Link>

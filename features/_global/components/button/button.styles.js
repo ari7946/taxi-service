@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
+import { space, color } from 'styled-system';
 
 export const ButtonWrapper = styled.button.attrs((props) => ({
   type: props.type || 'button',
 }))`
-  border-radius: 3px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: black;
   text-align: center;
@@ -27,4 +31,6 @@ export const ButtonWrapper = styled.button.attrs((props) => ({
     @media (max-width: 1200px) {
     font-size: 14px;
   }
+  ${space}
+  ${color}
 `;

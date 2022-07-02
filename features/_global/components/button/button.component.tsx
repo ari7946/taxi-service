@@ -45,8 +45,7 @@ const Button = React.forwardRef(
         onClick={handleClick}
         href={as === 'a' ? href : undefined}
         ref={ref}
-        as={as}
-      >
+        as={as}>
         {children}
       </Styled.ButtonWrapper>
     );

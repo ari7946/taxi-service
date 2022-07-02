@@ -1,73 +1,74 @@
 @import '../public/sdk/map.css';
+@import './utility.css';
 
 :root {
-	/* COLORS */
-	/* --color-primary: #005C77; */
-	--color-primary-dark: #1c1c1c;
-	/* --color-primary-dark: #222831; */
-	--color-yellow: #fccd04;
-	--color-green-dark: #005c77;
-	/* --color-green-dark: #222831; */
-	--color-green-light: #c9e1c8;
-	--color-orange: #ff652f;
-	--color-flat-orange: #ffccbc;
-	/* --color-flat-orange: #FF8D00; */
-	--color-flat-green: #00887a;
-	--color-flat-blue: #77a6f7;
+  /* COLORS */
+  /* --color-primary: #005C77; */
+  --color-primary-dark: #1c1c1c;
+  /* --color-primary-dark: #222831; */
+  --color-yellow: #fccd04;
+  --color-green-dark: #005c77;
+  /* --color-green-dark: #222831; */
+  --color-green-light: #c9e1c8;
+  --color-orange: #ff652f;
+  --color-flat-orange: #ffccbc;
+  /* --color-flat-orange: #FF8D00; */
+  --color-flat-green: #00887a;
+  --color-flat-blue: #77a6f7;
 
-	/* grey with an 'e' */
-	--color-grey-light-1: #faf9f9;
-	--color-grey-light-2: #f4f2f2;
-	--color-grey-light-3: #f0eeee;
-	--color-grey-light-4: #ccc;
+  /* grey with an 'e' */
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
 
-	--color-grey-dark-1: #333;
-	--color-grey-dark-2: #777;
-	--color-grey-dark-3: #999;
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
 
-	/* gray with a 'a' */
-	--color-gray-light-1: #faf9f9;
-	--color-gray-light-2: #f4f2f2;
-	--color-gray-light-3: #f0eeee;
-	--color-gray-light-4: #ccc;
+  /* gray with a 'a' */
+  --color-gray-light-1: #faf9f9;
+  --color-gray-light-2: #f4f2f2;
+  --color-gray-light-3: #f0eeee;
+  --color-gray-light-4: #ccc;
 
-	--color-gray-dark-1: #333;
-	--color-gray-dark-2: #777;
-	--color-gray-dark-3: #999;
+  --color-gray-dark-1: #333;
+  --color-gray-dark-2: #777;
+  --color-gray-dark-3: #999;
 
-	/* FONTS */
-	--font-monospaced: 'Courier New', Courier, monospace;
-	--font-monospaced-bold: 'Lucida Console', Monaco, monospace;
+  /* FONTS */
+  --font-monospaced: 'Courier New', Courier, monospace;
+  --font-monospaced-bold: 'Lucida Console', Monaco, monospace;
 
-	/* BREAK POINTS */
-	--bp-large: 1100px;
-	--bp-medium: 900px;
-	--bp-small: 600px;
+  /* BREAK POINTS */
+  --bp-large: 1100px;
+  --bp-medium: 900px;
+  --bp-small: 600px;
 
-	/* OTHER */
-	--shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
-	--shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+  /* OTHER */
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
 
-	--line: 1px solid var(--color-grey-light-2);
+  --line: 1px solid var(--color-grey-light-2);
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-	box-sizing: border-box;
-	/* 1rem = 10px, 10px/16px = 62.5% */
-	/* font-size: 62.5%;  */
+  box-sizing: border-box;
+  /* 1rem = 10px, 10px/16px = 62.5% */
+  /* font-size: 62.5%;  */
 }
 
 body {
-	font-family: 'Arial', 'sans-serif' !important;
-	font-weight: 400;
-	background-color: var(--color-primary-dark) !important;
-	max-width: 2500px;
+  font-family: 'Arial', 'sans-serif' !important;
+  font-weight: 400;
+  background-color: var(--color-primary-dark) !important;
+  max-width: 2500px;
 }
 
 body,
@@ -84,23 +85,23 @@ figcaption,
 blockquote,
 dl,
 dd {
-	margin: 0;
+  margin: 0;
 }
 
 ul[class],
 ol[class] {
-	padding: 0;
+  padding: 0;
 }
 
 /* body takes up the entire viewport even if its content does not. */
 body {
-	min-block-size: 100vh;
+  min-block-size: 100vh;
 }
 
 /*  max-inline-size set to 100% makes images responsive by default */
 img {
-	display: block;
-	max-inline-size: 100%;
+  display: block;
+  max-inline-size: 100%;
 }
 
 /* 60ch seems to be the optimal length for readability */
@@ -113,116 +114,27 @@ h5,
 h6,
 li,
 figcaption {
-	max-width: 60ch;
+  max-width: 60ch;
 }
 
 /* wrapper for entire App */
 @media (max-width: 1100px) {
-	.wrapper {
-		margin: 0 2rem 0 2rem 0 !important;
-	}
+  .wrapper {
+    margin: 0 2rem 0 2rem 0 !important;
+  }
 }
 
 @media (max-width: 600px) {
-	.wrapper {
-		margin: 0 0 !important;
-		padding: 0 !important;
-		letter-spacing: 0.04rem;
-	}
+  .wrapper {
+    margin: 0 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0.04rem;
+  }
 }
 
 @media (max-width: 415px) {
-	.wrapper {
-		margin: 0 2rem 0 2rem 0 !important;
-		letter-spacing: 0.02rem;
-	}
-}
-
-/********************** UTILITY CSS ****************/
-
-/********************** COLORS ****************/
-.bg-flat-green {
-	background-color: var(--color-flat-green) !important;
-}
-
-.bg-flat-blue {
-	background-color: var(--color-flat-blue) !important;
-}
-
-.text-flat-blue {
-	color: var(--color-flat-blue) !important;
-}
-
-.text-yellow {
-	color: var(--color-yellow) !important;
-}
-
-.bg-yellow {
-	background-color: var(--color-yellow) !important;
-}
-
-.text-green-dark {
-	color: var(--color-green-dark) !important;
-}
-
-.bg-primary-dark {
-	background-color: var(--color-primary-dark) !important;
-}
-
-.bg-green-dark {
-	background-color: var(--color-green-dark) !important;
-}
-
-.bg-green-light {
-	background-color: var(--color-green-light) !important;
-}
-
-.text-green-light {
-	color: var(--color-green-light) !important;
-}
-
-.bg-green-light {
-	background-color: var(--color-green-light) !important;
-}
-
-.text-orange {
-	color: var(--color-orange) !important;
-}
-
-.text-flat-orange {
-	color: var(--color-flat-orange) !important;
-}
-
-.bg-flat-orange {
-	background: var(--color-flat-orange) !important;
-}
-
-.bg-orange {
-	background-color: var(--color-orange) !important;
-}
-
-.text-grey-light-2 {
-	color: var(--color-grey-light-2) !important;
-}
-
-.bg-grey-light-2 {
-	background-color: var(--color-grey-light-2) !important;
-}
-
-.text-light {
-	color: azure !important;
-}
-
-/************************** FONTS  *****/
-.font-monospaced {
-	font-family: var(--font-monospaced);
-}
-
-.font-monospaced-bold {
-	font-family: var(--font-monospaced-bold);
-}
-
-.font-montserrat {
-	font-family: 'Montserrat', 'Helvetica-Neue', 'Helvetica', 'Arial',
-		'sans-serif';
+  .wrapper {
+    margin: 0 2rem 0 2rem 0 !important;
+    letter-spacing: 0.02rem;
+  }
 }

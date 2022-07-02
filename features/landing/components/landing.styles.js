@@ -10,7 +10,7 @@ export const LandingPageContainer = styled.section`
 
   .landing-header {
     display: flex;
-    margin-top: 8rem;
+    margin-top: 5rem;
     height: inherit;
     flex-direction: column;
 
@@ -24,6 +24,7 @@ export const LandingPageContainer = styled.section`
     font-size: 4.6rem;
     text-transform: uppercase;
     color: #fff;
+    margin: 1rem 0;
 
     @media (max-width: 800px) {
       font-size: 3rem;
@@ -39,7 +40,6 @@ export const LandingPageContainer = styled.section`
     font-size: 35px;
     font-weight: 200;
     color: var(--color-grey-light-2);
-    margin-top: 1rem;
 
     @media (max-width: 500px) {
       font-size: 30px;
@@ -83,7 +83,7 @@ export const LandingPageContainer = styled.section`
 
   .bottom-filler {
     position: absolute;
-    background-color: #222831;
+    background-color: inherit;
     border-radius: 95% 0 0 0;
     width: 50%;
     height: 35rem;

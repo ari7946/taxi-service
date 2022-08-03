@@ -49,8 +49,7 @@ const AdminLogin = ({ adminLogin, loading }: AdminLoginProps) => {
           const { username, password } = adminCredentials;
           await adminLogin({ username, password });
           router.push('/trips');
-        }}
-      >
+        }}>
         <LabeledInput
           id="admin-username"
           type="text"
@@ -70,11 +69,12 @@ const AdminLogin = ({ adminLogin, loading }: AdminLoginProps) => {
         />
 
         <Styled.ButtonGroupWrapper>
-          <Button type="submit" name="submit" primary>
+          <Button type="submit" name="submit" primary width="10rem">
             Login
           </Button>
           <Button
             secondary
+            width="15rem"
             type="button"
             name="admin-guest-admin"
             handleClick={async (event) => {
@@ -83,8 +83,7 @@ const AdminLogin = ({ adminLogin, loading }: AdminLoginProps) => {
               // third argument is true when user is signing in as a guest admin
               await adminLogin({ username, password, guestAdmin: true });
               router.push('/trips');
-            }}
-          >
+            }}>
             Guest Admin Login
           </Button>
         </Styled.ButtonGroupWrapper>

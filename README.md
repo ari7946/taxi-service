@@ -7,7 +7,7 @@ Coastal Yellow Cabs enables users to book a taxi and recieve an instant estimate
 
 **Admin Uses Panel**
 
-![Admin demo GIF](http://g.recordit.co/gGvp601gPn.gif)
+![Admin demo GIF](http://g.recordit.co/ccMSLuMIta.gif)
 
 ## Deployment
 

@@ -14,6 +14,7 @@ interface ButtonProps {
   padding?: string;
   handleClick?: (event: any) => any;
   as?: string;
+  disabled?: boolean;
 }
 
 const Button = React.forwardRef(
@@ -30,6 +31,7 @@ const Button = React.forwardRef(
       handleClick = undefined,
       padding = '',
       as,
+      disabled = false,
     }: ButtonProps,
     ref
   ) => {
@@ -45,6 +47,7 @@ const Button = React.forwardRef(
         onClick={handleClick}
         href={as === 'a' ? href : undefined}
         ref={ref}
+        disabled={disabled}
         as={as}>
         {children}
       </Styled.ButtonWrapper>

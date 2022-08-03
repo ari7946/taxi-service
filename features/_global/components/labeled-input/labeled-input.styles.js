@@ -25,7 +25,7 @@ export const Input = styled.input`
   padding: 0.5rem 1rem;
   font-size: 14px;
   margin-top: 0.3rem;
-  color: white;
+  color: black;
 
   &:focus {
     border: 1px solid var(--color-yellow);

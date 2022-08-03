@@ -156,7 +156,7 @@ const TaxiForm = function ({
 
       {/* SUBMIT BUTTON */}
       <Styled.ButtonWrapper>
-        <Button type="submit" name="submit" width="8rem" primary>
+        <Button type="submit" name="submit" width="8rem" primary disabled={loading ? true : false}>
           {!loading && 'BOOK'}
           {loading && (
             <span>

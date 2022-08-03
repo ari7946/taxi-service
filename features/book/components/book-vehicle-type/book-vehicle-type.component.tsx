@@ -37,8 +37,7 @@ const VehicleType = () => {
           vehicle-type-card
           vehicle-type-card__first
         `}
-        onClick={() => setVehicleType({ name: 'vehicle', value: 'sedan' })}
-      >
+        onClick={() => setVehicleType({ name: 'vehicle', value: 'sedan' })}>
         <Image
           className={`
             vehicle-img
@@ -62,8 +61,7 @@ const VehicleType = () => {
             type="button"
             handleClick={() => setVehicleType({ name: 'vehicle', value: 'sedan' })}
             primary={vehicleType === 'sedan'}
-            secondary={vehicleType === 'van'}
-          >
+            secondary={vehicleType === 'van'}>
             SEDAN
           </Button>
         </div>
@@ -75,8 +73,7 @@ const VehicleType = () => {
           bg-primary-dark
           vehicle-type-card
         `}
-        onClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}
-      >
+        onClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}>
         <Image
           className={`
             vehicle-img
@@ -99,8 +96,7 @@ const VehicleType = () => {
           <Button
             handleClick={() => setVehicleType({ name: 'vehicle', value: 'van' })}
             primary={vehicleType === 'van'}
-            secondary={vehicleType === 'sedan'}
-          >
+            secondary={vehicleType === 'sedan'}>
             VAN
           </Button>
         </div>

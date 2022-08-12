@@ -19,34 +19,43 @@ Server: [Server For Coastal Yellow Cabs](https://github.com/ari7946/backend-taxi
 
 #### Frontend Built Using:
 
-- React.js
+- Styled Components
+- React
+- Next
 - Redux
 - Dependencies:
+
   - [axios](https://github.com/axios/axios)
-  - [bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
-  - [reactstrap](https://reactstrap.github.io/)
   - [cross-env](https://www.npmjs.com/package/cross-env)
   - [@fortawesome/fontawesome-svg-core](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-javascript-core)
   - [@fortawesome/free-solid-svg-icons](https://github.com/FortAwesome/Font-Awesome/tree/master/js-packages/%40fortawesome/free-solid-svg-icons)
   - [@fortawesome/react-fontawesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
   - [react](https://reactjs.org/docs/getting-started.html)
   - [redux](https://redux.js.org/)
+  - [next](https://www.npmjs.com/package/next)
+  - [react-dom](https://www.npmjs.com/package/react-dom)
   - [react-redux](https://react-redux.js.org/)
   - [redux-logger](https://www.npmjs.com/package/redux-logger)
   - [redux-persist](https://www.npmjs.com/package/redux-persist)
   - [redux-thunk](https://github.com/reduxjs/redux-thunk)
   - [react-router-dom](https://www.npmjs.com/package/react-router-dom)
   - [reselect](https://github.com/reduxjs/reselect)
+  - [styled-components](https://www.npmjs.com/package/styled-components)
+  - [styled-normalize](https://www.npmjs.com/package/styled-normalize)
+  - [styled-system](https://www.npmjs.com/package/styled-system)
+  - [react-modal](https://www.npmjs.com/package/react-modal)
+  - [react-text-transition](https://www.npmjs.com/package/react-text-transition)
+  - [react-transition-group](https://www.npmjs.com/package/react-transition-group)
+
 - [TOMTOM Maps Api](https://developer.tomtom.com/tomtom-maps-apis-developers)
 
-- [Heroku](https://www.heroku.com/)
+- [Vercel](https://vercel.com/)
 
 ## Installation Instructions
 
 #### Environmental Variables:
 
     - REACT_APP_API_KEY= please see [TOMTOM MAPS API](https://developer.tomtom.com/tomtom-maps-apis-developers) to get an API key
-    - PUBLIC_URL="https://mytaxicab.herokuapp.com/"
 
 #### Using the Application
 
@@ -71,9 +80,9 @@ Follow these steps to get the app running:
 
 ## How Redux Is Used
 
-- There are three main Redux modules: Auth, Book, and Trips. They're located inside the "redux" directory.
+- There are three main Redux modules/slices: Auth, Book, and Trips. Each redux module is placed in their respective feature folder, colocated with components that consume redux functionality. This allows components and each redux module to easily share types, as well as an overal intuitive experience when creating new features.
 
-- Each module contains its own actions, reducer, selectors, and types. This organization allows for reusability across other Redux modules and React components. For instance, both users and admin use the trips redux module. Another example is the auth module, in that it's used throughout the app for authentication and also as part of the headers for HTTP requests.
+- Each module contains its own actions, reducer, selectors, and types. This organization allows for reusability across other Redux modules and React components. For instance, both users and admin use the trips redux module. Another example is the auth module, in that it's used throughout the app for authentication(permission based) and also as part of the headers for HTTP requests.
 
 - The root-reducer, which combines "auth", "trips" and "book" reducers, is also located inside the redux directory alongside the store.
 - The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "auth" state in local storage. This ensures the user's authentication status persists even after a user refreshes the page or navigates to a different website.
@@ -92,11 +101,34 @@ export const selectCompletedTrips = createSelector([selectAllTrips], (trips) =>
 
 ```javascript
 const mapStateToProps = createStructuredSelector({
-  startAddress: selectStartAddress,
-  endAddress: selectEndAddress,
+  vehicle: selectVehicle,
 });
 
-export default connect(mapStateToProps)(Addresses);
+const mapDispatchToProps = (dispatch) => ({
+  setInput: (options) => dispatch(setInput(options)),
+});
+
+export default VehicleType;
+```
+
+- Regarding the above code snippet, it is worth noting that new features are now being built using [React-Redux-Hooks](https://react-redux.js.org/api/hooks) with TypeScript. So the above snippet is similar to this:
+
+```javascript
+interface InputOptions {
+  name: 'vehicle';
+  value: VehicleTypes;
+}
+
+const VehicleType = () => {
+  const dispatch = useDispatch();
+  const vehicleType = useSelector<VehicleTypes>(selectVehicle);
+
+  const setVehicleType = (inputOptions: InputOptions) => {
+    dispatch(setInput(inputOptions));
+  };
+
+  return (
+    ....rest of the code
 ```
 
 - [Redux-logger](https://www.npmjs.com/package/redux-logger) is used to track state changes while in development mode.
@@ -107,21 +139,36 @@ if (process.env.NODE_ENV === 'development') {
 }
 ```
 
-- [Redux Thunk](https://github.com/reduxjs/redux-thunk) handles asynchronous requests as follows.
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) handles asynchronous API requests. Here's an example:
 
 ```javascript
-export const updateTrip = (status, id) => {
-  return async (dispatch) => {
-    dispatch({ type: TripsActionTypes.SUBMIT, loadingType: status, tripId: id });
+export const updateTrip = (status: TripLoadingStatus, id: number) => {
+  return async (dispatch: Dispatch<Action>, getState) => {
+    const authHeaders = selectAuthHeaders(getState());
+    dispatch({
+      type: TripsActionTypes.SUBMIT,
+      payload: {
+        loadingType: status,
+        loadingTripId: id,
+      },
+    });
     try {
       const result = await axios.put(
-        `${process.env.REACT_APP_TRIPS}/api/trips/${id}`,
+        `${process.env.NEXT_PUBLIC_TRIPS}/api/trips/${id}`,
         { status },
         authHeaders
       );
-      dispatch({ type: TripsActionTypes.UPDATE_TRIP, trip: result.data });
+      dispatch({
+        type: TripsActionTypes.UPDATE_TRIP,
+        payload: {
+          trip: result.data,
+        },
+      });
     } catch (error) {
-      dispatch({ type: TripsActionTypes.ERROR, error });
+      dispatch({
+        type: TripsActionTypes.ERROR,
+        payload: { error },
+      });
     }
   };
 };
@@ -130,19 +177,26 @@ export const updateTrip = (status, id) => {
 - User authentication and authorization functionality is placed inside the "auth" redux module.
 
 ```javascript
-export const userAuth = (authType, username, password, name = '', email = '', phone = '') => {
-  return async (dispatch) => {
+export const userAuth = ({
+  authType,
+  username,
+  password,
+  name = '',
+  email = '',
+  phone = '',
+}: UserAuth) => {
+  return async (dispatch: Dispatch<FetchUser | FetchSuccess | Error>) => {
     dispatch({ type: AuthActionTypes.FETCH_USER });
     try {
       const result =
         authType === 'login'
-          ? await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, {
+          ? await axios.post(`${process.env.NEXT_PUBLIC_TRIPS}/api/${authType}`, {
               username,
               password,
             })
           : // for user registration, "name", "email", and "phone" are not required. If
             // excluded, they default to empty strings
-            await axios.post(`${process.env.REACT_APP_TRIPS}/api/${authType}`, {
+            await axios.post(`${process.env.NEXT_PUBLIC_TRIPS}/api/${authType}`, {
               username,
               password,
               name,
@@ -150,9 +204,15 @@ export const userAuth = (authType, username, password, name = '', email = '', ph
               phone,
             });
       const { token } = result.data;
-      dispatch({ type: AuthActionTypes.FETCH_SUCCESS, token, currentUser: username });
+      dispatch({
+        type: AuthActionTypes.FETCH_SUCCESS,
+        payload: { token, currentUser: username },
+      });
     } catch (error) {
-      dispatch({ type: AuthActionTypes.ERROR, errorMesssage: error });
+      dispatch({
+        type: AuthActionTypes.ERROR,
+        payload: { errorMessage: 'Unable to login or register' },
+      });
     }
   };
 };

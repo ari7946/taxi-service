@@ -13,16 +13,16 @@ import { selectVehicle } from '../../redux/book.selectors';
 import { BookVehicleTypeContainer } from './book-vehicle-type.styles';
 import Button from '../../../_global/components/button/button.component';
 
-type VehicleType = 'sedan' | 'van';
+type VehicleTypes = 'sedan' | 'van';
 
 interface InputOptions {
   name: 'vehicle';
-  value: VehicleType;
+  value: VehicleTypes;
 }
 
 const VehicleType = () => {
   const dispatch = useDispatch();
-  const vehicleType = useSelector<VehicleType>(selectVehicle);
+  const vehicleType = useSelector<VehicleTypes>(selectVehicle);
 
   const setVehicleType = (inputOptions: InputOptions) => {
     dispatch(setInput(inputOptions));

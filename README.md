@@ -80,14 +80,14 @@ Follow these steps to get the app running:
 
 ## How Redux Is Used
 
-- There are three main Redux modules/slices: Auth, Book, and Trips. Each redux module is placed in their respective feature folder, colocated with components that consume redux functionality. This allows components and each redux module to easily share types, as well as an overal intuitive experience when creating new features.
+- There are three main Redux modules/slices: Auth, Book, and Trips. Each redux module is placed in their respective feature folder, colocated with components that consume redux functionality. This colocation allows components and each redux module to easily share types. Also, I think it provides a more intuitive experience when creating new features.
 
 - Each module contains its own actions, reducer, selectors, and types. This organization allows for reusability across other Redux modules and React components. For instance, both users and admin use the trips redux module. Another example is the auth module, in that it's used throughout the app for authentication(permission based) and also as part of the headers for HTTP requests.
 
-- The root-reducer, which combines "auth", "trips" and "book" reducers, is also located inside the redux directory alongside the store.
+- The root-reducer combines "auth", "trips" and "book" reducers.
 - The store uses the [redux-persist](https://www.npmjs.com/package/redux-persist) library to save the "auth" state in local storage. This ensures the user's authentication status persists even after a user refreshes the page or navigates to a different website.
 
-- The [reselect](https://github.com/reduxjs/reselect) library supplies memoized functions that get state. Specifically, a function called [createSelector](https://redux-toolkit.js.org/api/createSelector), creates these memoized selector functions. Selectors can be composed as shown below.
+- The [reselect](https://github.com/reduxjs/reselect) library supplies memoized functions that get state. Specifically, a function called [createSelector](https://redux-toolkit.js.org/api/createSelector) creates these memoized selector functions. Selectors can be composed as shown below.
 
 ```javascript
 export const selectAllTrips = createSelector([selectTripState], (tripState) => tripState.trips);
